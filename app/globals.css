@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f6f3ec;
+  --ink: #16150f;
+  --wine: #8b1e3f;
+  --wine-deep: #6d142c;
+  --muted: #7c7a70;
+  --line: rgba(0, 0, 0, 0.08);
+  --line-strong: rgba(0, 0, 0, 0.12);
+
+  --ink-block: #14130e;
+  --paper-on-dark: #f0ede4;
+  --muted-dark: #9a9788;
+  --line-dark: rgba(255, 255, 255, 0.12);
+
+  --ease-out-quart: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out-emph: cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-wine: var(--wine);
+  --color-wine-deep: var(--wine-deep);
+  --color-muted: var(--muted);
+  --color-ink-block: var(--ink-block);
+  --color-paper-on-dark: var(--paper-on-dark);
+  --color-muted-dark: var(--muted-dark);
+
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+  --font-body: var(--font-body);
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #14130e;
+    --ink: #f0ede4;
+    --muted: #9a9788;
+    --line: rgba(255, 255, 255, 0.08);
+    --line-strong: rgba(255, 255, 255, 0.14);
+  }
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--wine);
+  color: var(--paper-on-dark);
+}
+
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+}
+
+.font-body {
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* === Retícula de 4 columnas (fondo global) === */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 max(24px, 4vw);
+}
+
+.grid-bg__col {
+  border-right: 1px solid var(--line);
+  transform-origin: top;
+}
+
+.grid-bg__col:first-child {
+  border-left: 1px solid var(--line);
+}
+
+/* === Layout principal === */
+.shell {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 max(24px, 4vw);
+}
+
+/* === Ticker (CSS puro) === */
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-track {
+  display: flex;
+  gap: 2.5rem;
+  width: max-content;
+  animation: ticker 38s linear infinite;
+  will-change: transform;
+}
+
+.ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+/* === Status dot blinking === */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.92);
+  }
+}
+
+.dot-pulse {
+  animation: pulse-dot 1.6s var(--ease-out-quart) infinite;
+}
+
+/* === Underline link === */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform-origin: right;
+  transform: scaleX(1);
+  transition: transform 0.5s var(--ease-in-out-emph);
+}
+.link-underline:hover::after {
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+/* === Sparkline barras === */
+@keyframes bar-rise {
+  from {
+    transform: scaleY(0.1);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* === Reduced motion === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .ticker-track {
+    animation: none;
+  }
+}
+
+/* === Hover affordances === */
+.project-row {
+  transition: padding-left 0.5s var(--ease-in-out-emph),
+    border-color 0.3s var(--ease-out-quart);
+}
+.project-row:hover {
+  padding-left: 1.5rem;
+  border-color: var(--ink);
+}
+.project-row .arrow {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all 0.45s var(--ease-in-out-emph);
+}
+.project-row:hover .arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* === Bloque oscuro === */
+.dark-block {
+  background: var(--ink-block);
+  color: var(--paper-on-dark);
+}
+.dark-block .muted {
+  color: var(--muted-dark);
+}
+.dark-block hr,
+.dark-block .divider {
+  border-color: var(--line-dark);
+}
