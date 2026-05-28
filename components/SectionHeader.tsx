@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import { useI18n, type Localized } from "@/lib/i18n";
+import { ParallaxNumber } from "./ParallaxNumber";
 
 type Props = {
   number: string;
@@ -43,7 +44,7 @@ export function SectionHeader({
         style={{ borderBottom: `1px solid ${lineCol}` }}
       >
         <div className="flex items-baseline gap-5 md:gap-8 min-w-0">
-          <span
+          <ParallaxNumber
             aria-hidden="true"
             className="font-display font-extrabold tabular leading-[0.82] tracking-[-0.04em] text-[clamp(4.5rem,11vw,9.5rem)] section-number"
             style={{
@@ -52,7 +53,7 @@ export function SectionHeader({
             }}
           >
             {number}
-          </span>
+          </ParallaxNumber>
           <span
             key={`label-${number}-${locale}`}
             className="font-mono text-[11px] md:text-[13px] uppercase tracking-[0.24em]"

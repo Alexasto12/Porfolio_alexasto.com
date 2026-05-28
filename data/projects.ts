@@ -8,16 +8,6 @@ export type ProjectLink = {
   kind?: "landing" | "platform" | "repo" | "demo";
 };
 
-export type MockKey =
-  | "neibrPlatform"
-  | "neibrLanding"
-  | "larasoak"
-  | "gokthermal"
-  | "roses"
-  | "peer2stream"
-  | "pokeDS"
-  | "salerm";
-
 export type LocalizedProject = {
   id: string;
   name: string;
@@ -26,9 +16,8 @@ export type LocalizedProject = {
   tags: Tag[];
   links: ProjectLink[];
   meta?: Localized<string>;
-  mock?: MockKey;
-  mockUrl?: string;
-  accent?: string;
+  /** Free-form, used as the placeholder caption. */
+  shotLabel?: Localized<string>;
 };
 
 export type VmvCapability = {
@@ -46,23 +35,29 @@ export type VmvStat = {
 
 export type TimelineEntry = {
   year: string | Localized<string>;
+  age?: string;
   title: Localized<string>;
   place: Localized<string>;
   body: Localized<string>;
   kind?: "milestone" | "education" | "work" | "project";
 };
 
+export type Service = {
+  group: Localized<string>;
+  items: Localized<string>[];
+};
+
 const tag = (es: string, en: string, ca: string): Tag => l(es, en, ca);
 
-/* ───────────── Telemetry bar (slim) ───────────── */
+/* ───────── Telemetry bar ───────── */
 
 export const telemetry = {
   systemId: "AC_SYSTEMS",
   name: "Alejandro Cabrera",
   role: l(
-    "Systems Architect · BCN",
-    "Systems Architect · BCN",
-    "Arquitecte de sistemes · BCN"
+    "Systems Architect · Granollers / BCN",
+    "Systems Architect · Granollers / BCN",
+    "Arquitecte de sistemes · Granollers / BCN"
   ),
   availability: l(
     "Disponible para nuevos proyectos",
@@ -71,7 +66,7 @@ export const telemetry = {
   ),
 } as const;
 
-/* ───────────── Hero ───────────── */
+/* ───────── Hero ───────── */
 
 export const hero = {
   sectionLabel: l("001 — PERFIL", "001 — PROFILE", "001 — PERFIL"),
@@ -93,23 +88,20 @@ export const hero = {
     "Dissenyo i construeixo microserveis d'alt rendiment, infraestructura de xarxa corporativa i plataformes API-first. Busco que l'elegància estructural del backend es reflecteixi en la del frontend."
   ),
   intro2: l(
-    "Vivo en Barcelona, vengo de Granollers. Trabajo sobre el principio de que un sistema bien pensado se nota: en la latencia, en el coste y en la calma con la que se opera.",
-    "I live in Barcelona, originally from Granollers. I work on the principle that a well-thought system shows: in latency, in cost, and in the calm of operating it.",
-    "Visc a Barcelona, vinc de Granollers. Treballo sobre el principi que un sistema ben pensat es nota: en la latència, en el cost i en la calma amb què s'opera."
+    "Vivo en Granollers, trabajo en Barcelona. La idea es siempre la misma: un sistema bien pensado se nota — en la latencia, en el coste y en la calma con la que se opera.",
+    "I live in Granollers, work in Barcelona. The idea is always the same: a well-thought system shows — in latency, in cost, and in the calm of operating it.",
+    "Visc a Granollers, treballo a Barcelona. La idea és sempre la mateixa: un sistema ben pensat es nota — en la latència, en el cost i en la calma amb què s'opera."
   ),
   stack: [
-    { label: "Go · Chi · SQLite WAL", weight: "primary" as const },
+    { label: "Go · Chi · SQLite", weight: "primary" as const },
     { label: "Java 21 · Spring Boot · AS/400", weight: "primary" as const },
     { label: "Next.js 15 · React 19 · TS", weight: "primary" as const },
-    { label: "Docker · LiteLLM · WordPress", weight: "secondary" as const },
+    { label: "WordPress · Docker · LiteLLM", weight: "secondary" as const },
   ],
   contextLabel: l("CONTEXTO", "CONTEXT", "CONTEXT"),
   stackLabel: l("STACK PRINCIPAL", "PRIMARY STACK", "STACK PRINCIPAL"),
   ratings: [
-    {
-      label: l("Arquitectura", "Architecture", "Arquitectura"),
-      value: 10,
-    },
+    { label: l("Arquitectura", "Architecture", "Arquitectura"), value: 10 },
     {
       label: l("Backend de alto rendimiento", "High-perf backend", "Backend d'alt rendiment"),
       value: 10,
@@ -119,7 +111,7 @@ export const hero = {
   ],
 } as const;
 
-/* ───────────── Approach ───────────── */
+/* ───────── Approach ───────── */
 
 export const approach = {
   sectionNumber: "002",
@@ -174,7 +166,7 @@ export const approach = {
   ],
 } as const;
 
-/* ───────────── Neibr — API platform ───────────── */
+/* ───────── Neibr — API platform ───────── */
 
 export const neibr = {
   sectionNumber: "—",
@@ -187,14 +179,14 @@ export const neibr = {
     "Logística B2B API-first."
   ),
   description: l(
-    "Infraestructura logística B2B API-first construida en Go: microservicios multi-tenant, gestión de tokens, panel de operador y una app de usuario para vecinos. Elimina retornos de paquetería mediante Double Blind Handover y garantía de Cero Retornos.",
-    "B2B, API-first logistics infrastructure built in Go: multi-tenant microservices, token management, operator dashboard and a user app for neighbours. Eliminates parcel returns through Double Blind Handover and a Zero Returns guarantee.",
-    "Infraestructura logística B2B API-first construïda en Go: microserveis multi-tenant, gestió de tokens, panell d'operador i una app d'usuari per a veïns. Elimina retorns de paqueteria mitjançant Double Blind Handover i garantia de Zero Retorns."
+    "Plataforma logística B2B API-first construida en Go. El operador notifica un fallo de entrega y el motor asigna el mejor vecino en un radio de 200 m; el tracking number se autogenera como PREFIX-SEQ-DDMMYYYY. Si no hay vecinos disponibles, el envío se cancela automáticamente.",
+    "B2B, API-first logistics platform built in Go. The carrier reports a failed delivery and the engine assigns the best neighbour within a 200 m radius; the tracking number is auto-generated as PREFIX-SEQ-DDMMYYYY. If no neighbours are available, the shipment cancels automatically.",
+    "Plataforma logística B2B API-first construïda en Go. L'operador notifica un fallit de lliurament i el motor assigna el millor veí en un radi de 200 m; el tracking number s'autogenera com a PREFIX-SEQ-DDMMYYYY. Si no hi ha veïns disponibles, l'enviament es cancel·la automàticament."
   ),
   description2: l(
-    "Matching geoespacial con PostGIS (ST_DWithin <150 m), ranking de vecinos por reputación y SLA por operador. Onboarding de carriers en horas vía API REST documentada con OpenAPI.",
-    "Geospatial matching with PostGIS (ST_DWithin <150 m), neighbour ranking by reputation and per-carrier SLAs. Carrier onboarding in hours via a REST API documented with OpenAPI.",
-    "Matching geoespacial amb PostGIS (ST_DWithin <150 m), rànquing de veïns per reputació i SLA per operador. Onboarding de carriers en hores via API REST documentada amb OpenAPI."
+    "Doble propósito: eliminar retornos de paquetería para el operador y crear una red local de confianza para el vecino. Autenticación por X-API-Key, multi-tenant y ciclo completo del envío documentado en api.neibr.es.",
+    "Two goals: eliminate parcel returns for the carrier and build a local trust network for the neighbour. X-API-Key auth, multi-tenant and the full shipment lifecycle documented at api.neibr.es.",
+    "Doble propòsit: eliminar retorns de paqueteria per a l'operador i crear una xarxa local de confiança per al veí. Autenticació per X-API-Key, multi-tenant i cicle complet de l'enviament documentat a api.neibr.es."
   ),
   stat: {
     value: 3_000_000,
@@ -202,21 +194,34 @@ export const neibr = {
     duration: "50 min",
     durationLabel: l("duración", "duration", "durada"),
     caption: l(
-      "Stress test superado sin degradación. p50 38ms · p99 142ms · 0 errores 5xx.",
-      "Stress test passed without degradation. p50 38ms · p99 142ms · 0 5xx errors.",
-      "Stress test superat sense degradació. p50 38ms · p99 142ms · 0 errors 5xx."
+      "Stress test superado sin degradación. p50 / p99 estables y 0 errores 5xx.",
+      "Stress test passed without degradation. p50 / p99 stable and 0 5xx errors.",
+      "Stress test superat sense degradació. p50 / p99 estables i 0 errors 5xx."
     ),
   },
   tags: [
     tag("GO · CHI ROUTER", "GO · CHI ROUTER", "GO · CHI ROUTER"),
-    tag("POSTGIS", "POSTGIS", "POSTGIS"),
     tag("API-FIRST", "API-FIRST", "API-FIRST"),
     tag("MULTI-TENANT", "MULTI-TENANT", "MULTI-TENANT"),
     tag("B2B + APP", "B2B + APP", "B2B + APP"),
+    tag("ES · CA · EN", "ES · CA · EN", "ES · CA · EN"),
   ],
   concepts: [
-    l("Double Blind Handover", "Double Blind Handover", "Double Blind Handover"),
-    l("Garantía Cero Retornos", "Zero Returns Guarantee", "Garantia Zero Retorns"),
+    l(
+      "Vecino más cercano en 200 m",
+      "Nearest neighbour within 200 m",
+      "Veí més proper en 200 m"
+    ),
+    l(
+      "Tracking PREFIX-SEQ-DDMMYYYY",
+      "Tracking PREFIX-SEQ-DDMMYYYY",
+      "Tracking PREFIX-SEQ-DDMMYYYY"
+    ),
+    l(
+      "Cancelación automática si no hay vecino",
+      "Automatic cancellation if no neighbour",
+      "Cancel·lació automàtica si no hi ha veí"
+    ),
     l(
       "Sistema de puntos vecinal",
       "Neighbour reward points",
@@ -227,42 +232,42 @@ export const neibr = {
       "Carrier onboarding via API",
       "Onboarding de carriers via API"
     ),
-    l(
-      "Matching geoespacial con PostGIS",
-      "Geospatial matching with PostGIS",
-      "Matching geoespacial amb PostGIS"
-    ),
   ],
   conceptsLabel: l("CONCEPTOS CLAVE", "KEY CONCEPTS", "CONCEPTES CLAU"),
   outputLabel: l("STRESS TEST · OUTPUT", "STRESS TEST · OUTPUT", "STRESS TEST · OUTPUT"),
   endpointLabel: l(
-    "ENDPOINT EJEMPLO",
-    "EXAMPLE ENDPOINT",
-    "ENDPOINT EXEMPLE"
+    "POST · /api/v1/b2b/shipments",
+    "POST · /api/v1/b2b/shipments",
+    "POST · /api/v1/b2b/shipments"
+  ),
+  endpointTitle: l(
+    "Crear envío y asignar vecino",
+    "Create shipment and assign neighbour",
+    "Crear enviament i assignar veí"
   ),
   separateLandingNote: l(
-    "La marca y la documentación pública viven en neibr.es, un proyecto independiente con su propio repo. Lo encontrarás más abajo, en productos propios.",
-    "The brand and public docs live at neibr.es, a separate project with its own repo. You'll find it below, under own products.",
-    "La marca i la documentació pública viuen a neibr.es, un projecte independent amb el seu propi repo. El trobaràs més avall, a productes propis."
+    "La marca y la documentación pública viven en neibr.es como proyecto independiente. Lo encontrarás más abajo, en productos propios.",
+    "The brand and public docs live at neibr.es as a separate project. You'll find it below, under own products.",
+    "La marca i la documentació pública viuen a neibr.es com a projecte independent. El trobaràs més avall, a productes propis."
   ),
 } as const;
 
-/* ───────────── VMV (dark block) ───────────── */
+/* ───────── VMV (dark block) ───────── */
 
 export const vmv = {
   sectionNumber: "003",
   sectionLabel: l("EXPERIENCIA", "EXPERIENCE", "EXPERIÈNCIA"),
   client: "VMV Cosmetic Group",
-  range: l("2023 — presente", "2023 — present", "2023 — present"),
+  range: l("2025 — presente", "2025 — present", "2025 — present"),
   heading: l(
     "Stack completo a escala corporativa.",
     "Full stack at corporate scale.",
     "Stack complet a escala corporativa."
   ),
   intro: l(
-    "Más de dos años operando la infraestructura digital de una empresa cosmética con presencia internacional. Una superficie que va del DNS y el correo corporativo hasta un gateway de IA, pasando por +20 microservicios y una red de plugins propios.",
-    "More than two years running the digital infrastructure of an international cosmetics company. A surface that spans from DNS and corporate email to an AI gateway, including 20+ microservices and a network of in-house plugins.",
-    "Més de dos anys operant la infraestructura digital d'una empresa cosmètica amb presència internacional. Una superfície que va del DNS i el correu corporatiu fins a un gateway d'IA, passant per +20 microserveis i una xarxa de plugins propis."
+    "Programador web principal: opero la infraestructura digital de una empresa cosmética internacional. Una superficie que va del DNS y las cuentas corporativas a microservicios en Go y Java, pasando por una red de plugins propios sobre WordPress.",
+    "Lead web developer: I run the digital infrastructure of an international cosmetics company. A surface from DNS and corporate accounts to Go and Java microservices, including a network of in-house WordPress plugins.",
+    "Programador web principal: opero la infraestructura digital d'una empresa cosmètica internacional. Una superfície que va del DNS i els comptes corporatius a microserveis en Go i Java, passant per una xarxa de plugins propis sobre WordPress."
   ),
   stats: [
     {
@@ -272,11 +277,11 @@ export const vmv = {
     },
     {
       value: 12,
-      label: l("plugins propios", "in-house plugins", "plugins propis"),
+      label: l("plugins internos", "internal plugins", "plugins interns"),
       caption: l(
-        "+ store interno de plugins",
-        "+ internal plugin store",
-        "+ store intern de plugins"
+        "+ store interno propio",
+        "+ in-house plugin store",
+        "+ store intern propi"
       ),
     },
     {
@@ -287,110 +292,74 @@ export const vmv = {
   ] as VmvStat[],
   capabilities: [
     {
-      title: l("WebShield · WAF Go.", "WebShield · Go WAF.", "WebShield · WAF Go."),
+      title: l("Cuentas, dominios e infraestructura.", "Accounts, domains & infrastructure.", "Comptes, dominis i infraestructura."),
       description: l(
-        "WAF de carga temprana en Go con worker pools y SQLite WAL. IP scoring dinámico, bloqueos sincronizados con WordPress, listas reactivas y métricas en vivo del tráfico bloqueado por dominio.",
-        "Early-loading Go WAF with worker pools and SQLite WAL. Dynamic IP scoring, blocklists synced with WordPress, reactive lists and live metrics on blocked traffic per domain.",
-        "WAF de càrrega primerenca en Go amb worker pools i SQLite WAL. IP scoring dinàmic, bloquejos sincronitzats amb WordPress, llistes reactives i mètriques en directe del trànsit bloquejat per domini."
+        "Alta y gestión de cuentas corporativas, registros DNS, correo, certificados, hosting y despliegues. La capa que rara vez se ve y que sostiene todo lo demás.",
+        "Setup and management of corporate accounts, DNS records, email, certificates, hosting and deploys. The layer you rarely see that holds everything else up.",
+        "Alta i gestió de comptes corporatius, registres DNS, correu, certificats, hosting i desplegaments. La capa que poques vegades es veu i que sosté tota la resta."
       ),
-      badge: l("INTERNO", "INTERNAL", "INTERN"),
     },
     {
-      title: l("AS/400 Integration API.", "AS/400 Integration API.", "AS/400 Integration API."),
+      title: l("WAF en Go con worker pools.", "Go WAF with worker pools.", "WAF en Go amb worker pools."),
       description: l(
-        "Puente Java 21 / Spring Boot 3 hacia mainframe AS/400. Mapeo de tipos, control de transacciones distribuidas y un patrón anti-corrupción que aísla el modelo del dominio moderno del de RPG.",
-        "Java 21 / Spring Boot 3 bridge to the AS/400 mainframe. Type mapping, distributed transaction control and an anti-corruption layer that isolates the modern domain model from the RPG one.",
-        "Pont Java 21 / Spring Boot 3 cap al mainframe AS/400. Mapeig de tipus, control de transaccions distribuïdes i un patró anti-corrupció que aïlla el model del domini modern del de RPG."
+        "WAF de carga temprana en Go con SQLite WAL, worker pools y IP scoring dinámico. Listas reactivas, bloqueos sincronizados con la capa de WordPress y métricas en vivo del tráfico bloqueado por dominio.",
+        "Early-loading Go WAF with SQLite WAL, worker pools and dynamic IP scoring. Reactive lists, blocklists synced with the WordPress layer and live metrics on blocked traffic per domain.",
+        "WAF de càrrega primerenca en Go amb SQLite WAL, worker pools i IP scoring dinàmic. Llistes reactives, bloquejos sincronitzats amb la capa de WordPress i mètriques en directe del trànsit bloquejat per domini."
       ),
-      badge: l("INTERNO", "INTERNAL", "INTERN"),
     },
     {
-      title: l(
-        "Visualizador de revistas · Salerm Magazine.",
-        "Magazine viewer · Salerm Magazine.",
-        "Visualitzador de revistes · Salerm Magazine."
-      ),
+      title: l("Puente Java 21 a AS/400.", "Java 21 bridge to AS/400.", "Pont Java 21 a AS/400."),
       description: l(
-        "CMS con lectura protegida por tokens y panel de administración aislado. Edición colaborativa, control de versiones por número, previsualización en tiempo real y página pública compartible.",
-        "CMS with token-protected reading and an isolated admin panel. Collaborative editing, per-issue versioning, real-time preview and a publicly shareable page.",
-        "CMS amb lectura protegida per tokens i panell d'administració aïllat. Edició col·laborativa, control de versions per número, previsualització en temps real i pàgina pública compartible."
+        "Servicios Java 21 / Spring Boot 3 que exponen el ERP en AS/400 como REST. Mapeo de tipos, control de transacciones distribuidas y un patrón anti-corrupción que aísla el modelo del dominio moderno del RPG.",
+        "Java 21 / Spring Boot 3 services exposing the AS/400 ERP as REST. Type mapping, distributed transaction control and an anti-corruption layer that isolates the modern domain model from the RPG one.",
+        "Serveis Java 21 / Spring Boot 3 que exposen l'ERP en AS/400 com a REST. Mapeig de tipus, control de transaccions distribuïdes i un patró anti-corrupció que aïlla el model del domini modern del de RPG."
+      ),
+    },
+    {
+      title: l("Plataforma de magazine corporativo.", "Corporate magazine platform.", "Plataforma de magazine corporatiu."),
+      description: l(
+        "CMS con lectura protegida por tokens compartibles y panel de administración aislado. Edición colaborativa, control de versiones por número, previsualización en tiempo real y página pública sin login.",
+        "CMS with shareable token-protected reading and isolated admin panel. Collaborative editing, per-issue versioning, real-time preview and a public, login-less page.",
+        "CMS amb lectura protegida per tokens compartibles i panell d'administració aïllat. Edició col·laborativa, control de versions per número, previsualització en temps real i pàgina pública sense login."
       ),
       link: {
-        label: "magazine.salerm.com ↗",
+        label: "demo pública ↗",
         href: "https://magazine.salerm.com/s/7611600d-0ac8-4b56-b5a3-f54e1ed7522c",
         kind: "demo" as const,
       },
       badge: l("DEMO PÚBLICA", "PUBLIC DEMO", "DEMO PÚBLICA"),
     },
     {
-      title: l(
-        "Gateway de IA unificado.",
-        "Unified AI gateway.",
-        "Gateway d'IA unificat."
-      ),
+      title: l("Gateway de IA unificado.", "Unified AI gateway.", "Gateway d'IA unificat."),
       description: l(
         "Proxy/enrutador de modelos de lenguaje con API compatible OpenAI, control de contexto y streaming. Cuotas por equipo, redacted logging y fallback automático entre proveedores.",
         "Language-model proxy/router with an OpenAI-compatible API, context control and streaming. Per-team quotas, redacted logging and automatic provider fallback.",
         "Proxy/enrutador de models de llenguatge amb API compatible OpenAI, control de context i streaming. Quotes per equip, redacted logging i fallback automàtic entre proveïdors."
       ),
-      badge: l("INTERNO", "INTERNAL", "INTERN"),
     },
     {
-      title: l(
-        "VMV Backups · respaldo a nivel sistema.",
-        "VMV Backups · system-level backup.",
-        "VMV Backups · còpia a nivell de sistema."
-      ),
+      title: l("Sistema de respaldo a nivel kernel.", "Kernel-level backup system.", "Sistema de còpia a nivell kernel."),
       description: l(
-        "Protocolo de backup que bypassa los límites de memoria de PHP llamando directamente al kernel. Snapshots incrementales, verificación de integridad y restore puntual por dominio.",
-        "Backup protocol that bypasses PHP memory limits by calling the kernel directly. Incremental snapshots, integrity checks and point-in-time restore per domain.",
-        "Protocol de backup que bypassa els límits de memòria de PHP cridant directament al kernel. Snapshots incrementals, verificació d'integritat i restore puntual per domini."
+        "Protocolo de backup que bypassa los límites de memoria de PHP llamando directamente al sistema. Snapshots incrementales, verificación de integridad y restore puntual por dominio.",
+        "Backup protocol that bypasses PHP memory limits by calling the system directly. Incremental snapshots, integrity checks and point-in-time restore per domain.",
+        "Protocol de backup que bypassa els límits de memòria de PHP cridant directament al sistema. Snapshots incrementals, verificació d'integritat i restore puntual per domini."
       ),
-      badge: l("INTERNO", "INTERNAL", "INTERN"),
     },
     {
-      title: l(
-        "VMV Sign · firma legal con biometría.",
-        "VMV Sign · legal signature with biometrics.",
-        "VMV Sign · signatura legal amb biometria."
-      ),
+      title: l("Plataforma de firmas legales con biometría.", "Legal signature platform with biometrics.", "Plataforma de signatures legals amb biometria."),
       description: l(
-        "Plataforma LegalTech en Next.js: inyección de campos en formularios PDF, flujos biométricos y trazabilidad completa del documento desde la creación hasta el archivado.",
-        "Next.js LegalTech platform: PDF form-field injection, biometric workflows and full document traceability from creation to archive.",
-        "Plataforma LegalTech en Next.js: injecció de camps en formularis PDF, fluxos biomètrics i traçabilitat completa del document des de la creació fins a l'arxivat."
+        "Plataforma en Next.js para firma de documentos: inyección de campos en formularios PDF, flujos biométricos y trazabilidad completa del documento desde la creación hasta el archivado.",
+        "Next.js platform for document signing: PDF form-field injection, biometric workflows and full document traceability from creation to archive.",
+        "Plataforma en Next.js per a la signatura de documents: injecció de camps en formularis PDF, fluxos biomètrics i traçabilitat completa del document des de la creació fins a l'arxivat."
       ),
-      badge: l("INTERNO", "INTERNAL", "INTERN"),
     },
     {
-      title: l(
-        "Motor de generación de PDF asíncrono.",
-        "Async PDF generation engine.",
-        "Motor de generació de PDF asíncron."
-      ),
+      title: l("Motor de generación de PDF asíncrono.", "Async PDF generation engine.", "Motor de generació de PDF asíncron."),
       description: l(
         "Cola de jobs y estados en tiempo real (SSE) para liberar a los servidores web. Reintentos idempotentes, plantillas versionadas y backpressure controlado.",
         "Job queue and real-time status (SSE) to offload web servers. Idempotent retries, versioned templates and controlled backpressure.",
         "Cua de jobs i estats en temps real (SSE) per alliberar els servidors web. Reintents idempotents, plantilles versionades i backpressure controlat."
       ),
-      badge: l("INTERNO", "INTERNAL", "INTERN"),
-    },
-    {
-      title: l(
-        "Plugins publicados en WordPress.org.",
-        "Plugins published on WordPress.org.",
-        "Plugins publicats a WordPress.org."
-      ),
-      description: l(
-        "Además del store interno, mantengo extensiones publicadas en el repositorio oficial de WordPress.org — código abierto, soporte público y compatibilidad con cada versión mayor.",
-        "Beyond the internal store, I maintain extensions published on the official WordPress.org repository — open source, public support and compatibility with each major version.",
-        "A més del store intern, mantinc extensions publicades al repositori oficial de WordPress.org — codi obert, suport públic i compatibilitat amb cada versió major."
-      ),
-      link: {
-        label: "wordpress.org · perfil ↗",
-        href: "https://profiles.wordpress.org/alexasto12/",
-        kind: "platform" as const,
-      },
-      badge: l("PÚBLICO", "PUBLIC", "PÚBLIC"),
     },
   ] as VmvCapability[],
   ticker: [
@@ -398,7 +367,7 @@ export const vmv = {
     "infraestructura",
     "DNS",
     "correo corporativo",
-    "WebShield",
+    "WAF Go",
     "AS/400",
     "CI/CD",
     "observabilidad",
@@ -407,142 +376,238 @@ export const vmv = {
     "Spring Boot 3",
     "WordPress",
     "OpenAPI",
-    "Kafka",
     "Docker",
-    "Salerm",
+    "Vercel",
+    "Kafka",
   ],
   capabilitiesLabel: l("CAPACIDADES", "CAPABILITIES", "CAPACITATS"),
   bracketLabel: l("BLOQUE TÉCNICO", "TECHNICAL BLOCK", "BLOC TÈCNIC"),
 } as const;
 
-/* ───────────── Timeline ───────────── */
+/* ───────── Timeline ───────── */
 
 export const timeline = {
   sectionNumber: "004",
   sectionLabel: l("RECORRIDO", "PATH", "RECORREGUT"),
   heading: l(
-    "Catorce años aprendiendo a sostener sistemas.",
-    "Fourteen years learning to hold systems up.",
-    "Catorze anys aprenent a sostenir sistemes."
+    "Quince años aprendiendo a sostener sistemas.",
+    "Fifteen years learning to hold systems up.",
+    "Quinze anys aprenent a sostenir sistemes."
   ),
   description: l(
-    "De arreglar el portátil familiar con Mandriva Linux a los 11 a operar la infraestructura de una empresa cosmética con presencia internacional. Esta es la versión corta.",
-    "From fixing the family laptop with Mandriva Linux at age 11 to operating the infrastructure of an international cosmetics company. This is the short version.",
-    "D'arreglar el portàtil familiar amb Mandriva Linux als 11 a operar la infraestructura d'una empresa cosmètica amb presència internacional. Aquesta és la versió curta."
+    "De cambiar el disco duro del portátil familiar con 11 años a operar la infraestructura de una empresa cosmética internacional. Esta es la versión corta.",
+    "From swapping the family laptop's hard drive at 11 to operating the infrastructure of an international cosmetics company. This is the short version.",
+    "De canviar el disc dur del portàtil familiar amb 11 anys a operar la infraestructura d'una empresa cosmètica internacional. Aquesta és la versió curta."
   ),
   entries: [
     {
-      year: "2011",
+      year: "11",
+      age: l("años · Granollers", "y/o · Granollers", "anys · Granollers"),
       title: l(
-        "Mandriva Linux en el portátil de casa.",
-        "Mandriva Linux on the family laptop.",
-        "Mandriva Linux al portàtil de casa."
+        "Cambio el disco duro del portátil familiar.",
+        "Swapped the family laptop's hard drive.",
+        "Canvio el disc dur del portàtil familiar."
       ),
-      place: l("Granollers · 11 años", "Granollers · age 11", "Granollers · 11 anys"),
+      place: l("primera intervención", "first hands-on", "primera intervenció"),
       body: l(
-        "Se rompió el portátil familiar y decidí no reemplazarlo. Cambié el disco duro, instalé Mandriva Linux y descubrí que detrás de la pantalla había un sistema entero que se podía leer. Esa tarde empezó todo.",
-        "The family laptop broke and I refused to replace it. I swapped the hard drive, installed Mandriva Linux and discovered there was a whole readable system behind the screen. Everything started that afternoon.",
-        "Es va trencar el portàtil familiar i vaig decidir no canviar-lo. Vaig canviar el disc dur, vaig instal·lar Mandriva Linux i vaig descobrir que darrere de la pantalla hi havia un sistema sencer que es podia llegir. Aquella tarda va començar tot."
+        "Se rompió el portátil de casa y, en vez de tirarlo, lo abrí, cambié el disco y descubrí que detrás de la pantalla había un sistema entero que se podía leer. Esa tarde empezó todo.",
+        "The family laptop broke and instead of trashing it I opened it, swapped the drive, and discovered there was a whole readable system behind the screen. Everything started that afternoon.",
+        "Es va trencar el portàtil de casa i, en lloc de tirar-lo, el vaig obrir, vaig canviar el disc i vaig descobrir que darrere de la pantalla hi havia un sistema sencer que es podia llegir. Aquella tarda va començar tot."
       ),
       kind: "milestone",
     },
     {
-      year: "2017–19",
+      year: "12",
+      age: l("años · Linux", "y/o · Linux", "anys · Linux"),
       title: l(
-        "Bachillerato tecnológico.",
-        "Technology high school.",
-        "Batxillerat tecnològic."
+        "Instalo Mandriva para jugar a Wormux y Battle for Wesnoth.",
+        "Installed Mandriva to play Wormux and Battle for Wesnoth.",
+        "Instal·lo Mandriva per jugar a Wormux i Battle for Wesnoth."
       ),
-      place: l("Granollers", "Granollers", "Granollers"),
+      place: l("primer Linux", "first Linux", "primer Linux"),
       body: l(
-        "Bachillerato científico-tecnológico. En paralelo, primeros experimentos serios con Java, PHP y servidores locales: APIs caseras, bots y un par de páginas para amigos.",
-        "Science & tech high school. In parallel, first serious experiments with Java, PHP and local servers: home-made APIs, bots and a couple of sites for friends.",
-        "Batxillerat científic-tecnològic. En paral·lel, primers experiments seriosos amb Java, PHP i servidors locals: APIs casolanes, bots i un parell de pàgines per a amics."
+        "El motor inicial fue jugar. Instalé Mandriva en aquel portátil, peleé con paquetes, repositorios y la consola — y aprendí más en una semana de intentar abrir Wormux que en un año de clase.",
+        "The first engine was gaming. I installed Mandriva on that laptop, fought with packages, repos and the terminal — and learned more in a week trying to launch Wormux than in a year of school.",
+        "El motor inicial va ser jugar. Vaig instal·lar Mandriva en aquell portàtil, vaig pelear-me amb paquets, repositoris i la consola — i vaig aprendre més en una setmana intentant obrir Wormux que en un any de classe."
       ),
-      kind: "education",
+      kind: "milestone",
     },
     {
-      year: "2020–22",
+      year: "14",
+      age: l("años · primer build", "y/o · first build", "anys · primer build"),
       title: l(
-        "Grado superior · Desarrollo de Aplicaciones Web.",
-        "Higher Vocational · Web Application Development.",
-        "Cicle superior · Desenvolupament d'Aplicacions Web."
+        "Monto mi primer PC tras hacer de helpdesk freelance.",
+        "Built my first PC after doing freelance helpdesk.",
+        "Munto el meu primer PC després de fer d'helpdesk freelance."
       ),
-      place: l("Barcelona", "Barcelona", "Barcelona"),
+      place: l("vecindario · familia · amigos", "neighbourhood · family · friends", "veïnat · família · amics"),
       body: l(
-        "Stack base: HTML, CSS, JavaScript, PHP, Laravel, Angular, MySQL. Mi proyecto integrador fue un CRUD full-stack Laravel + Angular sobre MySQL. Aquí empieza la disciplina.",
-        "Base stack: HTML, CSS, JavaScript, PHP, Laravel, Angular, MySQL. My integration project was a full-stack CRUD Laravel + Angular over MySQL. Discipline starts here.",
-        "Stack base: HTML, CSS, JavaScript, PHP, Laravel, Angular, MySQL. El meu projecte integrador va ser un CRUD full-stack Laravel + Angular sobre MySQL. Aquí comença la disciplina."
+        "Empecé a arreglar ordenadores de gente cercana — pequeños arreglos, reinstalaciones, configuraciones — y con eso me autofinancié el primer PC. Hardware como aprendizaje a coste real.",
+        "Started fixing people's computers — small repairs, reinstalls, configs — and self-funded my first PC with the proceeds. Hardware as real-cost learning.",
+        "Vaig començar a arreglar ordinadors de gent propera — petites reparacions, reinstal·lacions, configuracions — i amb això em vaig autofinançar el primer PC. Hardware com a aprenentatge a cost real."
       ),
-      kind: "education",
+      kind: "milestone",
     },
     {
-      year: "2023",
+      year: "16",
+      age: l("años · técnico", "y/o · technician", "anys · tècnic"),
       title: l(
-        "Entrada en VMV Cosmetic Group.",
-        "Joined VMV Cosmetic Group.",
-        "Entrada a VMV Cosmetic Group."
+        "Arreglo PCs y monto instalaciones desatendidas.",
+        "Fixing PCs and building unattended installs.",
+        "Arreglo PCs i munto instal·lacions desateses."
       ),
-      place: l("Barcelona · Systems / Web", "Barcelona · Systems / Web", "Barcelona · Systems / Web"),
+      place: l("pequeño negocio · particulares", "small business · individuals", "petit negoci · particulars"),
       body: l(
-        "Empiezo administrando dominios y WordPress. En meses ya estoy escribiendo microservicios en Go, integrando con AS/400 desde Java y montando el primer WAF interno. La infraestructura crece a +30 dominios.",
-        "Started by managing domains and WordPress. Within months I was writing Go microservices, integrating with AS/400 from Java and building the first internal WAF. The infrastructure grew to 30+ domains.",
-        "Començo administrant dominis i WordPress. En mesos ja escric microserveis en Go, integro amb AS/400 des de Java i munto el primer WAF intern. La infraestructura creix a +30 dominis."
+        "Servicio técnico real. Imágenes de Windows desatendidas, scripts de post-install, drivers, despliegues por lote. Aquí aprendí que la repetibilidad es lo que separa al técnico del improvisador.",
+        "Real tech service. Unattended Windows images, post-install scripts, drivers, batch deploys. Here I learned that repeatability is what separates the technician from the improviser.",
+        "Servei tècnic real. Imatges de Windows desateses, scripts de post-install, drivers, desplegaments per lot. Aquí vaig aprendre que la repetibilitat és el que separa el tècnic de l'improvisador."
       ),
       kind: "work",
     },
     {
-      year: "2024",
+      year: "19",
+      age: l("años · soporte móvil", "y/o · mobile support", "anys · suport mòbil"),
       title: l(
-        "TFG: peer2stream · 10/10.",
-        "Final Year Project: peer2stream · 10/10.",
-        "TFG: peer2stream · 10/10."
+        "Soporte técnico de telefonía móvil.",
+        "Mobile-phone technical support.",
+        "Suport tècnic de telefonia mòbil."
       ),
-      place: l("Trabajo de Fin de Grado", "Final Year Project", "Treball de Final de Grau"),
+      place: l("primer empleo formal", "first formal job", "primera feina formal"),
       body: l(
-        "Plataforma web para descubrir, ver y organizar películas y series. Next.js 15, React 19, MongoDB, integración con TMDB, autenticación JWT y seguimiento por episodio. Nota máxima.",
-        "Web platform to discover, watch and organize movies and shows. Next.js 15, React 19, MongoDB, TMDB integration, JWT auth and per-episode tracking. Top grade.",
-        "Plataforma web per descobrir, veure i organitzar pel·lícules i sèries. Next.js 15, React 19, MongoDB, integració amb TMDB, autenticació JWT i seguiment per episodi. Nota màxima."
+        "Atención a usuarios, diagnóstico, escalado y reparación a nivel componente. El año de aprender a explicar cosas complicadas a quien las necesita sin la jerga.",
+        "User support, diagnosis, escalation and component-level repair. The year of learning to explain complicated things to who needs them, without the jargon.",
+        "Atenció a usuaris, diagnòstic, escalat i reparació a nivell de component. L'any d'aprendre a explicar coses complicades a qui les necessita, sense l'argot."
+      ),
+      kind: "work",
+    },
+    {
+      year: "21",
+      age: l("años · helpdesk", "y/o · helpdesk", "anys · helpdesk"),
+      title: l(
+        "Trabajo de helpdesk corporativo.",
+        "Corporate helpdesk role.",
+        "Treball d'helpdesk corporatiu."
+      ),
+      place: l("empresa · soporte L1/L2", "enterprise · L1/L2 support", "empresa · suport L1/L2"),
+      body: l(
+        "Primer contacto con la operación a escala: tickets, SLA, runbooks y la diferencia real entre L1 y L2. Empiezo a leer código para entender los problemas que escalan.",
+        "First contact with scale operations: tickets, SLAs, runbooks and the real L1 vs L2 split. I start reading code to understand the problems that escalate.",
+        "Primer contacte amb l'operació a escala: tickets, SLA, runbooks i la diferència real entre L1 i L2. Començo a llegir codi per entendre els problemes que escalen."
+      ),
+      kind: "work",
+    },
+    {
+      year: "22",
+      age: l("años · primera línea de código", "y/o · first line of code", "anys · primera línia de codi"),
+      title: l(
+        "Comienzo a programar en serio.",
+        "Start programming for real.",
+        "Començo a programar de debò."
+      ),
+      place: l("formación + autodidacta", "formal + self-taught", "formació + autodidacta"),
+      body: l(
+        "Cierro el ciclo del helpdesk y empiezo formación formal en desarrollo web. Stack base: HTML, CSS, JavaScript, PHP, Laravel, Angular, MySQL. El reflejo de programar todos los días.",
+        "Closed the helpdesk loop and started formal web-dev training. Base stack: HTML, CSS, JavaScript, PHP, Laravel, Angular, MySQL. The reflex of writing code every day.",
+        "Tanco el cicle de l'helpdesk i començo formació formal en desenvolupament web. Stack base: HTML, CSS, JavaScript, PHP, Laravel, Angular, MySQL. El reflex de programar cada dia."
       ),
       kind: "education",
     },
     {
-      year: "2024",
+      year: "2025",
       title: l(
-        "Lanzamiento de Neibr.",
-        "Neibr launch.",
-        "Llançament de Neibr."
+        "Programador web principal en VMV Cosmetic Group.",
+        "Lead web developer at VMV Cosmetic Group.",
+        "Programador web principal a VMV Cosmetic Group."
       ),
-      place: l("Producto propio", "Own product", "Producte propi"),
+      place: l("Barcelona · presente", "Barcelona · present", "Barcelona · present"),
       body: l(
-        "Arranco Neibr como producto propio: una plataforma logística B2B API-first en Go con matching geoespacial PostGIS. Repositorio de marca (neibr.es) y plataforma viven separados.",
-        "I launched Neibr as my own product: a B2B, API-first logistics platform in Go with PostGIS geospatial matching. Brand repo (neibr.es) and platform live separately.",
-        "Engego Neibr com a producte propi: una plataforma logística B2B API-first en Go amb matching geoespacial PostGIS. Repositori de marca (neibr.es) i plataforma viuen separats."
+        "Entro como programador web principal. En meses ya estoy escribiendo microservicios en Go, integrando con AS/400 desde Java y montando el primer WAF interno. Hoy sigo operando esa infraestructura.",
+        "Joined as lead web developer. Within months I was writing Go microservices, integrating with AS/400 from Java and building the first internal WAF. I'm still operating that infrastructure today.",
+        "Entro com a programador web principal. En mesos ja escric microserveis en Go, integro amb AS/400 des de Java i munto el primer WAF intern. Avui continuo operant aquesta infraestructura."
       ),
-      kind: "project",
+      kind: "work",
     },
     {
       year: l("Hoy", "Today", "Avui"),
+      age: "2026",
       title: l(
-        "Systems Architect en VMV · arquitecto de Neibr · freelance.",
-        "Systems Architect at VMV · Neibr architect · freelance.",
-        "Arquitecte de sistemes a VMV · arquitecte de Neibr · freelance."
+        "VMV + freelance + fundación de Neibr.",
+        "VMV + freelance + founding Neibr.",
+        "VMV + freelance + fundació de Neibr."
       ),
-      place: l("Barcelona · BCN-ETSY", "Barcelona · BCN-ETSY", "Barcelona · BCN-ETSY"),
+      place: l("Granollers / Barcelona", "Granollers / Barcelona", "Granollers / Barcelona"),
       body: l(
-        "Sigo operando la infraestructura corporativa de VMV, evolucionando Neibr en paralelo y aceptando proyectos freelance donde el reto técnico sea real.",
-        "Still operating VMV's corporate infrastructure, evolving Neibr in parallel and taking on freelance projects where the technical challenge is real.",
-        "Continuo operant la infraestructura corporativa de VMV, evolucionant Neibr en paral·lel i acceptant projectes freelance on el repte tècnic sigui real."
+        "Sigo en VMV como programador web principal, acepto encargos freelance donde el reto técnico sea real y fundo Neibr como producto propio: una plataforma logística B2B API-first en Go.",
+        "Still at VMV as lead web developer, taking freelance projects where the technical challenge is real, and founding Neibr as my own product: a B2B, API-first logistics platform in Go.",
+        "Continuo a VMV com a programador web principal, accepto encàrrecs freelance on el repte tècnic sigui real i fundo Neibr com a producte propi: una plataforma logística B2B API-first en Go."
       ),
-      kind: "work",
+      kind: "project",
     },
   ] as TimelineEntry[],
 } as const;
 
-/* ───────────── Freelance ───────────── */
+/* ───────── Services offered ───────── */
+
+export const services = {
+  sectionNumber: "005",
+  sectionLabel: l("SERVICIOS", "SERVICES", "SERVEIS"),
+  heading: l(
+    "Lo que ofrezco como freelance.",
+    "What I offer as a freelancer.",
+    "El que ofereixo com a freelance."
+  ),
+  description: l(
+    "Si tu reto entra en alguno de estos bloques, podemos hablar. Trabajo solo o como pieza puntual dentro de equipos ya formados.",
+    "If your challenge falls into any of these blocks, we can talk. I work solo or as a one-off piece inside existing teams.",
+    "Si el teu repte entra en algun d'aquests blocs, podem parlar. Treballo sol o com a peça puntual dins d'equips ja formats."
+  ),
+  groups: [
+    {
+      group: l("Backend & APIs", "Backend & APIs", "Backend & APIs"),
+      items: [
+        l("Microservicios Go / Java", "Go / Java microservices", "Microserveis Go / Java"),
+        l("Diseño de API REST + OpenAPI", "REST API design + OpenAPI", "Disseny d'API REST + OpenAPI"),
+        l("Integraciones con sistemas legacy", "Legacy system integration", "Integracions amb sistemes legacy"),
+        l("Auth, multi-tenant, rate limiting", "Auth, multi-tenant, rate limiting", "Auth, multi-tenant, rate limiting"),
+      ],
+    },
+    {
+      group: l("WordPress avanzado", "Advanced WordPress", "WordPress avançat"),
+      items: [
+        l("Plugins a medida + publicación en WordPress.org", "Custom plugins + WordPress.org publishing", "Plugins a mida + publicació a WordPress.org"),
+        l("Hardening, WAF y mantenimiento", "Hardening, WAF and maintenance", "Hardening, WAF i manteniment"),
+        l("Migraciones y multi-sitio", "Migrations and multisite", "Migracions i multi-site"),
+      ],
+    },
+    {
+      group: l("Frontend & sitios", "Frontend & sites", "Frontend & llocs"),
+      items: [
+        l("Next.js 15 / React 19 / TS", "Next.js 15 / React 19 / TS", "Next.js 15 / React 19 / TS"),
+        l("CMS hechos a medida", "Custom CMS", "CMS fets a mida"),
+        l("SEO técnico y multi-idioma", "Technical SEO and multi-language", "SEO tècnic i multi-idioma"),
+        l("Sitios editoriales y portfolios", "Editorial sites and portfolios", "Llocs editorials i portfolios"),
+      ],
+    },
+    {
+      group: l("Infraestructura & operación", "Infrastructure & operations", "Infraestructura & operació"),
+      items: [
+        l("Alta de cuentas corporativas (Google Workspace, Microsoft 365, etc.)", "Corporate account setup (Google Workspace, Microsoft 365, etc.)", "Alta de comptes corporatius (Google Workspace, Microsoft 365, etc.)"),
+        l("Dominios, DNS, correo y certificados", "Domains, DNS, email and certificates", "Dominis, DNS, correu i certificats"),
+        l("Despliegue web, CI/CD y observabilidad", "Web deploy, CI/CD and observability", "Desplegament web, CI/CD i observabilitat"),
+        l("Hosting, hardening y backups", "Hosting, hardening and backups", "Hosting, hardening i còpies"),
+      ],
+    },
+  ] as Service[],
+  cta: {
+    label: l("HABLEMOS →", "LET'S TALK →", "PARLEM-NE →"),
+    href: "#contacto",
+  },
+} as const;
+
+/* ───────── Freelance ───────── */
 
 export const freelance = {
-  sectionNumber: "005",
+  sectionNumber: "006",
   sectionLabel: l("FREELANCE", "FREELANCE", "FREELANCE"),
   heading: l(
     "Encargos pagados.",
@@ -572,8 +637,7 @@ export const freelance = {
       links: [
         { label: "larasoak.art ↗", href: "https://larasoak.art", kind: "landing" as const },
       ],
-      mock: "larasoak" as const,
-      mockUrl: "larasoak.art",
+      shotLabel: l("larasoak.art · captura", "larasoak.art · screenshot", "larasoak.art · captura"),
     },
     {
       id: "gokthermal",
@@ -590,16 +654,37 @@ export const freelance = {
       links: [
         { label: "gokthermal.com ↗", href: "https://gokthermal.com", kind: "landing" as const },
       ],
-      mock: "gokthermal" as const,
-      mockUrl: "gokthermal.com",
+      shotLabel: l("gokthermal.com · captura", "gokthermal.com · screenshot", "gokthermal.com · captura"),
+    },
+    {
+      id: "wordpress-plugins",
+      name: "Plugins en WordPress.org",
+      description: l(
+        "Extensiones publicadas en el repositorio oficial de WordPress.org — código abierto, soporte público y compatibilidad con cada versión mayor. Trabajo freelance independiente del catálogo interno de VMV.",
+        "Extensions published on the official WordPress.org repository — open source, public support and compatibility with each major version. Freelance work independent from VMV's internal catalogue.",
+        "Extensions publicades al repositori oficial de WordPress.org — codi obert, suport públic i compatibilitat amb cada versió major. Treball freelance independent del catàleg intern de VMV."
+      ),
+      tags: [
+        tag("WORDPRESS", "WORDPRESS", "WORDPRESS"),
+        tag("OPEN SOURCE", "OPEN SOURCE", "OPEN SOURCE"),
+        tag("WP.ORG", "WP.ORG", "WP.ORG"),
+      ],
+      links: [
+        {
+          label: "profiles.wordpress.org/alexasto12 ↗",
+          href: "https://profiles.wordpress.org/alexasto12/",
+          kind: "platform" as const,
+        },
+      ],
+      shotLabel: l("wordpress.org · perfil", "wordpress.org · profile", "wordpress.org · perfil"),
     },
   ] as LocalizedProject[],
 } as const;
 
-/* ───────────── Own products ───────────── */
+/* ───────── Own products ───────── */
 
 export const products = {
-  sectionNumber: "006",
+  sectionNumber: "007",
   sectionLabel: l("PRODUCTOS PROPIOS", "OWN PRODUCTS", "PRODUCTES PROPIS"),
   heading: l(
     "Lo que arranco yo.",
@@ -607,7 +692,7 @@ export const products = {
     "El que arrenco jo."
   ),
   description: l(
-    "Proyectos que financio y mantengo. Aquí prueba las ideas que después aplico a clientes.",
+    "Proyectos que financio y mantengo. Aquí pruebo las ideas que después aplico a clientes.",
     "Projects I fund and maintain. Here I test the ideas I later apply to clients.",
     "Projectes que finançament i mantinc. Aquí provo les idees que després aplico a clients."
   ),
@@ -616,9 +701,9 @@ export const products = {
       id: "neibr-landing",
       name: "neibr.es — Marca / Landing",
       description: l(
-        "Sitio de marca y onboarding comercial de Neibr. Repositorio independiente de la plataforma; orientado a SEO, captación de operadores y documentación pública. Multilenguaje ES/CA/EN.",
-        "Brand site and commercial onboarding for Neibr. Separate repo from the platform; SEO, carrier lead-gen and public docs first. Multilingual ES/CA/EN.",
-        "Lloc de marca i onboarding comercial de Neibr. Repositori independent de la plataforma; orientat a SEO, captació d'operadors i documentació pública. Multilingüe ES/CA/EN."
+        "Sitio de marca y onboarding comercial de Neibr. Repositorio independiente de la plataforma; orientado a SEO, captación de operadores y documentación pública. Multi-idioma ES/CA/EN.",
+        "Brand site and commercial onboarding for Neibr. Separate repo from the platform; SEO, carrier lead-gen and public docs first. Multi-language ES/CA/EN.",
+        "Lloc de marca i onboarding comercial de Neibr. Repositori independent de la plataforma; orientat a SEO, captació d'operadors i documentació pública. Multi-idioma ES/CA/EN."
       ),
       tags: [
         tag("LANDING", "LANDING", "LANDING"),
@@ -628,20 +713,20 @@ export const products = {
       links: [
         { label: "neibr.es ↗", href: "https://neibr.es", kind: "landing" as const },
       ],
-      mock: "neibrLanding" as const,
-      mockUrl: "neibr.es",
+      shotLabel: l("neibr.es · captura", "neibr.es · screenshot", "neibr.es · captura"),
     },
     {
       id: "roses-st-jordi",
       name: "Roses Sant Jordi",
       description: l(
-        "Proyecto propio multi-dominio para la campaña de Sant Jordi (.com / .cat / .es). Hasta 5.000 visitas de tráfico real en una semana, con SEO localizado por idioma y dominio.",
-        "Own multi-domain project for the Sant Jordi campaign (.com / .cat / .es). Up to 5,000 real visits in one week, with per-language and per-domain localized SEO.",
-        "Projecte propi multi-domini per a la campanya de Sant Jordi (.com / .cat / .es). Fins a 5.000 visites de trànsit real en una setmana, amb SEO localitzat per idioma i domini."
+        "Proyecto propio multi-dominio para la campaña de Sant Jordi (.com / .cat / .es). 5.000 visitas de tráfico real en un solo día y casi 300 rosas distintas enviadas. SEO localizado por idioma y dominio.",
+        "Own multi-domain project for the Sant Jordi campaign (.com / .cat / .es). 5,000 real visits in a single day and nearly 300 different roses sent. SEO localized per language and domain.",
+        "Projecte propi multi-domini per a la campanya de Sant Jordi (.com / .cat / .es). 5.000 visites de trànsit real en un sol dia i gairebé 300 roses diferents enviades. SEO localitzat per idioma i domini."
       ),
       tags: [
         tag("MULTI-DOMINIO", "MULTI-DOMAIN", "MULTI-DOMINI"),
-        tag("+5K TRÁFICO", "+5K TRAFFIC", "+5K TRÀNSIT"),
+        tag("+5K EN UN DÍA", "+5K IN ONE DAY", "+5K EN UN DIA"),
+        tag("≈300 ROSAS", "≈300 ROSES", "≈300 ROSES"),
         tag("SEO", "SEO", "SEO"),
       ],
       links: [
@@ -651,8 +736,7 @@ export const products = {
           kind: "landing" as const,
         },
       ],
-      mock: "roses" as const,
-      mockUrl: "rosesstjordi.com",
+      shotLabel: l("rosesstjordi.com · captura", "rosesstjordi.com · screenshot", "rosesstjordi.com · captura"),
     },
     {
       id: "alexasto",
@@ -669,14 +753,15 @@ export const products = {
         tag("i18n", "i18n", "i18n"),
       ],
       links: [],
+      shotLabel: l("este sitio · captura", "this site · screenshot", "aquest lloc · captura"),
     },
   ] as LocalizedProject[],
 } as const;
 
-/* ───────────── Academic ───────────── */
+/* ───────── Academic ───────── */
 
 export const academic = {
-  sectionNumber: "007",
+  sectionNumber: "008",
   sectionLabel: l("ACADÉMICO", "ACADEMIC", "ACADÈMIC"),
   heading: l(
     "Origen.",
@@ -716,8 +801,7 @@ export const academic = {
           kind: "repo" as const,
         },
       ],
-      mock: "peer2stream" as const,
-      mockUrl: "peer2stream · local demo",
+      shotLabel: l("peer2stream · captura", "peer2stream · screenshot", "peer2stream · captura"),
     },
     {
       id: "projecte-pokeapi",
@@ -749,16 +833,15 @@ export const academic = {
           kind: "repo" as const,
         },
       ],
-      mock: "pokeDS" as const,
-      mockUrl: "alexasto12.github.io/ProjectePokeAPI",
+      shotLabel: l("Pokédex DS · captura", "Pokédex DS · screenshot", "Pokédex DS · captura"),
     },
   ] as LocalizedProject[],
 } as const;
 
-/* ───────────── Contact ───────────── */
+/* ───────── Contact ───────── */
 
 export const contact = {
-  sectionNumber: "008",
+  sectionNumber: "009",
   sectionLabel: l("CONTACTO", "CONTACT", "CONTACTE"),
   heading: l("Construyamos algo", "Let's build something", "Construïm alguna cosa"),
   headingAccent: l("robusto.", "robust.", "robust."),
@@ -773,11 +856,10 @@ export const contact = {
   },
   email: "contact@alexasto.com",
   links: [
-    { label: "EMAIL", href: "mailto:contact@alexasto.com" },
     { label: "GITHUB", href: "https://github.com/Alexasto12" },
     {
       label: "LINKEDIN",
-      href: "https://www.linkedin.com/in/alejandro-cabrera-asto/",
+      href: "https://www.linkedin.com/in/ccalejandro/",
     },
     {
       label: "WORDPRESS.ORG",
@@ -785,8 +867,8 @@ export const contact = {
     },
   ],
   footerNote: l(
-    "Sin agencias intermediarias. Sin templates. Construido a mano en Barcelona.",
-    "No middle agencies. No templates. Hand-built in Barcelona.",
-    "Sense agències intermediàries. Sense templates. Construït a mà a Barcelona."
+    "Sin agencias intermediarias. Sin templates. Construido a mano en Granollers / Barcelona.",
+    "No middle agencies. No templates. Hand-built in Granollers / Barcelona.",
+    "Sense agències intermediàries. Sense templates. Construït a mà a Granollers / Barcelona."
   ),
 } as const;

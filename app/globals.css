@@ -3,17 +3,18 @@
 :root {
   --paper: #f4f0e6;
   --ink: #0e0d09;
-  --wine: #8b1e3f;
-  --wine-deep: #6d142c;
-  --muted: #5a574c;
+  --wine: #b22a4d;
+  --wine-deep: #8b1e3f;
+  --wine-bright: #d44166;
+  --muted: #4d4a3f;
   --muted-soft: #7c7a70;
   --line: rgba(0, 0, 0, 0.10);
-  --line-strong: rgba(0, 0, 0, 0.16);
+  --line-strong: rgba(0, 0, 0, 0.18);
 
   --ink-block: #14130e;
   --paper-on-dark: #f4efe2;
-  --muted-dark: #a5a292;
-  --line-dark: rgba(255, 255, 255, 0.14);
+  --muted-dark: #b5b2a2;
+  --line-dark: rgba(255, 255, 255, 0.16);
 
   --ease-out-quart: cubic-bezier(0.2, 0.7, 0.2, 1);
   --ease-in-out-emph: cubic-bezier(0.7, 0, 0.2, 1);
@@ -30,6 +31,7 @@
   --color-ink: var(--ink);
   --color-wine: var(--wine);
   --color-wine-deep: var(--wine-deep);
+  --color-wine-bright: var(--wine-bright);
   --color-muted: var(--muted);
   --color-ink-block: var(--ink-block);
   --color-paper-on-dark: var(--paper-on-dark);
@@ -228,6 +230,59 @@ body {
 }
 .link-cta:hover {
   color: var(--wine-deep) !important;
+}
+
+/* ───────── Strong contrast link with growing bar ───────── */
+.link-row {
+  position: relative;
+  transition: gap 0.4s var(--ease-in-out-emph);
+}
+.link-row:hover {
+  gap: 1.1rem;
+}
+.link-row__bar {
+  transform-origin: left center;
+  transition: width 0.45s var(--ease-in-out-emph);
+}
+.link-row:hover .link-row__bar {
+  width: 4rem !important;
+}
+.link-row__text {
+  position: relative;
+}
+.link-row__text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  width: 100%;
+  background: var(--wine);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s var(--ease-in-out-emph);
+}
+.link-row:hover .link-row__text::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Big CTA underline-style link */
+.link-cta-big {
+  transition: color 0.3s var(--ease-out-quart);
+}
+.link-cta-big:hover {
+  color: var(--wine) !important;
+}
+
+/* Magnetic CTA — lift + brighten on hover */
+.cta-magnetic {
+  transition: box-shadow 0.5s var(--ease-in-out-emph),
+    background 0.3s var(--ease-out-quart);
+}
+.cta-magnetic:hover {
+  box-shadow: 0 18px 48px -18px rgba(178, 42, 77, 0.45),
+    0 4px 0 rgba(0, 0, 0, 0.08);
 }
 
 /* ───────── Card tilt on hover ───────── */

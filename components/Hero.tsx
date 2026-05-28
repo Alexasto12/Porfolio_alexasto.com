@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import { ScrambleText } from "./ScrambleText";
+import { ParallaxNumber } from "./ParallaxNumber";
 import { hero } from "@/data/projects";
 import { useI18n } from "@/lib/i18n";
 

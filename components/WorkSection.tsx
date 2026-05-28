@@ -31,9 +31,14 @@ export function WorkSection({
         description={description}
       />
 
-      <div className="mt-12 md:mt-16">
+      <div className="mt-14 md:mt-20">
         {items.map((item, i) => (
-          <ProjectCard key={item.id} project={item} index={i} />
+          <ProjectCard
+            key={item.id}
+            project={item}
+            index={i}
+            reverse={i % 2 === 1}
+          />
         ))}
       </div>
     </section>

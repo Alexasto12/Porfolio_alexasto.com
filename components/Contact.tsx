@@ -3,6 +3,8 @@
 import { motion, useReducedMotion } from "motion/react";
 import { contact, telemetry } from "@/data/projects";
 import { useI18n } from "@/lib/i18n";
+import { MagneticLink } from "./MagneticLink";
+import { ParallaxNumber } from "./ParallaxNumber";
 
 export function Contact() {
   const reduced = useReducedMotion();
@@ -19,13 +21,13 @@ export function Contact() {
         style={{ borderBottom: "1px solid var(--line-strong)" }}
       >
         <div className="flex items-baseline gap-5 md:gap-8 min-w-0">
-          <span
+          <ParallaxNumber
             aria-hidden="true"
-            className="font-display font-extrabold leading-[0.82] tracking-[-0.04em] text-[clamp(4.5rem,11vw,9.5rem)]"
+            className="font-display font-extrabold leading-[0.82] tracking-[-0.04em] text-[clamp(4.5rem,11vw,9.5rem)] section-number"
             style={{ color: "var(--ink)" }}
           >
             {contact.sectionNumber}
-          </span>
+          </ParallaxNumber>
           <span
             className="font-mono text-[11px] md:text-[13px] uppercase tracking-[0.24em]"
             style={{ color: "var(--muted)" }}
@@ -87,9 +89,9 @@ export function Contact() {
         }}
         className="mt-14 md:mt-20 grid grid-cols-4 gap-4 md:gap-6 items-end"
       >
-        <a
+        <MagneticLink
           href={contact.cta.href}
-          className="col-span-4 md:col-span-2 inline-flex items-center justify-between gap-6 p-7 md:p-9 rounded-[8px] transition-colors duration-300 group shadow-card"
+          className="col-span-4 md:col-span-2 inline-flex items-center justify-between gap-6 p-7 md:p-9 rounded-[8px] transition-colors duration-300 group shadow-card cta-magnetic"
           style={{
             background: "var(--ink)",
             color: "var(--paper)",
@@ -109,7 +111,7 @@ export function Contact() {
           >
             →
           </span>
-        </a>
+        </MagneticLink>
 
         <ul className="col-span-4 md:col-span-2 md:col-start-3 flex flex-col gap-3">
           {contact.links.map((l) => (

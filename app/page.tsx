@@ -5,6 +5,7 @@ import { ApproachSection } from "@/components/ApproachSection";
 import { NeibrFeature } from "@/components/NeibrFeature";
 import { VmvBlock } from "@/components/VmvBlock";
 import { TimelineSection } from "@/components/TimelineSection";
+import { ServicesSection } from "@/components/ServicesSection";
 import { WorkSection } from "@/components/WorkSection";
 import { Contact } from "@/components/Contact";
 import { freelance, products, academic } from "@/data/projects";
@@ -19,6 +20,7 @@ export default function Home() {
       <ApproachSection />
       <VmvBlock />
       <TimelineSection />
+      <ServicesSection />
       <WorkSection
         id="freelance"
         number={freelance.sectionNumber}

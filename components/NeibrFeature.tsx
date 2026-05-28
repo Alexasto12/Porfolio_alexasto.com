@@ -3,8 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Counter } from "./Counter";
 import { Sparkline } from "./Sparkline";
-import { Browser } from "./Browser";
-import { MockNeibrApi } from "./mocks/MockNeibrApi";
+import { ApiSnippet } from "./ApiSnippet";
 import { neibr } from "@/data/projects";
 import { useI18n } from "@/lib/i18n";
 
@@ -37,6 +36,7 @@ export function NeibrFeature() {
               style={{
                 border: "1px solid var(--wine)",
                 color: "var(--wine)",
+                fontWeight: 700,
               }}
             >
               {t(neibr.productLabel)}
@@ -44,7 +44,6 @@ export function NeibrFeature() {
           </div>
         </motion.div>
 
-        {/* Título + tagline */}
         <div className="mt-12 md:mt-16 grid grid-cols-4 gap-4 md:gap-8 items-end">
           <motion.h2
             initial={reduced ? false : { opacity: 0, y: 18 }}
@@ -73,36 +72,29 @@ export function NeibrFeature() {
           </motion.p>
         </div>
 
-        {/* API Browser mockup — full width visual */}
-        <motion.div
-          initial={reduced ? false : { opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{
-            duration: reduced ? 0 : 0.8,
-            delay: reduced ? 0 : 0.18,
-            ease: [0.2, 0.7, 0.2, 1],
-          }}
-          className="mt-14 md:mt-20"
-        >
-          <div
-            className="font-mono text-[10px] uppercase tracking-[0.22em] mb-3"
-            style={{ color: "var(--muted)" }}
-          >
-            ↳ {t(neibr.endpointLabel)}
+        {/* API snippet — compact, real endpoint */}
+        <div className="mt-12 md:mt-16 grid grid-cols-4 gap-4 md:gap-8">
+          <div className="col-span-4 md:col-span-1">
+            <div
+              className="font-mono text-[10px] uppercase tracking-[0.22em]"
+              style={{ color: "var(--muted)" }}
+            >
+              ↳ {t(neibr.endpointLabel)}
+            </div>
+            <div
+              key={`endpoint-${locale}`}
+              className="mt-1 font-display text-[clamp(1rem,1.7vw,1.2rem)] font-semibold leading-[1.25] tracking-[-0.01em]"
+            >
+              {t(neibr.endpointTitle)}
+            </div>
           </div>
-          <Browser
-            url="api.neibr.es / v1 / handovers"
-            badge="LIVE"
-            variant="dark"
-            ratio="16/9"
-          >
-            <MockNeibrApi />
-          </Browser>
-        </motion.div>
+          <div className="col-span-4 md:col-span-3">
+            <ApiSnippet />
+          </div>
+        </div>
 
         {/* Descripción + stat */}
-        <div className="mt-14 md:mt-20 grid grid-cols-4 gap-6 md:gap-10">
+        <div className="mt-16 md:mt-24 grid grid-cols-4 gap-6 md:gap-10">
           <motion.div
             initial={reduced ? false : { opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -116,7 +108,7 @@ export function NeibrFeature() {
           >
             <p
               key={`neibr-desc-${locale}`}
-              className="text-[15px] md:text-[17px] leading-[1.6] font-medium max-w-[46ch]"
+              className="text-[15px] md:text-[17px] leading-[1.65] font-medium max-w-[46ch]"
             >
               {t(neibr.description)}
             </p>
@@ -200,7 +192,7 @@ export function NeibrFeature() {
                   {t(neibr.outputLabel)}
                 </div>
                 <span
-                  className="font-mono text-[10px] uppercase tracking-[0.18em] flex items-center gap-1.5"
+                  className="font-mono text-[10px] uppercase tracking-[0.18em] flex items-center gap-1.5 font-bold"
                   style={{ color: "var(--wine)" }}
                 >
                   <span
