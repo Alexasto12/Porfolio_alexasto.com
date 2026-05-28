@@ -15,14 +15,24 @@ export function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: reduced ? 0 : 0.7, ease: [0.2, 0.7, 0.2, 1] }}
-        className="flex items-baseline justify-between gap-4 flex-wrap mb-10"
+        className="flex items-baseline justify-between gap-4 flex-wrap mb-12 pb-6"
+        style={{ borderBottom: "1px solid var(--line-strong)" }}
       >
-        <span
-          className="font-mono text-[11px] uppercase tracking-[0.22em]"
-          style={{ color: "var(--muted)" }}
-        >
-          {t(contact.sectionLabel)}
-        </span>
+        <div className="flex items-baseline gap-5 md:gap-8 min-w-0">
+          <span
+            aria-hidden="true"
+            className="font-display font-extrabold leading-[0.82] tracking-[-0.04em] text-[clamp(4.5rem,11vw,9.5rem)]"
+            style={{ color: "var(--ink)" }}
+          >
+            {contact.sectionNumber}
+          </span>
+          <span
+            className="font-mono text-[11px] md:text-[13px] uppercase tracking-[0.24em]"
+            style={{ color: "var(--muted)" }}
+          >
+            {t(contact.sectionLabel)}
+          </span>
+        </div>
         <span
           key={`avail-${locale}`}
           className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em]"
@@ -42,7 +52,7 @@ export function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: reduced ? 0 : 0.8, ease: [0.2, 0.7, 0.2, 1] }}
-        className="font-display font-extrabold leading-[0.92] tracking-[-0.03em] text-[clamp(2.6rem,8vw,6rem)]"
+        className="font-display font-extrabold leading-[0.9] tracking-[-0.035em] text-[clamp(2.8rem,9vw,6.8rem)] hero-shadow"
       >
         <span className="block">{t(contact.heading)}</span>
         <span className="block" style={{ color: "var(--wine)" }}>
@@ -60,8 +70,8 @@ export function Contact() {
           delay: reduced ? 0 : 0.12,
           ease: [0.2, 0.7, 0.2, 1],
         }}
-        className="mt-8 max-w-[52ch] text-[15px] md:text-[17px] leading-[1.6]"
-        style={{ color: "var(--muted)" }}
+        className="mt-10 max-w-[58ch] text-[16px] md:text-[18px] leading-[1.6] font-medium"
+        style={{ color: "var(--ink)" }}
       >
         {t(contact.body)}
       </motion.p>
@@ -79,22 +89,22 @@ export function Contact() {
       >
         <a
           href={contact.cta.href}
-          className="col-span-4 md:col-span-2 inline-flex items-center justify-between gap-6 p-6 md:p-8 rounded-[6px] transition-colors duration-300 group"
+          className="col-span-4 md:col-span-2 inline-flex items-center justify-between gap-6 p-7 md:p-9 rounded-[8px] transition-colors duration-300 group shadow-card"
           style={{
             background: "var(--ink)",
             color: "var(--paper)",
           }}
         >
-          <div className="flex flex-col gap-1 min-w-0">
-            <span className="font-display text-[clamp(1.4rem,2.4vw,1.8rem)] font-semibold tracking-[-0.01em]">
+          <div className="flex flex-col gap-2 min-w-0">
+            <span className="font-display text-[clamp(1.5rem,2.6vw,2rem)] font-semibold tracking-[-0.015em]">
               {t(contact.cta.label)}
             </span>
-            <span className="font-mono text-[11px] uppercase tracking-[0.16em] opacity-70 truncate">
+            <span className="font-mono text-[11px] uppercase tracking-[0.16em] opacity-75 truncate">
               {contact.email}
             </span>
           </div>
           <span
-            className="font-display text-[clamp(1.6rem,3vw,2rem)] transition-transform duration-500 group-hover:translate-x-2 shrink-0"
+            className="font-display text-[clamp(1.6rem,3vw,2.2rem)] transition-transform duration-500 group-hover:translate-x-2 shrink-0"
             aria-hidden="true"
           >
             →

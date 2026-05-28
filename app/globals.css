@@ -1,21 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f6f3ec;
-  --ink: #16150f;
+  --paper: #f4f0e6;
+  --ink: #0e0d09;
   --wine: #8b1e3f;
   --wine-deep: #6d142c;
-  --muted: #7c7a70;
-  --line: rgba(0, 0, 0, 0.08);
-  --line-strong: rgba(0, 0, 0, 0.12);
+  --muted: #5a574c;
+  --muted-soft: #7c7a70;
+  --line: rgba(0, 0, 0, 0.10);
+  --line-strong: rgba(0, 0, 0, 0.16);
 
   --ink-block: #14130e;
-  --paper-on-dark: #f0ede4;
-  --muted-dark: #9a9788;
-  --line-dark: rgba(255, 255, 255, 0.12);
+  --paper-on-dark: #f4efe2;
+  --muted-dark: #a5a292;
+  --line-dark: rgba(255, 255, 255, 0.14);
 
   --ease-out-quart: cubic-bezier(0.2, 0.7, 0.2, 1);
   --ease-in-out-emph: cubic-bezier(0.7, 0, 0.2, 1);
+
+  --shadow-window: 0 1px 0 rgba(0, 0, 0, 0.03),
+    0 6px 14px -8px rgba(0, 0, 0, 0.18),
+    0 30px 50px -20px rgba(0, 0, 0, 0.20);
+  --shadow-card: 0 1px 0 rgba(0, 0, 0, 0.03),
+    0 12px 32px -16px rgba(0, 0, 0, 0.18);
 }
 
 @theme inline {
@@ -40,10 +47,11 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --paper: #14130e;
-    --ink: #f0ede4;
-    --muted: #9a9788;
-    --line: rgba(255, 255, 255, 0.08);
-    --line-strong: rgba(255, 255, 255, 0.14);
+    --ink: #f4efe2;
+    --muted: #b8b4a3;
+    --muted-soft: #8a8678;
+    --line: rgba(255, 255, 255, 0.10);
+    --line-strong: rgba(255, 255, 255, 0.18);
   }
 }
 
@@ -63,6 +71,7 @@ body {
 body {
   min-height: 100vh;
   overflow-x: hidden;
+  font-weight: 500;
 }
 
 ::selection {
@@ -70,6 +79,7 @@ body {
   color: var(--paper-on-dark);
 }
 
+/* ───────── Typography ───────── */
 .font-display {
   font-family: var(--font-display), system-ui, sans-serif;
   letter-spacing: -0.02em;
@@ -89,7 +99,40 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* === Retícula de 4 columnas (fondo global) === */
+/* Subtle shadow for the gigantic display headings */
+.hero-shadow {
+  text-shadow:
+    0 1px 0 color-mix(in srgb, var(--ink) 6%, transparent),
+    0 4px 18px color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.dark-block .hero-shadow {
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.55);
+}
+
+/* ───────── Section number — outlined behind */
+.section-number {
+  text-shadow:
+    0 1px 0 color-mix(in srgb, var(--ink) 8%, transparent),
+    0 6px 18px color-mix(in srgb, var(--ink) 10%, transparent);
+}
+
+.dark-block .section-number {
+  text-shadow: 0 6px 22px rgba(0, 0, 0, 0.55);
+}
+
+/* ───────── Shadows ───────── */
+.shadow-window {
+  box-shadow: var(--shadow-window);
+}
+
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+/* ───────── Grid background ───────── */
 .grid-bg {
   position: fixed;
   inset: 0;
@@ -111,7 +154,7 @@ body {
   border-left: 1px solid var(--line);
 }
 
-/* === Layout principal === */
+/* ───────── Shell ───────── */
 .shell {
   position: relative;
   z-index: 1;
@@ -120,7 +163,7 @@ body {
   padding: 0 max(24px, 4vw);
 }
 
-/* === Ticker (CSS puro) === */
+/* ───────── Ticker (CSS puro) ───────── */
 @keyframes ticker {
   from {
     transform: translateX(0);
@@ -142,10 +185,9 @@ body {
   animation-play-state: paused;
 }
 
-/* === Status dot blinking === */
+/* ───────── Status dot ───────── */
 @keyframes pulse-dot {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -159,7 +201,7 @@ body {
   animation: pulse-dot 1.6s var(--ease-out-quart) infinite;
 }
 
-/* === Underline link === */
+/* ───────── Underline link ───────── */
 .link-underline {
   position: relative;
   display: inline-block;
@@ -181,17 +223,23 @@ body {
   transform: scaleX(0);
 }
 
-/* === Sparkline barras === */
-@keyframes bar-rise {
-  from {
-    transform: scaleY(0.1);
-  }
-  to {
-    transform: scaleY(1);
-  }
+.link-cta {
+  transition: color 0.3s var(--ease-out-quart);
+}
+.link-cta:hover {
+  color: var(--wine-deep) !important;
 }
 
-/* === Reduced motion === */
+/* ───────── Card tilt on hover ───────── */
+.card-tilt {
+  transition: transform 0.6s var(--ease-in-out-emph);
+  transform-origin: center bottom;
+}
+.card-tilt:hover {
+  transform: translateY(-4px);
+}
+
+/* ───────── Reduced motion ───────── */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -200,31 +248,13 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-  .ticker-track {
+  .ticker-track,
+  .dot-pulse {
     animation: none;
   }
 }
 
-/* === Hover affordances === */
-.project-row {
-  transition: padding-left 0.5s var(--ease-in-out-emph),
-    border-color 0.3s var(--ease-out-quart);
-}
-.project-row:hover {
-  padding-left: 1.5rem;
-  border-color: var(--ink);
-}
-.project-row .arrow {
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: all 0.45s var(--ease-in-out-emph);
-}
-.project-row:hover .arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* === Bloque oscuro === */
+/* ───────── Dark block ───────── */
 .dark-block {
   background: var(--ink-block);
   color: var(--paper-on-dark);
