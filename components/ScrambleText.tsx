@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useScramble } from "@/lib/useScramble";
 import { cn } from "@/lib/cn";
 
@@ -8,16 +9,27 @@ type Props = {
   playOnMount?: boolean;
   perChar?: number;
   className?: string;
-  as?: "span" | "h1" | "h2" | "h3" | "p";
+  replayKey?: string | number;
 };
 
+/**
+ * `replayKey` lets you re-run the scramble when an external value changes
+ * (for example, when the active locale changes).
+ */
 export function ScrambleText({
   text,
   playOnMount,
   perChar,
   className,
+  replayKey,
 }: Props) {
   const { ref, run } = useScramble(text, { playOnMount, perChar });
+
+  useEffect(() => {
+    if (replayKey === undefined) return;
+    run();
+  }, [replayKey, run]);
+
   return (
     <span
       ref={ref}

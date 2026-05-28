@@ -10,7 +10,7 @@ const HEIGHTS = [
 
 export function Sparkline() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-15%" });
+  const inView = useInView(ref, { once: true, amount: 0.2 });
   const reduced = useReducedMotion();
 
   return (
@@ -19,11 +19,11 @@ export function Sparkline() {
         {HEIGHTS.map((h, i) => (
           <motion.div
             key={i}
-            initial={reduced ? false : { scaleY: 0, opacity: 0.4 }}
-            animate={inView ? { scaleY: h / 100, opacity: 1 } : {}}
+            initial={reduced ? { scaleY: h / 100, opacity: 1 } : { scaleY: 0, opacity: 0.4 }}
+            animate={inView || reduced ? { scaleY: h / 100, opacity: 1 } : {}}
             transition={{
-              duration: 0.55,
-              delay: i * 0.025,
+              duration: reduced ? 0 : 0.55,
+              delay: reduced ? 0 : i * 0.025,
               ease: [0.2, 0.7, 0.2, 1],
             }}
             style={{
@@ -38,7 +38,10 @@ export function Sparkline() {
           />
         ))}
       </div>
-      <div className="mt-2 flex justify-between font-mono text-[10px]" style={{ color: "var(--muted)" }}>
+      <div
+        className="mt-2 flex justify-between font-mono text-[10px]"
+        style={{ color: "var(--muted)" }}
+      >
         <span>req/s</span>
         <span>t = 50min</span>
       </div>

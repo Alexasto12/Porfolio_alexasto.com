@@ -17,9 +17,9 @@ export function Counter({
   className,
 }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-15%" });
+  const inView = useInView(ref, { once: true, amount: 0.2 });
   const reduced = useReducedMotion();
-  const [n, setN] = useState(reduced ? to : 0);
+  const [n, setN] = useState<number>(0);
 
   useEffect(() => {
     if (!inView) return;
@@ -31,15 +31,20 @@ export function Counter({
     let raf = 0;
     const tick = (now: number) => {
       const p = Math.min((now - start) / duration, 1);
-      setN(Math.round((1 - Math.pow(1 - p, 3)) * to));
-      if (p < 1) raf = requestAnimationFrame(tick);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setN(Math.round(eased * to));
+      if (p < 1) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        setN(to);
+      }
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [inView, to, duration, reduced]);
 
   return (
-    <span ref={ref} className={className}>
+    <span ref={ref} className={className} suppressHydrationWarning>
       {n.toLocaleString(locale)}
     </span>
   );
