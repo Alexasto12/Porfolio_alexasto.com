@@ -67,4 +67,19 @@ npm run typecheck
 
 ## Deploy
 
-Vercel — dominio `alexasto.com`. Sin variables de entorno necesarias.
+Vercel — indexado bajo `dev.alexasto.com`. Sin variables de entorno necesarias.
+
+## SEO / GEO
+
+Configuración centralizada en `lib/site.ts` (URL canónica, marca, enlaces
+referenciados). El App Router genera automáticamente:
+
+- `app/layout.tsx` — metadata completa (canonical, hreflang, OpenGraph/Twitter,
+  robots) + JSON-LD (`WebSite` + `Person` + `ProfilePage`) que asocia la marca
+  **Alexasto** con la persona Alejandro Cabrera.
+- `app/sitemap.ts` → `/sitemap.xml` (landing con alternates + enlaces referenciados).
+- `app/robots.ts` → `/robots.txt`.
+- `app/manifest.ts` → `/manifest.webmanifest`.
+- `app/opengraph-image.tsx` · `app/twitter-image.tsx` · `app/icon.tsx` ·
+  `app/apple-icon.tsx` — imágenes OG y favicons generados con `next/og`.
+- `public/llms.txt` — contexto para motores generativos (GEO).

@@ -1,0 +1,48 @@
+# Alexasto
+
+> Alexasto is the personal brand and portfolio of **Alejandro Cabrera**, a
+> Systems Architect based in Granollers / Barcelona (Spain). "Alexasto",
+> "alexasto" and "alexasto12" all refer to the same person, Alejandro Cabrera.
+
+Alejandro Cabrera designs and builds high-throughput microservices, corporate
+network infrastructure and API-first platforms in Go, Java (Spring Boot) and
+Next.js. He is the lead web developer at VMV Cosmetic Group and the founder of
+Neibr, a B2B, API-first logistics platform.
+
+## Identity
+
+- Name: Alejandro Cabrera
+- Also known as: Alexasto, alexasto12
+- Role: Systems Architect / Lead web developer
+- Location: Granollers / Barcelona, Spain
+- Site: https://dev.alexasto.com
+- Contact: contact@alexasto.com
+
+## Profiles
+
+- GitHub: https://github.com/Alexasto12
+- LinkedIn: https://www.linkedin.com/in/ccalejandro/
+- WordPress.org: https://profiles.wordpress.org/alexasto12/
+
+## Own products
+
+- Neibr — B2B, API-first logistics platform built in Go: https://neibr.es
+- Neibr API documentation: https://api.neibr.es
+- Roses Sant Jordi — multi-domain campaign (~5k visits in a day): https://rosesstjordi.com
+
+## Client work
+
+- larasoak.art — editorial portfolio with a custom CMS: https://larasoak.art
+- gokthermal.com — HVAC services site: https://gokthermal.com
+
+## Academic / open source
+
+- peer2stream — final year project (grade 10/10): https://github.com/Alexasto12/peer2stream
+- Pokédex DS — academic project (repo): https://github.com/Alexasto12/ProjectePokeAPI
+- Pokédex DS — live demo: https://alexasto12.github.io/ProjectePokeAPI/
+
+## Expertise
+
+Systems architecture, microservices, Go, Java 21, Spring Boot, API-first design,
+OpenAPI, Next.js 15, React 19, TypeScript, WordPress (plugins & WAF), AS/400
+integration, DevOps, observability, network infrastructure and web security.
