@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { useI18n, type Localized } from "@/lib/i18n";
 import { ParallaxNumber } from "./ParallaxNumber";
 import { RevealText } from "./Reveal";
+import { EASE_OUT } from "@/lib/motion";
 
 type Props = {
   number: string;
@@ -37,7 +38,7 @@ export function SectionHeader({
       initial={reduced ? false : { opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: reduced ? 0 : 0.8, ease: [0.2, 0.7, 0.2, 1] }}
+      transition={{ duration: reduced ? 0 : 0.8, ease: EASE_OUT }}
       className="relative"
     >
       <div

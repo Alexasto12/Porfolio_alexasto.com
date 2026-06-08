@@ -9,11 +9,10 @@ import {
   useMotionValueEvent,
   useReducedMotion,
 } from "motion/react";
-import { useI18n } from "@/lib/i18n";
+import { useI18n, l } from "@/lib/i18n";
 import { useDrawOnView } from "@/lib/anime";
 import { EASE_OUT } from "@/lib/motion";
 import type { TimelineEntry } from "@/data/projects";
-import { cn } from "@/lib/cn";
 
 type Props = { entries: readonly TimelineEntry[] };
 
@@ -235,6 +234,7 @@ function PinnedTimeline({ entries }: Props) {
 /* ───────── Snap mode (touch / small / reduced-motion) ───────── */
 
 function SnapTimeline({ entries }: Props) {
+  const { t } = useI18n();
   const railRef = useRef<SVGSVGElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const inView = useInView(wrapRef, { once: true, amount: 0.2 });
@@ -243,7 +243,8 @@ function SnapTimeline({ entries }: Props) {
   return (
     <div ref={wrapRef}>
       <div className="mb-6 font-mono text-[11px] uppercase tracking-[0.2em]" style={{ color: "var(--muted)" }}>
-        ← swipe · {String(entries.length).padStart(2, "0")} hitos →
+        ← swipe · {String(entries.length).padStart(2, "0")}{" "}
+        {t(l("hitos", "milestones", "fites"))} →
       </div>
       <div className="h-snap no-scrollbar gap-10 pb-6 -mx-[var(--gutter)] px-[var(--gutter)]">
         <div className="relative flex items-start gap-10">

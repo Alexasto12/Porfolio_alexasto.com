@@ -12,10 +12,9 @@ import { Section } from "./Section";
 import { Counter } from "./Counter";
 import { Sparkline } from "./Sparkline";
 import { ApiSnippet } from "./ApiSnippet";
-import { RevealText } from "./Reveal";
 import { neibr } from "@/data/projects";
 import { useI18n } from "@/lib/i18n";
-import { staggerParent, fadeRight, fadeUp, blurUp, scaleIn, EASE_OUT, VIEWPORT } from "@/lib/motion";
+import { staggerParent, fadeRight, fadeUp, scaleIn, EASE_OUT, VIEWPORT } from "@/lib/motion";
 
 export function NeibrFeature() {
   const reduced = useReducedMotion();

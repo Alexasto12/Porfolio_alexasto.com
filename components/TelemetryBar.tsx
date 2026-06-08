@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { telemetry } from "@/data/projects";
 import { useI18n, l } from "@/lib/i18n";
+import { EASE_OUT } from "@/lib/motion";
 import { LangSwitcher } from "./LangSwitcher";
 
 const NAV = [
@@ -20,7 +21,7 @@ export function TelemetryBar() {
     <motion.header
       initial={reduced ? false : { opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: reduced ? 0 : 0.6, ease: [0.2, 0.7, 0.2, 1] }}
+      transition={{ duration: reduced ? 0 : 0.6, ease: EASE_OUT }}
       className="sticky top-0 z-30 w-full backdrop-blur-md"
       style={{
         background: "color-mix(in srgb, var(--paper) 86%, transparent)",

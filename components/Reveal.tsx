@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "motion/react";
-import { fadeUp, withDelay } from "@/lib/motion";
+import { fadeUp, withDelay, EASE_OUT } from "@/lib/motion";
 import { cn } from "@/lib/cn";
 
 type RevealProps = {
@@ -97,7 +97,7 @@ export function RevealText({
             transition={{
               duration: 0.8,
               delay: delay + i * perWord,
-              ease: [0.2, 0.7, 0.2, 1],
+              ease: EASE_OUT,
             }}
           >
             {word}
