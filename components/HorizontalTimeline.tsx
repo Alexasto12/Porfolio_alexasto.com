@@ -126,11 +126,8 @@ function Rail({
       viewBox="0 0 100 2"
       preserveAspectRatio="none"
     >
-      <line
-        x1="0"
-        y1="1"
-        x2="100"
-        y2="1"
+      <path
+        d="M0 1 H100"
         stroke="var(--line-strong)"
         strokeWidth="2"
         vectorEffect="non-scaling-stroke"
