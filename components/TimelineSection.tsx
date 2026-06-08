@@ -1,19 +1,22 @@
 "use client";
 
+import { Section } from "./Section";
 import { SectionHeader } from "./SectionHeader";
-import { Timeline } from "./Timeline";
+import { HorizontalTimeline } from "./HorizontalTimeline";
 import { timeline } from "@/data/projects";
 
 export function TimelineSection() {
   return (
-    <section id="recorrido" className="shell pt-28 md:pt-40 pb-24 md:pb-32">
+    <Section id="recorrido">
       <SectionHeader
         number={timeline.sectionNumber}
         label={timeline.sectionLabel}
         title={timeline.heading}
         description={timeline.description}
       />
-      <Timeline entries={timeline.entries} />
-    </section>
+      <div className="mt-14 md:mt-20">
+        <HorizontalTimeline entries={timeline.entries} />
+      </div>
+    </Section>
   );
 }

@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { useI18n, type Localized } from "@/lib/i18n";
 import { ParallaxNumber } from "./ParallaxNumber";
+import { RevealText } from "./Reveal";
 
 type Props = {
   number: string;
@@ -33,10 +34,10 @@ export function SectionHeader({
 
   return (
     <motion.header
-      initial={reduced ? false : { opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={reduced ? false : { opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: reduced ? 0 : 0.7, ease: [0.2, 0.7, 0.2, 1] }}
+      transition={{ duration: reduced ? 0 : 0.8, ease: [0.2, 0.7, 0.2, 1] }}
       className="relative"
     >
       <div
@@ -73,7 +74,7 @@ export function SectionHeader({
               className="col-span-4 md:col-span-3 font-display font-extrabold leading-[1.02] tracking-[-0.03em] text-[clamp(2rem,5.2vw,4.2rem)] max-w-[22ch]"
               style={{ color: ink }}
             >
-              {t(title)}
+              <RevealText text={t(title)} />
             </h2>
           ) : null}
           {meta ? (

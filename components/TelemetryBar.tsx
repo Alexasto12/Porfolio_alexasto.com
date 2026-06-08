@@ -2,8 +2,15 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import { telemetry } from "@/data/projects";
-import { useI18n } from "@/lib/i18n";
+import { useI18n, l } from "@/lib/i18n";
 import { LangSwitcher } from "./LangSwitcher";
+
+const NAV = [
+  { href: "#neibr", label: l("Neibr", "Neibr", "Neibr") },
+  { href: "#experiencia", label: l("Experiencia", "Experience", "Experiència") },
+  { href: "#recorrido", label: l("Recorrido", "Path", "Recorregut") },
+  { href: "#servicios", label: l("Servicios", "Services", "Serveis") },
+];
 
 export function TelemetryBar() {
   const reduced = useReducedMotion();
@@ -28,31 +35,26 @@ export function TelemetryBar() {
           >
             {telemetry.systemId}
           </span>
-          <span
-            className="hidden sm:inline-block h-3 w-px"
-            style={{ background: "var(--line-strong)" }}
-          />
-          <span className="font-mono text-[11px] sm:text-[12px] truncate">
-            {telemetry.name}
-          </span>
-          <span
-            className="hidden md:inline-block h-3 w-px"
-            style={{ background: "var(--line-strong)" }}
-          />
-          <span
-            className="hidden md:inline-block font-mono text-[11px] truncate"
-            style={{ color: "var(--muted)" }}
-          >
+          <span className="hidden sm:inline-block h-3 w-px" style={{ background: "var(--line-strong)" }} />
+          <span className="font-mono text-[11px] sm:text-[12px] truncate">{telemetry.name}</span>
+          <span className="hidden md:inline-block h-3 w-px" style={{ background: "var(--line-strong)" }} />
+          <span className="hidden md:inline-block font-mono text-[11px] truncate" style={{ color: "var(--muted)" }}>
             {t(telemetry.role)}
           </span>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-5 font-mono text-[11px] uppercase tracking-[0.18em]" style={{ color: "var(--muted)" }}>
-          <a href="#neibr" className="link-underline">Neibr</a>
-          <a href="#enfoque" className="link-underline">002</a>
-          <a href="#experiencia" className="link-underline">003</a>
-          <a href="#recorrido" className="link-underline">004</a>
-          <a href="#contacto" className="link-underline" style={{ color: "var(--wine)" }}>Contacto</a>
+        <nav
+          className="hidden lg:flex items-center gap-6 font-mono text-[11px] uppercase tracking-[0.18em]"
+          style={{ color: "var(--muted)" }}
+        >
+          {NAV.map((item) => (
+            <a key={item.href} href={item.href} className="link-underline">
+              {t(item.label)}
+            </a>
+          ))}
+          <a href="#contacto" className="link-underline" style={{ color: "var(--wine)" }}>
+            {t(l("Contacto", "Contact", "Contacte"))}
+          </a>
         </nav>
 
         <LangSwitcher />

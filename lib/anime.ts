@@ -37,7 +37,9 @@ export function useDrawOnView(
     );
     if (!targets.length) return;
 
-    const drawables = createDrawable(targets);
+    // Initialise hidden (0,0) so the geometry doesn't flash fully-drawn
+    // before the draw animation kicks in.
+    const drawables = createDrawable(targets, 0, 0);
     const anim = animate(drawables, {
       draw: ["0 0", "0 1"],
       duration,

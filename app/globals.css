@@ -166,6 +166,19 @@ body {
   padding-top: var(--space-top);
 }
 
+/* Collapsed sections sit tighter so the page doesn't feel hollow when closed */
+.section[data-open] {
+  transition: padding-block 0.45s var(--ease-in-out-emph);
+}
+.section[data-open="false"] {
+  padding-block: var(--space-block);
+}
+
+/* Anchored sections clear the sticky header */
+:where(section[id]) {
+  scroll-margin-top: 5rem;
+}
+
 /* Optional vertical stack helper with consistent gaps */
 .stack > * + * {
   margin-top: var(--space-stack);

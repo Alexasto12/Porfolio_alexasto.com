@@ -6,16 +6,14 @@ import { Ticker } from "./Ticker";
 import { SectionHeader } from "./SectionHeader";
 import { vmv } from "@/data/projects";
 import { useI18n } from "@/lib/i18n";
+import { staggerParent, clipUp, fadeRight, EASE_OUT, VIEWPORT } from "@/lib/motion";
 
 export function VmvBlock() {
   const reduced = useReducedMotion();
   const { t, locale } = useI18n();
 
   return (
-    <section
-      id="experiencia"
-      className="dark-block relative w-full mt-12 md:mt-20"
-    >
+    <section id="experiencia" className="dark-block relative w-full">
       <div className="shell pt-24 md:pt-32 pb-16 md:pb-24">
         <SectionHeader
           number={vmv.sectionNumber}
@@ -34,24 +32,20 @@ export function VmvBlock() {
           }
         />
 
-        {/* Cifras */}
-        <div className="mt-20 md:mt-28 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-6">
+        {/* Figures */}
+        <motion.div
+          className="mt-20 md:mt-28 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-6"
+          variants={staggerParent(0.1)}
+          initial={reduced ? false : "hidden"}
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {vmv.stats.map((s, i) => (
             <motion.div
               key={`stat-${i}`}
-              initial={reduced ? false : { opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: reduced ? 0 : 0.7,
-                delay: reduced ? 0 : 0.12 + i * 0.08,
-                ease: [0.2, 0.7, 0.2, 1],
-              }}
+              variants={clipUp}
               className="flex flex-col gap-3"
-              style={{
-                borderTop: "1px solid var(--line-dark)",
-                paddingTop: "1.5rem",
-              }}
+              style={{ borderTop: "1px solid var(--line-dark)", paddingTop: "1.5rem" }}
             >
               <span
                 className="font-display font-extrabold leading-[0.86] tracking-[-0.045em] text-[clamp(5rem,13vw,10rem)] hero-shadow"
@@ -59,10 +53,7 @@ export function VmvBlock() {
               >
                 <Counter to={s.value} duration={1400} />
               </span>
-              <span
-                key={`l-${i}-${locale}`}
-                className="font-display text-[clamp(1.05rem,1.8vw,1.35rem)]"
-              >
+              <span key={`l-${i}-${locale}`} className="font-display text-[clamp(1.05rem,1.8vw,1.35rem)]">
                 {t(s.label)}
               </span>
               <span
@@ -74,40 +65,33 @@ export function VmvBlock() {
               </span>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Capacidades */}
+        {/* Capabilities */}
         <div className="mt-28 md:mt-36 grid grid-cols-4 gap-4 md:gap-8">
           <div className="col-span-4 md:col-span-1">
-            <div
-              className="font-mono text-[10px] uppercase tracking-[0.22em]"
-              style={{ color: "var(--muted-dark)" }}
-            >
+            <div className="font-mono text-[10px] uppercase tracking-[0.22em]" style={{ color: "var(--muted-dark)" }}>
               ↳ {t(vmv.capabilitiesLabel)}
             </div>
           </div>
 
-          <ul className="col-span-4 md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-14">
+          <motion.ul
+            className="col-span-4 md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-14"
+            variants={staggerParent(0.07)}
+            initial={reduced ? false : "hidden"}
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
             {vmv.capabilities.map((cap, i) => (
               <motion.li
                 key={`cap-${i}`}
-                initial={reduced ? false : { opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{
-                  duration: reduced ? 0 : 0.6,
-                  delay: reduced ? 0 : 0.04 * i,
-                  ease: [0.2, 0.7, 0.2, 1],
-                }}
+                variants={fadeRight}
                 className="pt-5"
                 style={{ borderTop: "1px solid var(--line-dark)" }}
               >
                 <div className="flex items-baseline justify-between gap-3">
                   <div className="flex items-baseline gap-3">
-                    <span
-                      className="font-mono text-[10px] tabular"
-                      style={{ color: "var(--muted-dark)" }}
-                    >
+                    <span className="font-mono text-[10px] tabular" style={{ color: "var(--muted-dark)" }}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h3
@@ -121,10 +105,7 @@ export function VmvBlock() {
                     <span
                       key={`badge-${i}-${locale}`}
                       className="font-mono text-[9px] uppercase tracking-[0.18em] px-2 py-0.5 shrink-0 font-bold"
-                      style={{
-                        border: "1px solid var(--wine-bright)",
-                        color: "var(--wine-bright)",
-                      }}
+                      style={{ border: "1px solid var(--wine-bright)", color: "var(--wine-bright)" }}
                     >
                       {t(cap.badge)}
                     </span>
@@ -154,14 +135,11 @@ export function VmvBlock() {
                 ) : null}
               </motion.li>
             ))}
-          </ul>
+          </motion.ul>
         </div>
       </div>
 
-      <div
-        className="w-full"
-        style={{ borderTop: "1px solid var(--line-dark)" }}
-      >
+      <div className="w-full" style={{ borderTop: "1px solid var(--line-dark)" }}>
         <Ticker items={vmv.ticker} />
       </div>
     </section>

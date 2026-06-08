@@ -1,56 +1,65 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { useRef } from "react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  useMotionTemplate,
+} from "motion/react";
+import { Section } from "./Section";
 import { Counter } from "./Counter";
 import { Sparkline } from "./Sparkline";
 import { ApiSnippet } from "./ApiSnippet";
+import { RevealText } from "./Reveal";
 import { neibr } from "@/data/projects";
 import { useI18n } from "@/lib/i18n";
+import { staggerParent, fadeRight, fadeUp, blurUp, scaleIn, EASE_OUT, VIEWPORT } from "@/lib/motion";
 
 export function NeibrFeature() {
   const reduced = useReducedMotion();
   const { t, locale } = useI18n();
 
+  // Kinetic wordmark: weight tracks scroll position through the heading.
+  const wordRef = useRef<HTMLHeadingElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: wordRef,
+    offset: ["start end", "end start"],
+  });
+  const wght = useTransform(scrollYProgress, [0, 0.5, 1], [440, 800, 560]);
+  const fvs = useMotionTemplate`"wght" ${wght}, "opsz" 40`;
+
   return (
-    <section id="neibr" className="shell relative pt-12 pb-32 md:pb-44">
-      <div
-        className="border-t pt-14 md:pt-20"
-        style={{ borderColor: "var(--line-strong)" }}
-      >
+    <Section id="neibr">
+      <div className="border-t pt-14 md:pt-20" style={{ borderColor: "var(--line-strong)" }}>
         <motion.div
           initial={reduced ? false : { opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: reduced ? 0 : 0.7, ease: [0.2, 0.7, 0.2, 1] }}
-          className="flex items-baseline justify-between gap-4 flex-wrap"
+          transition={{ duration: reduced ? 0 : 0.7, ease: EASE_OUT }}
+          className="flex items-baseline gap-4 flex-wrap"
         >
-          <div className="flex items-baseline gap-4 flex-wrap">
-            <span
-              className="font-mono text-[11px] uppercase tracking-[0.24em]"
-              style={{ color: "var(--muted)" }}
-            >
-              ★ {t(neibr.sectionLabel)}
-            </span>
-            <span
-              className="font-mono text-[10px] uppercase tracking-[0.18em] px-2 py-1 rounded-[4px]"
-              style={{
-                border: "1px solid var(--wine)",
-                color: "var(--wine)",
-                fontWeight: 700,
-              }}
-            >
-              {t(neibr.productLabel)}
-            </span>
-          </div>
+          <span className="font-mono text-[11px] uppercase tracking-[0.24em]" style={{ color: "var(--muted)" }}>
+            ★ {t(neibr.sectionLabel)}
+          </span>
+          <span
+            className="font-mono text-[10px] uppercase tracking-[0.18em] px-2 py-1 rounded-[4px]"
+            style={{ border: "1px solid var(--wine)", color: "var(--wine)", fontWeight: 700 }}
+          >
+            {t(neibr.productLabel)}
+          </span>
         </motion.div>
 
         <div className="mt-12 md:mt-16 grid grid-cols-4 gap-4 md:gap-8 items-end">
           <motion.h2
+            ref={wordRef}
             initial={reduced ? false : { opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: reduced ? 0 : 0.7, ease: [0.2, 0.7, 0.2, 1] }}
+            transition={{ duration: reduced ? 0 : 0.7, ease: EASE_OUT }}
             className="col-span-4 md:col-span-3 font-display font-extrabold leading-[0.88] tracking-[-0.04em] text-[clamp(3.6rem,11vw,9.5rem)] hero-shadow"
+            style={reduced ? undefined : { fontVariationSettings: fvs }}
           >
             {neibr.title}
             <span style={{ color: "var(--wine)" }}>.</span>
@@ -60,11 +69,7 @@ export function NeibrFeature() {
             initial={reduced ? false : { opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
-            transition={{
-              duration: reduced ? 0 : 0.6,
-              delay: reduced ? 0 : 0.12,
-              ease: [0.2, 0.7, 0.2, 1],
-            }}
+            transition={{ duration: reduced ? 0 : 0.6, delay: reduced ? 0 : 0.12, ease: EASE_OUT }}
             className="col-span-4 md:col-span-1 font-display text-[clamp(1.1rem,2vw,1.5rem)] font-medium md:text-right"
             style={{ color: "var(--wine)" }}
           >
@@ -73,12 +78,9 @@ export function NeibrFeature() {
         </div>
 
         {/* API snippet — compact, real endpoint */}
-        <div className="mt-12 md:mt-16 grid grid-cols-4 gap-4 md:gap-8">
+        <div className="mt-14 md:mt-20 grid grid-cols-4 gap-4 md:gap-8">
           <div className="col-span-4 md:col-span-1">
-            <div
-              className="font-mono text-[10px] uppercase tracking-[0.22em]"
-              style={{ color: "var(--muted)" }}
-            >
+            <div className="font-mono text-[10px] uppercase tracking-[0.22em]" style={{ color: "var(--muted)" }}>
               ↳ {t(neibr.endpointLabel)}
             </div>
             <div
@@ -93,112 +95,97 @@ export function NeibrFeature() {
           </div>
         </div>
 
-        {/* Descripción + stat */}
+        {/* Description + stat */}
         <div className="mt-16 md:mt-24 grid grid-cols-4 gap-6 md:gap-10">
           <motion.div
-            initial={reduced ? false : { opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{
-              duration: reduced ? 0 : 0.7,
-              delay: reduced ? 0 : 0.05,
-              ease: [0.2, 0.7, 0.2, 1],
-            }}
+            variants={staggerParent(0.1)}
+            initial={reduced ? false : "hidden"}
+            whileInView="show"
+            viewport={VIEWPORT}
             className="col-span-4 md:col-span-2"
           >
-            <p
+            <motion.p
+              variants={fadeUp}
               key={`neibr-desc-${locale}`}
               className="text-[15px] md:text-[17px] leading-[1.65] font-medium max-w-[46ch]"
             >
               {t(neibr.description)}
-            </p>
-            <p
+            </motion.p>
+            <motion.p
+              variants={fadeUp}
               key={`neibr-desc2-${locale}`}
               className="mt-5 text-[14px] md:text-[15px] leading-[1.65] max-w-[46ch]"
               style={{ color: "var(--muted)" }}
             >
               {t(neibr.description2)}
-            </p>
+            </motion.p>
 
-            <div
+            <motion.div
+              variants={fadeUp}
               className="mt-8 font-mono text-[10px] uppercase tracking-[0.22em]"
               style={{ color: "var(--muted)" }}
             >
               ↳ {t(neibr.conceptsLabel)}
-            </div>
-            <ul
+            </motion.div>
+            <motion.ul
+              variants={staggerParent(0.06)}
               className="mt-3 space-y-1.5 font-mono text-[12px]"
               style={{ color: "var(--ink)" }}
             >
               {neibr.concepts.map((c, i) => (
-                <li
-                  key={`${i}-${locale}`}
-                  className="flex items-start gap-2"
-                >
+                <motion.li variants={fadeRight} key={`${i}-${locale}`} className="flex items-start gap-2">
                   <span style={{ color: "var(--wine)" }}>→</span>
                   <span>{t(c)}</span>
-                </li>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
 
-            <div className="mt-8 flex flex-wrap gap-1.5">
+            <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-1.5">
               {neibr.tags.map((tg, i) => (
                 <span
                   key={`${i}-${locale}`}
                   className="font-mono text-[10px] uppercase tracking-[0.16em] px-2.5 py-1 rounded-[4px]"
-                  style={{
-                    border: "1px solid var(--line-strong)",
-                    color: "var(--ink)",
-                  }}
+                  style={{ border: "1px solid var(--line-strong)", color: "var(--ink)" }}
                 >
                   {t(tg)}
                 </span>
               ))}
-            </div>
+            </motion.div>
 
-            <p
+            <motion.p
+              variants={fadeUp}
               key={`neibr-sep-${locale}`}
               className="mt-8 text-[13px] leading-[1.6] italic"
               style={{ color: "var(--muted)" }}
             >
               ↘ {t(neibr.separateLandingNote)}
-            </p>
+            </motion.p>
           </motion.div>
 
-          {/* Stat estrella */}
+          {/* Star stat */}
           <motion.div
-            initial={reduced ? false : { opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{
-              duration: reduced ? 0 : 0.7,
-              delay: reduced ? 0 : 0.18,
-              ease: [0.2, 0.7, 0.2, 1],
-            }}
+            variants={scaleIn}
+            initial={reduced ? false : "hidden"}
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
             className="col-span-4 md:col-span-2 md:col-start-3"
           >
             <div
-              className="p-6 md:p-8 rounded-[8px] flex flex-col h-full shadow-card"
+              className="p-6 md:p-8 rounded-[8px] flex flex-col h-full shadow-card scanlines relative overflow-hidden"
               style={{
                 background: "color-mix(in srgb, var(--ink) 4%, transparent)",
                 border: "1px solid var(--line-strong)",
               }}
             >
               <div className="flex items-center justify-between">
-                <div
-                  className="font-mono text-[10px] uppercase tracking-[0.22em]"
-                  style={{ color: "var(--muted)" }}
-                >
+                <div className="font-mono text-[10px] uppercase tracking-[0.22em]" style={{ color: "var(--muted)" }}>
                   {t(neibr.outputLabel)}
                 </div>
                 <span
                   className="font-mono text-[10px] uppercase tracking-[0.18em] flex items-center gap-1.5 font-bold"
                   style={{ color: "var(--wine)" }}
                 >
-                  <span
-                    className="dot-pulse h-1.5 w-1.5 rounded-full"
-                    style={{ background: "var(--wine)" }}
-                  />
+                  <span className="dot-pulse h-1.5 w-1.5 rounded-full" style={{ background: "var(--wine)" }} />
                   PASSED
                 </span>
               </div>
@@ -210,10 +197,7 @@ export function NeibrFeature() {
                 >
                   <Counter to={neibr.stat.value} duration={1800} />
                 </span>
-                <span
-                  className="font-mono text-[12px] uppercase tracking-[0.16em]"
-                  style={{ color: "var(--muted)" }}
-                >
+                <span className="font-mono text-[12px] uppercase tracking-[0.16em]" style={{ color: "var(--muted)" }}>
                   {t(neibr.stat.valueLabel)}
                 </span>
               </div>
@@ -222,10 +206,7 @@ export function NeibrFeature() {
                 <span className="font-display text-[clamp(1.4rem,3vw,2rem)] font-semibold">
                   {neibr.stat.duration}
                 </span>
-                <span
-                  className="font-mono text-[11px] uppercase tracking-[0.16em]"
-                  style={{ color: "var(--muted)" }}
-                >
+                <span className="font-mono text-[11px] uppercase tracking-[0.16em]" style={{ color: "var(--muted)" }}>
                   {t(neibr.stat.durationLabel)}
                 </span>
               </div>
@@ -238,16 +219,13 @@ export function NeibrFeature() {
                 {t(neibr.stat.caption)}
               </p>
 
-              <div
-                className="mt-6 pt-5"
-                style={{ borderTop: "1px solid var(--line)" }}
-              >
+              <div className="mt-6 pt-5" style={{ borderTop: "1px solid var(--line)" }}>
                 <Sparkline />
               </div>
             </div>
           </motion.div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

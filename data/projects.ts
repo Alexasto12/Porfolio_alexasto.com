@@ -18,6 +18,12 @@ export type LocalizedProject = {
   meta?: Localized<string>;
   /** Free-form, used as the placeholder caption. */
   shotLabel?: Localized<string>;
+  /**
+   * Real screenshot path (served from /public). When present it renders in
+   * the browser frame; otherwise the labelled placeholder shows. Drop files
+   * in /public and set this — no layout changes needed.
+   */
+  image?: string;
 };
 
 export type VmvCapability = {
@@ -35,7 +41,7 @@ export type VmvStat = {
 
 export type TimelineEntry = {
   year: string | Localized<string>;
-  age?: string;
+  age?: string | Localized<string>;
   title: Localized<string>;
   place: Localized<string>;
   body: Localized<string>;
