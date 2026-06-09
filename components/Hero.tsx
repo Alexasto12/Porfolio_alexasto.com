@@ -1,180 +1,146 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
-import { ScrambleText } from "./ScrambleText";
-import { ParallaxNumber } from "./ParallaxNumber";
-import { hero } from "@/data/projects";
 import { useI18n } from "@/lib/i18n";
+import { DATA } from "@/lib/content";
+import { Reveal } from "./ui/Reveal";
+import { Scramble } from "./ui/Scramble";
+import { RatingBar } from "./ui/RatingBar";
 
 export function Hero() {
-  const reduced = useReducedMotion();
   const { t, locale } = useI18n();
-
+  const d = DATA.hero;
   return (
     <section
       id="perfil"
-      className="shell relative pt-16 sm:pt-24 md:pt-32 pb-24 md:pb-40"
+      className="shell section"
+      data-screen-label="Hero / 001"
+      style={{ paddingTop: "clamp(40px,7vw,84px)", paddingBottom: "clamp(56px,9vw,120px)" }}
     >
-      <motion.div
-        initial={reduced ? false : { opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: reduced ? 0 : 0.6, ease: [0.2, 0.7, 0.2, 1] }}
-        className="flex items-baseline justify-between gap-4"
+      <Reveal
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "baseline",
+          gap: "16px",
+        }}
       >
-        <div
-          className="font-mono text-[11px] uppercase tracking-[0.24em]"
-          style={{ color: "var(--muted)" }}
-        >
-          {t(hero.sectionLabel)}
-        </div>
-        <div
-          className="hidden sm:block font-mono text-[10px]"
-          style={{ color: "var(--muted)" }}
-        >
-          {t(hero.sectionHint)}
-        </div>
-      </motion.div>
+        <span className="section__label">{t(d.label)}</span>
+        <span className="mono-label" style={{ fontSize: "9.5px" }}>
+          {t(d.hint)}
+        </span>
+      </Reveal>
 
-      {/* Nombre */}
-      <h1 className="mt-10 md:mt-14 font-display font-extrabold leading-[0.86] tracking-[-0.045em] text-[clamp(3.8rem,13vw,13rem)] hero-shadow">
-        <motion.span
-          initial={reduced ? false : { opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: reduced ? 0 : 0.7, ease: [0.2, 0.7, 0.2, 1] }}
-          className="block"
-          style={{ color: "var(--ink)" }}
-        >
-          <ScrambleText text={hero.firstName} playOnMount perChar={32} />
-        </motion.span>
-        <motion.span
-          initial={reduced ? false : { opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: reduced ? 0 : 0.7,
-            delay: reduced ? 0 : 0.26,
-            ease: [0.2, 0.7, 0.2, 1],
-          }}
-          className="block"
-          style={{ color: "var(--wine)" }}
-        >
-          <ScrambleText text={hero.lastName} playOnMount perChar={32} />
-        </motion.span>
+      <h1
+        className="font-display"
+        style={{
+          marginTop: "clamp(28px,5vw,56px)",
+          fontWeight: 800,
+          lineHeight: 0.84,
+          letterSpacing: "-0.05em",
+          fontSize: "clamp(3.6rem, 13vw, 12rem)",
+        }}
+      >
+        <Reveal as="span" style={{ display: "block" }}>
+          <Scramble key="fn" text={d.firstName} perChar={30} />
+        </Reveal>
+        <Reveal as="span" delay="1" style={{ display: "block", color: "var(--tw-accent)" }}>
+          <Scramble key="ln" text={d.lastName} perChar={30} />
+        </Reveal>
       </h1>
 
-      {/* Tagline */}
-      <motion.p
-        key={`tagline-${locale}`}
-        initial={reduced ? false : { opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: reduced ? 0 : 0.6,
-          delay: reduced ? 0 : 0.45,
-          ease: [0.2, 0.7, 0.2, 1],
+      <Reveal
+        as="p"
+        delay="2"
+        key={`tag-${locale}`}
+        className="font-display"
+        style={{
+          marginTop: "clamp(20px,3vw,34px)",
+          fontWeight: 600,
+          letterSpacing: "-0.02em",
+          fontSize: "clamp(1.3rem,2.8vw,2rem)",
         }}
-        className="mt-8 font-display text-[clamp(1.3rem,2.6vw,1.9rem)] font-semibold tracking-[-0.02em]"
-        style={{ color: "var(--ink)" }}
       >
-        {t(hero.tagline)}
-      </motion.p>
+        {t(d.tagline)}
+      </Reveal>
 
-      <div className="mt-10 md:mt-14 grid grid-cols-4 gap-6 md:gap-10">
-        {/* Intro */}
-        <motion.div
-          initial={reduced ? false : { opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: reduced ? 0 : 0.7,
-            delay: reduced ? 0 : 0.55,
-            ease: [0.2, 0.7, 0.2, 1],
-          }}
-          className="col-span-4 md:col-span-2 max-w-[48ch]"
-        >
-          <div
-            className="font-mono text-[10px] uppercase tracking-[0.22em] mb-4"
-            style={{ color: "var(--muted)" }}
-          >
-            ↓ {t(hero.contextLabel)}
+      <div className="g4" style={{ marginTop: "clamp(34px,5vw,64px)" }}>
+        {/* intro */}
+        <Reveal className="col-2" delay="1" style={{ maxWidth: "50ch" }}>
+          <div className="mono-label" style={{ marginBottom: "14px" }}>
+            ↓ {t(d.contextLabel)}
           </div>
           <p
-            key={`intro-${locale}`}
-            className="text-[16px] md:text-[18px] leading-[1.6] font-medium"
-            style={{ color: "var(--ink)" }}
+            key={`i1-${locale}`}
+            style={{
+              fontSize: "clamp(16px,1.5vw,19px)",
+              lineHeight: 1.6,
+              fontWeight: 500,
+              textWrap: "pretty",
+            }}
           >
-            {t(hero.intro)}
+            {t(d.intro)}
           </p>
           <p
-            key={`intro2-${locale}`}
-            className="mt-5 text-[14px] md:text-[15px] leading-[1.65]"
-            style={{ color: "var(--muted)" }}
+            key={`i2-${locale}`}
+            style={{
+              marginTop: "18px",
+              fontSize: "15px",
+              lineHeight: 1.66,
+              color: "var(--muted)",
+              textWrap: "pretty",
+            }}
           >
-            {t(hero.intro2)}
+            {t(d.intro2)}
           </p>
-        </motion.div>
+        </Reveal>
 
-        {/* Stack + ratings */}
-        <motion.div
-          initial={reduced ? false : { opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: reduced ? 0 : 0.7,
-            delay: reduced ? 0 : 0.65,
-            ease: [0.2, 0.7, 0.2, 1],
+        {/* status panel */}
+        <Reveal
+          className="col-2 panel"
+          delay="2"
+          style={{
+            padding: "clamp(20px,2.4vw,30px)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "26px",
           }}
-          className="col-span-4 md:col-span-2 md:col-start-3 flex flex-col gap-8"
         >
           <div>
-            <div
-              className="font-mono text-[10px] uppercase tracking-[0.22em] mb-3"
-              style={{ color: "var(--muted)" }}
-            >
-              ↳ {t(hero.stackLabel)}
+            <div className="mono-label" style={{ marginBottom: "14px" }}>
+              ↳ {t(d.stackLabel)}
             </div>
-            <ul className="font-mono text-[13px] space-y-2" style={{ color: "var(--ink)" }}>
-              {hero.stack.map((s) => (
-                <li key={s.label} className="flex items-center gap-3">
-                  <span style={{ color: "var(--wine)" }}>/</span>
-                  <span style={{ color: s.weight === "secondary" ? "var(--muted)" : "var(--ink)" }}>
+            <ul
+              className="font-mono"
+              style={{ fontSize: "13px", display: "flex", flexDirection: "column", gap: "9px" }}
+            >
+              {d.stack.map((s) => (
+                <li key={s.label} style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+                  <span style={{ color: "var(--tw-accent)" }}>/</span>
+                  <span style={{ color: s.w === "s" ? "var(--muted)" : "var(--ink)" }}>
                     {s.label}
                   </span>
                 </li>
               ))}
             </ul>
           </div>
-
-          <div className="border-t pt-5" style={{ borderColor: "var(--line-strong)" }}>
-            <div
-              className="font-mono text-[10px] uppercase tracking-[0.22em] mb-3"
-              style={{ color: "var(--muted)" }}
-            >
+          <div style={{ borderTop: "1px solid var(--line-strong)", paddingTop: "20px" }}>
+            <div className="mono-label" style={{ marginBottom: "14px" }}>
               ↳ SELF · X/10
             </div>
-            <ul className="space-y-2.5">
-              {hero.ratings.map((r) => (
-                <li key={r.label.es} className="flex items-center gap-3">
-                  <div className="flex gap-[2px]">
-                    {Array.from({ length: 10 }).map((_, i) => (
-                      <span
-                        key={i}
-                        className="h-3 w-[3px]"
-                        style={{
-                          background:
-                            i < r.value
-                              ? "var(--wine)"
-                              : "color-mix(in srgb, var(--ink) 12%, transparent)",
-                        }}
-                      />
-                    ))}
-                  </div>
+            <ul style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {d.ratings.map((r) => (
+                <li key={r.label.es} style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                  <RatingBar value={r.value} />
                   <span
                     key={`${r.label.es}-${locale}`}
-                    className="font-mono text-[11px] uppercase tracking-[0.14em]"
-                    style={{ color: "var(--ink)" }}
+                    className="font-mono"
+                    style={{ fontSize: "10.5px", textTransform: "uppercase", letterSpacing: "0.1em" }}
                   >
                     {t(r.label)}
                   </span>
                   <span
-                    className="font-mono text-[11px] tabular ml-auto"
-                    style={{ color: "var(--wine)" }}
+                    className="font-mono tabular"
+                    style={{ marginLeft: "auto", color: "var(--tw-accent)", fontSize: "12px" }}
                   >
                     {r.value}
                   </span>
@@ -182,7 +148,7 @@ export function Hero() {
               ))}
             </ul>
           </div>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

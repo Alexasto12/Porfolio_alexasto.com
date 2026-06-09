@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { bricolage, spaceMono, hanken } from "./fonts";
 import { I18nProvider } from "@/lib/i18n";
+import { TweaksProvider } from "@/lib/tweaks";
+import { BgField } from "@/components/BgField";
+import { TweaksPanel } from "@/components/TweaksPanel";
 import {
   SITE_URL,
   BRAND,
@@ -150,7 +153,13 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body">
-        <I18nProvider>{children}</I18nProvider>
+        <I18nProvider>
+          <TweaksProvider>
+            <BgField />
+            {children}
+            <TweaksPanel />
+          </TweaksProvider>
+        </I18nProvider>
       </body>
     </html>
   );

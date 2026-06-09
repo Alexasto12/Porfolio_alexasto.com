@@ -25,10 +25,21 @@ export {
 
 const STORAGE_KEY = "alexasto.locale";
 
+/** A value that may already be localized, or a plain (locale-agnostic) value. */
+export type Translatable<T = string> = T | Localized<T>;
+
+function isLocalized<T>(value: Translatable<T>): value is Localized<T> {
+  return (
+    value !== null &&
+    typeof value === "object" &&
+    "es" in (value as Record<string, unknown>)
+  );
+}
+
 type I18nContextValue = {
   locale: Locale;
   setLocale: (l: Locale) => void;
-  t: <T>(value: Localized<T>) => T;
+  t: <T>(value: Translatable<T>) => T;
 };
 
 const I18nContext = createContext<I18nContextValue | null>(null);
@@ -71,7 +82,8 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     () => ({
       locale,
       setLocale,
-      t: <T,>(v: Localized<T>) => v[locale],
+      t: <T,>(v: Translatable<T>): T =>
+        isLocalized(v) ? v[locale] ?? v.es : (v as T),
     }),
     [locale, setLocale]
   );
