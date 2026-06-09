@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   ACCENT_OPTIONS,
   useTweaks,
@@ -92,51 +92,54 @@ function TweakToggle({
   );
 }
 
-/** Floating design panel: card layout, timeline mode, accent, grid. */
+/** Floating design panel: card layout, timeline mode, accent, grid. Ctrl+Shift+E to show/hide. */
 export function TweaksPanel() {
   const { tweaks, setTweak } = useTweaks();
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.shiftKey && e.key.toUpperCase() === "E") {
+        e.preventDefault();
+        setOpen((o) => !o);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  if (!open) return null;
+
   return (
     <div className="tweaks">
-      {open && (
-        <div className="tweaks__panel" role="dialog" aria-label="Tweaks">
-          <TweakSection label="Proyectos" />
-          <TweakRadio<CardsLayout>
-            label="Layout cards"
-            value={tweaks.cards}
-            options={["stack", "split", "list"]}
-            onChange={(v) => setTweak("cards", v)}
-          />
-          <TweakSection label="Recorrido" />
-          <TweakRadio<TimelineMode>
-            label="Timeline"
-            value={tweaks.timeline}
-            options={["rail", "compact"]}
-            onChange={(v) => setTweak("timeline", v)}
-          />
-          <TweakSection label="Marca" />
-          <TweakColor
-            label="Acento"
-            value={tweaks.accent}
-            options={ACCENT_OPTIONS}
-            onChange={(v) => setTweak("accent", v)}
-          />
-          <TweakToggle
-            label="Rejilla de fondo"
-            value={tweaks.grid}
-            onChange={(v) => setTweak("grid", v)}
-          />
-        </div>
-      )}
-      <button
-        type="button"
-        className="tweaks__toggle"
-        onClick={() => setOpen((o) => !o)}
-        aria-expanded={open}
-      >
-        ⚙ Tweaks
-      </button>
+      <div className="tweaks__panel" role="dialog" aria-label="Tweaks">
+        <TweakSection label="Proyectos" />
+        <TweakRadio<CardsLayout>
+          label="Layout cards"
+          value={tweaks.cards}
+          options={["stack", "split", "list"]}
+          onChange={(v) => setTweak("cards", v)}
+        />
+        <TweakSection label="Recorrido" />
+        <TweakRadio<TimelineMode>
+          label="Timeline"
+          value={tweaks.timeline}
+          options={["rail", "compact"]}
+          onChange={(v) => setTweak("timeline", v)}
+        />
+        <TweakSection label="Marca" />
+        <TweakColor
+          label="Acento"
+          value={tweaks.accent}
+          options={ACCENT_OPTIONS}
+          onChange={(v) => setTweak("accent", v)}
+        />
+        <TweakToggle
+          label="Rejilla de fondo"
+          value={tweaks.grid}
+          onChange={(v) => setTweak("grid", v)}
+        />
+      </div>
     </div>
   );
 }
