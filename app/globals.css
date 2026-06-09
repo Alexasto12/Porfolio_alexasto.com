@@ -321,3 +321,55 @@ body {
 .dark-block .divider {
   border-color: var(--line-dark);
 }
+
+/* ───────── Accordion (details/summary) ───────── */
+details summary::-webkit-details-marker { display: none; }
+details summary::marker { display: none; }
+
+/* Reserva espacio en el DOM antes de animar el body — evita CLS */
+.group:not([open]) > :not(summary) {
+  display: none;
+}
+
+/* ───────── Contact form — dark mode quirúrgico ───────── */
+.contact-input {
+  background: transparent;
+  color: var(--paper-on-dark);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.3s var(--ease-out-quart),
+              box-shadow 0.3s var(--ease-out-quart);
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+.contact-input::placeholder {
+  color: rgba(255, 255, 255, 0.22);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Magenta entra sólo en focus — nunca antes */
+.contact-input:focus {
+  outline: none;
+  border-color: var(--wine-bright);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--wine-bright) 18%, transparent);
+}
+
+.contact-submit {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-sm);
+  transition: background 0.35s var(--ease-out-quart),
+              border-color 0.35s var(--ease-out-quart);
+  cursor: pointer;
+}
+
+/* Magenta en el botón sólo en hover */
+.contact-submit:hover {
+  background: var(--wine-bright);
+  border-color: var(--wine-bright);
+}
+
+.contact-submit:hover .contact-submit-icon {
+  color: var(--paper-on-dark) !important;
+  transform: translateX(3px);
+}

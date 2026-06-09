@@ -271,12 +271,12 @@ export const vmv = {
   ),
   stats: [
     {
-      value: 32,
+      value: 28,
       label: l("dominios administrados", "managed domains", "dominis administrats"),
       caption: l("21 con web activa", "21 with active site", "21 amb web activa"),
     },
     {
-      value: 12,
+      value: 11,
       label: l("plugins internos", "internal plugins", "plugins interns"),
       caption: l(
         "+ store interno propio",
@@ -285,7 +285,7 @@ export const vmv = {
       ),
     },
     {
-      value: 20,
+      value: 18,
       label: l("microservicios", "microservices", "microserveis"),
       caption: l("Go · Java · Node", "Go · Java · Node", "Go · Java · Node"),
     },

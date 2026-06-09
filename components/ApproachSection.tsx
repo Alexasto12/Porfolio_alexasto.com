@@ -14,8 +14,6 @@ export function ApproachSection() {
       <SectionHeader
         number={approach.sectionNumber}
         label={approach.sectionLabel}
-        title={approach.heading}
-        description={approach.description}
       />
 
       <ul className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 md:gap-y-16">

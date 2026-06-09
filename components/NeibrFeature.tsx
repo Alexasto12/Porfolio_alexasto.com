@@ -44,33 +44,26 @@ export function NeibrFeature() {
           </div>
         </motion.div>
 
-        <div className="mt-12 md:mt-16 grid grid-cols-4 gap-4 md:gap-8 items-end">
-          <motion.h2
-            initial={reduced ? false : { opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: reduced ? 0 : 0.7, ease: [0.2, 0.7, 0.2, 1] }}
-            className="col-span-4 md:col-span-3 font-display font-extrabold leading-[0.88] tracking-[-0.04em] text-[clamp(3.6rem,11vw,9.5rem)] hero-shadow"
-          >
+        {/* Neibr. + tagline: nodo visual único por ley de proximidad */}
+        <motion.div
+          className="mt-12 md:mt-16"
+          initial={reduced ? false : { opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: reduced ? 0 : 0.7, ease: [0.2, 0.7, 0.2, 1] }}
+        >
+          <h2 className="font-display font-extrabold leading-[0.88] tracking-[-0.04em] text-[clamp(3.6rem,11vw,9.5rem)] hero-shadow">
             {neibr.title}
             <span style={{ color: "var(--wine)" }}>.</span>
-          </motion.h2>
-          <motion.p
+          </h2>
+          <p
             key={`neibr-tag-${locale}`}
-            initial={reduced ? false : { opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{
-              duration: reduced ? 0 : 0.6,
-              delay: reduced ? 0 : 0.12,
-              ease: [0.2, 0.7, 0.2, 1],
-            }}
-            className="col-span-4 md:col-span-1 font-display text-[clamp(1.1rem,2vw,1.5rem)] font-medium md:text-right"
+            className="mt-3 font-display text-[clamp(1.1rem,2vw,1.5rem)] font-medium tracking-[-0.01em]"
             style={{ color: "var(--wine)" }}
           >
             {t(neibr.tagline)}
-          </motion.p>
-        </div>
+          </p>
+        </motion.div>
 
         {/* API snippet — compact, real endpoint */}
         <div className="mt-12 md:mt-16 grid grid-cols-4 gap-4 md:gap-8">

@@ -27,12 +27,12 @@ export function Timeline({ entries }: Props) {
       {entries.map((e, i) => (
         <motion.li
           key={`${i}`}
-          initial={reduced ? false : { opacity: 0, x: -16 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={reduced ? false : { opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{
             duration: reduced ? 0 : 0.55,
-            delay: reduced ? 0 : i * 0.04,
+            delay: reduced ? 0 : i * 0.05,
             ease: [0.2, 0.7, 0.2, 1],
           }}
           className="relative grid grid-cols-4 gap-4 md:gap-6 pb-12 md:pb-16 last:pb-0"

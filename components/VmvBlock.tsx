@@ -158,8 +158,14 @@ export function VmvBlock() {
         </div>
       </div>
 
+      {/*
+        ── MOTION ISOLATION: este div padre es completamente estático.
+        Todo el espacio (border, overflow) se define aquí, nunca en
+        los nodos que anima ticker-track vía CSS transform.
+        El mb-0 explícito blinda el ritmo vertical contra margin-collapse.
+      */}
       <div
-        className="w-full"
+        className="w-full overflow-hidden mb-0"
         style={{ borderTop: "1px solid var(--line-dark)" }}
       >
         <Ticker items={vmv.ticker} />
