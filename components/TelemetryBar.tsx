@@ -1,62 +1,61 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
-import { telemetry } from "@/data/projects";
+import { useEffect, useState } from "react";
 import { useI18n } from "@/lib/i18n";
-import { LangSwitcher } from "./LangSwitcher";
+import { LOCALES, type Locale } from "@/lib/i18n-types";
+import { DATA } from "@/lib/content";
 
 export function TelemetryBar() {
-  const reduced = useReducedMotion();
-  const { t } = useI18n();
+  const { t, locale, setLocale } = useI18n();
+  const d = DATA.telemetry;
+  const [clock, setClock] = useState("");
+
+  useEffect(() => {
+    const fmt = () =>
+      new Date().toLocaleTimeString("es-ES", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        timeZone: "Europe/Madrid",
+      });
+    setClock(fmt());
+    const id = setInterval(() => setClock(fmt()), 1000);
+    return () => clearInterval(id);
+  }, []);
 
   return (
-    <motion.header
-      initial={reduced ? false : { opacity: 0, y: -8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: reduced ? 0 : 0.6, ease: [0.2, 0.7, 0.2, 1] }}
-      className="sticky top-0 z-30 w-full backdrop-blur-md"
-      style={{
-        background: "color-mix(in srgb, var(--paper) 86%, transparent)",
-        borderBottom: "1px solid var(--line)",
-      }}
-    >
-      <div className="shell flex items-center justify-between h-12 sm:h-14">
-        <a href="#perfil" className="flex items-center gap-3 sm:gap-5 min-w-0">
-          <span
-            className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.22em] shrink-0"
-            style={{ color: "var(--wine)" }}
-          >
-            {telemetry.systemId}
-          </span>
-          <span
-            className="hidden sm:inline-block h-3 w-px"
-            style={{ background: "var(--line-strong)" }}
-          />
-          <span className="font-mono text-[11px] sm:text-[12px] truncate">
-            {telemetry.name}
-          </span>
-          <span
-            className="hidden md:inline-block h-3 w-px"
-            style={{ background: "var(--line-strong)" }}
-          />
-          <span
-            className="hidden md:inline-block font-mono text-[11px] truncate"
-            style={{ color: "var(--muted)" }}
-          >
-            {t(telemetry.role)}
-          </span>
-        </a>
-
-        <nav className="hidden lg:flex items-center gap-5 font-mono text-[11px] uppercase tracking-[0.18em]" style={{ color: "var(--muted)" }}>
-          <a href="#neibr" className="link-underline">Neibr</a>
-          <a href="#enfoque" className="link-underline">002</a>
-          <a href="#experiencia" className="link-underline">003</a>
-          <a href="#recorrido" className="link-underline">004</a>
-          <a href="#contacto" className="link-underline" style={{ color: "var(--wine)" }}>Contacto</a>
-        </nav>
-
-        <LangSwitcher />
+    <div className="telemetry">
+      <div className="telemetry__inner">
+        <span className="telemetry__sysid">{d.systemId}</span>
+        <span className="telemetry__sep">//</span>
+        <span className="telemetry__role">
+          {t(d.role)} · {d.loc}
+        </span>
+        <span className="telemetry__spacer" />
+        <span className="telemetry__avail" title="CET">
+          <span className="font-mono" style={{ color: "var(--muted-soft)" }}>
+            {clock}
+          </span>{" "}
+          CET
+        </span>
+        <span className="telemetry__sep">·</span>
+        <span className="telemetry__avail">
+          <span className="dot dot--accent dot-pulse" />
+          {t(d.availability)}
+        </span>
+        <span className="lang-switch" style={{ marginLeft: "6px" }}>
+          {LOCALES.map((lc: Locale) => (
+            <button
+              key={lc}
+              data-on={locale === lc}
+              onClick={() => setLocale(lc)}
+              style={locale === lc ? { background: "var(--tw-accent)", color: "#fff" } : undefined}
+            >
+              {lc.toUpperCase()}
+            </button>
+          ))}
+        </span>
       </div>
-    </motion.header>
+    </div>
   );
 }

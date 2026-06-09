@@ -1,168 +1,177 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
-import { Counter } from "./Counter";
-import { Ticker } from "./Ticker";
-import { SectionHeader } from "./SectionHeader";
-import { vmv } from "@/data/projects";
 import { useI18n } from "@/lib/i18n";
+import { DATA } from "@/lib/content";
+import { Reveal } from "./ui/Reveal";
+import { Counter } from "./ui/Counter";
 
 export function VmvBlock() {
-  const reduced = useReducedMotion();
   const { t, locale } = useI18n();
-
+  const d = DATA.vmv;
   return (
     <section
       id="experiencia"
-      className="dark-block relative w-full mt-12 md:mt-20"
+      className="shell section"
+      data-screen-label="VMV / 003"
+      style={{ paddingBottom: "clamp(40px,6vw,80px)" }}
     >
-      <div className="shell pt-24 md:pt-32 pb-16 md:pb-24">
-        <SectionHeader
-          number={vmv.sectionNumber}
-          label={vmv.sectionLabel}
-          title={vmv.heading}
-          description={vmv.intro}
-          dark
-          meta={vmv.range}
-          aside={
-            <span
-              className="font-display text-[clamp(1.1rem,2vw,1.5rem)] font-semibold tracking-[-0.01em]"
-              style={{ color: "var(--paper-on-dark)" }}
-            >
-              {vmv.client}
+      <div style={{ borderTop: "1px solid var(--line-strong)", paddingTop: "18px" }}>
+        <Reveal
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "baseline",
+            gap: "16px",
+            flexWrap: "wrap",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "baseline", gap: "18px", flexWrap: "wrap" }}>
+            <span className="section__num font-display">
+              {d.num}
+              <span className="dot-accent">.</span>
             </span>
-          }
-        />
+            <span className="section__label">{t(d.label)}</span>
+          </div>
+          <span className="chip">
+            {d.client} · {t(d.range)}
+          </span>
+        </Reveal>
 
-        {/* Cifras */}
-        <div className="mt-20 md:mt-28 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-6">
-          {vmv.stats.map((s, i) => (
-            <motion.div
-              key={`stat-${i}`}
-              initial={reduced ? false : { opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: reduced ? 0 : 0.7,
-                delay: reduced ? 0 : 0.12 + i * 0.08,
-                ease: [0.2, 0.7, 0.2, 1],
-              }}
-              className="flex flex-col gap-3"
-              style={{
-                borderTop: "1px solid var(--line-dark)",
-                paddingTop: "1.5rem",
-              }}
+        <Reveal delay="1" className="g4" style={{ marginTop: "clamp(24px,4vw,48px)", alignItems: "end" }}>
+          <h2
+            key={`vh-${locale}`}
+            className="col-2 font-display"
+            style={{
+              fontWeight: 800,
+              fontSize: "clamp(2rem,4.4vw,3.6rem)",
+              lineHeight: 0.98,
+              letterSpacing: "-0.03em",
+              textWrap: "balance",
+            }}
+          >
+            {t(d.heading)}
+          </h2>
+          <p
+            key={`vi-${locale}`}
+            className="col-2"
+            style={{ color: "var(--muted)", fontSize: "14.5px", lineHeight: 1.62, textWrap: "pretty" }}
+          >
+            {t(d.intro)}
+          </p>
+        </Reveal>
+
+        {/* stat counters */}
+        <Reveal delay="1" className="g4" style={{ marginTop: "clamp(34px,5vw,60px)" }}>
+          {d.stats.map((s, i) => (
+            <div
+              key={i}
+              className={i === 2 ? "col-2" : "col-1"}
+              style={{ borderTop: "2px solid var(--tw-accent)", paddingTop: "16px" }}
             >
-              <span
-                className="font-display font-extrabold leading-[0.86] tracking-[-0.045em] text-[clamp(5rem,13vw,10rem)] hero-shadow"
-                style={{ color: "var(--wine-bright)" }}
-              >
-                <Counter to={s.value} duration={1400} />
-              </span>
-              <span
-                key={`l-${i}-${locale}`}
-                className="font-display text-[clamp(1.05rem,1.8vw,1.35rem)]"
+              <div className="stat-value font-display" style={{ fontSize: "clamp(3rem,7vw,5.2rem)" }}>
+                <Counter to={s.value} format={false} />
+              </div>
+              <div
+                key={`sl-${locale}-${i}`}
+                className="font-mono"
+                style={{
+                  marginTop: "10px",
+                  fontSize: "11px",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.14em",
+                  color: "var(--ink)",
+                }}
               >
                 {t(s.label)}
-              </span>
-              <span
-                key={`c-${i}-${locale}`}
-                className="font-mono text-[11px] uppercase tracking-[0.18em]"
-                style={{ color: "var(--muted-dark)" }}
+              </div>
+              <div
+                key={`scp-${locale}-${i}`}
+                className="font-mono"
+                style={{ marginTop: "4px", fontSize: "11px", color: "var(--muted-soft)" }}
               >
                 {t(s.caption)}
-              </span>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Capacidades */}
-        <div className="mt-28 md:mt-36 grid grid-cols-4 gap-4 md:gap-8">
-          <div className="col-span-4 md:col-span-1">
-            <div
-              className="font-mono text-[10px] uppercase tracking-[0.22em]"
-              style={{ color: "var(--muted-dark)" }}
-            >
-              ↳ {t(vmv.capabilitiesLabel)}
+              </div>
             </div>
-          </div>
+          ))}
+        </Reveal>
 
-          <ul className="col-span-4 md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-14">
-            {vmv.capabilities.map((cap, i) => (
-              <motion.li
-                key={`cap-${i}`}
-                initial={reduced ? false : { opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{
-                  duration: reduced ? 0 : 0.6,
-                  delay: reduced ? 0 : 0.04 * i,
-                  ease: [0.2, 0.7, 0.2, 1],
+        {/* capabilities grid */}
+        <div className="mono-label" style={{ marginTop: "clamp(40px,6vw,72px)", marginBottom: "18px" }}>
+          ↳ {t(d.capabilitiesLabel)}
+        </div>
+        <div className="g4">
+          {d.capabilities.map((c, i) => (
+            <Reveal
+              key={i}
+              delay={String((i % 2) + 1)}
+              className="col-2 panel card-tilt"
+              style={{
+                padding: "clamp(18px,2.2vw,26px)",
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "flex-start",
+                  gap: "12px",
                 }}
-                className="pt-5"
-                style={{ borderTop: "1px solid var(--line-dark)" }}
               >
-                <div className="flex items-baseline justify-between gap-3">
-                  <div className="flex items-baseline gap-3">
-                    <span
-                      className="font-mono text-[10px] tabular"
-                      style={{ color: "var(--muted-dark)" }}
-                    >
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h3
-                      key={`cap-t-${i}-${locale}`}
-                      className="font-display text-[clamp(1.15rem,2vw,1.5rem)] font-semibold leading-[1.18] tracking-[-0.01em]"
-                    >
-                      {t(cap.title)}
-                    </h3>
-                  </div>
-                  {cap.badge ? (
-                    <span
-                      key={`badge-${i}-${locale}`}
-                      className="font-mono text-[9px] uppercase tracking-[0.18em] px-2 py-0.5 shrink-0 font-bold"
-                      style={{
-                        border: "1px solid var(--wine-bright)",
-                        color: "var(--wine-bright)",
-                      }}
-                    >
-                      {t(cap.badge)}
-                    </span>
-                  ) : null}
-                </div>
-                <p
-                  key={`cap-d-${i}-${locale}`}
-                  className="mt-3 text-[14px] md:text-[15px] leading-[1.65] max-w-[46ch]"
-                  style={{ color: "var(--paper-on-dark)" }}
+                <h3
+                  key={`ct-${locale}-${i}`}
+                  className="font-display"
+                  style={{
+                    fontWeight: 600,
+                    fontSize: "clamp(1rem,1.5vw,1.2rem)",
+                    letterSpacing: "-0.015em",
+                    maxWidth: "26ch",
+                  }}
                 >
-                  {t(cap.description)}
-                </p>
-                {cap.link ? (
-                  <a
-                    href={cap.link.href}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="mt-4 inline-flex items-center gap-3 font-mono text-[12px] uppercase tracking-[0.18em] font-bold link-row"
-                    style={{ color: "var(--paper-on-dark)" }}
-                  >
-                    <span
-                      className="link-row__bar inline-block h-[2px] w-10 transition-all duration-500"
-                      style={{ background: "var(--wine-bright)" }}
-                    />
-                    <span className="link-row__text">{cap.link.label}</span>
-                  </a>
-                ) : null}
-              </motion.li>
-            ))}
-          </ul>
+                  {t(c.title)}
+                </h3>
+                {c.badge && (
+                  <span className="chip chip--accent" style={{ fontSize: "9px" }}>
+                    {t(c.badge)}
+                  </span>
+                )}
+              </div>
+              <p
+                key={`cd-${locale}-${i}`}
+                style={{ color: "var(--muted)", fontSize: "13.5px", lineHeight: 1.6, textWrap: "pretty" }}
+              >
+                {t(c.description)}
+              </p>
+              {c.link && (
+                <a
+                  href={c.link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link-row"
+                  style={{ marginTop: "4px" }}
+                >
+                  <span className="link-row__bar" />
+                  <span>{c.link.label}</span>
+                </a>
+              )}
+            </Reveal>
+          ))}
         </div>
       </div>
 
-      <div
-        className="w-full"
-        style={{ borderTop: "1px solid var(--line-dark)" }}
-      >
-        <Ticker items={vmv.ticker} />
+      {/* ticker */}
+      <div className="ticker" style={{ marginTop: "clamp(40px,6vw,72px)" }}>
+        <div className="ticker__track">
+          {[0, 1].map((dup) => (
+            <div key={dup} className="ticker__item" aria-hidden={dup === 1}>
+              {d.ticker.map((w, i) => (
+                <span key={i}>{w}</span>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

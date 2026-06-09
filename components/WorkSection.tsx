@@ -1,44 +1,30 @@
 "use client";
 
-import { SectionHeader } from "./SectionHeader";
+import { useTweaks } from "@/lib/tweaks";
+import type { WorkData } from "@/lib/content";
+import { SectionHead } from "./ui/SectionHead";
 import { ProjectCard } from "./ProjectCard";
-import type { Localized } from "@/lib/i18n";
-import type { LocalizedProject } from "@/data/projects";
 
-type Props = {
-  id: string;
-  number: string;
-  label: Localized<string>;
-  heading?: Localized<string>;
-  description?: Localized<string>;
-  items: readonly LocalizedProject[];
+type WorkSectionProps = {
+  data: WorkData;
 };
 
-export function WorkSection({
-  id,
-  number,
-  label,
-  heading,
-  description,
-  items,
-}: Props) {
+/** Reusable project section; layout switchable via Tweaks (stack/split/list). */
+export function WorkSection({ data }: WorkSectionProps) {
+  const { tweaks } = useTweaks();
+  const layout = tweaks.cards;
+  const containerClass = layout === "stack" ? "g4" : "";
   return (
-    <section id={id} className="shell pt-28 md:pt-40 pb-8">
-      <SectionHeader
-        number={number}
-        label={label}
-        title={heading}
-        description={description}
-      />
-
-      <div className="mt-14 md:mt-20">
-        {items.map((item, i) => (
-          <ProjectCard
-            key={item.id}
-            project={item}
-            index={i}
-            reverse={i % 2 === 1}
-          />
+    <section
+      id={data.id}
+      className="shell section"
+      data-screen-label={`Work / ${data.num}`}
+      style={{ paddingBottom: "clamp(56px,9vw,110px)" }}
+    >
+      <SectionHead num={data.num} label={data.label} heading={data.heading} description={data.description} />
+      <div className={containerClass} style={{ marginTop: "clamp(30px,4vw,56px)" }}>
+        {data.projects.map((p, i) => (
+          <ProjectCard key={p.id} p={p} index={i} layout={layout} flip={i % 2 === 1} />
         ))}
       </div>
     </section>

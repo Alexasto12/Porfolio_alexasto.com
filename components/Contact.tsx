@@ -1,164 +1,161 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
-import { contact, telemetry } from "@/data/projects";
 import { useI18n } from "@/lib/i18n";
-import { MagneticLink } from "./MagneticLink";
-import { ParallaxNumber } from "./ParallaxNumber";
+import { DATA } from "@/lib/content";
+import { Reveal } from "./ui/Reveal";
 
 export function Contact() {
-  const reduced = useReducedMotion();
   const { t, locale } = useI18n();
-
+  const d = DATA.contact;
   return (
-    <section id="contacto" className="shell pt-28 md:pt-40 pb-24 md:pb-32">
-      <motion.div
-        initial={reduced ? false : { opacity: 0, y: 14 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: reduced ? 0 : 0.7, ease: [0.2, 0.7, 0.2, 1] }}
-        className="flex items-baseline justify-between gap-4 flex-wrap mb-12 pb-6"
-        style={{ borderBottom: "1px solid var(--line-strong)" }}
-      >
-        <div className="flex items-baseline gap-5 md:gap-8 min-w-0">
-          <ParallaxNumber
-            aria-hidden="true"
-            className="font-display font-extrabold leading-[0.82] tracking-[-0.04em] text-[clamp(4.5rem,11vw,9.5rem)] section-number"
-            style={{ color: "var(--ink)" }}
-          >
-            {contact.sectionNumber}
-          </ParallaxNumber>
-          <span
-            className="font-mono text-[11px] md:text-[13px] uppercase tracking-[0.24em]"
-            style={{ color: "var(--muted)" }}
-          >
-            {t(contact.sectionLabel)}
+    <section
+      id="contacto"
+      className="shell section"
+      data-screen-label="Contact / 009"
+      style={{ paddingTop: "clamp(20px,3vw,40px)", paddingBottom: "clamp(56px,8vw,100px)" }}
+    >
+      <div style={{ borderTop: "1px solid var(--line-strong)", paddingTop: "18px" }}>
+        <Reveal style={{ display: "flex", alignItems: "baseline", gap: "18px" }}>
+          <span className="section__num font-display">
+            {d.num}
+            <span className="dot-accent">.</span>
           </span>
-        </div>
-        <span
-          key={`avail-${locale}`}
-          className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em]"
-          style={{ color: "var(--muted)" }}
-        >
-          <span
-            className="dot-pulse inline-block h-1.5 w-1.5 rounded-full"
-            style={{ background: "var(--wine)" }}
-          />
-          {t(telemetry.availability)}
-        </span>
-      </motion.div>
+          <span className="section__label">{t(d.label)}</span>
+        </Reveal>
 
-      <motion.h2
-        key={`c-h-${locale}`}
-        initial={reduced ? false : { opacity: 0, y: 18 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: reduced ? 0 : 0.8, ease: [0.2, 0.7, 0.2, 1] }}
-        className="font-display font-extrabold leading-[0.9] tracking-[-0.035em] text-[clamp(2.8rem,9vw,6.8rem)] hero-shadow"
-      >
-        <span className="block">{t(contact.heading)}</span>
-        <span className="block" style={{ color: "var(--wine)" }}>
-          {t(contact.headingAccent)}
-        </span>
-      </motion.h2>
-
-      <motion.p
-        key={`c-b-${locale}`}
-        initial={reduced ? false : { opacity: 0, y: 14 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{
-          duration: reduced ? 0 : 0.7,
-          delay: reduced ? 0 : 0.12,
-          ease: [0.2, 0.7, 0.2, 1],
-        }}
-        className="mt-10 max-w-[58ch] text-[16px] md:text-[18px] leading-[1.6] font-medium"
-        style={{ color: "var(--ink)" }}
-      >
-        {t(contact.body)}
-      </motion.p>
-
-      <motion.div
-        initial={reduced ? false : { opacity: 0, y: 14 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{
-          duration: reduced ? 0 : 0.7,
-          delay: reduced ? 0 : 0.22,
-          ease: [0.2, 0.7, 0.2, 1],
-        }}
-        className="mt-14 md:mt-20 grid grid-cols-4 gap-4 md:gap-6 items-end"
-      >
-        <MagneticLink
-          href={contact.cta.href}
-          className="col-span-4 md:col-span-2 inline-flex items-center justify-between gap-6 p-7 md:p-9 rounded-[8px] transition-colors duration-300 group shadow-card cta-magnetic"
+        <Reveal
+          as="h2"
+          delay="1"
+          key={`ch-${locale}`}
+          className="font-display"
           style={{
-            background: "var(--ink)",
-            color: "var(--paper)",
+            marginTop: "clamp(28px,5vw,56px)",
+            fontWeight: 800,
+            lineHeight: 0.92,
+            letterSpacing: "-0.04em",
+            fontSize: "clamp(2.8rem,8vw,7rem)",
+            textWrap: "balance",
           }}
         >
-          <div className="flex flex-col gap-2 min-w-0">
-            <span className="font-display text-[clamp(1.5rem,2.6vw,2rem)] font-semibold tracking-[-0.015em]">
-              {t(contact.cta.label)}
-            </span>
-            <span className="font-mono text-[11px] uppercase tracking-[0.16em] opacity-75 truncate">
-              {contact.email}
-            </span>
-          </div>
-          <span
-            className="font-display text-[clamp(1.6rem,3vw,2.2rem)] transition-transform duration-500 group-hover:translate-x-2 shrink-0"
-            aria-hidden="true"
-          >
-            →
-          </span>
-        </MagneticLink>
+          {t(d.heading)} <span style={{ color: "var(--tw-accent)" }}>{t(d.headingAccent)}</span>
+        </Reveal>
 
-        <ul className="col-span-4 md:col-span-2 md:col-start-3 flex flex-col gap-3">
-          {contact.links.map((l) => (
-            <li
-              key={l.label}
-              className="border-b pb-3"
-              style={{ borderColor: "var(--line-strong)" }}
+        <div className="g4" style={{ marginTop: "clamp(34px,5vw,56px)", alignItems: "start" }}>
+          <Reveal className="col-2">
+            <p
+              key={`cb-${locale}`}
+              style={{
+                fontSize: "clamp(15px,1.5vw,18px)",
+                lineHeight: 1.62,
+                color: "var(--muted)",
+                maxWidth: "44ch",
+                textWrap: "pretty",
+              }}
             >
-              <a
-                href={l.href}
-                target={l.href.startsWith("http") ? "_blank" : undefined}
-                rel="noreferrer noopener"
-                className="flex items-center justify-between font-mono text-[12px] uppercase tracking-[0.18em] link-underline"
-              >
-                <span>{l.label}</span>
-                <span style={{ color: "var(--wine)" }}>↗</span>
+              {t(d.body)}
+            </p>
+            <div
+              style={{
+                marginTop: "28px",
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "16px",
+                alignItems: "center",
+              }}
+            >
+              <a href={d.cta.href} className="cta-big">
+                {t(d.cta.label)}
+                <span className="arrow">↗</span>
               </a>
-            </li>
-          ))}
-        </ul>
-      </motion.div>
+              <span className="chip chip--accent">
+                <span className="dot dot--accent dot-pulse" />
+                {t(d.respLabel)}
+              </span>
+            </div>
+            <a
+              href={`mailto:${d.email}`}
+              className="font-mono"
+              style={{
+                display: "inline-block",
+                marginTop: "22px",
+                fontSize: "13px",
+                color: "var(--muted)",
+                letterSpacing: "0.04em",
+              }}
+            >
+              {d.email}
+            </a>
+          </Reveal>
 
-      <motion.div
-        initial={reduced ? false : { opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: reduced ? 0 : 0.8, delay: reduced ? 0 : 0.4 }}
-        className="mt-20 md:mt-24 pt-6 grid grid-cols-4 gap-4 font-mono text-[10px] uppercase tracking-[0.18em]"
-        style={{
-          borderTop: "1px solid var(--line)",
-          color: "var(--muted)",
-        }}
-      >
-        <span className="col-span-4 md:col-span-2">AC_SYSTEMS · BCN</span>
-        <span
-          key={`c-fn-${locale}`}
-          className="col-span-4 md:col-span-2 md:text-right"
+          <Reveal delay="1" className="col-2 start-3 panel" style={{ padding: "clamp(20px,2.4vw,30px)" }}>
+            <div className="mono-label" style={{ marginBottom: "16px" }}>
+              ↳ CANALES
+            </div>
+            <ul style={{ display: "flex", flexDirection: "column" }}>
+              {d.links.map((ln, i) => (
+                <li key={i}>
+                  <a
+                    href={ln.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="link-cta"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      padding: "16px 0",
+                      borderTop: i === 0 ? "none" : "1px solid var(--line)",
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "13px",
+                      letterSpacing: "0.1em",
+                    }}
+                  >
+                    <span>{ln.label}</span>
+                    <span style={{ color: "var(--tw-accent)" }}>↗</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+
+        <Reveal
+          style={{
+            marginTop: "clamp(48px,7vw,90px)",
+            borderTop: "1px solid var(--line)",
+            paddingTop: "22px",
+            display: "flex",
+            justifyContent: "space-between",
+            gap: "16px",
+            flexWrap: "wrap",
+          }}
         >
-          {t(contact.footerNote)}
-        </span>
-        <span className="col-span-4 md:col-span-2 mt-2 md:mt-0">
-          © {new Date().getFullYear()} · alexasto.com
-        </span>
-        <span className="col-span-4 md:col-span-2 md:text-right">
-          Next.js 15 · Motion · Tailwind v4
-        </span>
-      </motion.div>
+          <p
+            key={`fn-${locale}`}
+            className="font-mono"
+            style={{
+              fontSize: "11px",
+              color: "var(--muted-soft)",
+              letterSpacing: "0.04em",
+              maxWidth: "52ch",
+              lineHeight: 1.5,
+            }}
+          >
+            {t(d.footerNote)}
+          </p>
+          <p
+            className="font-mono"
+            style={{
+              fontSize: "11px",
+              color: "var(--muted-faint)",
+              letterSpacing: "0.1em",
+              whiteSpace: "nowrap",
+            }}
+          >
+            © 2026 · AC_SYSTEMS
+          </p>
+        </Reveal>
+      </div>
     </section>
   );
 }

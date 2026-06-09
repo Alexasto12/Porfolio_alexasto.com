@@ -1,251 +1,199 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
-import { Counter } from "./Counter";
-import { Sparkline } from "./Sparkline";
-import { ApiSnippet } from "./ApiSnippet";
-import { neibr } from "@/data/projects";
 import { useI18n } from "@/lib/i18n";
+import { DATA } from "@/lib/content";
+import { Reveal } from "./ui/Reveal";
+import { Counter } from "./ui/Counter";
+import { Bars } from "./ui/Bars";
+import { Tags } from "./ui/Tags";
+import { ApiTerminal } from "./ApiTerminal";
 
 export function NeibrFeature() {
-  const reduced = useReducedMotion();
   const { t, locale } = useI18n();
-
+  const d = DATA.neibr;
   return (
-    <section id="neibr" className="shell relative pt-12 pb-32 md:pb-44">
-      <div
-        className="border-t pt-14 md:pt-20"
-        style={{ borderColor: "var(--line-strong)" }}
-      >
-        <motion.div
-          initial={reduced ? false : { opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: reduced ? 0 : 0.7, ease: [0.2, 0.7, 0.2, 1] }}
-          className="flex items-baseline justify-between gap-4 flex-wrap"
+    <section
+      id="neibr"
+      className="shell section"
+      data-screen-label="Neibr / flagship"
+      style={{ paddingTop: "clamp(20px,3vw,40px)", paddingBottom: "clamp(56px,9vw,120px)" }}
+    >
+      <div style={{ borderTop: "1px solid var(--line-strong)", paddingTop: "clamp(28px,4vw,52px)" }}>
+        <Reveal style={{ display: "flex", gap: "14px", alignItems: "center", flexWrap: "wrap" }}>
+          <span className="section__label">★ {t(d.label)}</span>
+          <span className="chip chip--accent">{t(d.productLabel)}</span>
+        </Reveal>
+
+        {/* title row */}
+        <Reveal
+          delay="1"
+          className="g4"
+          style={{ marginTop: "clamp(26px,4vw,48px)", alignItems: "end" }}
         >
-          <div className="flex items-baseline gap-4 flex-wrap">
-            <span
-              className="font-mono text-[11px] uppercase tracking-[0.24em]"
-              style={{ color: "var(--muted)" }}
-            >
-              ★ {t(neibr.sectionLabel)}
-            </span>
-            <span
-              className="font-mono text-[10px] uppercase tracking-[0.18em] px-2 py-1 rounded-[4px]"
+          <h2
+            className="col-3 font-display"
+            style={{
+              fontWeight: 800,
+              lineHeight: 0.86,
+              letterSpacing: "-0.045em",
+              fontSize: "clamp(3.4rem,11vw,9rem)",
+            }}
+          >
+            {d.title}
+            <span style={{ color: "var(--tw-accent)" }}>.</span>
+          </h2>
+          <p
+            key={`ntag-${locale}`}
+            className="col-1 font-display"
+            style={{
+              fontWeight: 500,
+              color: "var(--tw-accent)",
+              fontSize: "clamp(1.1rem,2vw,1.5rem)",
+              textAlign: "right",
+              lineHeight: 1.1,
+            }}
+          >
+            {t(d.tagline)}
+          </p>
+        </Reveal>
+
+        {/* terminal + endpoint */}
+        <div className="g4" style={{ marginTop: "clamp(28px,4vw,52px)", alignItems: "start" }}>
+          <Reveal className="col-1">
+            <div className="mono-label">↳ {t(d.endpointLabel)}</div>
+            <div
+              key={`ep-${locale}`}
+              className="font-display"
               style={{
-                border: "1px solid var(--wine)",
-                color: "var(--wine)",
-                fontWeight: 700,
+                marginTop: "8px",
+                fontWeight: 600,
+                letterSpacing: "-0.01em",
+                fontSize: "clamp(1.05rem,1.7vw,1.25rem)",
+                lineHeight: 1.22,
               }}
             >
-              {t(neibr.productLabel)}
-            </span>
-          </div>
-        </motion.div>
-
-        <div className="mt-12 md:mt-16 grid grid-cols-4 gap-4 md:gap-8 items-end">
-          <motion.h2
-            initial={reduced ? false : { opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: reduced ? 0 : 0.7, ease: [0.2, 0.7, 0.2, 1] }}
-            className="col-span-4 md:col-span-3 font-display font-extrabold leading-[0.88] tracking-[-0.04em] text-[clamp(3.6rem,11vw,9.5rem)] hero-shadow"
-          >
-            {neibr.title}
-            <span style={{ color: "var(--wine)" }}>.</span>
-          </motion.h2>
-          <motion.p
-            key={`neibr-tag-${locale}`}
-            initial={reduced ? false : { opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{
-              duration: reduced ? 0 : 0.6,
-              delay: reduced ? 0 : 0.12,
-              ease: [0.2, 0.7, 0.2, 1],
-            }}
-            className="col-span-4 md:col-span-1 font-display text-[clamp(1.1rem,2vw,1.5rem)] font-medium md:text-right"
-            style={{ color: "var(--wine)" }}
-          >
-            {t(neibr.tagline)}
-          </motion.p>
+              {t(d.endpointTitle)}
+            </div>
+          </Reveal>
+          <Reveal delay="1" className="col-3">
+            <ApiTerminal />
+          </Reveal>
         </div>
 
-        {/* API snippet — compact, real endpoint */}
-        <div className="mt-12 md:mt-16 grid grid-cols-4 gap-4 md:gap-8">
-          <div className="col-span-4 md:col-span-1">
-            <div
-              className="font-mono text-[10px] uppercase tracking-[0.22em]"
-              style={{ color: "var(--muted)" }}
-            >
-              ↳ {t(neibr.endpointLabel)}
-            </div>
-            <div
-              key={`endpoint-${locale}`}
-              className="mt-1 font-display text-[clamp(1rem,1.7vw,1.2rem)] font-semibold leading-[1.25] tracking-[-0.01em]"
-            >
-              {t(neibr.endpointTitle)}
-            </div>
-          </div>
-          <div className="col-span-4 md:col-span-3">
-            <ApiSnippet />
-          </div>
-        </div>
-
-        {/* Descripción + stat */}
-        <div className="mt-16 md:mt-24 grid grid-cols-4 gap-6 md:gap-10">
-          <motion.div
-            initial={reduced ? false : { opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{
-              duration: reduced ? 0 : 0.7,
-              delay: reduced ? 0 : 0.05,
-              ease: [0.2, 0.7, 0.2, 1],
-            }}
-            className="col-span-4 md:col-span-2"
-          >
+        {/* description + stat */}
+        <div className="g4" style={{ marginTop: "clamp(40px,6vw,80px)", alignItems: "start" }}>
+          <Reveal className="col-2">
             <p
-              key={`neibr-desc-${locale}`}
-              className="text-[15px] md:text-[17px] leading-[1.65] font-medium max-w-[46ch]"
+              key={`nd-${locale}`}
+              style={{
+                fontSize: "clamp(15px,1.4vw,17px)",
+                lineHeight: 1.62,
+                fontWeight: 500,
+                maxWidth: "48ch",
+                textWrap: "pretty",
+              }}
             >
-              {t(neibr.description)}
+              {t(d.description)}
             </p>
             <p
-              key={`neibr-desc2-${locale}`}
-              className="mt-5 text-[14px] md:text-[15px] leading-[1.65] max-w-[46ch]"
-              style={{ color: "var(--muted)" }}
+              key={`nd2-${locale}`}
+              style={{
+                marginTop: "18px",
+                fontSize: "14.5px",
+                lineHeight: 1.64,
+                color: "var(--muted)",
+                maxWidth: "48ch",
+                textWrap: "pretty",
+              }}
             >
-              {t(neibr.description2)}
+              {t(d.description2)}
             </p>
-
-            <div
-              className="mt-8 font-mono text-[10px] uppercase tracking-[0.22em]"
-              style={{ color: "var(--muted)" }}
-            >
-              ↳ {t(neibr.conceptsLabel)}
+            <div className="mono-label" style={{ marginTop: "26px", marginBottom: "12px" }}>
+              ↳ {t(d.conceptsLabel)}
             </div>
             <ul
-              className="mt-3 space-y-1.5 font-mono text-[12px]"
-              style={{ color: "var(--ink)" }}
+              className="font-mono"
+              style={{ display: "flex", flexDirection: "column", gap: "8px", fontSize: "12.5px" }}
             >
-              {neibr.concepts.map((c, i) => (
-                <li
-                  key={`${i}-${locale}`}
-                  className="flex items-start gap-2"
-                >
-                  <span style={{ color: "var(--wine)" }}>→</span>
+              {d.concepts.map((c, i) => (
+                <li key={`${i}-${locale}`} style={{ display: "flex", gap: "10px" }}>
+                  <span style={{ color: "var(--tw-accent)" }}>→</span>
                   <span>{t(c)}</span>
                 </li>
               ))}
             </ul>
-
-            <div className="mt-8 flex flex-wrap gap-1.5">
-              {neibr.tags.map((tg, i) => (
-                <span
-                  key={`${i}-${locale}`}
-                  className="font-mono text-[10px] uppercase tracking-[0.16em] px-2.5 py-1 rounded-[4px]"
-                  style={{
-                    border: "1px solid var(--line-strong)",
-                    color: "var(--ink)",
-                  }}
-                >
-                  {t(tg)}
-                </span>
-              ))}
+            <div style={{ marginTop: "16px" }}>
+              <Tags items={d.tags} />
             </div>
-
             <p
-              key={`neibr-sep-${locale}`}
-              className="mt-8 text-[13px] leading-[1.6] italic"
-              style={{ color: "var(--muted)" }}
-            >
-              ↘ {t(neibr.separateLandingNote)}
-            </p>
-          </motion.div>
-
-          {/* Stat estrella */}
-          <motion.div
-            initial={reduced ? false : { opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{
-              duration: reduced ? 0 : 0.7,
-              delay: reduced ? 0 : 0.18,
-              ease: [0.2, 0.7, 0.2, 1],
-            }}
-            className="col-span-4 md:col-span-2 md:col-start-3"
-          >
-            <div
-              className="p-6 md:p-8 rounded-[8px] flex flex-col h-full shadow-card"
+              key={`nsep-${locale}`}
               style={{
-                background: "color-mix(in srgb, var(--ink) 4%, transparent)",
-                border: "1px solid var(--line-strong)",
+                marginTop: "22px",
+                fontSize: "13px",
+                lineHeight: 1.6,
+                fontStyle: "italic",
+                color: "var(--muted)",
+                maxWidth: "48ch",
               }}
             >
-              <div className="flex items-center justify-between">
-                <div
-                  className="font-mono text-[10px] uppercase tracking-[0.22em]"
-                  style={{ color: "var(--muted)" }}
-                >
-                  {t(neibr.outputLabel)}
-                </div>
-                <span
-                  className="font-mono text-[10px] uppercase tracking-[0.18em] flex items-center gap-1.5 font-bold"
-                  style={{ color: "var(--wine)" }}
-                >
-                  <span
-                    className="dot-pulse h-1.5 w-1.5 rounded-full"
-                    style={{ background: "var(--wine)" }}
-                  />
-                  PASSED
-                </span>
-              </div>
+              ↘ {t(d.sepNote)}
+            </p>
+          </Reveal>
 
-              <div className="mt-4 flex items-baseline gap-3 flex-wrap">
-                <span
-                  className="font-display font-extrabold leading-[0.86] tracking-[-0.045em] text-[clamp(3rem,9vw,6.6rem)] hero-shadow"
-                  style={{ color: "var(--wine)" }}
-                >
-                  <Counter to={neibr.stat.value} duration={1800} />
-                </span>
-                <span
-                  className="font-mono text-[12px] uppercase tracking-[0.16em]"
-                  style={{ color: "var(--muted)" }}
-                >
-                  {t(neibr.stat.valueLabel)}
-                </span>
-              </div>
-
-              <div className="mt-2 flex items-baseline gap-3">
-                <span className="font-display text-[clamp(1.4rem,3vw,2rem)] font-semibold">
-                  {neibr.stat.duration}
-                </span>
-                <span
-                  className="font-mono text-[11px] uppercase tracking-[0.16em]"
-                  style={{ color: "var(--muted)" }}
-                >
-                  {t(neibr.stat.durationLabel)}
-                </span>
-              </div>
-
-              <p
-                key={`stat-caption-${locale}`}
-                className="mt-5 text-[13px] leading-[1.65]"
-                style={{ color: "var(--muted)" }}
+          {/* stat panel */}
+          <Reveal
+            delay="1"
+            className="col-2 panel card-tilt"
+            style={{ padding: "clamp(22px,2.6vw,32px)", display: "flex", flexDirection: "column" }}
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span className="mono-label">{t(d.outputLabel)}</span>
+              <span
+                className="font-mono"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "7px",
+                  fontSize: "10px",
+                  fontWeight: 700,
+                  letterSpacing: "0.16em",
+                  color: "var(--tw-accent)",
+                }}
               >
-                {t(neibr.stat.caption)}
-              </p>
-
-              <div
-                className="mt-6 pt-5"
-                style={{ borderTop: "1px solid var(--line)" }}
-              >
-                <Sparkline />
-              </div>
+                <span className="dot dot--accent dot-pulse" />
+                PASSED
+              </span>
             </div>
-          </motion.div>
+            <div
+              style={{
+                marginTop: "18px",
+                display: "flex",
+                alignItems: "baseline",
+                gap: "12px",
+                flexWrap: "wrap",
+              }}
+            >
+              <span className="stat-value" style={{ fontSize: "clamp(3rem,8vw,6rem)" }}>
+                <Counter to={d.stat.value} />
+              </span>
+              <span className="mono-label">{t(d.stat.valueLabel)}</span>
+            </div>
+            <div style={{ marginTop: "6px", display: "flex", alignItems: "baseline", gap: "12px" }}>
+              <span className="font-display" style={{ fontWeight: 600, fontSize: "clamp(1.4rem,3vw,2rem)" }}>
+                {d.stat.duration}
+              </span>
+              <span className="mono-label">{t(d.stat.durationLabel)}</span>
+            </div>
+            <p
+              key={`sc-${locale}`}
+              style={{ marginTop: "18px", fontSize: "13px", lineHeight: 1.6, color: "var(--muted)" }}
+            >
+              {t(d.stat.caption)}
+            </p>
+            <div style={{ marginTop: "22px", paddingTop: "22px", borderTop: "1px solid var(--line)" }}>
+              <Bars count={36} seed={11} />
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
