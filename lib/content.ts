@@ -91,22 +91,22 @@ export const DATA = {
     title: "Neibr",
     tagline: l("Logística B2B API-first.", "B2B logistics, API-first.", "Logística B2B API-first."),
     description: l(
-      "Plataforma logística B2B API-first construida en Go. El operador notifica un fallo de entrega y el motor asigna el mejor vecino en un radio de 200 m; el tracking number se autogenera como PREFIX-SEQ-DDMMYYYY. Si no hay vecinos disponibles, el envío se cancela automáticamente.",
-      "B2B, API-first logistics platform built in Go. The carrier reports a failed delivery and the engine assigns the best neighbour within a 200 m radius; the tracking number is auto-generated as PREFIX-SEQ-DDMMYYYY. If no neighbours are available, the shipment cancels automatically.",
-      "Plataforma logística B2B API-first construïda en Go. L'operador notifica un fallit de lliurament i el motor assigna el millor veí en un radi de 200 m; el tracking number s'autogenera com a PREFIX-SEQ-DDMMYYYY. Si no hi ha veïns disponibles, l'enviament es cancel·la automàticament."
+      "Plataforma logística B2B API-first construida en Go (Fiber). El operador notifica un fallo de entrega y un algoritmo de asignación heurística elige el mejor «seed node» (vecino) en 200 m, combinando un prefiltro por bounding box en SQL con distancia exacta Haversine. El tracking se autogenera con formato PREFIX-SEQ-DDMMYYYY (p. ej. DHL-000001-01042026); si no hay vecinos disponibles, el envío se cancela solo.",
+      "B2B, API-first logistics platform built in Go (Fiber). The carrier reports a failed delivery and a heuristic assignment algorithm picks the best «seed node» (neighbour) within 200 m, combining a SQL bounding-box prefilter with exact Haversine distance. The tracking number is auto-generated as PREFIX-SEQ-DDMMYYYY (e.g. DHL-000001-01042026); if no neighbours are available, the shipment cancels itself.",
+      "Plataforma logística B2B API-first construïda en Go (Fiber). L'operador notifica un fallit de lliurament i un algoritme d'assignació heurística tria el millor «seed node» (veí) en 200 m, combinant un prefiltre per bounding box en SQL amb distància exacta Haversine. El tracking s'autogenera amb format PREFIX-SEQ-DDMMYYYY (p. ex. DHL-000001-01042026); si no hi ha veïns disponibles, l'enviament es cancel·la sol."
     ),
     description2: l(
-      "Doble propósito: eliminar retornos de paquetería para el operador y crear una red local de confianza para el vecino. Autenticación por X-API-Key, multi-tenant y ciclo completo del envío documentado en api.neibr.es.",
-      "Two goals: eliminate parcel returns for the carrier and build a local trust network for the neighbour. X-API-Key auth, multi-tenant and the full shipment lifecycle documented at api.neibr.es.",
-      "Doble propòsit: eliminar retorns de paqueteria per a l'operador i crear una xarxa local de confiança per al veí. Autenticació per X-API-Key, multi-tenant i cicle complet de l'enviament documentat a api.neibr.es."
+      "Doble propósito: eliminar retornos de paquetería para el operador y crear una red local de confianza para el vecino. Autenticación por API Key (pk_live / pk_demo) en X-API-Key, multi-tenant sobre PostgreSQL + Redis, y cada decisión de routing queda en un ledger inmutable para auditoría. Ciclo completo del envío documentado en api.neibr.es.",
+      "Two goals: eliminate parcel returns for the carrier and build a local trust network for the neighbour. API-Key auth (pk_live / pk_demo) via X-API-Key, multi-tenant on PostgreSQL + Redis, and every routing decision is written to an immutable ledger for auditing. Full shipment lifecycle documented at api.neibr.es.",
+      "Doble propòsit: eliminar retorns de paqueteria per a l'operador i crear una xarxa local de confiança per al veí. Autenticació per API Key (pk_live / pk_demo) a X-API-Key, multi-tenant sobre PostgreSQL + Redis, i cada decisió de routing queda en un ledger immutable per a auditoria. Cicle complet de l'enviament documentat a api.neibr.es."
     ),
     conceptsLabel: l("CONCEPTOS CLAVE", "KEY CONCEPTS", "CONCEPTES CLAU"),
     concepts: [
-      l("Vecino más cercano en 200 m", "Nearest neighbour within 200 m", "Veí més proper en 200 m"),
-      l("Tracking PREFIX-SEQ-DDMMYYYY", "Tracking PREFIX-SEQ-DDMMYYYY", "Tracking PREFIX-SEQ-DDMMYYYY"),
+      l("Seed node más cercano en 200 m (Haversine)", "Nearest seed node within 200 m (Haversine)", "Seed node més proper en 200 m (Haversine)"),
+      l("Tracking auto-generado PREFIX-SEQ-DDMMYYYY", "Auto-generated tracking PREFIX-SEQ-DDMMYYYY", "Tracking auto-generat PREFIX-SEQ-DDMMYYYY"),
       l("Cancelación automática si no hay vecino", "Automatic cancellation if no neighbour", "Cancel·lació automàtica si no hi ha veí"),
-      l("Sistema de puntos vecinal", "Neighbour reward points", "Sistema de punts veïnal"),
-      l("Onboarding de carriers vía API", "Carrier onboarding via API", "Onboarding de carriers via API"),
+      l("Ledger inmutable para auditoría B2B", "Immutable ledger for B2B auditing", "Ledger immutable per a auditoria B2B"),
+      l("Onboarding de operadores vía API", "Operator onboarding via API", "Onboarding d'operadors via API"),
     ],
     tags: ["GO · FIBER", "API-FIRST", "MULTI-TENANT", "B2B + APP", "ES · CA · EN"],
     endpointLabel: l("POST · /api/v1/b2b/shipments", "POST · /api/v1/b2b/shipments", "POST · /api/v1/b2b/shipments"),
