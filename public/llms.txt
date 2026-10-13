@@ -1,48 +1,55 @@
-# Alexasto
+# Alejandro Cabrera
 
-> Alexasto is the personal brand and portfolio of **Alejandro Cabrera**, a
-> Systems Architect based in Granollers / Barcelona (Spain). "Alexasto",
-> "alexasto" and "alexasto12" all refer to the same person, Alejandro Cabrera.
+> Personal site of **Alejandro Cabrera**, backend and full-stack developer and
+> co-founder of Digital DesAny, a web studio in Granollers (Barcelona, Spain).
+> "Alexasto" and "alexasto12" are his username and domain.
 
-Alejandro Cabrera designs and builds high-throughput microservices, corporate
-network infrastructure and API-first platforms in Go, Java (Spring Boot) and
-Next.js. He is the lead web developer at VMV Cosmetic Group and the founder of
-Neibr, a B2B, API-first logistics platform.
+Alejandro builds websites, backends and automations from Granollers. Most of
+his work goes through Digital DesAny, the studio he runs with Oriol Tamborero
+for small and medium businesses across Catalonia.
 
 ## Identity
 
 - Name: Alejandro Cabrera
-- Also known as: Alexasto, alexasto12
-- Role: Systems Architect / Lead web developer
-- Location: Granollers / Barcelona, Spain
-- Site: https://dev.alexasto.com
-- Contact: contact@alexasto.com
+- Username: alexasto12 (domain alexasto.com)
+- Role: Backend and full-stack developer. Co-founder of Digital DesAny.
+- Location: Granollers, Barcelona, Spain
+- Site: https://dev.alexasto.com (Spanish), https://dev.alexasto.com/ca (Catalan), https://dev.alexasto.com/en (English)
+- Personal contact: contact@alexasto.com
+- Client projects: info@digitaldesany.com
 
 ## Profiles
 
-- GitHub: https://github.com/Alexasto12
 - LinkedIn: https://www.linkedin.com/in/ccalejandro/
+- GitHub: https://github.com/Alexasto12
 - WordPress.org: https://profiles.wordpress.org/alexasto12/
+- Digital DesAny: https://www.digitaldesany.com and https://www.linkedin.com/company/digital-desany/
 
-## Own products
+## Digital DesAny (2026, co-founder)
 
-- Neibr — B2B, API-first logistics platform built in Go: https://neibr.es
-- Neibr API documentation: https://api.neibr.es
-- Roses Sant Jordi — multi-domain campaign (~5k visits in a day): https://rosesstjordi.com
+Custom websites (design, development, digitalisation and deployment), social
+media management, automations with or without AI, and custom software.
+Case studies: Lara's Oak (https://larasoak.art), Paula Krebel, Roses de Sant
+Jordi (https://rosesstjordi.com) and Hidrotech Bordalló.
 
-## Client work
+## Experience
 
-- larasoak.art — editorial portfolio with a custom CMS: https://larasoak.art
-- gokthermal.com — HVAC services site: https://gokthermal.com
+- VMV Cosmetic Group (2025-2026): lead web developer. 32 domains (21 with a
+  live site), 12 internal plugins and an in-house plugin store, 20
+  microservices in Go, Java and Node.
+- Neibr (closed in 2026): co-founder and only backend developer of a B2B API
+  for parcel carriers that assigned failed deliveries to a neighbour within
+  200 m. Go (Fiber), PostgreSQL and Redis. One of the winning projects of the
+  Santander X Spain Awards 2026 (UVic). https://neibr.es
+- GOK Thermal: website for an HVAC installer in Granollers, freelance job
+  outside Digital DesAny. https://gokthermal.com
 
-## Academic / open source
+## Education and open source
 
-- peer2stream — final year project (grade 10/10): https://github.com/Alexasto12/peer2stream
-- Pokédex DS — academic project (repo): https://github.com/Alexasto12/ProjectePokeAPI
-- Pokédex DS — live demo: https://alexasto12.github.io/ProjectePokeAPI/
-
-## Expertise
-
-Systems architecture, microservices, Go, Java 21, Spring Boot, API-first design,
-OpenAPI, Next.js 15, React 19, TypeScript, WordPress (plugins & WAF), AS/400
-integration, DevOps, observability, network infrastructure and web security.
+- Peer2Stream: DAW final project (10/10), built with Ismael Delgado.
+  Demo https://peer2stream.alexasto.com/discover, code
+  https://github.com/Alexasto12/peer2stream
+- Pokédex DS: DAW exercise; the DS shell is adapted from a CodePen by Anton
+  Essential (MIT). Demo https://alexasto12.github.io/ProjectePokeAPI/, code
+  https://github.com/Alexasto12/ProjectePokeAPI
+- WordPress.org plugin: Simply Bootstrap Carousel, over 10 active installs.

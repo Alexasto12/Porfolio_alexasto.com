@@ -17,3 +17,21 @@ Lo que no cubría `DECISIONES.md`, qué se decidió y por qué. Lo marcado **Pen
 - **Barra superior en móvil.** Por debajo de 860 px se ocultan el rol, la ubicación y el reloj; por debajo de 480 px también AC_SYSTEMS (desaparece en la Fase 2). Queda "Disponible para proyectos" y el selector de idioma en una sola línea a 320 px.
 - **Orden del selector de idioma:** ES, CA, EN, el mismo orden que las rutas `/`, `/ca` y `/en`.
 - **Panel oculto de ajustes (Ctrl+Shift+E).** El acento que elige solo cambia texto grande, rellenos y bordes; el texto pequeño usa siempre `#D64B6E` para no romper el contraste.
+
+## Fase 2
+
+- **Pendiente: sin acceso a digitaldesany.com.** La red de la sesión no deja salir a dominios externos (solo GitHub, npm y Google Fonts), así que no he podido comprobar ninguna URL del estudio. Lo que he hecho:
+  - "Servicios" enlaza a la portada de digitaldesany.com en el idioma de la ruta (`/es`, `/ca`; en inglés, `/es` porque no hay versión inglesa). Si existe una página de servicios, cambia `desanyHome` en `lib/content.ts`.
+  - Las fichas de los casos usan las rutas de `DECISIONES.md` (`/es/casos-exito/...`) en los tres idiomas. No sé la ruta catalana.
+  - Hidrotech Bordalló no tiene ruta de ficha en `DECISIONES.md`: va sin enlace.
+  - Paula Krebel va sin enlace a su web, porque la URL sale de su ficha y no la he podido leer.
+- **Pendiente: nombre exacto del premio.** Está tal cual lo da `DECISIONES.md`: "uno de los proyectos ganadores de los Santander X Spain Awards 2026 (UVic)".
+- **Pendiente: traducciones del cierre de Neibr.** `DECISIONES.md` solo da la frase en castellano. Catalán: "Parlar amb un gran operador ens va mostrar problemes del model que el codi no resoldria, i el vam tancar abans de llançar-lo." Inglés: "Talking to a large carrier showed us problems in the model that code wasn't going to fix, so we shut it down before launch."
+- **Pendiente: años del recorrido.** Los he calculado con el titular que ya había ("Quince años aprendiendo..."): de los 11 años a 2026 van quince, así que 11 años es 2011 y el resto sale de ahí (12 → 2012, 14 → 2014, 16 → 2016, 19 → 2019, 22 → 2022). Si el año de nacimiento no es 2000, hay que mover todos.
+- **Servicios dentro de "Ahora".** El orden de secciones del plan no tiene una sección de servicios aparte, así que las cuatro líneas de DesAny van dentro de "Ahora: Digital DesAny", junto con los casos.
+- **WordPress.org** va como una línea al final de Formación, porque `DECISIONES.md` lo agrupa en "Formación y otros" y el plan no le da sección.
+- **VMV.** Solo aparecen las ocho capacidades que `DECISIONES.md` deja nombrar. Se quitan la tarjeta de integraciones con DNS y servidores Debian, los detalles del WAF, la lectura con tokens del magazine, el fallback entre proveedores del gateway, y del stack y el ticker SQLite, LiteLLM, VERCEL y KAFKA (detalle interno o proveedores). El ticker estaba solo en castellano; ahora está en los tres idiomas.
+- **Datos que desaparecen por no estar en `DECISIONES.md` o contradecirlo:** las 5.000 visitas y las casi 300 rosas de Sant Jordi (ahora "más de 500 rosas" y Reddit), el "en desarrollo" de GOK Thermal, el formato de tracking, la cancelación automática y el onboarding de Neibr, y la gráfica de barras del stress test (eran datos de adorno, no medidos).
+- **Contacto.** Se quita "Respondo en menos de 48h": los encargos ahora van a DesAny y no tengo ese compromiso del estudio. En catalán, "Construïm alguna cosa robusta" (antes "robust", que no concordaba).
+- **Hero.** Se quitan los dos párrafos antiguos ("microservicios de alto rendimiento", "elegancia estructural") porque los sustituye la línea de `DECISIONES.md`. El panel de stack queda como "Con lo que trabajo", sin la autoevaluación.
+- **Panel oculto de ajustes.** Las variantes de tarjetas (stack, split, list) y de recorrido (rail, compact) siguen funcionando, ahora solo con CSS a partir de `html[data-cards]` y `html[data-timeline]`, para que las secciones puedan renderizarse en el servidor en la Fase 4.

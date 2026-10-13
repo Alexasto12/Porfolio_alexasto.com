@@ -1,22 +1,19 @@
-"use client";
-
-import { useI18n } from "@/lib/i18n";
 import { DATA } from "@/lib/content";
-import { Reveal } from "./ui/Reveal";
+import { translator, type Locale } from "@/lib/i18n-types";
+import { Reveal } from "../ui/Reveal";
 
-export function Contact() {
-  const { t, locale } = useI18n();
+export function Contact({ locale }: { locale: Locale }) {
+  const t = translator(locale);
   const d = DATA.contact;
   return (
     <section
       id="contacto"
       className="shell section"
-      data-screen-label="Contact / 009"
       style={{ paddingTop: "clamp(20px,3vw,40px)", paddingBottom: "clamp(56px,8vw,100px)" }}
     >
       <div style={{ borderTop: "1px solid var(--line-strong)", paddingTop: "18px" }}>
         <Reveal style={{ display: "flex", alignItems: "baseline", gap: "18px" }}>
-          <span className="section__num font-display">
+          <span className="section__num font-display" aria-hidden>
             {d.num}
             <span className="dot-accent">.</span>
           </span>
@@ -26,7 +23,6 @@ export function Contact() {
         <Reveal
           as="h2"
           delay="1"
-          key={`ch-${locale}`}
           className="font-display"
           style={{
             marginTop: "clamp(28px,5vw,56px)",
@@ -43,7 +39,6 @@ export function Contact() {
         <div className="g4" style={{ marginTop: "clamp(34px,5vw,56px)", alignItems: "start" }}>
           <Reveal className="col-2">
             <p
-              key={`cb-${locale}`}
               style={{
                 fontSize: "clamp(15px,1.5vw,18px)",
                 lineHeight: 1.62,
@@ -54,49 +49,44 @@ export function Contact() {
             >
               {t(d.body)}
             </p>
-            <div
-              style={{
-                marginTop: "28px",
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "16px",
-                alignItems: "center",
-              }}
-            >
-              <a href={d.cta.href} className="cta-big">
-                {t(d.cta.label)}
-                <span className="arrow">↗</span>
+
+            <h3 className="mono-label" style={{ marginTop: "30px" }}>
+              {t(d.work.label)}
+            </h3>
+            <p style={{ marginTop: "8px", fontSize: "15px", lineHeight: 1.6 }}>{t(d.work.note)}</p>
+            <div style={{ marginTop: "18px", display: "flex", flexWrap: "wrap", gap: "14px", alignItems: "center" }}>
+              <a href={`mailto:${d.work.email}`} className="cta-big">
+                {t(d.work.cta)}
+                <span className="arrow" aria-hidden>
+                  ↗
+                </span>
               </a>
-              <span className="chip chip--accent">
-                <span className="dot dot--accent dot-pulse" />
-                {t(d.respLabel)}
-              </span>
+              <a href={d.work.whatsapp.href} target="_blank" rel="noreferrer" className="cta-ghost">
+                {d.work.whatsapp.label}
+              </a>
             </div>
-            <a
-              href={`mailto:${d.email}`}
-              className="font-mono"
-              style={{
-                display: "inline-block",
-                marginTop: "22px",
-                lineHeight: "24px",
-                fontSize: "13px",
-                color: "var(--muted)",
-                letterSpacing: "0.04em",
-              }}
-            >
-              {d.email}
+            <a href={`mailto:${d.work.email}`} className="contact-mail font-mono">
+              {d.work.email}
+            </a>
+
+            <h3 className="mono-label" style={{ marginTop: "30px" }}>
+              {t(d.personal.label)}
+            </h3>
+            <p style={{ marginTop: "8px", fontSize: "15px", lineHeight: 1.6 }}>{t(d.personal.note)}</p>
+            <a href={`mailto:${d.personal.email}`} className="contact-mail font-mono">
+              {d.personal.email}
             </a>
           </Reveal>
 
           <Reveal delay="1" className="col-2 start-3 panel" style={{ padding: "clamp(20px,2.4vw,30px)" }}>
-            <div className="mono-label" style={{ marginBottom: "16px" }}>
-              ↳ CANALES
-            </div>
+            <h3 className="mono-label" style={{ marginBottom: "16px" }}>
+              {t(d.channelsLabel)}
+            </h3>
             <ul style={{ display: "flex", flexDirection: "column" }}>
               {d.links.map((ln, i) => (
                 <li key={i}>
                   <a
-                    href={ln.href}
+                    href={t(ln.href)}
                     target="_blank"
                     rel="noreferrer"
                     className="link-cta"
@@ -104,15 +94,18 @@ export function Contact() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between",
+                      gap: "12px",
                       padding: "16px 0",
                       borderTop: i === 0 ? "none" : "1px solid var(--line)",
                       fontFamily: "var(--font-mono)",
                       fontSize: "13px",
-                      letterSpacing: "0.1em",
+                      letterSpacing: "0.06em",
                     }}
                   >
-                    <span>{ln.label}</span>
-                    <span style={{ color: "var(--accent-text)" }}>↗</span>
+                    <span>{t(ln.label)}</span>
+                    <span style={{ color: "var(--accent-text)" }} aria-hidden>
+                      ↗
+                    </span>
                   </a>
                 </li>
               ))}
@@ -131,29 +124,11 @@ export function Contact() {
             flexWrap: "wrap",
           }}
         >
-          <p
-            key={`fn-${locale}`}
-            className="font-mono"
-            style={{
-              fontSize: "11px",
-              color: "var(--muted-soft)",
-              letterSpacing: "0.04em",
-              maxWidth: "52ch",
-              lineHeight: 1.5,
-            }}
-          >
+          <p className="font-mono" style={{ fontSize: "11px", color: "var(--muted-soft)", letterSpacing: "0.04em" }}>
             {t(d.footerNote)}
           </p>
-          <p
-            className="font-mono"
-            style={{
-              fontSize: "11px",
-              color: "var(--muted-faint)",
-              letterSpacing: "0.1em",
-              whiteSpace: "nowrap",
-            }}
-          >
-            © 2026 · AC_SYSTEMS
+          <p className="font-mono" style={{ fontSize: "11px", color: "var(--muted-faint)", letterSpacing: "0.1em" }}>
+            {d.copyright}
           </p>
         </Reveal>
       </div>

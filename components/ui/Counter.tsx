@@ -4,8 +4,10 @@ import { useEffect, useRef, useState } from "react";
 
 type CounterProps = {
   to: number;
+  /** BCP 47 tag used to format the number (grouping and decimal separator). */
+  locale?: string;
+  decimals?: number;
   duration?: number;
-  format?: boolean;
 };
 
 /**
@@ -13,7 +15,7 @@ type CounterProps = {
  * value; the animation only runs in the browser and is skipped entirely with
  * prefers-reduced-motion.
  */
-export function Counter({ to, duration = 1700, format = true }: CounterProps) {
+export function Counter({ to, locale = "es-ES", decimals = 0, duration = 1700 }: CounterProps) {
   const [val, setVal] = useState(to);
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
@@ -22,6 +24,7 @@ export function Counter({ to, duration = 1700, format = true }: CounterProps) {
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const step = Math.pow(10, decimals);
     const run = () => {
       if (started.current) return;
       started.current = true;
@@ -32,12 +35,12 @@ export function Counter({ to, duration = 1700, format = true }: CounterProps) {
         firstFired = true;
         const p = Math.min(1, (now - t0) / duration);
         const eased = 1 - Math.pow(1 - p, 3);
-        setVal(Math.round(to * eased));
+        setVal(Math.round(to * eased * step) / step);
         if (p < 1) requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);
       // If rAF is paused (offscreen capture/export context), the first frame
-      // never fires — jump to the final value so the number is never stuck at 0.
+      // never fires: jump to the final value so the number is never stuck at 0.
       setTimeout(() => {
         if (!firstFired) setVal(to);
       }, 160);
@@ -61,9 +64,12 @@ export function Counter({ to, duration = 1700, format = true }: CounterProps) {
       io.disconnect();
       clearTimeout(fallback);
     };
-  }, [to, duration]);
+  }, [to, decimals, duration]);
 
-  const display = format ? val.toLocaleString("es-ES") : val;
+  const display = val.toLocaleString(locale, {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
   return (
     <span ref={ref} className="tabular">
       {display}

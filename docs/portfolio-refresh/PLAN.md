@@ -39,28 +39,28 @@
 
 Usa solo los hechos de `DECISIONES.md` y escribe cada cambio en los tres idiomas.
 
-- [ ] **Hero:** título y línea de `DECISIONES.md`, con dos llamadas a la acción: ver trabajos (ancla a la sección) y hablar (contacto).
-- [ ] **Sección nueva "Ahora: Digital DesAny"**, justo después del hero. Explica qué hace el estudio y para quién, e incluye los casos de `DECISIONES.md` enlazados a sus fichas en digitaldesany.com.
-- [ ] **Servicios:** sustituye "Lo que ofrezco como freelance" por las cuatro líneas de servicio de DesAny, con enlace a la página de servicios en el idioma de la ruta.
-- [ ] **Contacto:** los encargos van a DesAny y lo personal a contact@alexasto.com, según `DECISIONES.md`. Quita "Sin agencias intermediarias".
-- [ ] **VMV en pasado (2025-2026).** Revisa cada capacidad contra la regla de VMV de `CLAUDE.md`:
+- [x] **Hero:** título y línea de `DECISIONES.md`, con dos llamadas a la acción: ver trabajos (ancla a la sección) y hablar (contacto).
+- [x] **Sección nueva "Ahora: Digital DesAny"**, justo después del hero. Explica qué hace el estudio y para quién, e incluye los casos de `DECISIONES.md` enlazados a sus fichas en digitaldesany.com.
+- [x] **Servicios:** sustituye "Lo que ofrezco como freelance" por las cuatro líneas de servicio de DesAny, con enlace a la página de servicios en el idioma de la ruta.
+- [x] **Contacto:** los encargos van a DesAny y lo personal a contact@alexasto.com, según `DECISIONES.md`. Quita "Sin agencias intermediarias".
+- [x] **VMV en pasado (2025-2026).** Revisa cada capacidad contra la regla de VMV de `CLAUDE.md`:
   - Quita el detalle de cómo funciona el WAF; basta con "WAF en Go con reputación de IPs".
   - "A nivel kernel" pasa a "delega el trabajo pesado en procesos hijo, fuera del límite de memoria de PHP".
   - Quita "control de transacciones distribuidas".
   - Quita KAFKA del ticker.
-- [ ] **Neibr:** deja de ser "proyecto bandera" y pasa a Experiencia como proyecto cerrado: qué era, tu rol, el premio, por qué se cerró y las cifras.
+- [x] **Neibr:** deja de ser "proyecto bandera" y pasa a Experiencia como proyecto cerrado: qué era, tu rol, el premio, por qué se cerró y las cifras.
   - El ejemplo de la API usa un prefijo genérico (`CARRIER-000001-...`), no DHL.
   - Quita toda referencia a api.neibr.es (texto, JSON-LD y sitemap).
-- [ ] **Autoevaluación:** quita el bloque "SELF · X/10" entero.
-- [ ] **Stress test:** pon las cifras de `DECISIONES.md` en lugar de "p50 / p99 estables".
-- [ ] **Recorrido:** un solo eje en años (calcula los años a partir de las edades que ya figuran) y añade el hito de 2026 Digital DesAny. Sustituye el hito "Hoy".
-- [ ] **Créditos:**
+- [x] **Autoevaluación:** quita el bloque "SELF · X/10" entero.
+- [x] **Stress test:** pon las cifras de `DECISIONES.md` en lugar de "p50 / p99 estables".
+- [x] **Recorrido:** un solo eje en años (calcula los años a partir de las edades que ya figuran) y añade el hito de 2026 Digital DesAny. Sustituye el hito "Hoy".
+- [x] **Créditos:**
   - Peer2Stream se hizo con Ismael Delgado, y su demo enlaza a `/discover`.
   - En la Pokédex, la carcasa de la DS está adaptada de un CodePen de Anton Essential (MIT).
-- [ ] **WordPress.org:** un plugin, descrito tal cual está en `DECISIONES.md`.
-- [ ] **Sant Jordi:** usa las cifras de `DECISIONES.md`.
-- [ ] **Marca:** nombre visible y AC_SYSTEMS según `DECISIONES.md`.
-- [ ] **Orden de las secciones:** Hero, Ahora (DesAny), Experiencia (VMV, Neibr y el encargo freelance de GOK Thermal, separado de DesAny), Recorrido, Formación (Peer2Stream y Pokédex), Principios y Contacto. La sección "Productos propios" desaparece: Roses de Sant Jordi pasa a los casos de DesAny, neibr.es se integra en Neibr y la tarjeta "este sitio" se quita.
+- [x] **WordPress.org:** un plugin, descrito tal cual está en `DECISIONES.md`.
+- [x] **Sant Jordi:** usa las cifras de `DECISIONES.md`.
+- [x] **Marca:** nombre visible y AC_SYSTEMS según `DECISIONES.md`.
+- [x] **Orden de las secciones:** Hero, Ahora (DesAny), Experiencia (VMV, Neibr y el encargo freelance de GOK Thermal, separado de DesAny), Recorrido, Formación (Peer2Stream y Pokédex), Principios y Contacto. La sección "Productos propios" desaparece: Roses de Sant Jordi pasa a los casos de DesAny, neibr.es se integra en Neibr y la tarjeta "este sitio" se quita.
 
 **Hecho cuando:**
 - Ningún texto contradice `DECISIONES.md`.

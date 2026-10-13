@@ -8,33 +8,20 @@ import {
   useMemo,
   useState,
 } from "react";
-import {
-  LOCALES,
-  type Locale,
-  type Localized,
-} from "./i18n-types";
+import { LOCALES, pick, type Locale, type Translatable } from "./i18n-types";
 
 export {
   LOCALES,
   LOCALE_LABEL,
   LOCALE_FULL,
   l,
+  pick,
   type Locale,
   type Localized,
+  type Translatable,
 } from "./i18n-types";
 
 const STORAGE_KEY = "alexasto.locale";
-
-/** A value that may already be localized, or a plain (locale-agnostic) value. */
-export type Translatable<T = string> = T | Localized<T>;
-
-function isLocalized<T>(value: Translatable<T>): value is Localized<T> {
-  return (
-    value !== null &&
-    typeof value === "object" &&
-    "es" in (value as Record<string, unknown>)
-  );
-}
 
 type I18nContextValue = {
   locale: Locale;
@@ -82,8 +69,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     () => ({
       locale,
       setLocale,
-      t: <T,>(v: Translatable<T>): T =>
-        isLocalized(v) ? v[locale] ?? v.es : (v as T),
+      t: <T,>(v: Translatable<T>): T => pick(v, locale),
     }),
     [locale, setLocale]
   );

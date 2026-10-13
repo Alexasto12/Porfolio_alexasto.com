@@ -30,13 +30,11 @@ export function TelemetryBar() {
       </a>
       <div className="telemetry">
         <div className="telemetry__inner">
-          <span className="telemetry__sysid">{d.systemId}</span>
+          <span className="telemetry__sysid">{d.name}</span>
           <span className="telemetry__sep" aria-hidden>
             {"//"}
           </span>
-          <span className="telemetry__role">
-            {t(d.role)} · {d.loc}
-          </span>
+          <span className="telemetry__role">{t(d.role)}</span>
           <span className="telemetry__spacer" />
           <span className="telemetry__clock" title="CET">
             <span className="font-mono">{clock}</span> CET

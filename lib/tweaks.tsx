@@ -70,6 +70,13 @@ export function TweaksProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
+  // Card and timeline layouts are pure CSS, keyed on attributes of <html>.
+  useEffect(() => {
+    const root = document.documentElement;
+    root.dataset.cards = tweaks.cards;
+    root.dataset.timeline = tweaks.timeline;
+  }, [tweaks.cards, tweaks.timeline]);
+
   // Apply accent to CSS custom properties.
   useEffect(() => {
     const root = document.documentElement;
