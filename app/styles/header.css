@@ -66,7 +66,7 @@
   .site-nav { order: 10; flex-basis: 100%; }
   .site-nav ol { margin-left: -6px; }
 }
-@media (max-width: 860px) {
+@media (width <= 860px) {
   .site-header { position: relative; }
 }
 @media (max-width: 480px) {

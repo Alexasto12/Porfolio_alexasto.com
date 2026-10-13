@@ -27,7 +27,12 @@ export interface Capability {
   title: Localized;
   description?: Localized;
   link?: Link;
+  /** VMV only: the node of the system map this capability belongs to. */
+  node?: VmvNode;
 }
+
+/** Nodes of the VMV system map: generic capabilities, no internal names. */
+export type VmvNode = "waf" | "domains" | "ai" | "sign" | "erp" | "bridge" | "pdf" | "whatsapp";
 
 export interface TimelineEntry {
   year: string;
@@ -301,11 +306,29 @@ export const DATA = {
         },
       ] as { value: number; label: Localized; caption: Localized }[],
       capabilitiesLabel: { es: "Lo que construí", ca: "El que vaig construir", en: "What I built" } as Localized,
+      mapTitle: {
+        es: "Mapa de lo que llevaba (esquema)",
+        ca: "Mapa del que portava (esquema)",
+        en: "Map of what I looked after (diagram)",
+      } as Localized,
+      mapNodes: {
+        waf: { es: "WAF", ca: "WAF", en: "WAF" },
+        domains: { es: "32 dominios", ca: "32 dominis", en: "32 domains" },
+        ai: { es: "Gateway IA", ca: "Gateway IA", en: "AI gateway" },
+        sign: { es: "Firma biométrica", ca: "Signatura biomètrica", en: "Biometric signing" },
+        erp: { es: "ERP AS/400", ca: "ERP AS/400", en: "AS/400 ERP" },
+        bridge: { es: "Puente Java 21", ca: "Pont Java 21", en: "Java 21 bridge" },
+        pdf: { es: "PDF asíncrono", ca: "PDF asíncron", en: "Async PDF" },
+        whatsapp: { es: "WhatsApp", ca: "WhatsApp", en: "WhatsApp" },
+      } as Record<VmvNode, Localized>,
+      mapBus: { es: "20 microservicios", ca: "20 microserveis", en: "20 microservices" } as Localized,
       capabilities: [
         {
+          node: "waf",
           title: { es: "WAF en Go con reputación de IPs.", ca: "WAF en Go amb reputació d'IPs.", en: "Go WAF with IP reputation." },
         },
         {
+          node: "bridge",
           title: { es: "Puente Java 21 a AS/400.", ca: "Pont Java 21 a AS/400.", en: "Java 21 bridge to AS/400." },
           description: {
             es: "Servicios Java 21 / Spring Boot 3 que exponen el ERP en AS/400 como REST, con un patrón anti-corrupción.",
@@ -314,6 +337,7 @@ export const DATA = {
           },
         },
         {
+          node: "domains",
           title: { es: "Plataforma de magazine corporativo.", ca: "Plataforma de magazine corporatiu.", en: "Corporate magazine platform." },
           description: {
             es: "Edición colaborativa, versiones por número y previsualización en tiempo real.",
@@ -326,6 +350,7 @@ export const DATA = {
           },
         },
         {
+          node: "ai",
           title: { es: "Gateway de IA.", ca: "Gateway d'IA.", en: "AI gateway." },
           description: {
             es: "Un único punto de entrada a modelos de lenguaje, con API compatible con OpenAI.",
@@ -334,6 +359,7 @@ export const DATA = {
           },
         },
         {
+          node: "sign",
           title: {
             es: "Firma de documentos con biometría.",
             ca: "Signatura de documents amb biometria.",
@@ -346,6 +372,7 @@ export const DATA = {
           },
         },
         {
+          node: "pdf",
           title: { es: "Motor asíncrono de PDF.", ca: "Motor asíncron de PDF.", en: "Async PDF engine." },
           description: {
             es: "Genera los PDF en segundo plano y muestra su estado en tiempo real.",
@@ -354,6 +381,7 @@ export const DATA = {
           },
         },
         {
+          node: "whatsapp",
           title: {
             es: "Avisos de WhatsApp Business.",
             ca: "Avisos de WhatsApp Business.",
@@ -366,6 +394,7 @@ export const DATA = {
           },
         },
         {
+          node: "domains",
           title: { es: "Copias de seguridad.", ca: "Còpies de seguretat.", en: "Backups." },
           description: {
             es: "Delegan el trabajo pesado en procesos hijo, fuera del límite de memoria de PHP.",
@@ -418,11 +447,55 @@ export const DATA = {
         ca: "Vaig ser cofundador i l'únic desenvolupador de backend. També vaig muntar el desplegament i la web, i vaig participar en la part comercial i a les xarxes de l'empresa.",
         en: "I was a co-founder and the only backend developer. I also set up the deployment and the website, and took part in sales and the company's social media.",
       } as Localized,
-      tech: {
-        es: "Go (Fiber), PostgreSQL y Redis. La asignación filtra primero por bounding box en SQL y luego calcula la distancia exacta con Haversine. API keys multi-tenant, escrituras idempotentes, webhooks firmados con HMAC y un ledger de auditoría inmutable.",
-        ca: "Go (Fiber), PostgreSQL i Redis. L'assignació filtra primer per bounding box en SQL i després calcula la distància exacta amb Haversine. API keys multi-tenant, escriptures idempotents, webhooks signats amb HMAC i un ledger d'auditoria immutable.",
-        en: "Go (Fiber), PostgreSQL and Redis. Assignment prefilters by bounding box in SQL, then computes the exact distance with Haversine. Multi-tenant API keys, idempotent writes, HMAC-signed webhooks and an immutable audit ledger.",
+stack: {
+        es: "Go (Fiber), PostgreSQL y Redis.",
+        ca: "Go (Fiber), PostgreSQL i Redis.",
+        en: "Go (Fiber), PostgreSQL and Redis.",
       } as Localized,
+      assignment: {
+        es: "La asignación filtra primero por bounding box en SQL y luego calcula la distancia exacta con Haversine.",
+        ca: "L'assignació filtra primer per bounding box en SQL i després calcula la distància exacta amb Haversine.",
+        en: "Assignment prefilters by bounding box in SQL, then computes the exact distance with Haversine.",
+      } as Localized,
+      security: {
+        es: "API keys multi-tenant, escrituras idempotentes, webhooks firmados con HMAC y un ledger de auditoría inmutable.",
+        ca: "API keys multi-tenant, escriptures idempotents, webhooks signats amb HMAC i un ledger d'auditoria immutable.",
+        en: "Multi-tenant API keys, idempotent writes, HMAC-signed webhooks and an immutable audit ledger.",
+      } as Localized,
+      diagram: {
+        title: {
+          es: "Cómo se asigna un vecino (esquema)",
+          ca: "Com s'assigna un veí (esquema)",
+          en: "How a neighbour gets assigned (diagram)",
+        } as Localized,
+        note: {
+          es: "Puntos de ejemplo, no datos reales.",
+          ca: "Punts d'exemple, no dades reals.",
+          en: "Sample points, not real data.",
+        } as Localized,
+        steps: [
+          {
+            es: "Una entrega falla en este punto.",
+            ca: "Una entrega falla en aquest punt.",
+            en: "A delivery fails at this point.",
+          },
+          {
+            es: "Un prefiltro en SQL se queda con los vecinos de dentro de un cuadrado (bounding box).",
+            ca: "Un prefiltre en SQL es queda amb els veïns de dins d'un quadrat (bounding box).",
+            en: "An SQL prefilter keeps the neighbours inside a square (bounding box).",
+          },
+          {
+            es: "El círculo de 200 m deja fuera a los que quedan lejos.",
+            ca: "El cercle de 200 m deixa fora els que queden lluny.",
+            en: "The 200 m circle leaves out the ones too far away.",
+          },
+          {
+            es: "Se resalta el más cercano, con su distancia exacta calculada con Haversine.",
+            ca: "Es ressalta el més proper, amb la distància exacta calculada amb Haversine.",
+            en: "The nearest one is highlighted, with its exact distance worked out with Haversine.",
+          },
+        ] as Localized[],
+      },
       awardLabel: { es: "Premio", ca: "Premi", en: "Award" } as Localized,
       award: {
         es: "Uno de los proyectos ganadores de los Santander X Spain Awards 2026 (UVic).",
@@ -461,10 +534,10 @@ export const DATA = {
           en: "million requests in 50 minutes",
         } as Localized,
         facts: [
-          { value: "~968", label: { es: "peticiones por segundo", ca: "peticions per segon", en: "requests per second" } },
-          { value: "< 100 ms", label: { es: "p95", ca: "p95", en: "p95" } },
-          { value: "0", label: { es: "errores 5xx", ca: "errors 5xx", en: "5xx errors" } },
-        ] as { value: string; label: Localized }[],
+          { prefix: "~", value: 968, label: { es: "peticiones por segundo", ca: "peticions per segon", en: "requests per second" } },
+          { prefix: "< ", value: 100, suffix: " ms", label: { es: "p95", ca: "p95", en: "p95" } },
+          { value: 0, label: { es: "errores 5xx", ca: "errors 5xx", en: "5xx errors" } },
+        ] as { prefix?: string; value: number; suffix?: string; label: Localized }[],
       },
     },
 

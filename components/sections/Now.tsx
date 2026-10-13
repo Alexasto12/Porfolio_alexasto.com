@@ -61,7 +61,7 @@ function CaseTile({ card, locale }: { card: Card; locale: Locale }) {
       <BrowserFrame
         id={card.id}
         alt={t(card.shot!.alt)}
-        sizes={big ? "(max-width: 860px) 100vw, 720px" : "(max-width: 860px) 100vw, 520px"}
+        sizes={big ? "(max-width: 860px) 100vw, 700px" : "(max-width: 860px) 100vw, 400px"}
       />
       <div className="bento__body">
         <div className="bento__head">

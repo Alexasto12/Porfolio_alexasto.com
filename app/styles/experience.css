@@ -1,64 +1,242 @@
-/* ───────── 3. Experiencia, la sala de máquinas (ink) ───────── */
-.xp { padding-block: clamp(96px, 12vw, 160px) clamp(80px, 10vw, 136px); }
-.xp__header {
+/* ───────── 3. Experiencia, la sala de máquinas (ink) ─────────
+   VMV: sticky column with the figures, system map and legend.
+   Neibr: lead and diagram, a full-width wine band with the stress test,
+   then the terminal and the story. GOK Thermal closes the section. */
+.xp { padding-block: clamp(80px, 6.6vw, 96px) clamp(48px, 4.4vw, 64px); }
+.xp__head .sec-head__title { margin-top: 20px; }
+.xp__head .sec-head__intro { margin-top: 16px; max-width: 52ch; }
+/* Wide: the intro sits next to the heading's second line. */
+@media (min-width: 1101px) {
+  .xp__head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); }
+  .xp__head .sec-index { grid-column: 1 / -1; }
+  .xp__head .sec-head__title { grid-column: 1 / span 9; }
+  .xp__head .sec-head__intro { grid-column: 10 / span 3; align-self: end; margin: 0; font-size: 15px; }
+}
+
+/* VMV */
+.vmv { margin-top: clamp(36px, 3.4vw, 48px); row-gap: 40px; align-items: start; }
+.vmv__aside {
+  grid-column: 1 / span 4;
+  position: sticky;
+  top: 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 2px solid var(--fg);
+}
+.vmv__role { margin-top: -4px; }
+.vmv__intro { font-size: 16px; }
+.vmv__stats { margin-top: 8px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.vmv__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+.vmv__value { order: -1; font-size: clamp(2.6rem, 4vw, 3.6rem); }
+.vmv__stat-label {
+  display: grid;
+  gap: 2px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+}
+.vmv__main { grid-column: 5 / span 8; min-width: 0; }
+.vmv__label { margin-top: 22px; margin-bottom: 2px; }
+
+/* System map */
+.vmap { margin: 0; padding-top: 14px; border-top: 1px solid var(--line); }
+.vmap__title { margin-bottom: 8px; }
+.vmap__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.vmap__svg--tall { display: none; }
+.vmap__link { fill: none; stroke: var(--accent-lg); stroke-width: 1.5; stroke-linecap: round; }
+.vmap__joint { fill: var(--accent-lg); }
+.vmap__node rect { fill: var(--ink); stroke: var(--line); stroke-width: 1.5; }
+.vmap__node text {
+  fill: var(--fg);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+}
+.vmap__bus {
+  fill: var(--fg-2);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+/* The connections draw in as the map scrolls in: the bus, then the spokes,
+   then the two front ends (WAF to the domains, ERP to the bridge). */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .vmap { view-timeline-name: --vmap; }
+    .vmap__link {
+      stroke-dasharray: 1 1;
+      animation: draw linear both;
+      animation-timeline: --vmap;
+    }
+    .vmap__link--1 { animation-range: entry 30% cover 40%; }
+    .vmap__link--2 { animation-range: cover 30% cover 50%; }
+    .vmap__link--3 { animation-range: cover 42% cover 58%; }
+    .vmap__joint {
+      animation: joint-in linear both;
+      animation-timeline: --vmap;
+      animation-range: cover 38% cover 44%;
+    }
+  }
+}
+@keyframes joint-in {
+  from { opacity: 0; }
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0 var(--gap);
+}
+.legend__item {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  padding-block: 9px;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 15px;
+  line-height: 1.35;
+}
+.legend__node { font-size: 12px; color: var(--accent); padding-top: 2px; }
+.legend__text { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; }
+.vmv__tech { margin-top: 4px; }
+
+/* Neibr */
+.neibr { margin-top: clamp(44px, 3.9vw, 56px); }
+.neibr__head {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 10px 16px;
-  padding-top: 16px;
+  gap: 6px 16px;
+  padding-top: 14px;
+  border-top: 2px solid var(--fg);
+}
+.neibr__intro { row-gap: 32px; align-items: start; }
+.neibr__story { grid-column: 1 / span 5; display: grid; gap: 12px; }
+.neibr__story .copy { font-size: 16px; }
+.neibr__facts { display: grid; gap: 12px; }
+.neibr__facts dd { margin-top: 4px; }
+.neibr__diagram { grid-column: 7 / span 6; }
+
+.ndiag { margin: 0; }
+.ndiag__caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 16px;
+  padding-top: 14px;
+  margin-bottom: 10px;
   border-top: 1px solid var(--line);
 }
-
-/* VMV */
-.vmv { margin-top: clamp(48px, 7vw, 88px); }
-.vmv__intro { margin-top: 24px; row-gap: 16px; align-items: end; }
-.vmv__intro > :first-child { grid-column: 1 / span 6; }
-.vmv__intro > :last-child { grid-column: 7 / span 6; }
-.vmv__stats { margin-top: clamp(28px, 4vw, 48px); row-gap: 24px; }
-.vmv__stat { grid-column: span 4; display: flex; flex-direction: column; gap: 8px; border-top: 2px solid var(--mark); padding-top: 14px; }
-.vmv__stat dt { order: 2; }
-.vmv__stat dd:last-child { order: 3; }
-.vmv__value { order: 1; font-size: clamp(3rem, 7vw, 5.2rem); }
-.vmv__label { margin-top: clamp(36px, 5vw, 56px); margin-bottom: 16px; }
-.vmv__caps { row-gap: 18px; }
-.vmv__cap { grid-column: span 6; display: flex; flex-direction: column; gap: 6px; padding-top: 12px; border-top: 1px solid var(--line-soft); }
-.vmv__cap-title { font-family: var(--font-display), system-ui, sans-serif; font-weight: 600; font-size: 1.15rem; }
-.vmv__tech { margin-top: clamp(32px, 4vw, 48px); }
-
-/* Neibr */
-.neibr { margin-top: clamp(64px, 9vw, 120px); }
-.neibr__intro { margin-top: 24px; row-gap: 32px; align-items: start; }
-.neibr__story { grid-column: 1 / span 7; display: grid; gap: 14px; }
-.neibr__tags { margin-top: 6px; }
-.neibr__facts { grid-column: 9 / span 4; display: grid; gap: 20px; }
-.neibr__facts dl { display: grid; gap: 20px; }
-.neibr__facts dd { margin-top: 6px; }
-
-.stress { margin-block: clamp(48px, 7vw, 88px); padding-block: clamp(36px, 5vw, 64px); }
-.stress__grid {
-  margin-top: 18px;
-  display: grid;
-  grid-template-columns: 1.4fr repeat(3, 1fr);
-  gap: 28px var(--gap);
+.ndiag__note { font-size: 13px; color: var(--fg-2); }
+.ndiag__svg { display: block; width: 100%; height: auto; overflow: visible; border: 1px solid var(--line-soft); border-radius: 6px; }
+.ndiag__streets { fill: none; stroke: var(--line-soft); stroke-width: 6; }
+.ndiag__pt { fill: var(--fg-2); }
+.ndiag__pt--hit { fill: var(--accent-lg); }
+.ndiag__origin { fill: var(--paper); stroke: var(--accent-lg); stroke-width: 4; }
+.ndiag__box { fill: none; stroke: var(--fg-2); stroke-width: 1.5; stroke-dasharray: 6 6; }
+.ndiag__ring { fill: color-mix(in srgb, var(--accent-lg) 9%, transparent); stroke: var(--accent-lg); stroke-width: 1.5; }
+.ndiag__line { stroke: var(--accent-lg); stroke-width: 2; stroke-linecap: round; }
+.ndiag__label {
+  fill: var(--fg);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 16px;
 }
-.stress__item { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 10px; }
-.stress__value { font-size: clamp(2.6rem, 5.5vw, 4.8rem); }
-.stress__item--main .stress__value { font-size: clamp(3.6rem, 9vw, 7.5rem); }
+.ndiag__label--hit { fill: var(--accent); font-weight: 700; }
+.ndiag__steps {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px var(--gap);
+}
+.ndiag__steps li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.4em minmax(0, 1fr);
+  gap: 6px;
+  padding-top: 8px;
+  font-size: 15px;
+  line-height: 1.4;
+  border-top: 1px solid var(--line-soft);
+}
+.ndiag__num { color: var(--accent); font-weight: 700; }
+.ndiag__bar {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-lg);
+  transform-origin: left;
+}
 
-.neibr__api { display: grid; gap: 12px; max-width: 760px; }
-.xp__gok { margin-top: clamp(64px, 9vw, 120px); max-width: 760px; }
+/* Wine band, full width: the figures, and the request next to them. */
+.stress { margin-block: clamp(36px, 2.8vw, 40px); padding-block: clamp(28px, 2.2vw, 32px); }
+.stress__grid { row-gap: 32px; align-items: start; }
+.stress__figures { grid-column: 1 / span 6; }
+.stress__list {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px var(--gap);
+}
+.stress__item { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 8px; padding-top: 10px; border-top: 1px solid var(--line); }
+.stress__item--main { grid-column: 1 / -1; }
+.stress__label { font-family: var(--font-mono), ui-monospace, monospace; font-size: 12px; letter-spacing: 0.04em; }
+.stress__value { font-size: clamp(2rem, 2.6vw, 2.6rem); white-space: nowrap; }
+.stress__item--main .stress__value { font-size: clamp(4rem, 8vw, 7rem); }
+.stress__stack { margin-top: 20px; font-size: 15px; line-height: 1.5; max-width: 56ch; }
+.stress__terminal { grid-column: 7 / span 6; min-width: 0; }
+.stress__terminal .terminal { border-color: var(--accent-lg); }
 
+/* GOK Thermal */
+.gok { padding-top: 16px; border-top: 2px solid var(--fg); row-gap: 24px; align-items: start; }
+.gok__frame { grid-column: 1 / span 4; }
+.gok__body { grid-column: 6 / span 7; display: grid; gap: 12px; }
+.gok__chip {
+  justify-self: start;
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 1279px) {
+  .vmv__aside { top: 104px; }
+}
+@media (max-width: 1100px) {
+  .vmv__aside { grid-column: 1 / span 5; }
+  .vmv__main { grid-column: 6 / span 7; }
+  .legend { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .neibr__story { grid-column: 1 / -1; max-width: 62ch; }
+  .neibr__diagram { grid-column: 1 / -1; }
+  .stress__figures,
+  .stress__terminal { grid-column: 1 / -1; }
+  .gok__frame { grid-column: 1 / span 6; }
+  .gok__body { grid-column: 7 / span 6; }
+}
 @media (max-width: 860px) {
-  .vmv__intro > :first-child,
-  .vmv__intro > :last-child,
-  .vmv__cap,
-  .neibr__story,
-  .neibr__facts { grid-column: 1 / -1; }
-  .vmv__stat { grid-column: span 2; }
-  .stress__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .stress__item--main { grid-column: 1 / -1; }
+  .vmv__aside { position: static; grid-column: 1 / -1; }
+  .vmv__main,
+  .gok__frame,
+  .gok__body { grid-column: 1 / -1; }
+  .vmap__svg--wide { display: none; }
+  .vmap__svg--tall { display: block; max-width: 420px; margin-inline: auto; }
+  .ndiag__steps { grid-template-columns: minmax(0, 1fr); }
+  .stress__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 520px) {
-  .vmv__stat { grid-column: 1 / -1; }
+  .stress__value { font-size: clamp(2rem, 10vw, 2.6rem); }
 }

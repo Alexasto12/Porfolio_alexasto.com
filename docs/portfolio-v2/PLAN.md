@@ -43,13 +43,13 @@
 
 ## Fase 3. Experiencia (la sala de máquinas)
 
-- [ ] **VMV:** columna fija con las cifras y el mapa de sistema en SVG, con las conexiones dibujándose con el scroll y la leyenda de capacidades. Sustituye a las 8 cajas.
-- [ ] **Neibr:**
+- [x] **VMV:** columna fija con las cifras y el mapa de sistema en SVG, con las conexiones dibujándose con el scroll y la leyenda de capacidades. Sustituye a las 8 cajas.
+- [x] **Neibr:**
   - el diagrama del algoritmo en 4 pasos,
   - la banda vino con las cifras del stress test,
   - la terminal escribiéndose sola al entrar en pantalla,
   - la narrativa con el premio y el cierre.
-- [ ] **GOK Thermal:** tarjeta con `BrowserFrame` y la etiqueta "Encargo freelance".
+- [x] **GOK Thermal:** tarjeta con `BrowserFrame` y la etiqueta "Encargo freelance".
 
 **Hecho cuando:** Experiencia mide como mucho 2.400 px a 1440 de ancho, y ningún tramo de más de 1,5 pantallas queda sin imagen, diagrama o cifra destacada.
 

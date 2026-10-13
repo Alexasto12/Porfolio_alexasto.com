@@ -6,34 +6,29 @@ import { SectionHead } from "../ui/SectionHead";
 import { ApiTerminal } from "../ApiTerminal";
 import { BrowserFrame } from "../BrowserFrame";
 import { LinkRow } from "../LinkRow";
-import { ProjectCard } from "../ProjectCard";
+import { NeibrDiagram } from "../NeibrDiagram";
+import { VmvMap } from "../VmvMap";
 
-/** Experience, "the engine room" (ink): VMV, Neibr (closed) and the GOK Thermal freelance job. */
+/**
+ * Experience, "the engine room" (ink): VMV with its system map, Neibr as a
+ * case study (diagram, wine band with the stress test, terminal) and the
+ * GOK Thermal freelance job.
+ */
 export function Experience({ locale }: { locale: Locale }) {
   const t = translator(locale);
   const d = DATA.experience;
   return (
     <section id="experiencia" className="sec xp" data-surface="ink">
       <div className="shell">
-        <SectionHead num={d.num} label={t(d.label)} heading={t(d.heading)} description={t(d.description)} />
+        <SectionHead num={d.num} label={t(d.label)} heading={t(d.heading)} description={t(d.description)} className="xp__head" />
         <Vmv locale={locale} />
         <NeibrIntro locale={locale} />
       </div>
       <NeibrStress locale={locale} />
       <div className="shell">
-        <NeibrApi locale={locale} />
-        <ProjectCard card={d.gok} locale={locale} level={3} className="xp__gok" />
+        <Gok locale={locale} />
       </div>
     </section>
-  );
-}
-
-function XpHeader({ title, chip }: { title: string; chip: string }) {
-  return (
-    <div className="xp__header">
-      <h3 className="h-block">{title}</h3>
-      <span className="meta">{chip}</span>
-    </div>
   );
 }
 
@@ -41,39 +36,59 @@ function Vmv({ locale }: { locale: Locale }) {
   const t = translator(locale);
   const d = DATA.experience.vmv;
   return (
-    <article className="vmv">
-      <XpHeader title={d.client} chip={`${t(d.role)} · ${d.range}`} />
-      <div className="vmv__intro grid">
-        <p className="lede">{t(d.heading)}</p>
-        <p className="copy muted">{t(d.intro)}</p>
+    <article className="vmv grid" aria-labelledby="vmv-title">
+      {/* Fixed while the map and its legend scroll past. */}
+      <div className="vmv__aside">
+        <h3 id="vmv-title" className="h-block">
+          {d.client}
+        </h3>
+        <p className="vmv__role meta">
+          {t(d.role)} · {d.range}
+        </p>
+        <p className="vmv__lede lede">{t(d.heading)}</p>
+        <p className="vmv__intro copy muted">{t(d.intro)}</p>
+        <dl className="vmv__stats">
+          {d.stats.map((s, i) => (
+            <div key={i} className="vmv__stat">
+              <dt className="vmv__stat-label">
+                <span>{t(s.label)}</span>
+                <span className="muted">{t(s.caption)}</span>
+              </dt>
+              <dd className="vmv__value figure accent-lg">
+                <Counter to={s.value} locale={LOCALE_TAG[locale]} />
+              </dd>
+            </div>
+          ))}
+        </dl>
+        {/* Static on purpose: a band that never stops moving fails WCAG 2.2.2. */}
+        <ul className="vmv__tech tags" aria-label={t(d.techLabel)}>
+          {d.ticker.map((w, i) => (
+            <li key={i}>{t(w)}</li>
+          ))}
+        </ul>
       </div>
-      <dl className="vmv__stats grid">
-        {d.stats.map((s, i) => (
-          <div key={i} className="vmv__stat">
-            <dt className="meta">{t(s.label)}</dt>
-            <dd className="vmv__value figure accent-lg">
-              <Counter to={s.value} locale={LOCALE_TAG[locale]} />
-            </dd>
-            <dd className="data muted">{t(s.caption)}</dd>
-          </div>
-        ))}
-      </dl>
-      <h4 className="vmv__label meta">{t(d.capabilitiesLabel)}</h4>
-      <ul className="vmv__caps grid">
-        {d.capabilities.map((c, i) => (
-          <li key={i} className="vmv__cap">
-            <span className="vmv__cap-title">{t(c.title)}</span>
-            {c.description && <span className="muted">{t(c.description)}</span>}
-            {c.link && <LinkRow links={[c.link]} locale={locale} />}
-          </li>
-        ))}
-      </ul>
-      {/* Static on purpose: a band that never stops moving fails WCAG 2.2.2. */}
-      <ul className="vmv__tech tags" aria-label={t(d.techLabel)}>
-        {d.ticker.map((w, i) => (
-          <li key={i}>{t(w)}</li>
-        ))}
-      </ul>
+      <div className="vmv__main">
+        <VmvMap locale={locale} legendId="vmv-legend" />
+        <h4 className="vmv__label meta">{t(d.capabilitiesLabel)}</h4>
+        <dl id="vmv-legend" className="legend">
+          {d.capabilities.map((c, i) => (
+            <div key={i} className="legend__item">
+              <dt className="legend__node data">{c.node ? t(d.mapNodes[c.node]) : ""}</dt>
+              <dd className="legend__text">
+                <span>{t(c.title)}</span>
+                {c.link && (
+                  <a href={t(c.link.href)} target="_blank" rel="noreferrer" className="link-data legend__link">
+                    <span>{t(c.link.label)}</span>
+                    <span className="link-data__arrow" aria-hidden>
+                      ↗
+                    </span>
+                  </a>
+                )}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
     </article>
   );
 }
@@ -83,22 +98,18 @@ function NeibrIntro({ locale }: { locale: Locale }) {
   const d = DATA.experience.neibr;
   return (
     <article id="neibr" className="neibr" aria-labelledby="neibr-title">
-      <div className="xp__header">
-        <h3 id="neibr-title" className="h-block">
-          {d.title}
-        </h3>
-        <span className="meta">{t(d.sub)}</span>
-      </div>
       <div className="neibr__intro grid">
         <div className="neibr__story">
+          <div className="neibr__head">
+            <h3 id="neibr-title" className="h-block">
+              {d.title}
+            </h3>
+            <span className="meta">{t(d.sub)}</span>
+          </div>
           <p className="lede">{t(d.tagline)}</p>
           <p className="copy">{t(d.what)}</p>
           <p className="copy muted">{t(d.role)}</p>
-          <p className="copy muted">{t(d.tech)}</p>
-          <Tags items={d.tags} className="neibr__tags" />
-        </div>
-        <div className="neibr__facts">
-          <dl>
+          <dl className="neibr__facts">
             <div>
               <dt className="meta">{t(d.awardLabel)}</dt>
               <dd className="copy">{t(d.award)}</dd>
@@ -109,47 +120,74 @@ function NeibrIntro({ locale }: { locale: Locale }) {
             </div>
           </dl>
           <LinkRow links={d.links} locale={locale} />
-          <BrowserFrame id="neibr" alt={t(d.shotAlt)} sizes="(max-width: 860px) 100vw, 520px" />
+        </div>
+        <div className="neibr__diagram">
+          <NeibrDiagram title={t(d.diagram.title)} note={t(d.diagram.note)} steps={d.diagram.steps.map((s) => t(s))} />
         </div>
       </div>
     </article>
   );
 }
 
-/** Full-width wine band with the stress test figures. */
+/**
+ * Full-width wine band: the stress test figures and, next to them, the
+ * request that the API answered at that rate.
+ */
 function NeibrStress({ locale }: { locale: Locale }) {
   const t = translator(locale);
   const d = DATA.experience.neibr;
+  const tag = LOCALE_TAG[locale];
   return (
     <div className="stress" data-surface="wine">
-      <div className="shell">
-        <p className="meta">{t(d.stressLabel)}</p>
-        <dl className="stress__grid">
-          <div className="stress__item stress__item--main">
-            <dt className="data">{t(d.stress.requestsLabel)}</dt>
-            <dd className="stress__value figure">
-              <Counter to={d.stress.requests} decimals={1} locale={LOCALE_TAG[locale]} />
-            </dd>
-          </div>
-          {d.stress.facts.map((f, i) => (
-            <div key={i} className="stress__item">
-              <dt className="data">{t(f.label)}</dt>
-              <dd className="stress__value figure">{f.value}</dd>
+      <div className="shell stress__grid grid">
+        <section className="stress__figures" aria-labelledby="stress-title">
+          <h4 id="stress-title" className="meta">
+            Neibr · {t(d.stressLabel)}
+          </h4>
+          <dl className="stress__list">
+            <div className="stress__item stress__item--main">
+              <dt className="stress__label">{t(d.stress.requestsLabel)}</dt>
+              <dd className="stress__value figure">
+                <Counter to={d.stress.requests} decimals={1} locale={tag} />
+              </dd>
             </div>
-          ))}
-        </dl>
+            {d.stress.facts.map((f, i) => (
+              <div key={i} className="stress__item">
+                <dt className="stress__label">{t(f.label)}</dt>
+                <dd className="stress__value figure">
+                  <Counter to={f.value} prefix={f.prefix} suffix={f.suffix} locale={tag} />
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <p className="stress__stack">
+            {t(d.stack)} {t(d.security)}
+          </p>
+        </section>
+        <div className="stress__terminal">
+          <ApiTerminal title={t(d.endpointTitle)} label={t(d.terminalLabel)} />
+        </div>
       </div>
     </div>
   );
 }
 
-function NeibrApi({ locale }: { locale: Locale }) {
+/** GOK Thermal: a freelance job of my own, on the same ink surface. */
+function Gok({ locale }: { locale: Locale }) {
   const t = translator(locale);
-  const d = DATA.experience.neibr;
+  const g = DATA.experience.gok;
   return (
-    <div className="neibr__api">
-      <p className="meta">{t(d.endpointTitle)}</p>
-      <ApiTerminal label={t(d.terminalLabel)} />
-    </div>
+    <article id={g.id} className="gok grid" aria-labelledby="gok-title">
+      <BrowserFrame id={g.id} alt={t(g.shot!.alt)} sizes="(max-width: 860px) 100vw, 400px" className="gok__frame" />
+      <div className="gok__body">
+        <p className="gok__chip">{t(g.sub!)}</p>
+        <h3 id="gok-title" className="h-block">
+          {g.name}
+        </h3>
+        <p className="copy muted">{t(g.description)}</p>
+        <Tags items={g.tags} />
+        <LinkRow links={g.links} locale={locale} />
+      </div>
+    </article>
   );
 }

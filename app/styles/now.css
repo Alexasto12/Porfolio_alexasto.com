@@ -55,10 +55,6 @@
     }
   }
 }
-@keyframes draw {
-  from { stroke-dashoffset: 1; }
-  to { stroke-dashoffset: 0; }
-}
 @keyframes fit-in {
   from { transform: translateX(10px); }
 }

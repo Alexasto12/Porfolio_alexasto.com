@@ -32,12 +32,12 @@ Tres superficies (`docs/portfolio-v2/DISENO.md`). Cada sección declara `data-su
 - **Tinta** `#14130E` (Experiencia, Principios y footer):
   - Texto `#F4EFE2`.
   - Secundario `#B6B2A2`.
-  - Acento de texto `#D64B6E` (4,5:1, justo: solo sobre tinta lisa).
+  - Acento de texto `#DE5A7A` (5,2:1; 4,6:1 sobre una línea de la retícula). Antes era `#D64B6E`, que daba 4,5:1 justo y bajaba de ahí sobre las líneas.
   - `#C12C52` solo en rellenos, bordes o texto de 24 px o más.
 - **Vino** `#C12C52` (banda del stress test y Contacto):
   - Texto `#F4EFE2` (4,9:1) en cualquier tamaño.
   - `#14130E` (3,3:1) y `#F4EFE2` al 85 % solo en texto grande.
-- El grano del papel (≤ 4 %) y las líneas de la retícula (6 % en papel, 5 % en tinta) no bajan ninguno de estos textos de su mínimo.
+- La retícula va al 2,5 % en papel, al 5 % en tinta y al 5 % en vino, y el grano del papel como mucho al 1,5 %. Con esos valores, ningún texto de esta lista baja de su mínimo aunque caiga sobre una línea y sobre el grano a la vez. Si se suben, hay que volver a medir.
 
 ## Comandos
 

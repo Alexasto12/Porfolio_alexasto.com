@@ -14,7 +14,9 @@ export function RootDocument({ locale, children }: { locale: Locale; children: R
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(locale)) }}
         />
         {/* Ink layer behind the page; it fades in while Experiencia is on screen. */}
-        <div className="surface-fade" aria-hidden />
+        <div className="surface-fade" aria-hidden>
+          <div className="surface-fade__ink" />
+        </div>
         {children}
       </body>
     </html>

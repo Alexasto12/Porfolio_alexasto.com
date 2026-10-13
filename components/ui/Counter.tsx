@@ -4,6 +4,9 @@ import { useEffect, useRef, useState } from "react";
 
 type CounterProps = {
   to: number;
+  /** Text around the number, e.g. "~" or " ms". */
+  prefix?: string;
+  suffix?: string;
   /** BCP 47 tag used to format the number (grouping and decimal separator). */
   locale?: string;
   decimals?: number;
@@ -15,7 +18,7 @@ type CounterProps = {
  * value; the animation only runs in the browser and is skipped entirely with
  * prefers-reduced-motion.
  */
-export function Counter({ to, locale = "es-ES", decimals = 0, duration = 1700 }: CounterProps) {
+export function Counter({ to, prefix = "", suffix = "", locale = "es-ES", decimals = 0, duration = 1700 }: CounterProps) {
   const [val, setVal] = useState(to);
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
@@ -23,7 +26,7 @@ export function Counter({ to, locale = "es-ES", decimals = 0, duration = 1700 }:
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (to === 0 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const step = Math.pow(10, decimals);
     const run = () => {
       if (started.current) return;
@@ -72,7 +75,9 @@ export function Counter({ to, locale = "es-ES", decimals = 0, duration = 1700 }:
   });
   return (
     <span ref={ref} className="tabular">
+      {prefix}
       {display}
+      {suffix}
     </span>
   );
 }
