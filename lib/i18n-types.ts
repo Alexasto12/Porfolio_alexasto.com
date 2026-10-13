@@ -1,6 +1,6 @@
 export type Locale = "es" | "en" | "ca";
 
-export const LOCALES: Locale[] = ["es", "en", "ca"];
+export const LOCALES: Locale[] = ["es", "ca", "en"];
 
 export const LOCALE_LABEL: Record<Locale, string> = {
   es: "ES",

@@ -1,0 +1,171 @@
+{
+  "generatedAt": "2026-10-13T11:49:20.638Z",
+  "axe": [
+    {
+      "locale": "es",
+      "width": 375,
+      "violations": [
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodes": 2,
+          "targets": [
+            ".telemetry__avail",
+            ".lang-switch"
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "es",
+      "width": 1440,
+      "violations": [
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodes": 5,
+          "targets": [
+            ".telemetry__sysid",
+            ".telemetry__role",
+            ".telemetry__clock",
+            ".telemetry__avail"
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "ca",
+      "width": 375,
+      "violations": [
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodes": 2,
+          "targets": [
+            ".telemetry__avail",
+            ".lang-switch"
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "ca",
+      "width": 1440,
+      "violations": [
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodes": 5,
+          "targets": [
+            ".telemetry__sysid",
+            ".telemetry__role",
+            ".telemetry__clock",
+            ".telemetry__avail"
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 375,
+      "violations": [
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodes": 2,
+          "targets": [
+            ".telemetry__avail",
+            ".lang-switch"
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "violations": [
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodes": 5,
+          "targets": [
+            ".telemetry__sysid",
+            ".telemetry__role",
+            ".telemetry__clock",
+            ".telemetry__avail"
+          ]
+        }
+      ]
+    }
+  ],
+  "overflow": [
+    {
+      "locale": "es",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "locale": "es",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "locale": "ca",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "locale": "ca",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "locale": "en",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "locale": "en",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    }
+  ],
+  "smallText": [
+    {
+      "locale": "es",
+      "items": []
+    },
+    {
+      "locale": "ca",
+      "items": []
+    },
+    {
+      "locale": "en",
+      "items": []
+    }
+  ]
+}

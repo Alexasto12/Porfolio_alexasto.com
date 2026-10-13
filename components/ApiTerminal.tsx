@@ -21,7 +21,7 @@ const LINES: Seg[][] = [
   [["tok-punc", "}"], ["caret", ""]],
 ];
 
-export function ApiTerminal() {
+export function ApiTerminal({ label }: { label: string }) {
   return (
     <div className="terminal">
       <div className="terminal__bar">
@@ -33,7 +33,8 @@ export function ApiTerminal() {
         <span className="terminal__title">api.neibr.es — shipments.http</span>
         <span className="terminal__method">POST 201</span>
       </div>
-      <div className="terminal__body">
+      {/* Focusable so the horizontal scroll works from the keyboard. */}
+      <div className="terminal__body" tabIndex={0} role="region" aria-label={label}>
         {LINES.map((segs, i) => (
           <span key={i} className="ln">
             {segs.map((seg, j) =>

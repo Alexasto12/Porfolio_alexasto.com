@@ -39,7 +39,7 @@ export function ServicesSection() {
                 gap: "10px",
               }}
             >
-              <span style={{ color: "var(--tw-accent)", fontFamily: "var(--font-mono)", fontSize: "11px" }}>
+              <span style={{ color: "var(--accent-text)", fontFamily: "var(--font-mono)", fontSize: "11px" }}>
                 {String(i + 1).padStart(2, "0")}
               </span>
               {t(g.group)}
@@ -58,7 +58,7 @@ export function ServicesSection() {
                 >
                   <span
                     style={{
-                      color: "var(--tw-accent)",
+                      color: "var(--accent-text)",
                       fontFamily: "var(--font-mono)",
                       fontSize: "12px",
                       marginTop: "1px",

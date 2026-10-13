@@ -45,7 +45,7 @@ export function ProjectCard({ p, index, layout, flip }: ProjectCardProps) {
   const titleBlock = (
     <div>
       <div style={{ display: "flex", alignItems: "baseline", gap: "12px", flexWrap: "wrap" }}>
-        <span className="font-mono" style={{ fontSize: "11px", color: "var(--tw-accent)" }}>
+        <span className="font-mono" style={{ fontSize: "11px", color: "var(--accent-text)" }}>
           {String(index + 1).padStart(2, "0")}
         </span>
         <h3

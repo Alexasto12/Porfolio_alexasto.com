@@ -78,6 +78,7 @@ export function Contact() {
               style={{
                 display: "inline-block",
                 marginTop: "22px",
+                lineHeight: "24px",
                 fontSize: "13px",
                 color: "var(--muted)",
                 letterSpacing: "0.04em",
@@ -111,7 +112,7 @@ export function Contact() {
                     }}
                   >
                     <span>{ln.label}</span>
-                    <span style={{ color: "var(--tw-accent)" }}>↗</span>
+                    <span style={{ color: "var(--accent-text)" }}>↗</span>
                   </a>
                 </li>
               ))}

@@ -22,7 +22,7 @@ export function Shot({ label, dim, ratio = "16 / 10", minH }: ShotProps) {
         <circle cx={12} cy={12} r={5} stroke="currentColor" strokeWidth={1} />
       </svg>
       <figcaption className="shot__cap">
-        <span style={{ color: "var(--tw-accent)" }}>▦</span>
+        <span style={{ color: "var(--accent-text)" }}>▦</span>
         <b>{t(label)}</b>
         <span className="shot__dim">{dim}</span>
       </figcaption>

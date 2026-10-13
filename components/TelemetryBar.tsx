@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useI18n } from "@/lib/i18n";
-import { LOCALES, type Locale } from "@/lib/i18n-types";
+import { LOCALES, LOCALE_FULL, type Locale } from "@/lib/i18n-types";
 import { DATA } from "@/lib/content";
 
 export function TelemetryBar() {
@@ -24,38 +24,47 @@ export function TelemetryBar() {
   }, []);
 
   return (
-    <div className="telemetry">
-      <div className="telemetry__inner">
-        <span className="telemetry__sysid">{d.systemId}</span>
-        <span className="telemetry__sep">{"//"}</span>
-        <span className="telemetry__role">
-          {t(d.role)} · {d.loc}
-        </span>
-        <span className="telemetry__spacer" />
-        <span className="telemetry__avail" title="CET">
-          <span className="font-mono" style={{ color: "var(--muted-soft)" }}>
-            {clock}
-          </span>{" "}
-          CET
-        </span>
-        <span className="telemetry__sep">·</span>
-        <span className="telemetry__avail">
-          <span className="dot dot--accent dot-pulse" />
-          {t(d.availability)}
-        </span>
-        <span className="lang-switch" style={{ marginLeft: "6px" }}>
-          {LOCALES.map((lc: Locale) => (
-            <button
-              key={lc}
-              data-on={locale === lc}
-              onClick={() => setLocale(lc)}
-              style={locale === lc ? { background: "var(--tw-accent)", color: "#fff" } : undefined}
-            >
-              {lc.toUpperCase()}
-            </button>
-          ))}
-        </span>
+    <>
+      <a className="skip-link" href="#contenido">
+        {t(d.skipLink)}
+      </a>
+      <div className="telemetry">
+        <div className="telemetry__inner">
+          <span className="telemetry__sysid">{d.systemId}</span>
+          <span className="telemetry__sep" aria-hidden>
+            {"//"}
+          </span>
+          <span className="telemetry__role">
+            {t(d.role)} · {d.loc}
+          </span>
+          <span className="telemetry__spacer" />
+          <span className="telemetry__clock" title="CET">
+            <span className="font-mono">{clock}</span> CET
+          </span>
+          <span className="telemetry__sep" aria-hidden>
+            ·
+          </span>
+          <span className="telemetry__avail">
+            <span className="dot dot--accent dot-pulse" aria-hidden />
+            {t(d.availability)}
+          </span>
+          <span className="lang-switch" role="group" aria-label={t(d.langLabel)}>
+            {LOCALES.map((lc: Locale) => (
+              <button
+                key={lc}
+                type="button"
+                lang={lc}
+                aria-label={LOCALE_FULL[lc]}
+                aria-pressed={locale === lc}
+                data-on={locale === lc}
+                onClick={() => setLocale(lc)}
+              >
+                {lc.toUpperCase()}
+              </button>
+            ))}
+          </span>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

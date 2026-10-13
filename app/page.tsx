@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <TelemetryBar />
-      <main style={{ position: "relative", zIndex: 2 }}>
+      <main id="contenido" tabIndex={-1} style={{ position: "relative", zIndex: 2 }}>
         <Hero />
         <NeibrFeature />
         <ApproachSection />

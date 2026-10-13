@@ -133,7 +133,7 @@ export function VmvBlock() {
                   {t(c.title)}
                 </h3>
                 {c.badge && (
-                  <span className="chip chip--accent" style={{ fontSize: "9px" }}>
+                  <span className="chip chip--accent">
                     {t(c.badge)}
                   </span>
                 )}

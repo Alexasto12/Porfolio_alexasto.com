@@ -18,17 +18,17 @@
 
 ## Fase 1. Arreglos que se notan
 
-- [ ] **Errata del contacto:** "un sistema que pide más latencia" pasa a "menos latencia", también en catalán e inglés.
-- [ ] **Móvil:**
+- [x] **Errata del contacto:** "un sistema que pide más latencia" pasa a "menos latencia", también en catalán e inglés.
+- [x] **Móvil:**
   - El selector de idioma y "Disponible para proyectos" se ven y se pueden usar a 320 y 375 px.
   - La barra superior no se parte en varias líneas.
   - La tarjeta de código de Neibr no desborda: el scroll horizontal queda dentro de la tarjeta.
-- [ ] **Foco y navegación por teclado:** foco visible con `:focus-visible` en enlaces y botones, y un skip link al contenido.
-- [ ] **Selector de idioma:** botones con `aria-pressed` y nombre accesible ("Español", "Català", "English").
-- [ ] **Áreas táctiles** de al menos 24×24 px en los botones de idioma y en los enlaces de las tarjetas.
-- [ ] **Contraste:** aplica la paleta de `CLAUDE.md` y sube a 11 px cualquier texto más pequeño.
-- [ ] **Contadores:** el HTML del servidor ya trae el valor final (dominios, plugins, microservicios y cifra del stress test). La animación ocurre solo en el cliente y respeta `prefers-reduced-motion`.
-- [ ] **"Hover en el nombre para reanimar":** quítalo, o muéstralo solo con `@media (hover: hover)`.
+- [x] **Foco y navegación por teclado:** foco visible con `:focus-visible` en enlaces y botones, y un skip link al contenido.
+- [x] **Selector de idioma:** botones con `aria-pressed` y nombre accesible ("Español", "Català", "English").
+- [x] **Áreas táctiles** de al menos 24×24 px en los botones de idioma y en los enlaces de las tarjetas.
+- [x] **Contraste:** aplica la paleta de `CLAUDE.md` y sube a 11 px cualquier texto más pequeño.
+- [x] **Contadores:** el HTML del servidor ya trae el valor final (dominios, plugins, microservicios y cifra del stress test). La animación ocurre solo en el cliente y respeta `prefers-reduced-motion`.
+- [x] **"Hover en el nombre para reanimar":** quítalo, o muéstralo solo con `@media (hover: hover)`.
 
 **Hecho cuando:**
 - axe no da errores serios ni críticos en las tres versiones de idioma, a 375 y 1440 px.

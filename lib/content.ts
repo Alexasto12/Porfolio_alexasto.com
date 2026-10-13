@@ -51,6 +51,8 @@ export const DATA = {
     role: l("Systems Architect", "Systems Architect", "Arquitecte de sistemes"),
     loc: "Granollers / BCN",
     availability: l("Disponible para proyectos", "Open to new projects", "Disponible per a projectes"),
+    skipLink: l("Saltar al contenido", "Skip to content", "Vés al contingut"),
+    langLabel: l("Idioma", "Language", "Idioma"),
   },
 
   hero: {
@@ -111,6 +113,7 @@ export const DATA = {
     tags: ["GO · FIBER", "API-FIRST", "MULTI-TENANT", "B2B + APP", "ES · CA · EN"],
     endpointLabel: l("POST · /api/v1/b2b/shipments", "POST · /api/v1/b2b/shipments", "POST · /api/v1/b2b/shipments"),
     endpointTitle: l("Crear envío y asignar vecino", "Create shipment and assign neighbour", "Crear enviament i assignar veí"),
+    terminalLabel: l("Ejemplo de petición y respuesta de la API", "API request and response example", "Exemple de petició i resposta de l'API"),
     outputLabel: l("STRESS TEST · OUTPUT", "STRESS TEST · OUTPUT", "STRESS TEST · OUTPUT"),
     stat: {
       value: 3000000,
@@ -428,9 +431,9 @@ export const DATA = {
     heading: l("Construyamos algo", "Let's build something", "Construïm alguna cosa"),
     headingAccent: l("robusto.", "robust.", "robust."),
     body: l(
-      "Si tienes un sistema que pide más latencia, más claridad o simplemente menos sustos en producción — escribe. Respondo en menos de 48h.",
-      "If you've got a system asking for lower latency, more clarity or just fewer surprises in production — drop a line. I reply within 48h.",
-      "Si tens un sistema que demana menys latència, més claredat o simplement menys ensurts en producció — escriu. Responc en menys de 48h."
+      "Si tienes un sistema que pide menos latencia, más claridad o simplemente menos sustos en producción, escribe. Respondo en menos de 48h.",
+      "If you've got a system asking for lower latency, more clarity or just fewer surprises in production, drop a line. I reply within 48h.",
+      "Si tens un sistema que demana menys latència, més claredat o simplement menys ensurts en producció, escriu. Responc en menys de 48h."
     ),
     cta: { label: l("ENVIAR MENSAJE", "SEND A MESSAGE", "ENVIAR MISSATGE"), href: "mailto:contact@alexasto.com" },
     email: "contact@alexasto.com",

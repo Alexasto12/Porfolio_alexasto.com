@@ -47,7 +47,7 @@ export function NeibrFeature() {
             className="col-1 font-display"
             style={{
               fontWeight: 500,
-              color: "var(--tw-accent)",
+              color: "var(--accent-text)",
               fontSize: "clamp(1.1rem,2vw,1.5rem)",
               textAlign: "right",
               lineHeight: 1.1,
@@ -76,7 +76,7 @@ export function NeibrFeature() {
             </div>
           </Reveal>
           <Reveal delay="1" className="col-3">
-            <ApiTerminal />
+            <ApiTerminal label={t(d.terminalLabel)} />
           </Reveal>
         </div>
 
@@ -117,7 +117,7 @@ export function NeibrFeature() {
             >
               {d.concepts.map((c, i) => (
                 <li key={`${i}-${locale}`} style={{ display: "flex", gap: "10px" }}>
-                  <span style={{ color: "var(--tw-accent)" }}>→</span>
+                  <span style={{ color: "var(--accent-text)" }}>→</span>
                   <span>{t(c)}</span>
                 </li>
               ))}
@@ -154,10 +154,10 @@ export function NeibrFeature() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "7px",
-                  fontSize: "10px",
+                  fontSize: "11px",
                   fontWeight: 700,
                   letterSpacing: "0.16em",
-                  color: "var(--tw-accent)",
+                  color: "var(--accent-text)",
                 }}
               >
                 <span className="dot dot--accent dot-pulse" />

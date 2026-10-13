@@ -88,7 +88,7 @@ export function TimelineSection() {
                     <span
                       className="font-mono"
                       style={{
-                        fontSize: "10px",
+                        fontSize: "11px",
                         color: "var(--muted-soft)",
                         textTransform: "uppercase",
                         letterSpacing: "0.1em",
@@ -114,7 +114,7 @@ export function TimelineSection() {
                     <span
                       className="font-mono"
                       style={{
-                        fontSize: "10px",
+                        fontSize: "11px",
                         color: "var(--muted-soft)",
                         textTransform: "uppercase",
                         letterSpacing: "0.1em",
@@ -173,7 +173,7 @@ export function TimelineSection() {
                     <span
                       className="font-mono"
                       style={{
-                        fontSize: "10px",
+                        fontSize: "11px",
                         color: "var(--muted-soft)",
                         textTransform: "uppercase",
                         letterSpacing: "0.1em",
@@ -182,7 +182,7 @@ export function TimelineSection() {
                       {t(e.age)}
                     </span>
                   )}
-                  <span className="font-mono" style={{ fontSize: "10px", color: "var(--muted-faint)" }}>
+                  <span className="font-mono" style={{ fontSize: "11px", color: "var(--muted-faint)" }}>
                     · {t(e.place)}
                   </span>
                 </div>

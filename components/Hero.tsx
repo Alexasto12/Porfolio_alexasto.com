@@ -25,7 +25,7 @@ export function Hero() {
         }}
       >
         <span className="section__label">{t(d.label)}</span>
-        <span className="mono-label" style={{ fontSize: "9.5px" }}>
+        <span className="mono-label hover-only" aria-hidden>
           {t(d.hint)}
         </span>
       </Reveal>
@@ -115,7 +115,7 @@ export function Hero() {
             >
               {d.stack.map((s) => (
                 <li key={s.label} style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-                  <span style={{ color: "var(--tw-accent)" }}>/</span>
+                  <span style={{ color: "var(--accent-text)" }}>/</span>
                   <span style={{ color: s.w === "s" ? "var(--muted)" : "var(--ink)" }}>
                     {s.label}
                   </span>
@@ -134,13 +134,13 @@ export function Hero() {
                   <span
                     key={`${r.label.es}-${locale}`}
                     className="font-mono"
-                    style={{ fontSize: "10.5px", textTransform: "uppercase", letterSpacing: "0.1em" }}
+                    style={{ fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.1em" }}
                   >
                     {t(r.label)}
                   </span>
                   <span
                     className="font-mono tabular"
-                    style={{ marginLeft: "auto", color: "var(--tw-accent)", fontSize: "12px" }}
+                    style={{ marginLeft: "auto", color: "var(--accent-text)", fontSize: "12px" }}
                   >
                     {r.value}
                   </span>

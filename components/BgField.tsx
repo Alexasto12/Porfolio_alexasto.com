@@ -2,7 +2,7 @@
 
 import { useTweaks } from "@/lib/tweaks";
 
-/** Fixed background: radial glow, optional column grid and grain noise. */
+/** Fixed background: radial glow and optional column grid. */
 export function BgField() {
   const { tweaks } = useTweaks();
   return (
@@ -16,7 +16,6 @@ export function BgField() {
           <span />
         </div>
       )}
-      <div className="bg-noise" />
     </div>
   );
 }

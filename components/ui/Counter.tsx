@@ -8,20 +8,20 @@ type CounterProps = {
   format?: boolean;
 };
 
-/** Animated counter that runs on scroll-in, with an offscreen fallback. */
+/**
+ * Count-up number. The server HTML (and anyone without JS) gets the final
+ * value; the animation only runs in the browser and is skipped entirely with
+ * prefers-reduced-motion.
+ */
 export function Counter({ to, duration = 1700, format = true }: CounterProps) {
-  const [val, setVal] = useState(0);
+  const [val, setVal] = useState(to);
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      setVal(to);
-      return;
-    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const run = () => {
       if (started.current) return;
       started.current = true;
