@@ -11,7 +11,8 @@
     "check": "npm run lint && npm run typecheck && npm run build",
     "shots": "node scripts/shots.mjs",
     "a11y": "node scripts/a11y.mjs",
-    "lh": "node scripts/lh.mjs"
+    "lh": "node scripts/lh.mjs",
+    "capture": "node scripts/capture.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -37,6 +38,7 @@
     "eslint-config-next": "^15.1.0",
     "lighthouse": "^12.8.2",
     "postcss": "^8.4.49",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.2"
   }

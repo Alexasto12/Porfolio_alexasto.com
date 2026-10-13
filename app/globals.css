@@ -301,55 +301,14 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 }
 .tag:hover { border-color: var(--tw-accent); color: var(--ink); }
 
-/* ───────── Stripe placeholder (for project shots) ───────── */
-.shot {
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid var(--line-strong);
-  background:
-    repeating-linear-gradient(
-      135deg,
-      rgba(244,239,226,0.035) 0 2px,
-      transparent 2px 11px
-    ),
-    linear-gradient(160deg, #1a1912, #121109);
-  display: flex;
-  align-items: flex-end;
-  transition: border-color 0.4s;
-}
-.shot:hover { border-color: color-mix(in srgb, var(--tw-accent) 45%, var(--line-strong)); }
-.shot::before {
-  content: "";
-  position: absolute; inset: 0;
-  background: radial-gradient(120% 80% at 80% 0%, rgba(193,44,82,0.10), transparent 55%);
-  pointer-events: none;
-}
-.shot__crosshair {
-  position: absolute; top: 12px; right: 12px;
-  width: 18px; height: 18px;
-  opacity: 0.5;
-}
-.shot__cap {
-  position: relative;
-  z-index: 1;
-  padding: 14px 16px;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+/* ───────── Project screenshots ───────── */
+.shot-img {
+  display: block;
   width: 100%;
-  border-top: 1px solid var(--line);
-  background: color-mix(in srgb, #000 30%, transparent);
-}
-.shot__cap b { color: var(--ink); font-weight: 500; }
-.shot__dim {
-  margin-left: auto;
-  color: var(--muted-soft);
-  font-size: 11px;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--line-strong);
+  background: var(--panel);
 }
 
 /* ───────── Terminal / API snippet ───────── */

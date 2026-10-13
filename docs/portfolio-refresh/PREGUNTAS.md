@@ -35,3 +35,11 @@ Lo que no cubría `DECISIONES.md`, qué se decidió y por qué. Lo marcado **Pen
 - **Contacto.** Se quita "Respondo en menos de 48h": los encargos ahora van a DesAny y no tengo ese compromiso del estudio. En catalán, "Construïm alguna cosa robusta" (antes "robust", que no concordaba).
 - **Hero.** Se quitan los dos párrafos antiguos ("microservicios de alto rendimiento", "elegancia estructural") porque los sustituye la línea de `DECISIONES.md`. El panel de stack queda como "Con lo que trabajo", sin la autoevaluación.
 - **Panel oculto de ajustes.** Las variantes de tarjetas (stack, split, list) y de recorrido (rail, compact) siguen funcionando, ahora solo con CSS a partir de `html[data-cards]` y `html[data-timeline]`, para que las secciones puedan renderizarse en el servidor en la Fase 4.
+
+## Fase 3
+
+- **Pendiente: no hay ninguna captura real.** El script existe y funciona (`npm run capture`, probado contra un servidor local: 1440×900 a WebP de 43 KB), pero desde esta sesión las siete webs fallan con `ERR_TUNNEL_CONNECTION_FAILED` porque la red solo permite GitHub, npm y Google Fonts: larasoak.art, gokthermal.com, rosesstjordi.com, neibr.es, peer2stream.alexasto.com/discover, alexasto12.github.io/ProjectePokeAPI y la ficha de Paula Krebel en digitaldesany.com (de donde sale la URL de su web). Como dice el plan, esas tarjetas van sin marco.
+  - Para añadirlas: en una máquina con red, `npm run capture` (o `-- --only larasoak,roses`), revisa las imágenes de `public/shots/` y haz commit de `public/shots/*.webp` y `lib/shots.json`. Las tarjetas muestran la imagen en cuanto el manifiesto la tiene, con `next/image`, `alt` en los tres idiomas, carga diferida y `sizes`.
+  - Otra opción: añadir esos dominios a "Allowed domains" en la configuración de red del entorno de Claude Code y volver a lanzar la fase.
+- **Paula Krebel:** el script busca en su ficha el primer enlace externo que no sea de redes ni de DesAny. Si la ficha no enlaza su web, la tarjeta sigue sin captura.
+- **neibr.es** tiene hueco para su captura dentro del bloque de Neibr, debajo del enlace.

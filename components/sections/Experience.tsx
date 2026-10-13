@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { DATA } from "@/lib/content";
+import { CARD_IMAGE_SIZES, SHOTS } from "@/lib/shots";
 import { LOCALE_TAG, translator, type Locale } from "@/lib/i18n-types";
 import { Reveal } from "../ui/Reveal";
 import { Counter } from "../ui/Counter";
@@ -179,6 +181,17 @@ function Neibr({ locale }: { locale: Locale }) {
             </div>
           </dl>
           <LinkRow links={d.links} locale={locale} />
+          {SHOTS.neibr && (
+            <Image
+              className="shot-img"
+              style={{ marginTop: "22px" }}
+              src={SHOTS.neibr.src}
+              width={SHOTS.neibr.width}
+              height={SHOTS.neibr.height}
+              alt={t(d.shotAlt)}
+              sizes={CARD_IMAGE_SIZES}
+            />
+          )}
         </Reveal>
 
         <Reveal delay="1" className="col-2" style={{ display: "flex", flexDirection: "column", gap: "clamp(18px,2.4vw,28px)" }}>

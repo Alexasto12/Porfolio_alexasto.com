@@ -8,9 +8,8 @@ import type { Localized, Translatable } from "./i18n-types";
 
 export type Link = { label: Translatable; href: Translatable };
 
+/** A card that can show a screenshot of its site (see lib/shots.ts). */
 export interface Shot {
-  /** Path under /public, once captured (Phase 3). */
-  src?: string;
   alt: Localized;
 }
 
@@ -404,6 +403,11 @@ export const DATA = {
       } as Localized,
       tags: ["GO · FIBER", "POSTGRESQL", "REDIS", "HMAC"],
       links: [{ label: "neibr.es ↗", href: "https://neibr.es" }] as Link[],
+      shotAlt: {
+        es: "Portada de neibr.es, la web de Neibr",
+        ca: "Portada de neibr.es, la web de Neibr",
+        en: "Home page of neibr.es, the Neibr website",
+      } as Localized,
       terminalLabel: {
         es: "Ejemplo de petición y respuesta de la API",
         ca: "Exemple de petició i resposta de l'API",

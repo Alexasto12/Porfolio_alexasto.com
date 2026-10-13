@@ -1,7 +1,8 @@
+import Image from "next/image";
 import type { Card } from "@/lib/content";
 import { translator, type Locale } from "@/lib/i18n-types";
+import { CARD_IMAGE_SIZES, SHOTS } from "@/lib/shots";
 import { Reveal } from "./ui/Reveal";
-import { Shot } from "./ui/Shot";
 import { Tags } from "./ui/Tags";
 import { LinkRow } from "./LinkRow";
 
@@ -13,8 +14,6 @@ type ProjectCardProps = {
   level?: 3 | 4;
 };
 
-const SHOT_LABEL = { es: "captura", ca: "captura", en: "screenshot" } as const;
-
 /**
  * Project card. The layout (stack, split or list) comes from CSS through
  * `html[data-cards]`, which the hidden tweaks panel sets.
@@ -22,11 +21,20 @@ const SHOT_LABEL = { es: "captura", ca: "captura", en: "screenshot" } as const;
 export function ProjectCard({ card, index, locale, level = 3 }: ProjectCardProps) {
   const t = translator(locale);
   const Heading = level === 3 ? "h3" : "h4";
+  // Only real screenshots get a frame; a site that could not be captured has none.
+  const file = card.shot ? SHOTS[card.id] : undefined;
   return (
     <Reveal as="article" delay={String((index % 2) + 1)} className="card panel card-tilt">
-      {card.shot && (
+      {card.shot && file && (
         <div className="card__media">
-          <Shot label={`${card.name} · ${SHOT_LABEL[locale]}`} />
+          <Image
+            className="shot-img"
+            src={file.src}
+            width={file.width}
+            height={file.height}
+            alt={t(card.shot.alt)}
+            sizes={CARD_IMAGE_SIZES}
+          />
         </div>
       )}
       <div className="card__body">

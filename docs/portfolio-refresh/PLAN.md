@@ -69,9 +69,9 @@ Usa solo los hechos de `DECISIONES.md` y escribe cada cambio en los tres idiomas
 
 ## Fase 3. Capturas reales
 
-- [ ] **Script de capturas:** un script de Playwright que capture a 1440×900 cada web de la lista de `DECISIONES.md` y guarde la imagen optimizada en `public/shots/`, en AVIF o WebP y con un máximo de 200 KB.
-- [ ] **Sustituir los marcadores:** cambia cada caja "captura · 1440×900" por `next/image`, con `alt` descriptivo en los tres idiomas, carga diferida fuera del primer pantallazo y `sizes` correcto.
-- [ ] **Webs que fallen:** si una web no carga, quita el marco de esa tarjeta y apúntalo en `PREGUNTAS.md`.
+- [x] **Script de capturas:** un script de Playwright que capture a 1440×900 cada web de la lista de `DECISIONES.md` y guarde la imagen optimizada en `public/shots/`, en AVIF o WebP y con un máximo de 200 KB.
+- [x] **Sustituir los marcadores:** cambia cada caja "captura · 1440×900" por `next/image`, con `alt` descriptivo en los tres idiomas, carga diferida fuera del primer pantallazo y `sizes` correcto.
+- [x] **Webs que fallen:** si una web no carga, quita el marco de esa tarjeta y apúntalo en `PREGUNTAS.md`.
 
 **Hecho cuando:** no queda ninguna caja de marcador en la página.
 
