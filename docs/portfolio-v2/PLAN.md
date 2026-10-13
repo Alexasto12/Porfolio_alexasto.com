@@ -23,11 +23,11 @@
 
 ## Fase 1. Sistema visual y limpieza
 
-- [ ] **Tokens de superficie:** papel, tinta y vino en `app/globals.css`, según la tabla de `DISENO.md`, con el atributo `data-surface` en cada sección. Actualiza la paleta de `CLAUDE.md` con los valores nuevos.
-- [ ] **Transición de fondo** de papel a tinta al entrar en Experiencia y de vuelta al salir, más el header adaptado a la superficie.
-- [ ] **Tipografía y retícula:** la escala de `DISENO.md`, la retícula de 12 columnas y el grano en papel.
-- [ ] **`BrowserFrame`:** marco de navegador con el dominio, `next/image`, `alt` en los tres idiomas y desplazamiento al pasar el ratón.
-- [ ] **Limpieza:**
+- [x] **Tokens de superficie:** papel, tinta y vino en `app/globals.css`, según la tabla de `DISENO.md`, con el atributo `data-surface` en cada sección. Actualiza la paleta de `CLAUDE.md` con los valores nuevos.
+- [x] **Transición de fondo** de papel a tinta al entrar en Experiencia y de vuelta al salir, más el header adaptado a la superficie.
+- [x] **Tipografía y retícula:** la escala de `DISENO.md`, la retícula de 12 columnas y el grano en papel.
+- [x] **`BrowserFrame`:** marco de navegador con el dominio, `next/image`, `alt` en los tres idiomas y desplazamiento al pasar el ratón.
+- [x] **Limpieza:**
   - Quita `TweaksPanel`, `lib/tweaks.tsx` y su uso. Las variantes que fijaba pasan a ser el diseño único.
   - Desinstala `lucide-react` y `class-variance-authority`.
   - Pasa los `style={{...}}` en línea a clases. Solo pueden quedar los que dependan de un valor calculado.

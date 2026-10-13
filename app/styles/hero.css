@@ -1,0 +1,28 @@
+/* ───────── 1. Hero (paper) ───────── */
+.hero { padding-block: clamp(40px, 6vw, 80px) clamp(56px, 8vw, 104px); }
+.hero__hint { display: none; text-align: right; }
+@media (hover: hover) and (pointer: fine) {
+  .hero__hint { display: block; }
+}
+.hero__name {
+  margin-top: clamp(20px, 4vw, 48px);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-stretch: 80%;
+  font-size: clamp(3.6rem, 13vw, 12rem);
+  line-height: 0.84;
+  letter-spacing: -0.045em;
+}
+.hero__first,
+.hero__last { display: block; }
+.hero__last { color: var(--accent-lg); }
+.hero__title { margin-top: clamp(20px, 3vw, 32px); max-width: 34ch; }
+.hero__row { margin-top: clamp(28px, 4vw, 56px); row-gap: 32px; align-items: start; }
+.hero__intro { grid-column: 1 / span 7; }
+.hero__ctas { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 14px; }
+.hero__stack { grid-column: 9 / span 4; border-top: 1px solid var(--line); padding-top: 14px; }
+.hero__stack ul { margin-top: 12px; display: grid; gap: 8px; }
+@media (max-width: 860px) {
+  .hero__intro,
+  .hero__stack { grid-column: 1 / -1; }
+}

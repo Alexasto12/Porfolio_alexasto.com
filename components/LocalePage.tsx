@@ -8,7 +8,7 @@ export function LocalePage({ locale }: { locale: Locale }) {
   return (
     <>
       <SiteHeader locale={locale} />
-      <main id="contenido" tabIndex={-1} style={{ position: "relative", zIndex: 2 }}>
+      <main id="contenido" tabIndex={-1} className="page-main">
         <Sections locale={locale} />
       </main>
       <SiteFooter locale={locale} />

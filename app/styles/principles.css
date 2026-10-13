@@ -1,0 +1,13 @@
+/* ───────── 6. Principios (ink) ───────── */
+.principles__list { margin-top: clamp(36px, 5vw, 64px); row-gap: 40px; }
+.principles__item { grid-column: span 3; display: grid; gap: 14px; align-content: start; }
+.principles__num { font-size: clamp(3.5rem, 7vw, 6rem); color: var(--accent-lg); }
+@media (max-width: 1100px) {
+  .principles__item { grid-column: span 6; }
+}
+@media (max-width: 860px) {
+  .principles__item { grid-column: span 2; }
+}
+@media (max-width: 560px) {
+  .principles__item { grid-column: 1 / -1; }
+}

@@ -1,8 +1,9 @@
 import { Bricolage_Grotesque, Space_Mono, Hanken_Grotesk } from "next/font/google";
 
+/* Variable, with the width axis: headings run narrow, figures run wide. */
 export const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  weight: ["400", "600", "800"],
+  axes: ["wdth"],
   display: "swap",
   variable: "--font-display",
 });

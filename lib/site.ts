@@ -73,7 +73,7 @@ const AWARD: Localized = {
 };
 
 export const VIEWPORT: Viewport = {
-  themeColor: "#14130e",
+  themeColor: "#f4efe2",
   width: "device-width",
   initialScale: 1,
 };

@@ -1,6 +1,7 @@
 import { DATA } from "@/lib/content";
 import { LOCALES, LOCALE_FULL, translator, type Locale } from "@/lib/i18n-types";
 import { LOCALE_PATH } from "@/lib/site";
+import { HeaderSurface } from "./ui/HeaderSurface";
 
 /** Skip link plus the banner: name, section index, availability and language. */
 export function SiteHeader({ locale }: { locale: Locale }) {
@@ -11,7 +12,8 @@ export function SiteHeader({ locale }: { locale: Locale }) {
       <a className="skip-link" href="#contenido">
         {t(d.skipLink)}
       </a>
-      <header className="site-header">
+      {/* Starts on paper (the hero); HeaderSurface then follows the section below. */}
+      <header className="site-header" data-surface="paper">
         <div className="site-header__bar">
           <a href="#perfil" className="site-header__name">
             {d.name}
@@ -30,7 +32,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           </nav>
           <span className="site-header__spacer" />
           <span className="site-header__avail">
-            <span className="dot dot--accent dot-pulse" aria-hidden />
+            <span className="dot" aria-hidden />
             {t(d.availability)}
           </span>
           {/* Plain links between the static locale routes; no automatic redirect. */}
@@ -43,13 +45,13 @@ export function SiteHeader({ locale }: { locale: Locale }) {
                 lang={lc}
                 aria-label={LOCALE_FULL[lc]}
                 aria-current={lc === locale ? "page" : undefined}
-                data-on={lc === locale}
               >
                 {lc.toUpperCase()}
               </a>
             ))}
           </nav>
         </div>
+        <HeaderSurface />
       </header>
     </>
   );

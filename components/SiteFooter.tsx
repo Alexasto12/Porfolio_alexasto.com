@@ -5,8 +5,8 @@ export function SiteFooter({ locale }: { locale: Locale }) {
   const t = translator(locale);
   const d = DATA.contact;
   return (
-    <footer className="shell" style={{ position: "relative", zIndex: 2 }}>
-      <div className="site-footer">
+    <footer className="site-footer" data-surface="ink">
+      <div className="shell site-footer__row">
         <p>{t(d.footerNote)}</p>
         <p>{d.copyright}</p>
       </div>

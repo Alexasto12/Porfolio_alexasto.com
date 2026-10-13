@@ -1,0 +1,39 @@
+/* ───────── 4. Recorrido (paper) ───────── */
+.tl { position: relative; margin-top: clamp(34px, 5vw, 64px); }
+.tl__rail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent-lg);
+  transform-origin: top;
+}
+.tl__row { position: relative; padding: 0 0 clamp(28px, 4vw, 44px) clamp(28px, 5vw, 64px); }
+.tl__row:last-child { padding-bottom: 0; }
+.tl__year { display: block; font-size: 15px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+.tl__meta { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-bottom: 8px; }
+.tl__kind[data-kind="project"] { color: var(--accent); }
+.tl__title { margin-bottom: 8px; max-width: 34ch; }
+@media (min-width: 861px) {
+  .tl__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+    gap: var(--gap);
+  }
+}
+/* The rail draws itself as the list scrolls past. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .tl { view-timeline-name: --tl; }
+    .tl__rail {
+      animation: draw-y linear both;
+      animation-timeline: --tl;
+      animation-range: entry 20% exit 60%;
+    }
+  }
+}
+@keyframes draw-y {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}

@@ -1,0 +1,88 @@
+/* ───────── Site header ─────────
+   One row on wide screens; below 1280px the section index drops to its own
+   row, and below 861px the header stops being sticky. Its data-surface follows
+   the section underneath it (HeaderSurface), so it always matches the page. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--line);
+}
+.site-header__bar {
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  padding: 8px var(--pad);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.site-header__name {
+  font-weight: 700;
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+}
+.site-header__spacer { flex: 1; }
+.site-header__avail {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.site-nav ol { display: flex; flex-wrap: wrap; gap: 2px 4px; }
+.site-nav a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  min-height: 28px;
+  padding: 6px;
+  border-radius: 2px;
+  color: var(--fg-2);
+}
+.site-nav a:hover { color: var(--fg); text-decoration: underline; text-underline-offset: 4px; }
+.site-nav__num { color: var(--accent); }
+.lang-switch { display: inline-flex; gap: 2px; }
+.lang-switch a {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  min-width: 28px;
+  min-height: 28px;
+  padding: 0 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  color: var(--fg-2);
+}
+.lang-switch a[aria-current="page"] { color: var(--bg); background: var(--fg); }
+.lang-switch a:hover { color: var(--fg); text-decoration: underline; text-underline-offset: 4px; }
+.lang-switch a[aria-current="page"]:hover { color: var(--bg); }
+@media (max-width: 1279px) {
+  .site-nav { order: 10; flex-basis: 100%; }
+  .site-nav ol { margin-left: -6px; }
+}
+@media (max-width: 860px) {
+  .site-header { position: relative; }
+}
+@media (max-width: 480px) {
+  .site-header__name { display: none; }
+  .site-header__bar { padding: 6px var(--pad); gap: 4px 10px; letter-spacing: 0.04em; }
+}
+
+/* ───────── Site footer ───────── */
+.site-footer__row {
+  padding-block: 28px clamp(36px, 5vw, 56px);
+  display: flex;
+  justify-content: space-between;
+  gap: 8px 16px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--fg-2);
+}

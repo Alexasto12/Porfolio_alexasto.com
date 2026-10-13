@@ -1,0 +1,31 @@
+/* ───────── 2. Ahora: Digital DesAny (paper) ───────── */
+.sec-head__title { margin-top: clamp(24px, 4vw, 48px); }
+.sec-head__intro { margin-top: clamp(18px, 2.4vw, 28px); }
+
+.now__label { margin-top: clamp(40px, 6vw, 72px); margin-bottom: 18px; }
+.now__services { row-gap: 28px; }
+.now__service { grid-column: span 3; display: grid; gap: 10px; align-content: start; border-top: 1px solid var(--line); padding-top: 14px; }
+.now__own { margin-top: 28px; row-gap: 16px; align-items: start; }
+.now__own > :first-child { grid-column: 1 / span 6; }
+.now__own > :last-child { grid-column: 8 / span 5; }
+.now__cases {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 3vw, 44px) var(--gap);
+}
+@media (max-width: 860px) {
+  .now__service { grid-column: span 2; }
+  .now__own > :first-child,
+  .now__own > :last-child { grid-column: 1 / -1; }
+  .now__cases { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 520px) {
+  .now__service { grid-column: 1 / -1; }
+}
+
+/* Project: frame on top, then name, line, tags and links. */
+.project { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.project__head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; }
+.project__text { margin-top: 10px; }
+.project__tags { margin-top: 12px; }
+.project__links { margin-top: 12px; }
