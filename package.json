@@ -14,7 +14,8 @@
     "lh": "node scripts/lh.mjs",
     "capture": "node scripts/capture.mjs",
     "seo": "node scripts/seo.mjs",
-    "links": "node scripts/links.mjs"
+    "links": "node scripts/links.mjs",
+    "measure": "node scripts/measure.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

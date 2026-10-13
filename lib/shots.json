@@ -1,1 +1,44 @@
-{}
+{
+  "larasoak": {
+    "src": "/shots/larasoak.webp",
+    "width": 1440,
+    "height": 900,
+    "url": "https://larasoak.art"
+  },
+  "neibr": {
+    "src": "/shots/neibr.webp",
+    "width": 1440,
+    "height": 900,
+    "url": "https://neibr.es"
+  },
+  "peer2stream": {
+    "src": "/shots/peer2stream.webp",
+    "width": 1440,
+    "height": 900,
+    "url": "https://peer2stream.alexasto.com/discover"
+  },
+  "pokeapi": {
+    "src": "/shots/pokeapi.webp",
+    "width": 1440,
+    "height": 900,
+    "url": "https://alexasto12.github.io/ProjectePokeAPI/"
+  },
+  "paulakrebel": {
+    "src": "/shots/paulakrebel.webp",
+    "width": 1440,
+    "height": 2700,
+    "url": "https://paulakrebel.com"
+  },
+  "roses": {
+    "src": "/shots/roses.webp",
+    "width": 1440,
+    "height": 900,
+    "url": "https://rosesstjordi.cat"
+  },
+  "gokthermal": {
+    "src": "/shots/gokthermal.webp",
+    "width": 1440,
+    "height": 1254,
+    "url": "https://gokthermal.com"
+  }
+}

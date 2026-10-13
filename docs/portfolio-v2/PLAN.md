@@ -14,10 +14,10 @@
 
 ## Fase 0. Preparación y capturas (bloqueante)
 
-- [ ] **¿Ya hay capturas?** Si `lib/shots.json` en `main` ya tiene las 7 entradas (larasoak, gokthermal, roses, neibr, peer2stream, pokeapi, paulakrebel), no captures: revísalas a ojo y pasa a la línea base. En ese caso, salta también en la Fase 7 la comprobación de `links` si no hay red, y apúntalo en el PR.
-- [ ] **Si no las hay, comprueba la red:** `curl -sI https://larasoak.art` debe responder. Si falla con un error de proxy o de túnel, **para aquí**. Escribe en el PR y en `PREGUNTAS.md` exactamente qué dominios no responden, y no sigas: sin capturas, el refactor no tiene sentido.
-- [ ] **Capturas (solo si no las había):** añade `paulakrebel: "https://paulakrebel.com"` en `scripts/capture.mjs` (en lugar de buscarla en la ficha), ejecuta `npm run capture` y revisa a ojo cada imagen de `public/shots/`. Si una web sale con un banner de cookies o a medio cargar, ajusta la espera o cierra el banner en el script y repite.
-- [ ] **Línea base:** guarda `npm run shots`, `npm run a11y` y `npm run lh` en `docs/portfolio-v2/antes/`.
+- [x] **¿Ya hay capturas?** Si `lib/shots.json` en `main` ya tiene las 7 entradas (larasoak, gokthermal, roses, neibr, peer2stream, pokeapi, paulakrebel), no captures: revísalas a ojo y pasa a la línea base. En ese caso, salta también en la Fase 7 la comprobación de `links` si no hay red, y apúntalo en el PR.
+- [x] **Si no las hay, comprueba la red:** `curl -sI https://larasoak.art` debe responder. Si falla con un error de proxy o de túnel, **para aquí**. Escribe en el PR y en `PREGUNTAS.md` exactamente qué dominios no responden, y no sigas: sin capturas, el refactor no tiene sentido.
+- [x] **Capturas (solo si no las había):** añade `paulakrebel: "https://paulakrebel.com"` en `scripts/capture.mjs` (en lugar de buscarla en la ficha), ejecuta `npm run capture` y revisa a ojo cada imagen de `public/shots/`. Si una web sale con un banner de cookies o a medio cargar, ajusta la espera o cierra el banner en el script y repite.
+- [x] **Línea base:** guarda `npm run shots`, `npm run a11y` y `npm run lh` en `docs/portfolio-v2/antes/`.
 
 **Hecho cuando:** `lib/shots.json` tiene las 7 capturas y la línea base está en el repo.
 
