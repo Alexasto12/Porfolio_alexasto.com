@@ -43,3 +43,15 @@ Lo que no cubría `DECISIONES.md`, qué se decidió y por qué. Lo marcado **Pen
   - Otra opción: añadir esos dominios a "Allowed domains" en la configuración de red del entorno de Claude Code y volver a lanzar la fase.
 - **Paula Krebel:** el script busca en su ficha el primer enlace externo que no sea de redes ni de DesAny. Si la ficha no enlaza su web, la tarjeta sigue sin captura.
 - **neibr.es** tiene hueco para su captura dentro del bloque de Neibr, debajo del enlace.
+
+## Fase 4
+
+- **Rutas.** Un layout raíz por idioma con grupos de rutas: `app/(es)` sirve `/`, `app/(ca)/ca` sirve `/ca` y `app/(en)/en` sirve `/en`. Así `<html lang>` sale del servidor y las tres páginas son estáticas, sin middleware ni reescrituras. Las secciones ya son componentes de servidor: el JS de la página baja de 24 kB a 1,85 kB.
+- **El selector de idioma son enlaces**, no botones con `aria-pressed` como en la Fase 1: cambiar de idioma ahora es cambiar de página, y un enlace (`hreflang`, `lang`, `aria-current="page"` en el actual) funciona sin JavaScript y lo siguen los buscadores. Mantiene los nombres "Español", "Català" y "English".
+- **No se guarda la preferencia de idioma.** El plan lo permite pero no lo pide, y sin redirección automática nadie la leería.
+- **Pendiente: página 404.** Sin un layout raíz común, Next sirve su 404 por defecto (en inglés y sin estilos). Una 404 propia en tres idiomas necesita `experimental.globalNotFound`, que es experimental en Next 15, así que no lo activo sin tu visto bueno.
+- **`SITE_URL`.** El dominio se lee de la variable de entorno `SITE_URL` (por defecto `https://dev.alexasto.com`). Cuando alexasto.com apunte a esta web, hay que poner `SITE_URL=https://alexasto.com` en Vercel; no he tocado su configuración.
+- **`lastmod` del sitemap** sale de `CONTENT_UPDATED` en `lib/site.ts` (2026-10-13), no de la fecha del build. Hay que actualizarlo al cambiar el contenido.
+- **Imagen OG.** Una por idioma, con Bricolage Grotesque desde `assets/fonts/` (WOFF de @fontsource, licencia OFL incluida; `next/og` no lee WOFF2). Next añade un sufijo a su URL (`/opengraph-image-xxxx`) porque vive en un grupo de rutas; las etiquetas `og:image` apuntan a la buena. Se quita `twitter-image`: X usa la imagen OG.
+- **JSON-LD.** Se quita la lista `subjectOf` con webs de terceros y la marca "Alexasto" del título; "Alexasto" y "alexasto12" quedan como `alternateName`. Organization Digital DesAny lleva como `founder` a Alejandro y a Oriol Tamborero. El premio va en `award` con el texto de `DECISIONES.md` (pendiente de confirmar el nombre).
+- **Comprobación.** `npm run seo` valida todo lo de esta fase y guarda las imágenes OG, el sitemap y robots.txt en `despues/seo/`.

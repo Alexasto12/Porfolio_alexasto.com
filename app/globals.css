@@ -192,7 +192,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 }
 
 .lang-switch { display: inline-flex; gap: 2px; }
-.lang-switch button {
+.lang-switch a {
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.06em;
@@ -206,8 +206,8 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   border-radius: 3px;
   transition: color 0.25s, background 0.25s;
 }
-.lang-switch button[data-on="true"] { color: #fff; background: var(--tw-accent); }
-.lang-switch button:hover { color: var(--ink); }
+.lang-switch a[data-on="true"] { color: #fff; background: var(--tw-accent); }
+.lang-switch a:hover { color: var(--ink); }
 
 /* ───────── Section scaffolding ───────── */
 .section { position: relative; z-index: 2; }

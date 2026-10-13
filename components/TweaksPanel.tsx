@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import type { Locale } from "@/lib/i18n-types";
 import {
   ACCENT_OPTIONS,
   useTweaks,
@@ -92,8 +93,15 @@ function TweakToggle({
   );
 }
 
+const LABELS: Record<Locale, Record<"projects" | "cards" | "path" | "brand" | "accent" | "grid", string>> = {
+  es: { projects: "Proyectos", cards: "Tarjetas", path: "Recorrido", brand: "Marca", accent: "Acento", grid: "Rejilla de fondo" },
+  ca: { projects: "Projectes", cards: "Targetes", path: "Recorregut", brand: "Marca", accent: "Accent", grid: "Reixeta de fons" },
+  en: { projects: "Projects", cards: "Cards", path: "Path", brand: "Brand", accent: "Accent", grid: "Background grid" },
+};
+
 /** Floating design panel: card layout, timeline mode, accent, grid. Ctrl+Shift+E to show/hide. */
-export function TweaksPanel() {
+export function TweaksPanel({ locale }: { locale: Locale }) {
+  const L = LABELS[locale];
   const { tweaks, setTweak } = useTweaks();
   const [open, setOpen] = useState(false);
 
@@ -113,29 +121,29 @@ export function TweaksPanel() {
   return (
     <div className="tweaks">
       <div className="tweaks__panel" role="dialog" aria-label="Tweaks">
-        <TweakSection label="Proyectos" />
+        <TweakSection label={L.projects} />
         <TweakRadio<CardsLayout>
-          label="Layout cards"
+          label={L.cards}
           value={tweaks.cards}
           options={["stack", "split", "list"]}
           onChange={(v) => setTweak("cards", v)}
         />
-        <TweakSection label="Recorrido" />
+        <TweakSection label={L.path} />
         <TweakRadio<TimelineMode>
-          label="Timeline"
+          label={L.path}
           value={tweaks.timeline}
           options={["rail", "compact"]}
           onChange={(v) => setTweak("timeline", v)}
         />
-        <TweakSection label="Marca" />
+        <TweakSection label={L.brand} />
         <TweakColor
-          label="Acento"
+          label={L.accent}
           value={tweaks.accent}
           options={ACCENT_OPTIONS}
           onChange={(v) => setTweak("accent", v)}
         />
         <TweakToggle
-          label="Rejilla de fondo"
+          label={L.grid}
           value={tweaks.grid}
           onChange={(v) => setTweak("grid", v)}
         />

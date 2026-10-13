@@ -1,28 +1,11 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { useI18n } from "@/lib/i18n";
-import { LOCALES, LOCALE_FULL, type Locale } from "@/lib/i18n-types";
 import { DATA } from "@/lib/content";
+import { LOCALES, LOCALE_FULL, translator, type Locale } from "@/lib/i18n-types";
+import { LOCALE_PATH } from "@/lib/site";
+import { Clock } from "./ui/Clock";
 
-export function TelemetryBar() {
-  const { t, locale, setLocale } = useI18n();
+export function TelemetryBar({ locale }: { locale: Locale }) {
+  const t = translator(locale);
   const d = DATA.telemetry;
-  const [clock, setClock] = useState("");
-
-  useEffect(() => {
-    const fmt = () =>
-      new Date().toLocaleTimeString("es-ES", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        timeZone: "Europe/Madrid",
-      });
-    setClock(fmt());
-    const id = setInterval(() => setClock(fmt()), 1000);
-    return () => clearInterval(id);
-  }, []);
-
   return (
     <>
       <a className="skip-link" href="#contenido">
@@ -37,7 +20,7 @@ export function TelemetryBar() {
           <span className="telemetry__role">{t(d.role)}</span>
           <span className="telemetry__spacer" />
           <span className="telemetry__clock" title="CET">
-            <span className="font-mono">{clock}</span> CET
+            <Clock /> CET
           </span>
           <span className="telemetry__sep" aria-hidden>
             ·
@@ -46,21 +29,22 @@ export function TelemetryBar() {
             <span className="dot dot--accent dot-pulse" aria-hidden />
             {t(d.availability)}
           </span>
-          <span className="lang-switch" role="group" aria-label={t(d.langLabel)}>
-            {LOCALES.map((lc: Locale) => (
-              <button
+          {/* Plain links between the static locale routes; no automatic redirect. */}
+          <nav className="lang-switch" aria-label={t(d.langLabel)}>
+            {LOCALES.map((lc) => (
+              <a
                 key={lc}
-                type="button"
+                href={LOCALE_PATH[lc]}
+                hrefLang={lc}
                 lang={lc}
                 aria-label={LOCALE_FULL[lc]}
-                aria-pressed={locale === lc}
-                data-on={locale === lc}
-                onClick={() => setLocale(lc)}
+                aria-current={lc === locale ? "page" : undefined}
+                data-on={lc === locale}
               >
                 {lc.toUpperCase()}
-              </button>
+              </a>
             ))}
-          </span>
+          </nav>
         </div>
       </div>
     </>

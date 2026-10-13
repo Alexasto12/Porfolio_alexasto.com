@@ -77,20 +77,20 @@ Usa solo los hechos de `DECISIONES.md` y escribe cada cambio en los tres idiomas
 
 ## Fase 4. Idiomas, SEO y metadatos
 
-- [ ] **Rutas por idioma** generadas en estático: `/` (es), `/ca` y `/en`, con el `lang` del `<html>` puesto desde el servidor.
+- [x] **Rutas por idioma** generadas en estático: `/` (es), `/ca` y `/en`, con el `lang` del `<html>` puesto desde el servidor.
   - El selector cambia de ruta y puede seguir recordando la preferencia.
   - No hay redirección automática por idioma.
-- [ ] **hreflang y canonical:** los hreflang es, ca, en y x-default apuntan cada uno a su ruta, con un canonical por idioma. `og:locale` y sus alternates usan es_ES, ca_ES y en_US.
-- [ ] **Título y descripción por idioma,** coherentes con el hero nuevo.
-- [ ] **Dominio en una variable:** el dominio base se lee de `SITE_URL`, con el valor por defecto de `DECISIONES.md`.
-- [ ] **Sitemap y robots.txt:**
+- [x] **hreflang y canonical:** los hreflang es, ca, en y x-default apuntan cada uno a su ruta, con un canonical por idioma. `og:locale` y sus alternates usan es_ES, ca_ES y en_US.
+- [x] **Título y descripción por idioma,** coherentes con el hero nuevo.
+- [x] **Dominio en una variable:** el dominio base se lee de `SITE_URL`, con el valor por defecto de `DECISIONES.md`.
+- [x] **Sitemap y robots.txt:**
   - El sitemap lleva solo URLs propias (las tres rutas), con alternates y un `lastmod` real.
   - Quita la línea `Host` de robots.txt.
-- [ ] **JSON-LD:**
+- [x] **JSON-LD:**
   - Person con el jobTitle nuevo, worksFor Digital DesAny y el premio.
   - Organization Digital DesAny, con Alejandro como founder.
   - Sin api.neibr.es, y sin `meta keywords`.
-- [ ] **Imagen OG por idioma,** con Bricolage Grotesque cargada desde archivo (no la fuente de reserva) y con el nombre, el título nuevo y el dominio de `DECISIONES.md`.
+- [x] **Imagen OG por idioma,** con Bricolage Grotesque cargada desde archivo (no la fuente de reserva) y con el nombre, el título nuevo y el dominio de `DECISIONES.md`.
 
 **Hecho cuando:**
 - Las tres rutas se sirven en estático y el HTML de cada una no incluye los textos de los otros dos idiomas.
