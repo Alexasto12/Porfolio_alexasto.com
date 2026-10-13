@@ -9,4 +9,4 @@ Generado el 13 de octubre de 2026 sobre la rama `claude/portfolio-refresh` con l
 - `seo/seo.md`: comprobación de rutas estáticas, `lang`, canonical, hreflang, `og:locale`, JSON-LD, sitemap y robots. `og-es.png`, `og-ca.png` y `og-en.png` son las imágenes OG.
 - `links.md`: enlaces externos. Desde la sesión solo responden los de GitHub porque la red no deja salir a otros dominios (ver `PREGUNTAS.md`).
 
-La comparación con `antes/` está en la descripción del pull request.
+La comparación con `antes/` está en la descripción del pull request; la galería de capturas, en `../CAPTURAS.md`.
