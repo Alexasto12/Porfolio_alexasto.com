@@ -1,22 +1,23 @@
 /* Screenshots of /, /ca and /en at 375 and 1440 px (full page + first screen).
-   Usage: npm run shots [-- --out docs/portfolio-refresh/antes] */
+   Usage: npm run shots [-- --out docs/portfolio-refresh/antes] [-- --locales es] */
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { chromium } from "@playwright/test";
-import { outDir, openSettled, resolveLocalePages, withServer } from "./lib/server.mjs";
+import { arg, outDir, openSettled, resolveLocalePages, withServer } from "./lib/server.mjs";
 
 const VIEWPORTS = [
   { width: 375, height: 812 },
   { width: 1440, height: 900 },
 ];
 
+const locales = arg("locales", "es,ca,en").split(",");
 const dir = join(outDir(), "shots");
 mkdirSync(dir, { recursive: true });
 
 await withServer(async (base) => {
   const browser = await chromium.launch();
   try {
-    for (const target of await resolveLocalePages(base)) {
+    for (const target of (await resolveLocalePages(base)).filter((t) => locales.includes(t.locale))) {
       for (const vp of VIEWPORTS) {
         const { context, page } = await openSettled(browser, target, vp);
         const name = `${target.locale}-${vp.width}`;
