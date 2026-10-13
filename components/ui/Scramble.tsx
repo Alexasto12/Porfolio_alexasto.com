@@ -50,8 +50,9 @@ export function Scramble({ text, perChar = 34, className = "", style }: Scramble
   }, [play]);
 
   return (
-    <span className={className} style={style} onMouseEnter={play} aria-label={text}>
-      {display}
+    <span className={className} style={style} onMouseEnter={play}>
+      <span className="sr-only">{text}</span>
+      <span aria-hidden>{display}</span>
     </span>
   );
 }

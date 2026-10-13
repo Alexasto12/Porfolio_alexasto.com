@@ -1,0 +1,30 @@
+[
+  {
+    "page": "/",
+    "formFactor": "mobile",
+    "runs": 3,
+    "performance": 92,
+    "accessibility": 96,
+    "best-practices": 100,
+    "seo": 100,
+    "FCP": "1.0 s",
+    "LCP": "2.6 s",
+    "TBT": "240 ms",
+    "CLS": "0.056",
+    "SI": "1.4 s"
+  },
+  {
+    "page": "/",
+    "formFactor": "desktop",
+    "runs": 3,
+    "performance": 100,
+    "accessibility": 96,
+    "best-practices": 100,
+    "seo": 100,
+    "FCP": "0.3 s",
+    "LCP": "0.6 s",
+    "TBT": "0 ms",
+    "CLS": "0",
+    "SI": "0.4 s"
+  }
+]

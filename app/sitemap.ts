@@ -1,33 +1,15 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL, REFERENCED_LINKS } from "@/lib/site";
+import { LOCALES } from "@/lib/i18n-types";
+import { CONTENT_UPDATED, hreflangs, localeUrl } from "@/lib/site";
 
+/** Only this site's own URLs: the three locale routes, each with its alternates. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-
-  // Primary URL: the landing, with per-language alternates (single URL,
-  // language is resolved client-side, so every locale shares "/").
-  const home: MetadataRoute.Sitemap[number] = {
-    url: SITE_URL,
-    lastModified: now,
+  const languages = hreflangs();
+  return LOCALES.map((lc) => ({
+    url: localeUrl(lc),
+    lastModified: CONTENT_UPDATED,
     changeFrequency: "monthly",
-    priority: 1,
-    alternates: {
-      languages: {
-        es: SITE_URL,
-        ca: SITE_URL,
-        en: SITE_URL,
-      },
-    },
-  };
-
-  // Referenced work. The landing is a single page, so we expose the projects
-  // it links to as discoverable URLs for crawlers.
-  const referenced: MetadataRoute.Sitemap = REFERENCED_LINKS.map((link) => ({
-    url: link.url,
-    lastModified: now,
-    changeFrequency: "yearly",
-    priority: 0.6,
+    priority: lc === "es" ? 1 : 0.9,
+    alternates: { languages },
   }));
-
-  return [home, ...referenced];
 }

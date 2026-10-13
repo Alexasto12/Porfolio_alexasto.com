@@ -1,0 +1,345 @@
+{
+  "generatedAt": "2026-10-13T11:36:07.809Z",
+  "axe": [
+    {
+      "locale": "es",
+      "width": 375,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodes": 30,
+          "targets": [
+            "li:nth-child(1) > .tabular.font-mono",
+            "li:nth-child(2) > .tabular.font-mono",
+            ".reveal:nth-child(1) > .chip--accent.chip",
+            "#neibr > div > .g4.reveal[data-d=\"1\"] > .col-1"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodes": 6,
+          "targets": [
+            ".telemetry__sysid",
+            ".telemetry__sep:nth-child(2)",
+            ".telemetry__role",
+            "span[title=\"CET\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "es",
+      "width": 1440,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodes": 29,
+          "targets": [
+            "li:nth-child(1) > .tabular.font-mono",
+            "li:nth-child(2) > .tabular.font-mono",
+            ".reveal:nth-child(1) > .chip--accent.chip",
+            ".card-tilt.panel[data-d=\"1\"] > div:nth-child(1) > .font-mono"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodes": 6,
+          "targets": [
+            ".telemetry__sysid",
+            ".telemetry__sep:nth-child(2)",
+            ".telemetry__role",
+            "span[title=\"CET\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "ca",
+      "width": 375,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodes": 30,
+          "targets": [
+            "li:nth-child(1) > .tabular.font-mono",
+            "li:nth-child(2) > .tabular.font-mono",
+            ".reveal:nth-child(1) > .chip--accent.chip",
+            "#neibr > div > .g4.reveal[data-d=\"1\"] > .col-1"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodes": 6,
+          "targets": [
+            ".telemetry__sysid",
+            ".telemetry__sep:nth-child(2)",
+            ".telemetry__role",
+            "span[title=\"CET\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "ca",
+      "width": 1440,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodes": 29,
+          "targets": [
+            "li:nth-child(1) > .tabular.font-mono",
+            "li:nth-child(2) > .tabular.font-mono",
+            ".reveal:nth-child(1) > .chip--accent.chip",
+            ".card-tilt.panel[data-d=\"1\"] > div:nth-child(1) > .font-mono"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodes": 6,
+          "targets": [
+            ".telemetry__sysid",
+            ".telemetry__sep:nth-child(2)",
+            ".telemetry__role",
+            "span[title=\"CET\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 375,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodes": 30,
+          "targets": [
+            "li:nth-child(1) > .tabular.font-mono",
+            "li:nth-child(2) > .tabular.font-mono",
+            ".reveal:nth-child(1) > .chip--accent.chip",
+            "#neibr > div > .g4.reveal[data-d=\"1\"] > .col-1"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodes": 6,
+          "targets": [
+            ".telemetry__sysid",
+            ".telemetry__sep:nth-child(2)",
+            ".telemetry__role",
+            "span[title=\"CET\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodes": 29,
+          "targets": [
+            "li:nth-child(1) > .tabular.font-mono",
+            "li:nth-child(2) > .tabular.font-mono",
+            ".reveal:nth-child(1) > .chip--accent.chip",
+            ".card-tilt.panel[data-d=\"1\"] > div:nth-child(1) > .font-mono"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodes": 6,
+          "targets": [
+            ".telemetry__sysid",
+            ".telemetry__sep:nth-child(2)",
+            ".telemetry__role",
+            "span[title=\"CET\"]"
+          ]
+        }
+      ]
+    }
+  ],
+  "overflow": [
+    {
+      "locale": "es",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [
+        "span.telemetry__avail → 348px",
+        "span.telemetry__sep → 374px",
+        "span.telemetry__avail → 484px",
+        "span.dot → 394px",
+        "span.lang-switch → 590px"
+      ],
+      "ok": false
+    },
+    {
+      "locale": "es",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [
+        "span.telemetry__avail → 484px",
+        "span.dot → 394px",
+        "span.lang-switch → 590px",
+        "button → 534px",
+        "button → 562px"
+      ],
+      "ok": false
+    },
+    {
+      "locale": "ca",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [
+        "span.telemetry__avail → 348px",
+        "span.telemetry__sep → 374px",
+        "span.telemetry__avail → 484px",
+        "span.dot → 394px",
+        "span.lang-switch → 590px"
+      ],
+      "ok": false
+    },
+    {
+      "locale": "ca",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [
+        "span.telemetry__avail → 484px",
+        "span.dot → 394px",
+        "span.lang-switch → 590px",
+        "button → 534px",
+        "button → 562px"
+      ],
+      "ok": false
+    },
+    {
+      "locale": "en",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [
+        "span.telemetry__avail → 348px",
+        "span.telemetry__sep → 374px",
+        "span.telemetry__avail → 468px",
+        "span.dot → 394px",
+        "span.lang-switch → 575px"
+      ],
+      "ok": false
+    },
+    {
+      "locale": "en",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [
+        "span.telemetry__avail → 468px",
+        "span.dot → 394px",
+        "span.lang-switch → 575px",
+        "button → 518px",
+        "button → 546px"
+      ],
+      "ok": false
+    }
+  ],
+  "smallText": [
+    {
+      "locale": "es",
+      "items": [
+        "10.5px · span.telemetry__sysid “AC_SYSTEMS”",
+        "10.5px · span.telemetry__sep “//”",
+        "10.5px · span.telemetry__role “Systems Architect”",
+        "10.5px · span.font-mono “13:36:13”",
+        "10.5px · span.telemetry__avail “CET”",
+        "10px · button. “ES”",
+        "9.5px · span.mono-label “hover en el nombre para reanimar ↻”",
+        "10px · div.mono-label “↓”",
+        "10px · span.chip “PLATAFORMA · API”",
+        "10.5px · span.terminal__title “api.neibr.es — shipments.http”",
+        "10px · span.terminal__method “POST 201”",
+        "10px · span.tag “GO · FIBER”",
+        "10px · span.mono-label “STRESS TEST · OUTPUT”",
+        "10px · span.font-mono “PASSED”",
+        "9px · span.chip “DEMO PÚBLICA”",
+        "9px · span.tl__kind “HITO”",
+        "10.5px · span. “▦”",
+        "10.5px · b. “larasoak.art · captura”",
+        "9.5px · span.shot__dim “1440×900”"
+      ]
+    },
+    {
+      "locale": "ca",
+      "items": [
+        "10.5px · span.telemetry__sysid “AC_SYSTEMS”",
+        "10.5px · span.telemetry__sep “//”",
+        "10.5px · span.telemetry__role “Arquitecte de sistemes”",
+        "10.5px · span.font-mono “13:36:27”",
+        "10.5px · span.telemetry__avail “CET”",
+        "10px · button. “ES”",
+        "9.5px · span.mono-label “passa el cursor pel nom per reanimar ↻”",
+        "10px · div.mono-label “↓”",
+        "10px · span.chip “PLATAFORMA · API”",
+        "10.5px · span.terminal__title “api.neibr.es — shipments.http”",
+        "10px · span.terminal__method “POST 201”",
+        "10px · span.tag “GO · FIBER”",
+        "10px · span.mono-label “STRESS TEST · OUTPUT”",
+        "10px · span.font-mono “PASSED”",
+        "9px · span.chip “DEMO PÚBLICA”",
+        "9px · span.tl__kind “FITA”",
+        "10.5px · span. “▦”",
+        "10.5px · b. “larasoak.art · captura”",
+        "9.5px · span.shot__dim “1440×900”"
+      ]
+    },
+    {
+      "locale": "en",
+      "items": [
+        "10.5px · span.telemetry__sysid “AC_SYSTEMS”",
+        "10.5px · span.telemetry__sep “//”",
+        "10.5px · span.telemetry__role “Systems Architect”",
+        "10.5px · span.font-mono “13:36:42”",
+        "10.5px · span.telemetry__avail “CET”",
+        "10px · button. “ES”",
+        "9.5px · span.mono-label “hover the name to replay ↻”",
+        "10px · div.mono-label “↓”",
+        "10px · span.chip “PLATFORM · API”",
+        "10.5px · span.terminal__title “api.neibr.es — shipments.http”",
+        "10px · span.terminal__method “POST 201”",
+        "10px · span.tag “GO · FIBER”",
+        "10px · span.mono-label “STRESS TEST · OUTPUT”",
+        "10px · span.font-mono “PASSED”",
+        "9px · span.chip “PUBLIC DEMO”",
+        "9px · span.tl__kind “MILESTONE”",
+        "10.5px · span. “▦”",
+        "10.5px · b. “larasoak.art · screenshot”",
+        "9.5px · span.shot__dim “1440×900”"
+      ]
+    }
+  ]
+}
