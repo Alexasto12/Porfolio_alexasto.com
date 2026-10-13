@@ -10,9 +10,9 @@
 
 ## Fase 0. Preparación
 
-- [ ] Lee el repo y apunta en `CLAUDE.md` los comandos reales (instalar, desarrollo, build, lint).
-- [ ] Añade los scripts `check`, `shots`, `a11y` y `lh` con devDependencies gratuitas: `@playwright/test`, `@axe-core/playwright` y `lighthouse` (este último usando el Chromium de Playwright).
-- [ ] Guarda la línea base en `docs/portfolio-refresh/antes/`: capturas a 375 y 1440 px, y la salida de axe y de Lighthouse.
+- [x] Lee el repo y apunta en `CLAUDE.md` los comandos reales (instalar, desarrollo, build, lint).
+- [x] Añade los scripts `check`, `shots`, `a11y` y `lh` con devDependencies gratuitas: `@playwright/test`, `@axe-core/playwright` y `lighthouse` (este último usando el Chromium de Playwright).
+- [x] Guarda la línea base en `docs/portfolio-refresh/antes/`: capturas a 375 y 1440 px, y la salida de axe y de Lighthouse.
 
 **Hecho cuando:** los cuatro scripts funcionan en la sesión y la línea base está en el repo.
 

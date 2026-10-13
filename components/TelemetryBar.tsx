@@ -27,7 +27,7 @@ export function TelemetryBar() {
     <div className="telemetry">
       <div className="telemetry__inner">
         <span className="telemetry__sysid">{d.systemId}</span>
-        <span className="telemetry__sep">//</span>
+        <span className="telemetry__sep">{"//"}</span>
         <span className="telemetry__role">
           {t(d.role)} · {d.loc}
         </span>
