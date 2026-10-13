@@ -36,8 +36,8 @@
 
 ## Fase 2. Hero y Ahora
 
-- [ ] **Hero** según `DISENO.md`: composición en 12 columnas, panel "ahora mismo" con la hora real, hoja de contactos con las capturas y entrada escalonada del nombre.
-- [ ] **Ahora:** los cuatro servicios con sus glifos SVG dibujándose, y los casos en bento (Lara's Oak y Roses en grande, Paula Krebel en mediano, Hidrotech en vino).
+- [x] **Hero** según `DISENO.md`: composición en 12 columnas, panel "ahora mismo" con la hora real, hoja de contactos con las capturas y entrada escalonada del nombre.
+- [x] **Ahora:** los cuatro servicios con sus glifos SVG dibujándose, y los casos en bento (Lara's Oak y Roses en grande, Paula Krebel en mediano, Hidrotech en vino).
 
 **Hecho cuando:** en la captura a 1440×900 de `/`, en el primer pantallazo se ve al menos una captura de un proyecto.
 

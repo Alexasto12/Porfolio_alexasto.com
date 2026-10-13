@@ -26,3 +26,15 @@ Lo que no cubrían `DISENO.md`, `DECISIONES.md` ni `CLAUDE.md`, qué se decidió
 - **`overflow-x: clip` en `body`** en lugar de `hidden`: con `hidden` el `body` pasa a ser un contenedor de scroll y `position: sticky` deja de funcionar.
 - **Margen lateral en móvil de 16 px** (`max(16px, 4vw)`, antes `max(20px, 4vw)`).
 - **`theme-color` y el manifest** pasan a papel (`#F4EFE2`), que es el color con el que empieza la página.
+
+## Fase 2
+
+- **Entrada del hero en CSS, no con `motion/react`.** Las letras del nombre suben con 40 ms entre una y otra y después aparece el resto (1,07 s en total). Con CSS la página está completa sin JavaScript, no cuesta JS y no depende de la hidratación. `motion/react` queda para las secuencias que lo necesitan (Neibr). El scramble del nombre ya no se lanza al cargar: solo al pasar un ratón (`hover: hover` y `pointer: fine`) y nunca con reduced motion.
+- **Panel "ahora mismo".** La hora de Granollers solo existe con JavaScript (una página estática no puede saberla): sin JS esa línea queda sin hora. Se queda dentro del panel la lista "Con lo que trabajo", que `DISENO.md` no menciona, para no perder contenido.
+- **Hoja de contactos:** cinco capturas (Lara's Oak, Roses de Sant Jordi, Paula Krebel, GOK Thermal y Peer2Stream), numeradas como fotogramas y enlazadas a su caso en la página. En escritorio se desliza a la izquierda durante la primera pantalla de scroll (`scroll(root)`); si una miniatura recibe el foco de teclado, la tira vuelve a su sitio y caben las cinco (para que ningún enlace con foco quede oculto, WCAG 2.4.11). Sin soporte o con reduced motion caben las cinco y no se mueve. En móvil es un carrusel con scroll-snap. Las imágenes llevan `alt=""` porque el texto del enlace ya nombra el caso.
+- **Servicios numerados 01 a 04.** La renovación anterior quitó esos números por decorativos; `DISENO.md` los vuelve a pedir. Van en el orden de `DECISIONES.md` (webs, redes, automatizaciones, software), con el glifo de cada uno, no en el orden en que los lista `DISENO.md`.
+- **Bento de casos.** Cada caso lleva nombre, su frase de siempre y los enlaces, sin las etiquetas de tecnologías. Las cuatro etiquetas de Hidrotech (reels, LinkedIn, YouTube y email) son los canales que pide `DISENO.md` como chips grandes.
+- **Textos nuevos (en los tres idiomas):** "Ahora mismo", "hora local", "Mi estudio", "Algunos trabajos" y "Más sobre el estudio en digitaldesany.com".
+- **Enlaces de DesAny:** las fichas de `/ca` van a su versión catalana (`/ca/casos-exit/...`), "servicios" va a `/es/servicios` y `/ca/serveis` (en inglés, la española) y la línea final a la portada del estudio.
+- **Pendiente (sigue de la Fase 0):** el enlace y el `alt` de Roses de Sant Jordi dicen ahora rosesstjordi.cat, también en `llms.txt`.
+- **Impresión:** al imprimir, Experiencia lleva su fondo de tinta (la capa del fundido depende del scroll).

@@ -1,29 +1,147 @@
-/* ───────── 2. Ahora: Digital DesAny (paper) ───────── */
+/* ───────── Shared section head ───────── */
 .sec-head__title { margin-top: clamp(24px, 4vw, 48px); }
 .sec-head__intro { margin-top: clamp(18px, 2.4vw, 28px); }
 
-.now__label { margin-top: clamp(40px, 6vw, 72px); margin-bottom: 18px; }
-.now__services { row-gap: 28px; }
-.now__service { grid-column: span 3; display: grid; gap: 10px; align-content: start; border-top: 1px solid var(--line); padding-top: 14px; }
-.now__own { margin-top: 28px; row-gap: 16px; align-items: start; }
-.now__own > :first-child { grid-column: 1 / span 6; }
-.now__own > :last-child { grid-column: 8 / span 5; }
-.now__cases {
+/* ───────── 2. Ahora: Digital DesAny (paper) ─────────
+   Heading across the page, four numbered columns of services, cases in a
+   bento and a closing line to the studio. */
+.now__head .h-section { font-size: clamp(3.2rem, 11vw, 10rem); line-height: 0.86; }
+.now__intro { margin-top: clamp(24px, 3vw, 40px); row-gap: 14px; align-items: start; }
+.now__intro > :first-child { grid-column: 1 / span 6; }
+.now__intro .copy + .copy { margin-top: 0; }
+.now__intro > :last-child { grid-column: 8 / span 5; }
+
+.now__label { margin-top: clamp(48px, 6vw, 80px); margin-bottom: 16px; }
+
+.now__services { row-gap: 36px; }
+.now__service {
+  grid-column: span 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding-top: 14px;
+  border-top: 2px solid var(--fg);
+}
+.now__num { font-size: clamp(3rem, 5vw, 4.5rem); }
+.now__service-text { font-size: 15px; line-height: 1.5; max-width: 32ch; }
+.now__links { margin-top: 28px; }
+
+/* Glyphs: drawn with the same stroke as the diagrams. */
+.glyph {
+  width: 64px;
+  height: 64px;
+  color: var(--accent-lg);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .now__service { view-timeline-name: --svc; }
+    .glyph [pathLength] {
+      stroke-dasharray: 1 1;
+      animation: draw linear both;
+      animation-timeline: --svc;
+      animation-range: entry 40% cover 45%;
+    }
+    .glyph__slide {
+      animation: fit-in linear both;
+      animation-timeline: --svc;
+      animation-range: cover 35% cover 50%;
+    }
+  }
+}
+@keyframes draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes fit-in {
+  from { transform: translateX(10px); }
+}
+
+/* Bento: Lara's Oak and Roses large (7 columns), Paula Krebel medium (5),
+   Hidrotech on wine (5), in a checkerboard. */
+.bento {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(28px, 3vw, 44px) var(--gap);
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  gap: clamp(36px, 4vw, 56px) var(--gap);
+  align-items: start;
+}
+.bento__item { min-width: 0; }
+.bento__item--larasoak { grid-column: 1 / span 7; grid-row: 1; }
+.bento__item--paulakrebel { grid-column: 9 / span 4; grid-row: 1; align-self: end; }
+.bento__item--hidrotech { grid-column: 1 / span 5; grid-row: 2; align-self: stretch; }
+.bento__item--roses { grid-column: 6 / span 7; grid-row: 2; }
+.bento__body { margin-top: 16px; display: grid; gap: 8px; }
+.bento__head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; }
+.bento__links { margin-top: 4px; }
+
+.bento__channels {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(22px, 3vw, 36px);
+  border-radius: 8px;
+}
+.bento__channels-name {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-stretch: 85%;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+.chips { margin-top: auto; padding-top: 12px; display: flex; flex-wrap: wrap; gap: 10px; }
+.chips li {
+  padding: 10px 16px;
+  border: 1.5px solid var(--fg);
+  border-radius: 999px;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  letter-spacing: 0.02em;
+}
+
+.now__more {
+  margin-top: clamp(48px, 6vw, 80px);
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.now__more-arrow { color: var(--accent-lg); transition: transform 0.35s var(--ease-in-out); }
+.now__more:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.now__more:hover .now__more-arrow { transform: translate(4px, -4px); }
+
+@media (max-width: 1100px) {
+  .now__service { grid-column: span 6; }
+  .bento__item--paulakrebel { grid-column: 8 / span 5; }
 }
 @media (max-width: 860px) {
+  .now__intro > :first-child,
+  .now__intro > :last-child { grid-column: 1 / -1; }
   .now__service { grid-column: span 2; }
-  .now__own > :first-child,
-  .now__own > :last-child { grid-column: 1 / -1; }
-  .now__cases { grid-template-columns: minmax(0, 1fr); }
+  .bento__item--larasoak,
+  .bento__item--paulakrebel,
+  .bento__item--hidrotech,
+  .bento__item--roses { grid-column: 1 / -1; grid-row: auto; }
 }
 @media (max-width: 520px) {
   .now__service { grid-column: 1 / -1; }
 }
 
-/* Project: frame on top, then name, line, tags and links. */
+/* Project cards elsewhere (Formación, GOK): frame on top, then the text. */
 .project { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
 .project__head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; }
 .project__text { margin-top: 10px; }

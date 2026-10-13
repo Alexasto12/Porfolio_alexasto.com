@@ -40,7 +40,12 @@ export interface TimelineEntry {
 const DESANY = "https://www.digitaldesany.com";
 /** digitaldesany.com has Spanish (/es) and Catalan (/ca); English readers get Spanish. */
 const desanyHome: Localized = { es: `${DESANY}/es`, ca: `${DESANY}/ca`, en: `${DESANY}/es` };
-const desanyCase = (slug: string) => `${DESANY}/es/casos-exito/${slug}`;
+const desanyServices: Localized = { es: `${DESANY}/es/servicios`, ca: `${DESANY}/ca/serveis`, en: `${DESANY}/es/servicios` };
+const desanyCase = (slug: string): Localized => ({
+  es: `${DESANY}/es/casos-exito/${slug}`,
+  ca: `${DESANY}/ca/casos-exit/${slug}`,
+  en: `${DESANY}/es/casos-exito/${slug}`,
+});
 
 const caseLinkLabel: Localized = {
   es: "ficha en Digital DesAny",
@@ -93,6 +98,20 @@ export const DATA = {
     } as Localized,
     ctaWork: { label: { es: "Ver trabajos", ca: "Veure treballs", en: "See my work" } as Localized, href: "#ahora" },
     ctaTalk: { label: { es: "Hablemos", ca: "Parlem", en: "Let's talk" } as Localized, href: "#contacto" },
+    nowLabel: { es: "Ahora mismo", ca: "Ara mateix", en: "Right now" } as Localized,
+    place: "Granollers",
+    timeLabel: { es: "hora local", ca: "hora local", en: "local time" } as Localized,
+    studioLabel: { es: "Mi estudio", ca: "El meu estudi", en: "My studio" } as Localized,
+    studio: { label: "Digital DesAny", href: desanyHome } as Link,
+    /** Contact sheet under the hero: one capture per case, each linking to it on the page. */
+    sheetLabel: { es: "Algunos trabajos", ca: "Alguns treballs", en: "Some of my work" } as Localized,
+    sheet: [
+      { id: "larasoak", name: "Lara's Oak" },
+      { id: "roses", name: "Roses de Sant Jordi" },
+      { id: "paulakrebel", name: "Paula Krebel" },
+      { id: "gokthermal", name: "GOK Thermal" },
+      { id: "peer2stream", name: "Peer2Stream" },
+    ],
     stackLabel: { es: "Con lo que trabajo", ca: "Amb què treballo", en: "What I work with" } as Localized,
     stack: [
       "Go · Fiber · PostgreSQL · Redis",
@@ -144,10 +163,18 @@ export const DATA = {
     links: [
       {
         label: { es: "servicios en digitaldesany.com", ca: "serveis a digitaldesany.com", en: "services at digitaldesany.com" },
-        href: desanyHome,
+        href: desanyServices,
       },
       { label: "linkedin", href: "https://www.linkedin.com/company/digital-desany/" },
     ] as Link[],
+    more: {
+      label: {
+        es: "Más sobre el estudio en digitaldesany.com",
+        ca: "Més sobre l'estudi a digitaldesany.com",
+        en: "More about the studio at digitaldesany.com",
+      },
+      href: desanyHome,
+    } as Link,
     casesLabel: { es: "Casos", ca: "Casos", en: "Case studies" } as Localized,
     cases: [
       {
@@ -203,13 +230,13 @@ export const DATA = {
         tags: ["CA · ES", "+500"],
         links: [
           { label: caseLinkLabel, href: desanyCase("rosesstjordi") },
-          { label: "rosesstjordi.com", href: "https://rosesstjordi.com" },
+          { label: "rosesstjordi.cat", href: "https://rosesstjordi.cat" },
         ],
         shot: {
           alt: {
-            es: "Portada de rosesstjordi.com, con la rosa digital de Sant Jordi",
-            ca: "Portada de rosesstjordi.com, amb la rosa digital de Sant Jordi",
-            en: "Home page of rosesstjordi.com, with the Sant Jordi digital rose",
+            es: "Portada de rosesstjordi.cat, con la rosa digital de Sant Jordi",
+            ca: "Portada de rosesstjordi.cat, amb la rosa digital de Sant Jordi",
+            en: "Home page of rosesstjordi.cat, with the Sant Jordi digital rose",
           },
         },
       },
