@@ -1,4 +1,4 @@
-/* Shared helpers for the check scripts (shots, a11y, lh).
+/* Shared helpers for the check scripts (shots, a11y, lh, seo, links).
    Starts `next start` on a local port (building first if the build is
    missing or older than the sources), or reuses BASE_URL if it is set. */
 import { spawn, spawnSync } from "node:child_process";
@@ -7,7 +7,9 @@ import { join, resolve } from "node:path";
 
 const ROOT = resolve(import.meta.dirname, "..", "..");
 const NEXT_BIN = join(ROOT, "node_modules", ".bin", "next");
-const SOURCE_DIRS = ["app", "components", "lib", "public"];
+/** Everything that changes the build output. */
+const SOURCE_DIRS = ["app", "components", "lib", "public", "assets"];
+const SOURCE_FILES = ["next.config.ts", "postcss.config.mjs", "tsconfig.json", "package.json", "package-lock.json"];
 
 export const LOCALE_PAGES = [
   { locale: "es", path: "/" },
@@ -30,8 +32,9 @@ export function outDir() {
 }
 
 function newestMtime(dir) {
-  let newest = 0;
-  if (!existsSync(dir)) return newest;
+  if (!existsSync(dir)) return 0;
+  // The directory's own mtime catches deleted and renamed files.
+  let newest = statSync(dir).mtimeMs;
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     const p = join(dir, entry.name);
     const m = entry.isDirectory() ? newestMtime(p) : statSync(p).mtimeMs;
@@ -43,7 +46,10 @@ function newestMtime(dir) {
 function ensureBuild() {
   const buildId = join(ROOT, ".next", "BUILD_ID");
   const built = existsSync(buildId) ? statSync(buildId).mtimeMs : 0;
-  const sources = Math.max(...SOURCE_DIRS.map((d) => newestMtime(join(ROOT, d))));
+  const sources = Math.max(
+    ...SOURCE_DIRS.map((d) => newestMtime(join(ROOT, d))),
+    ...SOURCE_FILES.map((f) => (existsSync(join(ROOT, f)) ? statSync(join(ROOT, f)).mtimeMs : 0))
+  );
   if (built && built >= sources) return;
   console.log("› build missing or stale, running next build…");
   const r = spawnSync(NEXT_BIN, ["build"], { cwd: ROOT, stdio: "inherit" });
@@ -68,15 +74,32 @@ export async function withServer(fn) {
   ensureBuild();
   const port = Number(process.env.CHECK_PORT || 3100);
   const base = `http://localhost:${port}`;
+  // Never test whatever else happens to be listening on the port.
+  const busy = await fetch(base, { signal: AbortSignal.timeout(2000) }).then(() => true, () => false);
+  if (busy) throw new Error(`port ${port} is already in use; stop that server or set CHECK_PORT`);
   const child = spawn(NEXT_BIN, ["start", "-p", String(port)], {
     cwd: ROOT,
     stdio: ["ignore", "ignore", "inherit"],
   });
+  const stop = () => child.kill("SIGTERM");
+  const onSignal = () => {
+    stop();
+    process.exit(130);
+  };
+  process.once("SIGINT", onSignal);
+  process.once("SIGTERM", onSignal);
+  const exited = new Promise((_, reject) => {
+    child.once("error", reject);
+    child.once("exit", (code) => reject(new Error(`next start exited early (code ${code})`)));
+  });
+  exited.catch(() => {});
   try {
-    await waitFor(`${base}/`);
+    await Promise.race([waitFor(`${base}/`), exited]);
     return await fn(base);
   } finally {
-    child.kill("SIGTERM");
+    process.off("SIGINT", onSignal);
+    process.off("SIGTERM", onSignal);
+    stop();
   }
 }
 

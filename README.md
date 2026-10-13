@@ -11,7 +11,7 @@ app/
   (es)/            layout raíz en castellano, página "/" e imagen OG
   (ca)/ca/         lo mismo para "/ca" (layout en app/(ca))
   (en)/en/         lo mismo para "/en" (layout en app/(en))
-  sitemap.ts · robots.ts · manifest.ts · icon.tsx · apple-icon.tsx
+  sitemap.ts · robots.ts · manifest.ts · llms.txt/ · icon.tsx · apple-icon.tsx
   fonts.ts · globals.css
 components/
   RootDocument     <html lang> por idioma, JSON-LD y fondo
@@ -26,7 +26,7 @@ lib/
   site.ts          SITE_URL, metadatos, hreflang y JSON-LD por idioma
   og.tsx           imagen OG con Bricolage Grotesque (assets/fonts)
   shots.json       capturas disponibles (lo escribe npm run capture)
-scripts/           check, shots, a11y, lh, seo, links y capture
+scripts/           shots, a11y, lh, seo, links y capture (lib/server.mjs común)
 ```
 
 ## Comandos

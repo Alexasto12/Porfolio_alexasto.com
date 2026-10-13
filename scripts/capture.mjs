@@ -1,8 +1,8 @@
 /* Captures each project site at 1440×900 and saves an optimized WebP
    (≤ 200 KB) in public/shots/, plus lib/shots.json, which the cards read to
-   decide whether to show an image. A site that fails keeps its card without
-   a frame. Usage: npm run capture [-- --only larasoak,roses] */
-import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
+   decide whether to show an image. A site that fails loses any older capture
+   and its card stays without a frame. Usage: npm run capture [-- --only larasoak,roses] */
+import { mkdirSync, readFileSync, rmSync, writeFileSync, existsSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { chromium } from "@playwright/test";
 import sharp from "sharp";
@@ -34,13 +34,17 @@ async function findPaulaSite(page) {
   return hrefs.find((h) => !NOT_HER_SITE.test(h)) ?? null;
 }
 
+/** Smallest effort first: lower the quality, then the width, until it fits. */
 async function toWebp(png) {
   for (const quality of [80, 72, 64, 56, 48, 40]) {
     const buf = await sharp(png).webp({ quality, effort: 6 }).toBuffer();
     if (buf.length <= MAX_BYTES) return { buf, quality };
   }
-  const buf = await sharp(png).resize({ width: 1200 }).webp({ quality: 40, effort: 6 }).toBuffer();
-  return { buf, quality: 40 };
+  for (const width of [1200, 1000, 800]) {
+    const buf = await sharp(png).resize({ width }).webp({ quality: 40, effort: 6 }).toBuffer();
+    if (buf.length <= MAX_BYTES) return { buf, quality: 40 };
+  }
+  throw new Error(`could not get the screenshot under ${MAX_BYTES / 1024} KB`);
 }
 
 const only = arg("only", "")
@@ -67,9 +71,13 @@ try {
       const png = await page.screenshot({ type: "png" });
       const { buf, quality } = await toWebp(png);
       writeFileSync(join(OUT, `${id}.webp`), buf);
-      manifest[id] = { src: `/shots/${id}.webp`, width: VIEWPORT.width, height: VIEWPORT.height, url };
+      const { width, height } = await sharp(buf).metadata();
+      manifest[id] = { src: `/shots/${id}.webp`, width, height, url };
       console.log(`✓ ${id}  ${url}  ${(buf.length / 1024).toFixed(0)} KB (q${quality})`);
     } catch (err) {
+      // A failed site loses any older capture, so its card shows no stale image.
+      delete manifest[id];
+      rmSync(join(OUT, `${id}.webp`), { force: true });
       failures.push({ id, url: url ?? PAULA_CASE, error: String(err?.message ?? err).split("\n")[0] });
       console.log(`✗ ${id}  ${url ?? PAULA_CASE}  ${failures.at(-1).error}`);
     } finally {

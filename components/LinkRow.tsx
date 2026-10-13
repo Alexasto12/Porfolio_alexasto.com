@@ -9,7 +9,10 @@ export function LinkRow({ links, locale }: { links: Link[]; locale: Locale }) {
       {links.map((ln, i) => (
         <a key={i} href={pick(ln.href, locale)} target="_blank" rel="noreferrer" className="link-row">
           <span className="link-row__bar" aria-hidden />
-          <span>{pick(ln.label, locale)}</span>
+          <span>
+            {pick(ln.label, locale)}
+            <span aria-hidden> ↗</span>
+          </span>
         </a>
       ))}
     </div>

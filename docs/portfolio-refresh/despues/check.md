@@ -1,0 +1,46 @@
+# npm run check
+
+Generado: 2026-10-13T13:51:56Z en la rama claude/portfolio-refresh.
+
+```
+> portfolio-alexasto@0.1.0 check
+> npm run lint && npm run typecheck && npm run build
+> portfolio-alexasto@0.1.0 lint
+> eslint .
+> portfolio-alexasto@0.1.0 typecheck
+> tsc --noEmit
+> portfolio-alexasto@0.1.0 build
+> next build
+   ▲ Next.js 15.5.18
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 8.6s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/15) ...
+   Generating static pages (3/15) 
+   Generating static pages (7/15) 
+   Generating static pages (11/15) 
+ ✓ Generating static pages (15/15)
+   Finalizing page optimization ...
+   Collecting build traces ...
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    1.72 kB         109 kB
+├ ○ /_not-found                            994 B         103 kB
+├ ○ /apple-icon                            145 B         103 kB
+├ ○ /ca                                  1.72 kB         109 kB
+├ ○ /ca/opengraph-image-1lxb3u             145 B         103 kB
+├ ○ /en                                  1.72 kB         109 kB
+├ ○ /en/opengraph-image-1nh35u             145 B         103 kB
+├ ○ /icon                                  145 B         103 kB
+├ ○ /llms.txt                              145 B         103 kB
+├ ○ /manifest.webmanifest                  145 B         103 kB
+├ ○ /opengraph-image-35z9gd                145 B         103 kB
+├ ○ /robots.txt                            145 B         103 kB
+└ ○ /sitemap.xml                           145 B         103 kB
++ First Load JS shared by all             102 kB
+  ├ chunks/255-4f84124391a7dac4.js       46.2 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)           1.9 kB
+○  (Static)  prerendered as static content
+exit code: 0
+```

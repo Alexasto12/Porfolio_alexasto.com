@@ -124,24 +124,22 @@ function Vmv({ locale }: { locale: Locale }) {
                 style={{ marginTop: "4px" }}
               >
                 <span className="link-row__bar" aria-hidden />
-                <span>{t(c.link.label)}</span>
+                <span>
+                  {t(c.link.label)}
+                  <span aria-hidden> ↗</span>
+                </span>
               </a>
             )}
           </Reveal>
         ))}
       </ul>
 
-      <div className="ticker" style={{ marginTop: "clamp(36px,5vw,60px)" }} aria-hidden>
-        <div className="ticker__track">
-          {[0, 1].map((dup) => (
-            <div key={dup} className="ticker__item">
-              {d.ticker.map((w, i) => (
-                <span key={i}>{t(w)}</span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* Static on purpose: a band that never stops moving fails WCAG 2.2.2. */}
+      <ul className="tech-list" aria-label={t(d.techLabel)} style={{ marginTop: "clamp(36px,5vw,60px)" }}>
+        {d.ticker.map((w, i) => (
+          <li key={i}>{t(w)}</li>
+        ))}
+      </ul>
     </article>
   );
 }

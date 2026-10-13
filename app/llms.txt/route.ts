@@ -1,4 +1,10 @@
-# Alejandro Cabrera
+import { localeUrl } from "@/lib/site";
+
+export const dynamic = "force-static";
+
+/** Plain-text summary for LLM crawlers; the site URLs follow SITE_URL. */
+export function GET() {
+  const body = `# Alejandro Cabrera
 
 > Personal site of **Alejandro Cabrera**, backend and full-stack developer and
 > co-founder of Digital DesAny, a web studio in Granollers (Barcelona, Spain).
@@ -14,7 +20,7 @@ for small and medium businesses across Catalonia.
 - Username: alexasto12 (domain alexasto.com)
 - Role: Backend and full-stack developer. Co-founder of Digital DesAny.
 - Location: Granollers, Barcelona, Spain
-- Site: https://dev.alexasto.com (Spanish), https://dev.alexasto.com/ca (Catalan), https://dev.alexasto.com/en (English)
+- Site: ${localeUrl("es")} (Spanish), ${localeUrl("ca")} (Catalan), ${localeUrl("en")} (English)
 - Personal contact: contact@alexasto.com
 - Client projects: info@digitaldesany.com
 
@@ -53,3 +59,6 @@ Jordi (https://rosesstjordi.com) and Hidrotech Bordalló.
   Essential (MIT). Demo https://alexasto12.github.io/ProjectePokeAPI/, code
   https://github.com/Alexasto12/ProjectePokeAPI
 - WordPress.org plugin: Simply Bootstrap Carousel, over 10 active installs.
+`;
+  return new Response(body, { headers: { "content-type": "text/plain; charset=utf-8" } });
+}

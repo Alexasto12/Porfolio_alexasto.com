@@ -12,6 +12,8 @@ export function Hero({ locale }: { locale: Locale }) {
       className="shell section"
       style={{ paddingTop: "clamp(40px,7vw,84px)", paddingBottom: "clamp(56px,9vw,120px)" }}
     >
+      {/* Only behind the hero, where the small text is at least 4.5:1 over it. */}
+      <div className="hero-glow" aria-hidden />
       <Reveal style={{ display: "flex", justifyContent: "flex-end" }}>
         <span className="mono-label hover-only" aria-hidden>
           {t(d.hint)}

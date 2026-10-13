@@ -40,6 +40,6 @@ Si estás ejecutando la renovación de octubre de 2026, el plan está en `docs/p
 - **`links`:** `npm run links`. Comprueba que los enlaces externos de `/`, `/ca` y `/en` responden 200. Necesita salida a internet.
 - **`capture`:** `npm run capture`. Captura a 1440×900 las webs de los proyectos y guarda WebP de 200 KB como máximo en `public/shots/`, más el manifiesto `lib/shots.json`. Necesita salida a internet.
 
-`shots`, `a11y` y `lh` levantan `next start` en el puerto 3100 (o `CHECK_PORT`) y recompilan si el código es más nuevo que el build. Con `BASE_URL` apuntan a otro servidor. Por defecto guardan en `docs/portfolio-refresh/despues/`; `-- --out docs/portfolio-refresh/antes` cambia la carpeta.
+`shots`, `a11y`, `lh`, `seo` y `links` levantan `next start` en el puerto 3100 (o `CHECK_PORT`; fallan si ya está ocupado) y recompilan si el código, `assets/` o la configuración son más nuevos que el build. Con `BASE_URL` apuntan a otro servidor. Por defecto guardan en `docs/portfolio-refresh/despues/`; `-- --out docs/portfolio-refresh/antes` cambia la carpeta.
 
 **Definición de terminado:** nada está terminado hasta que `check` pasa y `a11y` no da errores serios ni críticos.

@@ -18,26 +18,31 @@ function TweakRadio<T extends string>({
   label,
   value,
   options,
+  names,
   onChange,
 }: {
   label: string;
   value: T;
   options: T[];
+  names: Record<T, string>;
   onChange: (v: T) => void;
 }) {
   return (
-    <div className="tweaks__row">
-      <span className="tweaks__label">{label}</span>
+    <div className="tweaks__row" role="group" aria-label={label}>
+      <span className="tweaks__label" aria-hidden>
+        {label}
+      </span>
       <div className="tweaks__opts">
         {options.map((opt) => (
           <button
             key={opt}
             type="button"
             className="tweaks__opt"
+            aria-pressed={value === opt}
             data-on={value === opt}
             onClick={() => onChange(opt)}
           >
-            {opt}
+            {names[opt]}
           </button>
         ))}
       </div>
@@ -49,25 +54,30 @@ function TweakColor({
   label,
   value,
   options,
+  names,
   onChange,
 }: {
   label: string;
   value: Accent;
   options: Accent[];
+  names: string[];
   onChange: (v: Accent) => void;
 }) {
   return (
-    <div className="tweaks__row">
-      <span className="tweaks__label">{label}</span>
+    <div className="tweaks__row" role="group" aria-label={label}>
+      <span className="tweaks__label" aria-hidden>
+        {label}
+      </span>
       <div className="tweaks__swatches">
-        {options.map((opt) => (
+        {options.map((opt, i) => (
           <button
             key={opt[0]}
             type="button"
             className="tweaks__swatch"
+            aria-pressed={value[0] === opt[0]}
             data-on={value[0] === opt[0]}
             style={{ background: `linear-gradient(135deg, ${opt[0]}, ${opt[1]})` }}
-            aria-label={opt[0]}
+            aria-label={names[i] ?? opt[0]}
             onClick={() => onChange(opt)}
           />
         ))}
@@ -86,17 +96,74 @@ function TweakToggle({
   onChange: (v: boolean) => void;
 }) {
   return (
-    <button type="button" className="tweaks__toggle-btn" onClick={() => onChange(!value)}>
-      <span className="tweaks__switch" data-on={value} />
+    <button
+      type="button"
+      role="switch"
+      aria-checked={value}
+      className="tweaks__toggle-btn"
+      onClick={() => onChange(!value)}
+    >
+      <span className="tweaks__switch" data-on={value} aria-hidden />
       {label}
     </button>
   );
 }
 
-const LABELS: Record<Locale, Record<"projects" | "cards" | "path" | "brand" | "accent" | "grid", string>> = {
-  es: { projects: "Proyectos", cards: "Tarjetas", path: "Recorrido", brand: "Marca", accent: "Acento", grid: "Rejilla de fondo" },
-  ca: { projects: "Projectes", cards: "Targetes", path: "Recorregut", brand: "Marca", accent: "Accent", grid: "Reixeta de fons" },
-  en: { projects: "Projects", cards: "Cards", path: "Path", brand: "Brand", accent: "Accent", grid: "Background grid" },
+type Labels = {
+  title: string;
+  projects: string;
+  cards: string;
+  path: string;
+  mode: string;
+  brand: string;
+  accent: string;
+  grid: string;
+  cardNames: Record<CardsLayout, string>;
+  timelineNames: Record<TimelineMode, string>;
+  /** Swatch names, in ACCENT_OPTIONS order. */
+  accentNames: string[];
+};
+
+const LABELS: Record<Locale, Labels> = {
+  es: {
+    title: "Ajustes de diseño",
+    projects: "Proyectos",
+    cards: "Tarjetas",
+    path: "Recorrido",
+    mode: "Modo",
+    brand: "Marca",
+    accent: "Acento",
+    grid: "Rejilla de fondo",
+    cardNames: { stack: "Pila", split: "Partida", list: "Lista" },
+    timelineNames: { rail: "Eje", compact: "Compacto" },
+    accentNames: ["Granate", "Frambuesa", "Naranja", "Azul"],
+  },
+  ca: {
+    title: "Ajustos de disseny",
+    projects: "Projectes",
+    cards: "Targetes",
+    path: "Recorregut",
+    mode: "Mode",
+    brand: "Marca",
+    accent: "Accent",
+    grid: "Reixeta de fons",
+    cardNames: { stack: "Pila", split: "Partida", list: "Llista" },
+    timelineNames: { rail: "Eix", compact: "Compacte" },
+    accentNames: ["Granat", "Gerd", "Taronja", "Blau"],
+  },
+  en: {
+    title: "Design settings",
+    projects: "Projects",
+    cards: "Cards",
+    path: "Path",
+    mode: "Mode",
+    brand: "Brand",
+    accent: "Accent",
+    grid: "Background grid",
+    cardNames: { stack: "Stack", split: "Split", list: "List" },
+    timelineNames: { rail: "Rail", compact: "Compact" },
+    accentNames: ["Wine", "Raspberry", "Orange", "Blue"],
+  },
 };
 
 /** Floating design panel: card layout, timeline mode, accent, grid. Ctrl+Shift+E to show/hide. */
@@ -120,19 +187,21 @@ export function TweaksPanel({ locale }: { locale: Locale }) {
 
   return (
     <div className="tweaks">
-      <div className="tweaks__panel" role="dialog" aria-label="Tweaks">
+      <div className="tweaks__panel" role="dialog" aria-label={L.title}>
         <TweakSection label={L.projects} />
         <TweakRadio<CardsLayout>
           label={L.cards}
           value={tweaks.cards}
           options={["stack", "split", "list"]}
+          names={L.cardNames}
           onChange={(v) => setTweak("cards", v)}
         />
         <TweakSection label={L.path} />
         <TweakRadio<TimelineMode>
-          label={L.path}
+          label={L.mode}
           value={tweaks.timeline}
           options={["rail", "compact"]}
+          names={L.timelineNames}
           onChange={(v) => setTweak("timeline", v)}
         />
         <TweakSection label={L.brand} />
@@ -140,13 +209,10 @@ export function TweaksPanel({ locale }: { locale: Locale }) {
           label={L.accent}
           value={tweaks.accent}
           options={ACCENT_OPTIONS}
+          names={L.accentNames}
           onChange={(v) => setTweak("accent", v)}
         />
-        <TweakToggle
-          label={L.grid}
-          value={tweaks.grid}
-          onChange={(v) => setTweak("grid", v)}
-        />
+        <TweakToggle label={L.grid} value={tweaks.grid} onChange={(v) => setTweak("grid", v)} />
       </div>
     </div>
   );

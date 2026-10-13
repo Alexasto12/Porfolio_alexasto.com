@@ -28,10 +28,14 @@ export const TWEAK_DEFAULTS: TweakValues = {
   grid: true,
 };
 
+/**
+ * Every base reaches 3:1 on #14130e (large text) and 4.5:1 under white text;
+ * every bright reaches 4.5:1 on #14130e. Small text never uses these.
+ */
 export const ACCENT_OPTIONS: Accent[] = [
   ["#c12c52", "#e24a72"],
-  ["#a01f43", "#c93a60"],
-  ["#c2622c", "#e2884a"],
+  ["#b42d5a", "#d64b6e"],
+  ["#b45e2d", "#e2884a"],
   ["#2c6ac1", "#4a8ae2"],
 ];
 
@@ -56,7 +60,12 @@ export function TweaksProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
-      if (raw) setTweaks((prev) => ({ ...prev, ...JSON.parse(raw) }));
+      if (raw) {
+        const stored = JSON.parse(raw) as Partial<TweakValues>;
+        // Drop an accent saved before the palette changed (it may fail contrast).
+        const accent = ACCENT_OPTIONS.find((a) => a[0] === stored.accent?.[0]);
+        setTweaks((prev) => ({ ...prev, ...stored, accent: accent ?? prev.accent }));
+      }
     } catch {}
   }, []);
 

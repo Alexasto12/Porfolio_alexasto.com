@@ -43,9 +43,9 @@ const desanyHome: Localized = { es: `${DESANY}/es`, ca: `${DESANY}/ca`, en: `${D
 const desanyCase = (slug: string) => `${DESANY}/es/casos-exito/${slug}`;
 
 const caseLinkLabel: Localized = {
-  es: "ficha en Digital DesAny ↗",
-  ca: "fitxa a Digital DesAny ↗",
-  en: "case study at Digital DesAny ↗",
+  es: "ficha en Digital DesAny",
+  ca: "fitxa a Digital DesAny",
+  en: "case study at Digital DesAny",
 };
 
 export const PERSON_NAME = "Alejandro Cabrera";
@@ -53,7 +53,6 @@ export const PERSON_NAME = "Alejandro Cabrera";
 export const DATA = {
   /** In-page index, in section order. */
   sections: [
-    { id: "perfil", num: "01", label: { es: "Perfil", ca: "Perfil", en: "Profile" } },
     { id: "ahora", num: "02", label: { es: "Ahora", ca: "Ara", en: "Now" } },
     { id: "experiencia", num: "03", label: { es: "Experiencia", ca: "Experiència", en: "Experience" } },
     { id: "recorrido", num: "04", label: { es: "Recorrido", ca: "Recorregut", en: "Path" } },
@@ -144,10 +143,10 @@ export const DATA = {
     } as Localized,
     links: [
       {
-        label: { es: "servicios en digitaldesany.com ↗", ca: "serveis a digitaldesany.com ↗", en: "services at digitaldesany.com ↗" },
+        label: { es: "servicios en digitaldesany.com", ca: "serveis a digitaldesany.com", en: "services at digitaldesany.com" },
         href: desanyHome,
       },
-      { label: "linkedin ↗", href: "https://www.linkedin.com/company/digital-desany/" },
+      { label: "linkedin", href: "https://www.linkedin.com/company/digital-desany/" },
     ] as Link[],
     casesLabel: { es: "Casos", ca: "Casos", en: "Case studies" } as Localized,
     cases: [
@@ -163,7 +162,7 @@ export const DATA = {
         tags: ["NEXT.JS", "CMS"],
         links: [
           { label: caseLinkLabel, href: desanyCase("lara-oak") },
-          { label: "larasoak.art ↗", href: "https://larasoak.art" },
+          { label: "larasoak.art", href: "https://larasoak.art" },
         ],
         shot: {
           alt: {
@@ -182,8 +181,15 @@ export const DATA = {
           ca: "Portfolio trilingüe d'il·lustració infantil i juvenil, amb disseny de marca i design system.",
           en: "Trilingual portfolio of children's and young adult illustration, with brand design and a design system.",
         },
-        tags: ["ES · CA · EN", "DESIGN SYSTEM"],
+        tags: ["DESIGN SYSTEM"],
         links: [{ label: caseLinkLabel, href: desanyCase("paula-krebel") }],
+        shot: {
+          alt: {
+            es: "Portada de la web de Paula Krebel, portfolio de ilustración",
+            ca: "Portada del web de Paula Krebel, portfolio d'il·lustració",
+            en: "Home page of Paula Krebel's illustration portfolio",
+          },
+        },
       },
       {
         id: "roses",
@@ -197,7 +203,7 @@ export const DATA = {
         tags: ["CA · ES", "+500"],
         links: [
           { label: caseLinkLabel, href: desanyCase("rosesstjordi") },
-          { label: "rosesstjordi.com ↗", href: "https://rosesstjordi.com" },
+          { label: "rosesstjordi.com", href: "https://rosesstjordi.com" },
         ],
         shot: {
           alt: {
@@ -288,7 +294,7 @@ export const DATA = {
             en: "Collaborative editing, per-issue versions and real-time preview.",
           },
           link: {
-            label: { es: "demo pública ↗", ca: "demo pública ↗", en: "public demo ↗" },
+            label: { es: "demo pública", ca: "demo pública", en: "public demo" },
             href: "https://magazine.salerm.com/s/7611600d-0ac8-4b56-b5a3-f54e1ed7522c",
           },
         },
@@ -341,6 +347,11 @@ export const DATA = {
           },
         },
       ] as Capability[],
+      techLabel: {
+        es: "Tecnologías y áreas",
+        ca: "Tecnologies i àrees",
+        en: "Technologies and areas",
+      } as Localized,
       ticker: [
         { es: "32 dominios", ca: "32 dominis", en: "32 domains" },
         { es: "WordPress", ca: "WordPress", en: "WordPress" },
@@ -398,7 +409,7 @@ export const DATA = {
         en: "Talking to a large carrier showed us problems in the model that code wasn't going to fix, so we shut it down before launch.",
       } as Localized,
       tags: ["GO · FIBER", "POSTGRESQL", "REDIS", "HMAC"],
-      links: [{ label: "neibr.es ↗", href: "https://neibr.es" }] as Link[],
+      links: [{ label: "neibr.es", href: "https://neibr.es" }] as Link[],
       shotAlt: {
         es: "Portada de neibr.es, la web de Neibr",
         ca: "Portada de neibr.es, la web de Neibr",
@@ -440,7 +451,7 @@ export const DATA = {
         en: "Website for an HVAC installer in Granollers, with a project gallery, reviews and direct contact by WhatsApp or phone. I built it as my own freelance job, outside Digital DesAny.",
       },
       tags: ["NEXT.JS", "FREELANCE"],
-      links: [{ label: "gokthermal.com ↗", href: "https://gokthermal.com" }],
+      links: [{ label: "gokthermal.com", href: "https://gokthermal.com" }],
       shot: {
         alt: {
           es: "Portada de gokthermal.com, la web de GOK Thermal",
@@ -565,11 +576,15 @@ export const DATA = {
         year: "2024",
         kind: "work",
         title: {
-          es: "Integro WiPay con máquinas expendedoras en Automated Transactions.",
-          ca: "Integro WiPay amb màquines expenedores a Automated Transactions.",
-          en: "I integrate WiPay with vending machines at Automated Transactions.",
+          es: "Colaboro en la integración de WiPay con máquinas expendedoras en Automated Transactions.",
+          ca: "Col·laboro en la integració de WiPay amb màquines expenedores a Automated Transactions.",
+          en: "I help integrate WiPay with vending machines at Automated Transactions.",
         },
-        place: { es: "Automated Transactions", ca: "Automated Transactions", en: "Automated Transactions" },
+        place: {
+          es: "Automated Transactions · colaboración",
+          ca: "Automated Transactions · col·laboració",
+          en: "Automated Transactions · collaboration",
+        },
         body: {
           es: "Integración del pago cashless WiPay con máquinas expendedoras por MDB. El trabajo concreto: traducir los payloads de pago a hexadecimal por bus serie a 9600 baudios.",
           ca: "Integració del pagament cashless WiPay amb màquines expenedores per MDB. La feina concreta: traduir els payloads de pagament a hexadecimal pel bus sèrie a 9600 bauds.",
@@ -616,7 +631,7 @@ export const DATA = {
     description: {
       es: "Trabajos de DAW que marcaron el rumbo. Código público en GitHub, con sus aciertos y sus rastros de aprendizaje.",
       ca: "Treballs de DAW que van marcar el rumb. Codi públic a GitHub, amb els seus encerts i els seus rastres d'aprenentatge.",
-      en: "DAW projects that set the direction. Public code on GitHub, with the good parts and the learning marks.",
+      en: "DAW projects that set the direction. Public code on GitHub, with what went right and the traces of learning.",
     } as Localized,
     projects: [
       {
@@ -630,8 +645,8 @@ export const DATA = {
         },
         tags: ["NEXT.JS 15", "REACT 19", "MONGODB", "TMDB"],
         links: [
-          { label: "demo ↗", href: "https://peer2stream.alexasto.com/discover" },
-          { label: "github ↗", href: "https://github.com/Alexasto12/peer2stream" },
+          { label: "demo", href: "https://peer2stream.alexasto.com/discover" },
+          { label: "github", href: "https://github.com/Alexasto12/peer2stream" },
         ],
         shot: {
           alt: {
@@ -652,8 +667,8 @@ export const DATA = {
         },
         tags: ["HTML · CSS · JS", "POKEAPI"],
         links: [
-          { label: "demo ↗", href: "https://alexasto12.github.io/ProjectePokeAPI/" },
-          { label: "github ↗", href: "https://github.com/Alexasto12/ProjectePokeAPI" },
+          { label: "demo", href: "https://alexasto12.github.io/ProjectePokeAPI/" },
+          { label: "github", href: "https://github.com/Alexasto12/ProjectePokeAPI" },
         ],
         shot: {
           alt: {
@@ -670,7 +685,7 @@ export const DATA = {
         ca: "A WordPress.org tinc publicat el plugin Simply Bootstrap Carousel, amb més de 10 instal·lacions actives.",
         en: "On WordPress.org I publish the Simply Bootstrap Carousel plugin, with over 10 active installs.",
       } as Localized,
-      link: { label: "profiles.wordpress.org/alexasto12 ↗", href: "https://profiles.wordpress.org/alexasto12/" } as Link,
+      link: { label: "profiles.wordpress.org/alexasto12", href: "https://profiles.wordpress.org/alexasto12/" } as Link,
     },
   },
 

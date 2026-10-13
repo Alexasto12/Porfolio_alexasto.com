@@ -40,8 +40,13 @@ const decode = (s) =>
 const manifestPath = join(ROOT, ".next", "prerender-manifest.json");
 
 await withServer(async (base) => {
-  const prerender = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, "utf8")).routes : {};
-  for (const p of LOCALE_PAGES) check(`static ${p.path}`, p.path in prerender, "prerender-manifest");
+  if (process.env.BASE_URL) {
+    // The local build says nothing about a remote server.
+    for (const p of LOCALE_PAGES) results.push({ name: `static ${p.path}`, ok: true, detail: "no comprobado (BASE_URL)" });
+  } else {
+    const prerender = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, "utf8")).routes : {};
+    for (const p of LOCALE_PAGES) check(`static ${p.path}`, p.path in prerender, "prerender-manifest");
+  }
 
   const html = {};
   for (const p of LOCALE_PAGES) {
@@ -50,7 +55,9 @@ await withServer(async (base) => {
     check(`${p.path} responds 200`, res.status === 200, String(res.status));
   }
 
-  // Visible text per locale, to find strings that belong to only one locale.
+  // Text per locale, to find strings that belong to only one locale. Text nodes
+  // keep their source case (innerText would apply text-transform) and are not
+  // split by React's <!-- --> separators, so they can be found in the HTML.
   const browser = await chromium.launch();
   const lines = {};
   try {
@@ -58,10 +65,16 @@ await withServer(async (base) => {
       const page = await browser.newPage();
       await page.goto(base + p.path, { waitUntil: "networkidle" });
       lines[p.locale] = new Set(
-        (await page.evaluate(() => document.body.innerText))
-          .split("\n")
-          .map((s) => s.trim())
-          .filter((s) => s.length >= 12)
+        await page.evaluate(() => {
+          const out = [];
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+          for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+            if (n.parentElement?.closest("script, style")) continue;
+            const text = n.textContent.replace(/\s+/g, " ").trim();
+            if (text.length >= 12) out.push(text);
+          }
+          return out;
+        })
       );
       await page.close();
     }
@@ -113,7 +126,9 @@ await withServer(async (base) => {
     const leaks = [];
     for (const other of LOCALE_PAGES.filter((o) => o.locale !== lc)) {
       for (const line of lines[other.locale]) {
-        if (!lines[lc].has(line) && h.includes(line)) leaks.push(`${other.locale}: ${line.slice(0, 60)}`);
+        // Whole text nodes only: "CMS propi" (ca) is a substring of "CMS propio" (es).
+        const node = new RegExp(`>\\s*${line.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*<`);
+        if (!lines[lc].has(line) && node.test(h)) leaks.push(`${other.locale}: ${line.slice(0, 60)}`);
       }
     }
     check(`${p.path} has no text from the other locales`, leaks.length === 0, leaks.slice(0, 3).join(" | "));
