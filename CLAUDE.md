@@ -37,6 +37,7 @@ Si estás ejecutando la renovación de octubre de 2026, el plan está en `docs/p
 - **`a11y`:** `npm run a11y`. axe-core (WCAG 2.2 AA y buenas prácticas) sobre las mismas páginas, más desbordamiento horizontal a 320 y 375 px y texto por debajo de 11 px. Sale con código 1 si hay errores serios o críticos o si algo desborda.
 - **`lh`:** `npm run lh`. Lighthouse en móvil y escritorio con el Chromium de Playwright; guarda la mediana de 3 pasadas (`-- --runs N`, `-- --all` para las tres rutas).
 - **`seo`:** `npm run seo`. Comprueba rutas estáticas, `lang`, canonical, hreflang, `og:locale`, JSON-LD, sitemap y robots.txt, que cada idioma no lleve textos de los otros dos, y guarda las imágenes OG.
+- **`links`:** `npm run links`. Comprueba que los enlaces externos de `/`, `/ca` y `/en` responden 200. Necesita salida a internet.
 - **`capture`:** `npm run capture`. Captura a 1440×900 las webs de los proyectos y guarda WebP de 200 KB como máximo en `public/shots/`, más el manifiesto `lib/shots.json`. Necesita salida a internet.
 
 `shots`, `a11y` y `lh` levantan `next start` en el puerto 3100 (o `CHECK_PORT`) y recompilan si el código es más nuevo que el build. Con `BASE_URL` apuntan a otro servidor. Por defecto guardan en `docs/portfolio-refresh/despues/`; `-- --out docs/portfolio-refresh/antes` cambia la carpeta.

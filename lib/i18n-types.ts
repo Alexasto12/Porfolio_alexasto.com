@@ -2,19 +2,13 @@ export type Locale = "es" | "en" | "ca";
 
 export const LOCALES: Locale[] = ["es", "ca", "en"];
 
-export const LOCALE_LABEL: Record<Locale, string> = {
-  es: "ES",
-  en: "EN",
-  ca: "CA",
-};
-
 export const LOCALE_FULL: Record<Locale, string> = {
   es: "Español",
   en: "English",
   ca: "Català",
 };
 
-/** BCP 47 tags for Intl formatting and the `lang` attribute. */
+/** BCP 47 tags for Intl number formatting. */
 export const LOCALE_TAG: Record<Locale, string> = {
   es: "es-ES",
   ca: "ca-ES",
@@ -25,8 +19,6 @@ export type Localized<T = string> = Record<Locale, T>;
 
 /** A value that may already be localized, or a plain (locale-agnostic) value. */
 export type Translatable<T = string> = T | Localized<T>;
-
-export const l = <T>(es: T, en: T, ca: T): Localized<T> => ({ es, en, ca });
 
 function isLocalized<T>(value: Translatable<T>): value is Localized<T> {
   return (

@@ -1,6 +1,6 @@
 # axe-core y comprobaciones propias
 
-Generado: 2026-10-13T12:16:25.094Z. Etiquetas: wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa, best-practice.
+Generado: 2026-10-13T12:23:04.124Z. Etiquetas: wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa, best-practice.
 
 ## axe
 

@@ -63,3 +63,19 @@ Lo que no cubría `DECISIONES.md`, qué se decidió y por qué. Lo marcado **Pen
 - **Etiquetas mono que se quitan por ser solo decoración:** el reloj y el separador `//` de la barra, el rol repetido en la barra (ya está en el hero), "01 · Perfil" del hero y los números 01-04 de los servicios.
 - **Las que se quedan, porque dan información:** el nombre de cada sección junto a su número, los subtítulos ("Qué hacemos", "Casos", "Lo que construí"), las etiquetas de tecnología, el tipo y el lugar de cada hito, y el ticker de VMV (la Fase 2 solo pedía quitar KAFKA). La pista del nombre animado sigue solo en dispositivos con ratón.
 - **Dirección visual:** tema oscuro, paleta accesible de `CLAUDE.md` y menos etiquetas mono, como dice `DECISIONES.md`.
+
+## Fase 6
+
+- **Pendiente: enlaces externos.** `npm run links` encuentra 19 enlaces externos y 3 `mailto:`. Desde la sesión solo se pueden comprobar los tres de GitHub (200); los otros 16 no resuelven por la política de red, no porque estén rotos. Resultado en `despues/links.md`. Hay que repetirlo con red. Ojo: LinkedIn suele contestar 999 a peticiones automáticas aunque el perfil exista.
+- **Lighthouse** se pasa ahora a las tres rutas (`npm run lh -- --all`); en la línea base solo existía `/`.
+
+## Resumen de lo pendiente
+
+1. Capturas reales: `npm run capture` con red y commit de `public/shots/` y `lib/shots.json` (Fase 3).
+2. Enlaces: `npm run links` con red (Fase 6).
+3. URLs de digitaldesany.com: página de servicios, fichas en catalán, ficha de Hidrotech Bordalló y web de Paula Krebel (Fase 2).
+4. Nombre exacto del premio de Neibr (Fase 2).
+5. Traducciones al catalán y al inglés de la frase de cierre de Neibr (Fase 2).
+6. Años del recorrido calculados con 11 años = 2011 (Fase 2).
+7. Página 404 propia: requiere `experimental.globalNotFound` (Fase 4).
+8. Al pasar a alexasto.com: `SITE_URL=https://alexasto.com` en Vercel (Fase 4).

@@ -13,7 +13,8 @@
     "a11y": "node scripts/a11y.mjs",
     "lh": "node scripts/lh.mjs",
     "capture": "node scripts/capture.mjs",
-    "seo": "node scripts/seo.mjs"
+    "seo": "node scripts/seo.mjs",
+    "links": "node scripts/links.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

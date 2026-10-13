@@ -107,14 +107,14 @@ Usa solo los hechos de `DECISIONES.md` y escribe cada cambio en los tres idiomas
 
 ## Fase 6. Cierre
 
-- [ ] Ejecuta `check`, `a11y`, `shots` y Lighthouse en móvil y escritorio, y guarda los resultados en `despues/`.
-- [ ] Comprueba que todos los enlaces externos de la página responden 200.
-- [ ] Completa la descripción del PR:
+- [x] Ejecuta `check`, `a11y`, `shots` y Lighthouse en móvil y escritorio, y guarda los resultados en `despues/`.
+- [ ] Comprueba que todos los enlaces externos de la página responden 200. (Script `npm run links` hecho; desde la sesión solo se pueden comprobar los de GitHub, ver `PREGUNTAS.md`.)
+- [x] Completa la descripción del PR:
   - resumen por fase,
   - tabla de antes y después (Lighthouse y axe),
   - enlaces a las capturas,
   - lo que queda pendiente en `PREGUNTAS.md`.
-- [ ] Marca el PR como listo para revisar.
+- [x] Marca el PR como listo para revisar.
 
 ## Fuera de alcance (lo hace Alejandro)
 
