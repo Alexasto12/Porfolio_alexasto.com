@@ -1,104 +1,35 @@
 {
-  "generatedAt": "2026-10-13T12:12:47.926Z",
+  "generatedAt": "2026-10-13T12:16:25.094Z",
   "axe": [
     {
       "locale": "es",
       "width": 375,
-      "violations": [
-        {
-          "id": "region",
-          "impact": "moderate",
-          "help": "All page content should be contained by landmarks",
-          "nodes": 1,
-          "targets": [
-            ".telemetry__avail"
-          ]
-        }
-      ]
+      "violations": []
     },
     {
       "locale": "es",
       "width": 1440,
-      "violations": [
-        {
-          "id": "region",
-          "impact": "moderate",
-          "help": "All page content should be contained by landmarks",
-          "nodes": 4,
-          "targets": [
-            ".telemetry__sysid",
-            ".telemetry__role",
-            ".telemetry__clock",
-            ".telemetry__avail"
-          ]
-        }
-      ]
+      "violations": []
     },
     {
       "locale": "ca",
       "width": 375,
-      "violations": [
-        {
-          "id": "region",
-          "impact": "moderate",
-          "help": "All page content should be contained by landmarks",
-          "nodes": 1,
-          "targets": [
-            ".telemetry__avail"
-          ]
-        }
-      ]
+      "violations": []
     },
     {
       "locale": "ca",
       "width": 1440,
-      "violations": [
-        {
-          "id": "region",
-          "impact": "moderate",
-          "help": "All page content should be contained by landmarks",
-          "nodes": 4,
-          "targets": [
-            ".telemetry__sysid",
-            ".telemetry__role",
-            ".telemetry__clock",
-            ".telemetry__avail"
-          ]
-        }
-      ]
+      "violations": []
     },
     {
       "locale": "en",
       "width": 375,
-      "violations": [
-        {
-          "id": "region",
-          "impact": "moderate",
-          "help": "All page content should be contained by landmarks",
-          "nodes": 1,
-          "targets": [
-            ".telemetry__avail"
-          ]
-        }
-      ]
+      "violations": []
     },
     {
       "locale": "en",
       "width": 1440,
-      "violations": [
-        {
-          "id": "region",
-          "impact": "moderate",
-          "help": "All page content should be contained by landmarks",
-          "nodes": 4,
-          "targets": [
-            ".telemetry__sysid",
-            ".telemetry__role",
-            ".telemetry__clock",
-            ".telemetry__avail"
-          ]
-        }
-      ]
+      "violations": []
     }
   ],
   "overflow": [

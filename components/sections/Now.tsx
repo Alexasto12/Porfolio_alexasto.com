@@ -24,9 +24,6 @@ export function Now({ locale }: { locale: Locale }) {
             className="col-1 panel"
             style={{ padding: "clamp(18px,2.2vw,26px)", display: "flex", flexDirection: "column", gap: "10px" }}
           >
-            <span className="font-mono" style={{ fontSize: "11px", color: "var(--accent-text)" }} aria-hidden>
-              {String(i + 1).padStart(2, "0")}
-            </span>
             <h4
               className="font-display"
               style={{ fontWeight: 700, fontSize: "clamp(1.1rem,1.6vw,1.3rem)", letterSpacing: "-0.02em" }}

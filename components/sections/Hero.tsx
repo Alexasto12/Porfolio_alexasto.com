@@ -12,8 +12,7 @@ export function Hero({ locale }: { locale: Locale }) {
       className="shell section"
       style={{ paddingTop: "clamp(40px,7vw,84px)", paddingBottom: "clamp(56px,9vw,120px)" }}
     >
-      <Reveal style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "16px" }}>
-        <span className="section__label">01 · {t(d.label)}</span>
+      <Reveal style={{ display: "flex", justifyContent: "flex-end" }}>
         <span className="mono-label hover-only" aria-hidden>
           {t(d.hint)}
         </span>

@@ -1,31 +1,35 @@
 import { DATA } from "@/lib/content";
 import { LOCALES, LOCALE_FULL, translator, type Locale } from "@/lib/i18n-types";
 import { LOCALE_PATH } from "@/lib/site";
-import { Clock } from "./ui/Clock";
 
-export function TelemetryBar({ locale }: { locale: Locale }) {
+/** Skip link plus the banner: name, section index, availability and language. */
+export function SiteHeader({ locale }: { locale: Locale }) {
   const t = translator(locale);
-  const d = DATA.telemetry;
+  const d = DATA.header;
   return (
     <>
       <a className="skip-link" href="#contenido">
         {t(d.skipLink)}
       </a>
-      <div className="telemetry">
-        <div className="telemetry__inner">
-          <span className="telemetry__sysid">{d.name}</span>
-          <span className="telemetry__sep" aria-hidden>
-            {"//"}
-          </span>
-          <span className="telemetry__role">{t(d.role)}</span>
-          <span className="telemetry__spacer" />
-          <span className="telemetry__clock" title="CET">
-            <Clock /> CET
-          </span>
-          <span className="telemetry__sep" aria-hidden>
-            ·
-          </span>
-          <span className="telemetry__avail">
+      <header className="site-header">
+        <div className="site-header__bar">
+          <a href="#perfil" className="site-header__name">
+            {d.name}
+          </a>
+          <nav className="site-nav" aria-label={t(d.navLabel)}>
+            <ol>
+              {DATA.sections.map((s) => (
+                <li key={s.id}>
+                  <a href={`#${s.id}`}>
+                    <span className="site-nav__num">{s.num}</span>
+                    {t(s.label)}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+          <span className="site-header__spacer" />
+          <span className="site-header__avail">
             <span className="dot dot--accent dot-pulse" aria-hidden />
             {t(d.availability)}
           </span>
@@ -46,7 +50,7 @@ export function TelemetryBar({ locale }: { locale: Locale }) {
             ))}
           </nav>
         </div>
-      </div>
+      </header>
     </>
   );
 }

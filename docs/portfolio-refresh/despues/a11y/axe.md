@@ -1,17 +1,17 @@
 # axe-core y comprobaciones propias
 
-Generado: 2026-10-13T12:12:47.926Z. Etiquetas: wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa, best-practice.
+Generado: 2026-10-13T12:16:25.094Z. Etiquetas: wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa, best-practice.
 
 ## axe
 
 | Idioma | Ancho | Reglas con fallos | Serias o críticas | Detalle |
 |---|---|---|---|---|
-| es | 375 | 1 | 0 | region (moderate, 1) |
-| es | 1440 | 1 | 0 | region (moderate, 4) |
-| ca | 375 | 1 | 0 | region (moderate, 1) |
-| ca | 1440 | 1 | 0 | region (moderate, 4) |
-| en | 375 | 1 | 0 | region (moderate, 1) |
-| en | 1440 | 1 | 0 | region (moderate, 4) |
+| es | 375 | 0 | 0 | sin fallos |
+| es | 1440 | 0 | 0 | sin fallos |
+| ca | 375 | 0 | 0 | sin fallos |
+| ca | 1440 | 0 | 0 | sin fallos |
+| en | 375 | 0 | 0 | sin fallos |
+| en | 1440 | 0 | 0 | sin fallos |
 
 ## Desbordamiento horizontal
 

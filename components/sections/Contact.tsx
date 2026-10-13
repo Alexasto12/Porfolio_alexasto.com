@@ -9,7 +9,7 @@ export function Contact({ locale }: { locale: Locale }) {
     <section
       id="contacto"
       className="shell section"
-      style={{ paddingTop: "clamp(20px,3vw,40px)", paddingBottom: "clamp(56px,8vw,100px)" }}
+      style={{ paddingTop: "clamp(20px,3vw,40px)", paddingBottom: "clamp(48px,7vw,90px)" }}
     >
       <div style={{ borderTop: "1px solid var(--line-strong)", paddingTop: "18px" }}>
         <Reveal style={{ display: "flex", alignItems: "baseline", gap: "18px" }}>
@@ -113,24 +113,6 @@ export function Contact({ locale }: { locale: Locale }) {
           </Reveal>
         </div>
 
-        <Reveal
-          style={{
-            marginTop: "clamp(48px,7vw,90px)",
-            borderTop: "1px solid var(--line)",
-            paddingTop: "22px",
-            display: "flex",
-            justifyContent: "space-between",
-            gap: "16px",
-            flexWrap: "wrap",
-          }}
-        >
-          <p className="font-mono" style={{ fontSize: "11px", color: "var(--muted-soft)", letterSpacing: "0.04em" }}>
-            {t(d.footerNote)}
-          </p>
-          <p className="font-mono" style={{ fontSize: "11px", color: "var(--muted-faint)", letterSpacing: "0.1em" }}>
-            {d.copyright}
-          </p>
-        </Reveal>
       </div>
     </section>
   );

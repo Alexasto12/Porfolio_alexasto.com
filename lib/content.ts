@@ -53,6 +53,7 @@ export const PERSON_NAME = "Alejandro Cabrera";
 export const DATA = {
   /** In-page index, in section order. */
   sections: [
+    { id: "perfil", num: "01", label: { es: "Perfil", ca: "Perfil", en: "Profile" } },
     { id: "ahora", num: "02", label: { es: "Ahora", ca: "Ara", en: "Now" } },
     { id: "experiencia", num: "03", label: { es: "Experiencia", ca: "Experiència", en: "Experience" } },
     { id: "recorrido", num: "04", label: { es: "Recorrido", ca: "Recorregut", en: "Path" } },
@@ -61,24 +62,19 @@ export const DATA = {
     { id: "contacto", num: "07", label: { es: "Contacto", ca: "Contacte", en: "Contact" } },
   ] as { id: string; num: string; label: Localized }[],
 
-  telemetry: {
+  header: {
     name: PERSON_NAME,
-    role: {
-      es: "Backend y full-stack · Granollers",
-      ca: "Backend i full-stack · Granollers",
-      en: "Backend and full-stack · Granollers",
-    } as Localized,
     availability: {
       es: "Disponible para proyectos",
       ca: "Disponible per a projectes",
       en: "Open to new projects",
     } as Localized,
     skipLink: { es: "Saltar al contenido", ca: "Vés al contingut", en: "Skip to content" } as Localized,
+    navLabel: { es: "Secciones", ca: "Seccions", en: "Sections" } as Localized,
     langLabel: { es: "Idioma", ca: "Idioma", en: "Language" } as Localized,
   },
 
   hero: {
-    label: { es: "Perfil", ca: "Perfil", en: "Profile" } as Localized,
     hint: {
       es: "pasa el cursor por el nombre para reanimarlo ↻",
       ca: "passa el cursor pel nom per tornar-lo a animar ↻",

@@ -139,46 +139,85 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   padding-right: var(--pad);
 }
 
-/* ───────── Telemetry bar ───────── */
-.telemetry {
+/* ───────── Site header ─────────
+   One row on wide screens. Below 1100px the section index drops to its own
+   row; below 861px the header stops being sticky so it doesn't eat the screen. */
+.site-header {
   position: sticky;
   top: 0;
   z-index: 50;
   backdrop-filter: blur(14px);
-  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
   border-bottom: 1px solid var(--line);
 }
-.telemetry__inner {
+.site-header__bar {
   max-width: var(--shell-max);
   margin: 0 auto;
   padding: 8px var(--pad);
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 18px;
+  gap: 6px 18px;
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   white-space: nowrap;
 }
-.telemetry__sysid { color: var(--ink); font-weight: 700; }
-.telemetry__sep { color: var(--muted-faint); }
-.telemetry__role { color: var(--muted); }
-.telemetry__spacer { flex: 1; }
-.telemetry__avail {
+.site-header__name {
+  color: var(--ink);
+  font-weight: 700;
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+}
+.site-header__spacer { flex: 1; }
+.site-header__avail {
   display: inline-flex; align-items: center; gap: 7px;
   color: var(--ink);
 }
-.telemetry__clock { color: var(--muted-soft); }
+.site-nav ol { display: flex; flex-wrap: wrap; gap: 2px 4px; list-style: none; margin: 0; padding: 0; }
+.site-nav a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  min-height: 28px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  color: var(--muted);
+  transition: color 0.25s, background 0.25s;
+}
+.site-nav a:hover { color: var(--ink); background: color-mix(in srgb, var(--ink) 6%, transparent); }
+.site-nav__num { color: var(--accent-text); }
+@media (max-width: 1099px) {
+  .site-nav { order: 10; flex-basis: 100%; }
+  .site-nav ol { margin-left: -8px; }
+}
 @media (max-width: 860px) {
-  .telemetry__role,
-  .telemetry__clock,
-  .telemetry__sep { display: none; }
+  .site-header { position: relative; }
 }
 @media (max-width: 480px) {
-  .telemetry__sysid { display: none; }
-  .telemetry__inner { padding: 6px 12px; gap: 10px; letter-spacing: 0.04em; }
+  .site-header__name { display: none; }
+  .site-header__bar { padding: 6px 12px; gap: 4px 10px; letter-spacing: 0.04em; }
+  .site-nav a { padding: 6px 6px; }
 }
+section[id], article[id] { scroll-margin-top: 72px; }
+
+/* ───────── Site footer ───────── */
+.site-footer {
+  padding-top: 22px;
+  padding-bottom: clamp(40px, 6vw, 72px);
+  display: flex;
+  justify-content: space-between;
+  gap: 8px 16px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--muted-soft);
+  border-top: 1px solid var(--line);
+}
+
 .dot {
   width: 6px; height: 6px; border-radius: 50%;
   background: #4ade80;

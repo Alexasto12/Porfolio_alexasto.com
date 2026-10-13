@@ -99,9 +99,9 @@ Usa solo los hechos de `DECISIONES.md` y escribe cada cambio en los tres idiomas
 
 ## Fase 5. Navegación y estructura
 
-- [ ] **Landmarks:** un `header` con navegación (índice de secciones con su número) y un `footer`.
-- [ ] **Etiquetas mono:** quita las pequeñas que son solo decoración y no aportan información.
-- [ ] **Dirección visual** según `DECISIONES.md`.
+- [x] **Landmarks:** un `header` con navegación (índice de secciones con su número) y un `footer`.
+- [x] **Etiquetas mono:** quita las pequeñas que son solo decoración y no aportan información.
+- [x] **Dirección visual** según `DECISIONES.md`.
 
 **Hecho cuando:** axe no da errores serios ni críticos y las capturas finales están guardadas.
 

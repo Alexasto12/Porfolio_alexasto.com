@@ -55,3 +55,11 @@ Lo que no cubría `DECISIONES.md`, qué se decidió y por qué. Lo marcado **Pen
 - **Imagen OG.** Una por idioma, con Bricolage Grotesque desde `assets/fonts/` (WOFF de @fontsource, licencia OFL incluida; `next/og` no lee WOFF2). Next añade un sufijo a su URL (`/opengraph-image-xxxx`) porque vive en un grupo de rutas; las etiquetas `og:image` apuntan a la buena. Se quita `twitter-image`: X usa la imagen OG.
 - **JSON-LD.** Se quita la lista `subjectOf` con webs de terceros y la marca "Alexasto" del título; "Alexasto" y "alexasto12" quedan como `alternateName`. Organization Digital DesAny lleva como `founder` a Alejandro y a Oriol Tamborero. El premio va en `award` con el texto de `DECISIONES.md` (pendiente de confirmar el nombre).
 - **Comprobación.** `npm run seo` valida todo lo de esta fase y guarda las imágenes OG, el sitemap y robots.txt en `despues/seo/`.
+
+## Fase 5
+
+- **Encabezado.** `<header>` con el nombre, el índice numerado de secciones (`<nav>`), "Disponible para proyectos" y el selector de idioma (otro `<nav>`). En una sola fila desde 1100 px; por debajo, el índice baja a su propia fila. Por debajo de 861 px el encabezado deja de ser fijo para no ocupar media pantalla en el móvil; la fila de disponibilidad e idioma sigue sin partirse a 320 px.
+- **Pie.** `<footer>` con "Sin plantillas. Hecho a mano en Granollers." y el copyright, que antes estaban dentro de Contacto.
+- **Etiquetas mono que se quitan por ser solo decoración:** el reloj y el separador `//` de la barra, el rol repetido en la barra (ya está en el hero), "01 · Perfil" del hero y los números 01-04 de los servicios.
+- **Las que se quedan, porque dan información:** el nombre de cada sección junto a su número, los subtítulos ("Qué hacemos", "Casos", "Lo que construí"), las etiquetas de tecnología, el tipo y el lugar de cada hito, y el ticker de VMV (la Fase 2 solo pedía quitar KAFKA). La pista del nombre animado sigue solo en dispositivos con ratón.
+- **Dirección visual:** tema oscuro, paleta accesible de `CLAUDE.md` y menos etiquetas mono, como dice `DECISIONES.md`.
