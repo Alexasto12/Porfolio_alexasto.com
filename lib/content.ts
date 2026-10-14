@@ -151,9 +151,9 @@ export const DATA = {
   work: {
     heading: { es: "Trabajos con Digital DesAny", ca: "Treballs amb Digital DesAny", en: "Work with Digital DesAny" } as Localized,
     description: {
-      es: "Webs a medida, una campaña de Sant Jordi y redes sociales para clientes del estudio. Cada caso completo está en digitaldesany.com.",
-      ca: "Webs a mida, una campanya de Sant Jordi i xarxes socials per a clients de l'estudi. Cada cas complet és a digitaldesany.com.",
-      en: "Custom websites, a Sant Jordi campaign and social media for the studio's clients. Each full case study is on digitaldesany.com.",
+      es: "Webs a medida, una campaña de Sant Jordi y redes sociales. Cada caso completo está en digitaldesany.com.",
+      ca: "Webs a mida, una campanya de Sant Jordi i xarxes socials. Cada cas complet és a digitaldesany.com.",
+      en: "Custom websites, a Sant Jordi campaign and social media. Each full case study is on digitaldesany.com.",
     } as Localized,
     cases: [
       {
@@ -469,7 +469,7 @@ export const DATA = {
         ca: "Va ser un dels projectes guanyadors dels Santander X Spain Awards 2026 (UVic).",
         en: "It was one of the winning projects of the Santander X Spain Awards 2026 (UVic).",
       } as Localized,
-      closureLabel: { es: "Por qué la cerramos", ca: "Per què la vam tancar", en: "Why we shut it down" } as Localized,
+      closureLabel: { es: "Por qué cerramos Neibr", ca: "Per què vam tancar Neibr", en: "Why we shut it down" } as Localized,
       closure: {
         es: "Hablar con un gran operador nos mostró problemas del modelo que el código no iba a resolver, y lo cerramos antes de lanzar.",
         ca: "Parlar amb un gran operador ens va mostrar problemes del model que el codi no resoldria, i el vam tancar abans de llançar-lo.",
@@ -521,7 +521,7 @@ export const DATA = {
         ca: "Crear enviament i assignar veí",
         en: "Create shipment and assign neighbour",
       } as Localized,
-      stressLabel: { es: "Stress test de la API", ca: "Stress test de l'API", en: "API stress test" } as Localized,
+      stressLabel: { es: "stress test de la API", ca: "stress test de l'API", en: "API stress test" } as Localized,
       stress: [
         {
           value: { es: "2,9 M", ca: "2,9 M", en: "2.9 M" },

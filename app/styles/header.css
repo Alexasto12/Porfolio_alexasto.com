@@ -120,6 +120,11 @@
   .site-nav { display: none; }
   .site-menu { display: block; }
 }
+/* Without JavaScript nothing closes the menu after a jump, so while it is
+   open the header stops being sticky and the panel stays at the top. */
+@media (scripting: none) {
+  .site-header:has(.site-menu[open]) { position: relative; }
+}
 @media (max-width: 559px) {
   .site-header__bar { gap: 6px 10px; }
   .site-header__name { font-size: 0.98rem; }

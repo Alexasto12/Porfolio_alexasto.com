@@ -244,7 +244,10 @@ function BackendPage({ locale }: { locale: Locale }) {
         </a>
       </PageSection>
       <PageSection id="pagos" title={t(p.sections.hardware)}>
-        <p className="copy">{t(at.body)}</p>
+        {/* The title says it was a collaboration at Automated Transactions, not his alone. */}
+        <p className="copy">
+          {t(at.title)} {t(at.body)}
+        </p>
       </PageSection>
       <PageSection id="como-trabajo" title={t(p.sections.process)} surface="ink">
         <ProcessList locale={locale} />

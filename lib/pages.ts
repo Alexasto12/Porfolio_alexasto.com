@@ -64,8 +64,8 @@ export const SEO: Record<PageKey, { title: Localized; description: Localized }> 
       en: "About · Alejandro Cabrera, developer in Granollers",
     },
     description: {
-      es: "De cambiar el disco duro del portátil familiar con 11 años a fundar Digital DesAny. Mi recorrido, el Grado Superior DAW y cómo trabajo.",
-      ca: "De canviar el disc dur del portàtil familiar amb 11 anys a fundar Digital DesAny. El meu recorregut, el Grau Superior DAW i com treballo.",
+      es: "De cambiar el disco duro del portátil familiar con 11 años a cofundar Digital DesAny. Mi recorrido, el Grado Superior DAW y cómo trabajo.",
+      ca: "De canviar el disc dur del portàtil familiar amb 11 anys a cofundar Digital DesAny. El meu recorregut, el Grau Superior DAW i com treballo.",
       en: "From swapping the family laptop's hard drive at 11 to co-founding Digital DesAny. My path, the DAW vocational course and how I work.",
     },
   },
@@ -90,7 +90,7 @@ export const SEO: Record<PageKey, { title: Localized; description: Localized }> 
     description: {
       es: "Webs a medida en Next.js y WordPress desde Granollers. En VMV llevé 32 dominios y 12 plugins internos; con Digital DesAny hago webs para pymes.",
       ca: "Webs a mida en Next.js i WordPress des de Granollers. A VMV portava 32 dominis i 12 plugins interns; amb Digital DesAny faig webs per a pimes.",
-      en: "Custom Next.js and WordPress websites from Granollers. At VMV I ran 32 domains and 12 internal plugins; with Digital DesAny I build sites for small businesses.",
+      en: "Custom Next.js and WordPress websites from Granollers. At VMV I ran 32 domains and 12 internal plugins; with Digital DesAny I build sites for SMEs.",
     },
   },
 };

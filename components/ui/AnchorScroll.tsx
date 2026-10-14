@@ -8,8 +8,9 @@ import { useEffect } from "react";
  * (the hash changes but the page stays put), so the smooth scroll is done
  * here: scrollIntoView honours scroll-padding, the hash goes into the
  * history and focus moves to the target, as with a native jump. It also
- * closes the header menu after a choice, and on Escape. Without JavaScript
- * the links still work, with an instant jump. Renders nothing.
+ * closes the header menu after a choice, on Escape and when keyboard focus
+ * leaves it (so the open panel never hides the next focused link). Without
+ * JavaScript the links still work, with an instant jump. Renders nothing.
  */
 export function AnchorScroll() {
   useEffect(() => {
@@ -36,15 +37,24 @@ export function AnchorScroll() {
       if (e.key !== "Escape") return;
       const open = document.querySelector<HTMLDetailsElement>("details.site-menu[open]");
       if (!open) return;
+      const inside = open.contains(document.activeElement);
       open.open = false;
-      open.querySelector("summary")?.focus();
+      if (inside) open.querySelector("summary")?.focus();
+    };
+    // relatedTarget is null for a pointer click inside the panel: only a real move elsewhere closes it.
+    const onFocusOut = (e: FocusEvent) => {
+      const open = (e.target as Element | null)?.closest?.("details.site-menu[open]") as HTMLDetailsElement | null;
+      const to = e.relatedTarget as Node | null;
+      if (open && to && !open.contains(to)) open.open = false;
     };
 
     document.addEventListener("click", onClick);
     document.addEventListener("keydown", onKey);
+    document.addEventListener("focusout", onFocusOut);
     return () => {
       document.removeEventListener("click", onClick);
       document.removeEventListener("keydown", onKey);
+      document.removeEventListener("focusout", onFocusOut);
     };
   }, []);
 

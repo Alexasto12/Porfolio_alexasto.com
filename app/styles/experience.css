@@ -1,8 +1,7 @@
 /* ───────── Experiencia (ink) ─────────
    VMV and Neibr as two jobs side by side with their proof (figures and
    capabilities, the assignment diagram), the wine band of the stress
-   test, then GOK Thermal. Top padding stays at 64px or more and bottom at
-   40px or more: the paper-to-ink fade happens inside them (base.css). */
+   test, then GOK Thermal. */
 .xp { --sec-pt: clamp(80px, 60px + 3vw, 104px); padding-bottom: clamp(64px, 50px + 2vw, 88px); }
 
 .xp-job {

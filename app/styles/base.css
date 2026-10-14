@@ -228,10 +228,12 @@ img { max-width: 100%; }
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: var(--gap);
-    align-items: end;
+    align-items: start;
   }
   .sec-head--split .sec-head__title { grid-column: 1 / span 8; }
-  .sec-head--split .sec-head__intro { grid-column: 9 / span 4; margin: 0; font-size: 16px; line-height: 1.55; }
+  /* Only the intro sits on the bottom line: the title stays at the top of
+     the row, so every heading lands at the same height after a jump. */
+  .sec-head--split .sec-head__intro { grid-column: 9 / span 4; align-self: end; margin: 0; font-size: 16px; line-height: 1.55; }
 }
 
 /* Paper shows the final state of everything: no sequence waiting for its turn. */

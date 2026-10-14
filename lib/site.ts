@@ -28,7 +28,6 @@ export const pageUrl = (page: PageKey, locale: Locale) => {
   const path = ROUTES[page][locale];
   return path === "/" ? SITE_URL : `${SITE_URL}${path}`;
 };
-export const localeUrl = (locale: Locale) => pageUrl("home", locale);
 
 /** Path of a page's Open Graph image (app/og/[name]/route.tsx). */
 export const ogPath = (locale: Locale, page: PageKey) => `/og/${locale}-${page}.png`;
@@ -47,8 +46,13 @@ export function hreflangs(page: PageKey = "home"): Record<string, string> {
   return map;
 }
 
-export const JOB_TITLE: Localized = DATA.hero.role;
-export const TITLE: Localized = SEO.home.title;
+/** The trade alone (jobTitle): the place goes in occupationLocation and address. */
+export const JOB_TITLE: Localized = {
+  es: "Desarrollador web y backend",
+  ca: "Desenvolupador web i backend",
+  en: "Web and backend developer",
+};
+const CATALONIA: Localized = { es: "Cataluña", ca: "Catalunya", en: "Catalonia" };
 export const DESCRIPTION: Localized = SEO.home.description;
 
 /** Profiles that identify the same person, for `sameAs` and rel="me". */
@@ -195,12 +199,13 @@ export function jsonLd(locale: Locale, page: PageKey = "home") {
       "@type": "Organization",
       "@id": DESANY_ID,
       name: "Digital DesAny",
-      url: DESANY,
+      // The same url and founder @id that digitaldesany.com publishes, so the two graphs merge cleanly.
+      url: `${DESANY}/es`,
       email: CONTACT.workEmail,
       sameAs: [CONTACT.desanyLinkedIn],
-      founder: [{ "@id": personId }, { "@type": "Person", name: "Oriol Tamborero" }],
+      founder: [{ "@id": personId }, { "@type": "Person", "@id": `${DESANY}#oriol`, name: "Oriol Tamborero" }],
       address,
-      areaServed: { "@type": "AdministrativeArea", name: "Cataluña" },
+      areaServed: { "@type": "AdministrativeArea", name: CATALONIA[locale], sameAs: wiki("Catalonia") },
     },
     {
       "@type": PAGE_TYPE[page],
@@ -211,7 +216,11 @@ export function jsonLd(locale: Locale, page: PageKey = "home") {
       inLanguage: locale,
       isPartOf: { "@id": websiteId },
       dateModified: CONTENT_UPDATED,
-      ...(page === "home" || page === "about" ? { mainEntity: { "@id": personId } } : { about: { "@id": personId } }),
+      ...(page === "home" || page === "about"
+        ? { mainEntity: { "@id": personId } }
+        : page === "neibr" || page === "vmv"
+          ? { about: { "@id": `${SITE_URL}/#${page}` }, author: { "@id": personId } }
+          : { about: { "@id": personId } }),
       ...(page !== "home" ? { breadcrumb: { "@id": `${url}#breadcrumb` } } : {}),
     },
   ];

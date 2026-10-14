@@ -1,7 +1,8 @@
 /* ───────── Inicio (paper) ─────────
    The name and the trade in the h1 over 7 columns, the offer and the two
    buttons in the other 5, then a row of figures. No motion. */
-.hero { --sec-pt: var(--space-7); padding-bottom: var(--space-8); }
+/* #inicio goes back to the very top, not to the heading. */
+.hero { --sec-pt: var(--space-7); padding-bottom: var(--space-8); scroll-margin-top: 0; }
 .hero__grid { row-gap: var(--space-6); align-items: end; }
 
 .hero__title { grid-column: 1 / span 7; }
