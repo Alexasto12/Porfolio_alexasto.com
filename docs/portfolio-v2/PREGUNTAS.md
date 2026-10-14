@@ -141,7 +141,7 @@ Alejandro pidió más SEO, quitar los saltos que provocaba la animación del nom
 
 ### Decisiones tomadas sin preguntar
 
-- **Por qué fallaban los enlaces a secciones.** Con `scroll-behavior: smooth`, un segundo clic durante el primer desplazamiento se perdía (27 de 30 veces en la prueba). Ahora lo hace un manejador pequeño: desplaza, cambia el hash y mueve el foco; sin JavaScript el salto es instantáneo. Cada sección compensa su relleno con un `scroll-margin-top` negativo y el titular queda entre 35 y 46 px bajo la cabecera en las cinco secciones del índice, a 1440 y a 375, también desde una subpágina (Servicios queda algo más abajo porque cuenta la línea que lo separa de Trabajos).
+- **Por qué fallaban los enlaces a secciones.** Con `scroll-behavior: smooth`, un segundo clic durante el primer desplazamiento se perdía (27 de 30 veces en la prueba). Ahora lo hace un manejador pequeño: desplaza, cambia el hash y mueve el foco; sin JavaScript el salto es instantáneo. Cada sección compensa su relleno con un `scroll-margin-top` negativo y el titular queda entre 35 y 43 px bajo la cabecera en las cinco secciones del índice y en Contacto, a 1440 y a 375, también desde una subpágina (Servicios queda algo más abajo porque cuenta la línea que lo separa de Trabajos). `#inicio` vuelve arriba del todo.
 - **Nombre sin animación.** El scramble cambiaba el ancho de las letras y movía las líneas de debajo. El nombre es texto normal y no se anima.
 - **Trabajos quietos.** La hoja de contactos que se deslizaba con el scroll (`DISENO.md`, Trabajos) se quita porque lo pide Alejandro. Una captura solo se desplaza dentro de su marco si el puntero se queda encima 0,6 s.
 - **Cabecera fija también en móvil.** El índice se pliega en un desplegable por debajo de 1.024 px y, por debajo de 560 px, los idiomas van dentro del desplegable para que quepan el nombre, "Hablemos" y el botón del índice (comprobado a 320, 360, 375 y 414 px en los tres idiomas).
@@ -170,3 +170,23 @@ Nada de esto se publica hasta tener respuesta:
 6. **Tiempo de respuesta u horario en Contacto.** digitaldesany.com publica "de lunes a viernes, de 09:00 a 20:00", pero no lo pongo aquí sin que lo confirmes. Confirma también que el mensaje de WhatsApp que se rellena solo ("Hola, os escribo desde dev.alexasto.com…") le va bien al estudio.
 7. **Pasos de trabajo con plazos** (primera llamada, presupuesto, entrega), si quieres que "Cómo trabajo" los cuente. Hoy son cuatro principios, cada uno con una prueba publicada.
 8. **Foto tuya**, opcional: ayuda a la confianza y al perfil (`Person.image`).
+
+### Revisión de la ronda 2 (cuatro revisores y un verificador por dimensión)
+
+Confirmaron 19 hallazgos y descartaron 7. Todos los confirmados están arreglados:
+
+- **Contenido.** La entradilla de Trabajos decía que la campaña de Sant Jordi era para clientes del estudio, y Roses de Sant Jordi es un proyecto propio de Digital DesAny (su página de caso lo marca así): se quita "para clientes del estudio" en los tres idiomas. La página de desarrollo backend contaba la integración de WiPay sin el "Colaboro… en Automated Transactions" que la v1 recuperó a propósito: ahora va completo. "Por qué la cerramos" seguido de "lo cerramos" pasa a "Por qué cerramos Neibr". "Neibr: Stress test" pasa a minúscula tras los dos puntos, como el resto de titulares. La descripción de Sobre mí dice "cofundar" en los tres idiomas y la de desarrollo web en inglés dice "SMEs" (pymes), no "small businesses".
+- **Accesibilidad.** El menú abierto tapaba el siguiente enlace al salir de él con el tabulador (WCAG 2.4.11): ahora se cierra cuando el foco sale, y Escape solo devuelve el foco al botón si estaba dentro. Sin JavaScript, el menú abierto tapaba el titular al que se acababa de saltar: mientras está abierto, la cabecera deja de ser fija (`@media (scripting: none)`). En escritorio, los titulares con entradilla larga aterrizaban más abajo (la entradilla empujaba el título): ahora solo la entradilla se alinea abajo. Los enlaces a las páginas de servicio medían 22,5 px de alto y pasan a 24.
+- **SEO.** `jobTitle` ya no lleva el lugar (va en `occupationLocation` y `address`). Las páginas de Neibr y VMV dicen en el JSON-LD que tratan de Neibr y de VMV, con Alejandro como autor. El nodo de Digital DesAny usa la misma `url` y el mismo `@id` de Oriol Tamborero que publica digitaldesany.com, para que los dos grafos se unan sin duplicados. `areaServed` va en el idioma de la página.
+- **Scripts.** `links` comprobaba la URL de WhatsApp cortada en catalán e inglés (no decodificaba el apóstrofo). `motion` no probaba las páginas de desarrollo backend, que también tienen el diagrama, y ahora acepta que un diagrama que ya está en pantalla al cargar se quede completo. Una comprobación de `seo` no podía fallar y ahora mira que cada página tenga una ruta propia en cada idioma. Fuera un comentario del fundido que ya no existe y tres exportaciones sin uso.
+- **Descartados:** las tres h1 de la 404 (una por idioma, cada una en su sección con `lang`), que la etiqueta de la API se lea varias veces (es como funcionan `figure` y `figcaption`), que la terminal use `--paper` (es un token de la paleta), que las subpáginas copien la portada (el texto se reutiliza a propósito y cada página tiene su título, su descripción y su contenido propio), que `links` no pueda pasar por el 999 de LinkedIn (ya pasaba antes y está explicado arriba), la tarjeta sola de GOK en Proyectos y la cifra sola en la banda del stress test en móvil (preferencias de maquetación que ya estaban en la v2).
+
+### Resultado (en `ronda2/`)
+
+- **`check`:** lint, tipos y build sin errores; 52 páginas estáticas.
+- **`seo`:** 392 de 392 comprobaciones en las 21 URL, con los 21 títulos de 60 caracteres o menos, las descripciones entre 110 y 160, un h1 por página, los `@id` del JSON-LD resueltos, los enlaces internos y sus anclas, el sitemap, `/es` y la 404.
+- **`a11y`:** 0 fallos de axe en las 21 páginas a 375 y 1440 px, sin desbordamiento a 320 y 375 y sin texto por debajo de 11 px.
+- **`motion`:** 72 de 72 (las nueve páginas con el diagrama, dos anchos y cuatro modos).
+- **Lighthouse (mediana de 3), las tres portadas:** móvil 98 de rendimiento y 100 en accesibilidad, buenas prácticas y SEO, LCP 2,4 s, CLS 0 y TBT entre 50 y 60 ms; escritorio 100 en todo, LCP 0,5 a 0,6 s.
+- **`links`:** 45 enlaces; solo el LinkedIn personal da 999 (ya explicado).
+- **`measure`:** portada de 10.052 px a 1440 y 15.145 px a 375, 5 imágenes, 1 SVG y 110 KB de JavaScript.

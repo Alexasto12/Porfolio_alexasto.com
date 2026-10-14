@@ -46,3 +46,34 @@ Páginas completas: [antes es](antes/shots/es-375-full.jpg) · [después es](des
 |---|---|---|---|
 | Antes | <img src="../portfolio-refresh/despues/seo/og-es.png" width="260" alt="Imagen OG anterior, es"> | <img src="../portfolio-refresh/despues/seo/og-ca.png" width="260" alt="Imagen OG anterior, ca"> | <img src="../portfolio-refresh/despues/seo/og-en.png" width="260" alt="Imagen OG anterior, en"> |
 | Después | <img src="despues/seo/og-es.png" width="260" alt="Imagen OG nueva, es"> | <img src="despues/seo/og-ca.png" width="260" alt="Imagen OG nueva, ca"> | <img src="despues/seo/og-en.png" width="260" alt="Imagen OG nueva, en"> |
+
+## Ronda 2 (14 de octubre)
+
+Después de los comentarios de Alejandro (`RONDA2.md`). La portada cambia de orden y de secciones, así que no hay pareja de antes y después por sección: cada fila es una sección nueva a 1440 y a 375 px, con su alto real. Están en `ronda2/shots/`, con reduced motion.
+
+Se regeneran con `npm run shots -- --sections --locales es --out docs/portfolio-v2/ronda2` (portada) y `npm run shots -- --locales es --pages projects,neibr,vmv,about,backend,web --out docs/portfolio-v2/ronda2` (subpáginas).
+
+### Portada
+
+| Sección | 1440 px | 375 px |
+|---|---|---|
+| **Inicio**<br>698 px · 1.156 px | <img src="ronda2/shots/secciones/es-1440-inicio.jpg" width="420" alt="Inicio, 1440 px"> | <img src="ronda2/shots/secciones/es-375-inicio.jpg" width="200" alt="Inicio, 375 px"> |
+| **Trabajos**<br>1.561 px · 2.252 px | <img src="ronda2/shots/secciones/es-1440-trabajos.jpg" width="420" alt="Trabajos, 1440 px"> | <img src="ronda2/shots/secciones/es-375-trabajos.jpg" width="200" alt="Trabajos, 375 px"> |
+| **Servicios**<br>1.253 px · 1.641 px | <img src="ronda2/shots/secciones/es-1440-servicios.jpg" width="420" alt="Servicios, 1440 px"> | <img src="ronda2/shots/secciones/es-375-servicios.jpg" width="200" alt="Servicios, 375 px"> |
+| **Experiencia**<br>2.788 px · 4.706 px | <img src="ronda2/shots/secciones/es-1440-experiencia.jpg" width="420" alt="Experiencia, 1440 px"> | <img src="ronda2/shots/secciones/es-375-experiencia.jpg" width="200" alt="Experiencia, 375 px"> |
+| **Sobre mí**<br>1.733 px · 2.863 px | <img src="ronda2/shots/secciones/es-1440-sobre-mi.jpg" width="420" alt="Sobre mí, 1440 px"> | <img src="ronda2/shots/secciones/es-375-sobre-mi.jpg" width="200" alt="Sobre mí, 375 px"> |
+| **Cómo trabajo**<br>575 px · 959 px | <img src="ronda2/shots/secciones/es-1440-como-trabajo.jpg" width="420" alt="Cómo trabajo, 1440 px"> | <img src="ronda2/shots/secciones/es-375-como-trabajo.jpg" width="200" alt="Cómo trabajo, 375 px"> |
+| **Contacto**<br>948 px · 813 px | <img src="ronda2/shots/secciones/es-1440-contacto.jpg" width="420" alt="Contacto, 1440 px"> | <img src="ronda2/shots/secciones/es-375-contacto.jpg" width="200" alt="Contacto, 375 px"> |
+
+Páginas completas: [es 1440](ronda2/shots/es-1440-full.jpg) · [es 375](ronda2/shots/es-375-full.jpg) · [ca 1440](ronda2/shots/ca-1440-full.jpg) · [ca 375](ronda2/shots/ca-375-full.jpg) · [en 1440](ronda2/shots/en-1440-full.jpg) · [en 375](ronda2/shots/en-375-full.jpg)
+
+### Subpáginas (castellano)
+
+| Página | Primera pantalla, 1440 px | Primera pantalla, 375 px | Completa |
+|---|---|---|---|
+| **Proyectos** | <img src="ronda2/shots/es-projects-1440-top.jpg" width="420" alt="Proyectos, 1440 px"> | <img src="ronda2/shots/es-projects-375-top.jpg" width="160" alt="Proyectos, 375 px"> | [1440](ronda2/shots/es-projects-1440-full.jpg) · [375](ronda2/shots/es-projects-375-full.jpg) |
+| **Neibr** | <img src="ronda2/shots/es-neibr-1440-top.jpg" width="420" alt="Neibr, 1440 px"> | <img src="ronda2/shots/es-neibr-375-top.jpg" width="160" alt="Neibr, 375 px"> | [1440](ronda2/shots/es-neibr-1440-full.jpg) · [375](ronda2/shots/es-neibr-375-full.jpg) |
+| **VMV Cosmetic Group** | <img src="ronda2/shots/es-vmv-1440-top.jpg" width="420" alt="VMV Cosmetic Group, 1440 px"> | <img src="ronda2/shots/es-vmv-375-top.jpg" width="160" alt="VMV Cosmetic Group, 375 px"> | [1440](ronda2/shots/es-vmv-1440-full.jpg) · [375](ronda2/shots/es-vmv-375-full.jpg) |
+| **Sobre mí** | <img src="ronda2/shots/es-about-1440-top.jpg" width="420" alt="Sobre mí, 1440 px"> | <img src="ronda2/shots/es-about-375-top.jpg" width="160" alt="Sobre mí, 375 px"> | [1440](ronda2/shots/es-about-1440-full.jpg) · [375](ronda2/shots/es-about-375-full.jpg) |
+| **Desarrollo backend** | <img src="ronda2/shots/es-backend-1440-top.jpg" width="420" alt="Desarrollo backend, 1440 px"> | <img src="ronda2/shots/es-backend-375-top.jpg" width="160" alt="Desarrollo backend, 375 px"> | [1440](ronda2/shots/es-backend-1440-full.jpg) · [375](ronda2/shots/es-backend-375-full.jpg) |
+| **Desarrollo web** | <img src="ronda2/shots/es-web-1440-top.jpg" width="420" alt="Desarrollo web, 1440 px"> | <img src="ronda2/shots/es-web-375-top.jpg" width="160" alt="Desarrollo web, 375 px"> | [1440](ronda2/shots/es-web-1440-full.jpg) · [375](ronda2/shots/es-web-375-full.jpg) |

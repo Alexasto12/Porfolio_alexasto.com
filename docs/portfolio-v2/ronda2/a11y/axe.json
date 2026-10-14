@@ -1,0 +1,639 @@
+{
+  "generatedAt": "2026-10-14T14:05:47.829Z",
+  "axe": [
+    {
+      "page": "es-home",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "es-home",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "ca-home",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "ca-home",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "en-home",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "en-home",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "es-projects",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "es-projects",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "ca-projects",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "ca-projects",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "en-projects",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "en-projects",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "es-neibr",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "es-neibr",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "ca-neibr",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "ca-neibr",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "en-neibr",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "en-neibr",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "es-vmv",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "es-vmv",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "ca-vmv",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "ca-vmv",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "en-vmv",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "en-vmv",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "es-about",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "es-about",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "ca-about",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "ca-about",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "en-about",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "en-about",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "es-backend",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "es-backend",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "ca-backend",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "ca-backend",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "en-backend",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "en-backend",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "es-web",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "es-web",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "ca-web",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "ca-web",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "en-web",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "page": "en-web",
+      "width": 1440,
+      "violations": []
+    }
+  ],
+  "overflow": [
+    {
+      "page": "es-home",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "es-home",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "ca-home",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "ca-home",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "en-home",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "en-home",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "es-projects",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "es-projects",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "ca-projects",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "ca-projects",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "en-projects",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "en-projects",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "es-neibr",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "es-neibr",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "ca-neibr",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "ca-neibr",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "en-neibr",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "en-neibr",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "es-vmv",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "es-vmv",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "ca-vmv",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "ca-vmv",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "en-vmv",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "en-vmv",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "es-about",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "es-about",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "ca-about",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "ca-about",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "en-about",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "en-about",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "es-backend",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "es-backend",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "ca-backend",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "ca-backend",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "en-backend",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "en-backend",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "es-web",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "es-web",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "ca-web",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "ca-web",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "en-web",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "page": "en-web",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    }
+  ],
+  "smallText": [
+    {
+      "page": "es-home",
+      "items": []
+    },
+    {
+      "page": "ca-home",
+      "items": []
+    },
+    {
+      "page": "en-home",
+      "items": []
+    },
+    {
+      "page": "es-projects",
+      "items": []
+    },
+    {
+      "page": "ca-projects",
+      "items": []
+    },
+    {
+      "page": "en-projects",
+      "items": []
+    },
+    {
+      "page": "es-neibr",
+      "items": []
+    },
+    {
+      "page": "ca-neibr",
+      "items": []
+    },
+    {
+      "page": "en-neibr",
+      "items": []
+    },
+    {
+      "page": "es-vmv",
+      "items": []
+    },
+    {
+      "page": "ca-vmv",
+      "items": []
+    },
+    {
+      "page": "en-vmv",
+      "items": []
+    },
+    {
+      "page": "es-about",
+      "items": []
+    },
+    {
+      "page": "ca-about",
+      "items": []
+    },
+    {
+      "page": "en-about",
+      "items": []
+    },
+    {
+      "page": "es-backend",
+      "items": []
+    },
+    {
+      "page": "ca-backend",
+      "items": []
+    },
+    {
+      "page": "en-backend",
+      "items": []
+    },
+    {
+      "page": "es-web",
+      "items": []
+    },
+    {
+      "page": "ca-web",
+      "items": []
+    },
+    {
+      "page": "en-web",
+      "items": []
+    }
+  ]
+}

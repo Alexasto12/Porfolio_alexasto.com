@@ -57,6 +57,8 @@ Hechas solo con hechos de `DECISIONES.md` y textos ya aprobados que hoy no se ve
 
 ## R2-5. Cierre
 
-- [ ] `check`, `a11y`, `motion`, `seo`, `links`, `shots`, `lh` y `measure` en `docs/portfolio-v2/ronda2/` (los de la v2 se quedan en `despues/`).
-- [ ] Revisión adversarial de todo el cambio (contenido y hechos, tres idiomas, accesibilidad, SEO, fallos).
-- [ ] `PREGUNTAS.md`, galería y descripción del PR al día.
+- [x] `check`, `a11y`, `motion`, `seo`, `links`, `shots`, `lh` y `measure` en `docs/portfolio-v2/ronda2/` (los de la v2 se quedan en `despues/`).
+- [x] Revisión adversarial de todo el cambio (contenido y hechos, tres idiomas, accesibilidad, SEO, fallos).
+- [x] `PREGUNTAS.md`, galería y descripción del PR al día.
+
+Resultados y hallazgos de la revisión: `PREGUNTAS.md`, "Ronda 2". Galería: `CAPTURAS.md`, "Ronda 2".
