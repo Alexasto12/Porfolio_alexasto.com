@@ -8,7 +8,6 @@
   grid-column: 1 / span 8;
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 800;
-  font-stretch: 80%;
   font-size: clamp(3.5rem, 12.6vw, 11.2rem);
   line-height: 0.84;
   letter-spacing: -0.045em;
@@ -20,6 +19,7 @@
 
 .hero__now {
   grid-column: 9 / span 4;
+  grid-row: 1;
   align-self: stretch;
   display: flex;
   flex-direction: column;
@@ -58,12 +58,13 @@
   .hero__now,
   .hero__title,
   .hero__intro { grid-column: 1 / -1; grid-row: auto; }
-  .hero__now { order: 3; }
 }
 
 /* Entrance: the letters of the name rise one after another (40 ms apart),
-   then the rest of the hero appears. Under 1.2 s in total; CSS only, so the
-   page is complete without JavaScript, and nothing moves with reduced motion. */
+   then the rest of the hero settles into place. Under 1.2 s in total; CSS
+   only, so the page is complete without JavaScript, and nothing moves with
+   reduced motion. The rest only moves (no fade): it is painted in the first
+   frame, so the browser can count it for LCP straight away. */
 @media (prefers-reduced-motion: no-preference) {
   .hero__name .ch {
     animation: ch-rise 0.45s var(--ease-out) both;
@@ -75,7 +76,7 @@
   from { opacity: 0; transform: translateY(0.35em); }
 }
 @keyframes hero-after {
-  from { opacity: 0; transform: translateY(14px); }
+  from { transform: translateY(18px); }
 }
 
 /* ───────── Contact sheet ───────── */
@@ -123,7 +124,8 @@
       animation-timeline: scroll(root);
       animation-range: 0 80vh;
     }
-    .sheet__window:focus-within .sheet__track {
+    /* Keyboard focus only: a mouse click must not move the frames under the pointer. */
+    .sheet__window:has(:focus-visible) .sheet__track {
       grid-auto-columns: calc((100cqw - 4 * var(--gap)) / 5);
       animation: none;
     }
@@ -140,7 +142,10 @@
     grid-auto-columns: 72%;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    padding-bottom: 8px;
+    /* Room for the focus ring, which the scroll box would otherwise cut. */
+    padding: 6px 6px 10px;
+    margin-inline: -6px;
+    scroll-padding-inline: 6px;
     scrollbar-width: thin;
   }
   .sheet__track > li { scroll-snap-align: start; }

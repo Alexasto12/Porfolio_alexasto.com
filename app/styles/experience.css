@@ -131,20 +131,37 @@
   border-top: 1px solid var(--line);
 }
 .ndiag__note { font-size: 13px; color: var(--fg-2); }
+.ndiag__dim { opacity: 0.25; }
+.ndiag__draw { stroke-dasharray: 1 1; }
+.ndiag__pop { transform-box: fill-box; transform-origin: center; }
+
+/* The sequence (components/NeibrDiagram.tsx): "hidden" resets while the
+   diagram is still off screen, "play" runs each step at its --d delay. */
+.ndiag[data-phase="hidden"] .ndiag__draw { stroke-dashoffset: 1; }
+.ndiag[data-phase="hidden"] .ndiag__pop { transform: scale(0); }
+.ndiag[data-phase="hidden"] .ndiag__fade { opacity: 0; }
+.ndiag[data-phase="hidden"] .ndiag__dim { opacity: 1; }
+.ndiag[data-phase="hidden"] .ndiag__bar { transform: scaleX(0); }
+.ndiag[data-phase="play"] .ndiag__draw { transition: stroke-dashoffset 0.8s var(--ease-in-out) var(--d); }
+.ndiag[data-phase="play"] .ndiag__pop { transition: transform 0.45s var(--ease-out) var(--d); }
+.ndiag[data-phase="play"] .ndiag__fade,
+.ndiag[data-phase="play"] .ndiag__dim { transition: opacity 0.4s ease var(--d); }
+.ndiag[data-phase="play"] .ndiag__bar { transition: transform 0.6s var(--ease-out) var(--d); }
 .ndiag__svg { display: block; width: 100%; height: auto; overflow: visible; border: 1px solid var(--line-soft); border-radius: 6px; }
 .ndiag__streets { fill: none; stroke: var(--line-soft); stroke-width: 6; }
 .ndiag__pt { fill: var(--fg-2); }
 .ndiag__pt--hit { fill: var(--accent-lg); }
 .ndiag__origin { fill: var(--paper); stroke: var(--accent-lg); stroke-width: 4; }
-.ndiag__box { fill: none; stroke: var(--fg-2); stroke-width: 1.5; stroke-dasharray: 6 6; }
-.ndiag__ring { fill: color-mix(in srgb, var(--accent-lg) 9%, transparent); stroke: var(--accent-lg); stroke-width: 1.5; }
+.ndiag__box { fill: none; stroke: var(--fg-2); stroke-width: 1.5; }
+.ndiag__area { fill: color-mix(in srgb, var(--accent-lg) 9%, transparent); }
+.ndiag__ring { fill: none; stroke: var(--accent-lg); stroke-width: 1.5; }
 .ndiag__line { stroke: var(--accent-lg); stroke-width: 2; stroke-linecap: round; }
 .ndiag__label {
   fill: var(--fg);
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 16px;
 }
-.ndiag__label--hit { fill: var(--accent); font-weight: 700; }
+.ndiag__label--hit { fill: var(--accent); }
 .ndiag__steps {
   margin-top: 14px;
   display: grid;
@@ -161,7 +178,7 @@
   line-height: 1.4;
   border-top: 1px solid var(--line-soft);
 }
-.ndiag__num { color: var(--accent); font-weight: 700; }
+.ndiag__num { color: var(--accent); }
 .ndiag__bar {
   position: absolute;
   top: -1px;
@@ -211,6 +228,9 @@
 @media (max-width: 1100px) {
   .vmv__aside { grid-column: 1 / span 5; }
   .vmv__main { grid-column: 6 / span 7; }
+  /* The wide map would scale its text under 11 px here: use the tall one. */
+  .vmap__svg--wide { display: none; }
+  .vmap__svg--tall { display: block; max-width: 420px; margin-inline: auto; }
   .legend { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .neibr__story { grid-column: 1 / -1; max-width: 62ch; }
   .neibr__diagram { grid-column: 1 / -1; }
@@ -224,11 +244,13 @@
   .vmv__main,
   .gok__frame,
   .gok__body { grid-column: 1 / -1; }
-  .vmap__svg--wide { display: none; }
-  .vmap__svg--tall { display: block; max-width: 420px; margin-inline: auto; }
   .ndiag__steps { grid-template-columns: minmax(0, 1fr); }
   .stress__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 520px) {
   .stress__value { font-size: clamp(2rem, 10vw, 2.6rem); }
+}
+/* The diagram scales down with the screen: keep its labels at 11 px or more. */
+@media (max-width: 420px) {
+  .ndiag__label { font-size: 20px; }
 }

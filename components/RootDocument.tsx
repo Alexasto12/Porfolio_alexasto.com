@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { bricolage, spaceMono, hanken } from "@/app/fonts";
 import { jsonLd } from "@/lib/site";
+import { GrainFilter } from "./ui/Grain";
 import type { Locale } from "@/lib/i18n-types";
 import "@/app/globals.css";
 
@@ -13,6 +14,7 @@ export function RootDocument({ locale, children }: { locale: Locale; children: R
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(locale)) }}
         />
+        <GrainFilter />
         {/* Ink layer behind the page; it fades in while Experiencia is on screen. */}
         <div className="surface-fade" aria-hidden>
           <div className="surface-fade__ink" />

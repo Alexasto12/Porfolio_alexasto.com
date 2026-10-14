@@ -9,7 +9,7 @@ type Layout = {
   /** Connectors, drawn in this order as the map scrolls in. */
   links: { d: string; step: 1 | 2 | 3 }[];
   joints: Pt[];
-  bus: { x: number; y: number; anchor: "end" | "middle" };
+  bus: { x: number; y: number; anchor: "start" | "middle" };
 };
 
 const W = 150;
@@ -40,7 +40,8 @@ const WIDE: Layout = {
     { d: "M170 250H200", step: 3 },
   ],
   joints: [275, 455, 635].map((x) => ({ x, y: 150 })),
-  bus: { x: 710, y: 138, anchor: "end" },
+  /* Left of the first spoke, so no line crosses the label. */
+  bus: { x: 20, y: 138, anchor: "start" },
 };
 
 /** Narrow: a vertical bus with the nodes on both sides. */

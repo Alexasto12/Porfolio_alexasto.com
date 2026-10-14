@@ -1,4 +1,5 @@
 import { DATA } from "@/lib/content";
+import { Grain } from "../ui/Grain";
 import { translator, type Locale } from "@/lib/i18n-types";
 import { SectionHead } from "../ui/SectionHead";
 
@@ -16,6 +17,7 @@ export function Timeline({ locale }: { locale: Locale }) {
   }));
   return (
     <section id="recorrido" className="sec path" data-surface="paper">
+      <Grain />
       <div className="shell">
         <SectionHead
           num={d.num}

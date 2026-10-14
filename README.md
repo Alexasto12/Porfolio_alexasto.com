@@ -2,7 +2,7 @@
 
 Web personal de **Alejandro Cabrera**, desarrollador backend y full-stack y cofundador de Digital DesAny. Una sola página en castellano (`/`), catalán (`/ca`) e inglés (`/en`), generada en estático.
 
-Next.js 15 (App Router, componentes de servidor), TypeScript, Tailwind CSS v4 y Motion. Sin dependencias de pago. Las reglas de contenido, tono y accesibilidad están en `CLAUDE.md`; los hechos publicables, en `docs/portfolio-refresh/DECISIONES.md`; la dirección visual, en `docs/portfolio-v2/DISENO.md`.
+Next.js 15 (App Router, componentes de servidor), TypeScript y Tailwind CSS v4. El movimiento es CSS (scroll-driven animations y transiciones), sin librerías de animación. Sin dependencias de pago. Las reglas de contenido, tono y accesibilidad están en `CLAUDE.md`; los hechos publicables, en `docs/portfolio-refresh/DECISIONES.md`; la dirección visual, en `docs/portfolio-v2/DISENO.md`.
 
 ## Diseño
 
@@ -16,7 +16,7 @@ Imágenes y gráficos: capturas reales de cada web en un marco de navegador prop
 app/
   (es)/ (ca)/ca/ (en)/en/   un layout raíz por idioma, la página y su imagen OG
   sitemap.ts · robots.ts · manifest.ts · llms.txt/ · icon.tsx · apple-icon.tsx
-  fonts.ts                  Bricolage Grotesque (variable, con anchura), Hanken Grotesk y Space Mono
+  fonts.ts                  Bricolage Grotesque, Hanken Grotesk y Space Mono, servidas desde assets/fonts
   globals.css               importa styles/: base (tokens, superficies, tipos) y una hoja por sección
 components/
   RootDocument · LocalePage · SiteHeader · SiteFooter
@@ -25,13 +25,14 @@ components/
   ContactSheet              hoja de contactos del hero
   VmvMap · NeibrDiagram     mapa de sistema de VMV y diagrama de Neibr (SVG)
   ApiTerminal               petición y respuesta de la API de Neibr
-  ui/                       islas de cliente (Counter, Scramble, LocalTime, HeaderSurface) y piezas sin estado
+  ui/                       islas de cliente (Counter, Scramble, LocalTime, HeaderSurface, useSequence) y piezas sin estado
 lib/
   content.ts                todo el texto en los tres idiomas
   site.ts                   SITE_URL, metadatos, hreflang y JSON-LD por idioma
   og.tsx                    imagen OG con Bricolage Grotesque (assets/fonts)
   shots.json                capturas disponibles (lo escribe npm run capture)
-scripts/                    shots, a11y, lh, seo, links, capture y measure (lib/server.mjs común)
+scripts/                    shots, a11y, motion, lh, seo, links, capture y measure (lib/server.mjs común)
+                            subset-fonts.py: subconjuntos de las fuentes en assets/fonts
 docs/                       planes, decisiones, preguntas y resultados de las comprobaciones
 ```
 
@@ -42,6 +43,7 @@ npm ci
 npm run dev        # http://localhost:3000
 npm run check      # lint, tipos y build
 npm run a11y       # axe + desbordamiento a 320/375 px + texto < 11 px
+npm run motion     # reduced motion y sin JS: todo en su estado final
 npm run shots      # capturas a 375 y 1440 px de /, /ca y /en
 npm run lh         # Lighthouse móvil y escritorio
 npm run seo        # lang, canonical, hreflang, JSON-LD, sitemap, OG

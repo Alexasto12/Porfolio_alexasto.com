@@ -1,7 +1,6 @@
 "use client";
 
-import { LazyMotion, m, type Variants } from "motion/react";
-import { loadMotion } from "./ui/loadMotion";
+import type { CSSProperties } from "react";
 import { useSequence } from "./ui/useSequence";
 
 /* Geometry: 200 m = 110 units around the failed delivery. */
@@ -24,41 +23,7 @@ const STREETS = "M0 52H480M0 160H480M0 238H480M70 0V250M180 0V250M300 0V250M420 
 
 /** When each step starts, in seconds. */
 const AT = [0, 0.9, 1.9, 2.9];
-
-const pop: Variants = {
-  hidden: { scale: 0, opacity: 0, transition: { duration: 0 } },
-  final: { scale: 1, opacity: 1, transition: { duration: 0 } },
-  play: (t: number) => ({ scale: 1, opacity: 1, transition: { delay: t, duration: 0.45, ease: [0.2, 0.7, 0.2, 1] } }),
-};
-const draw: Variants = {
-  hidden: { pathLength: 0, opacity: 0, transition: { duration: 0 } },
-  final: { pathLength: 1, opacity: 1, transition: { duration: 0 } },
-  play: (t: number) => ({
-    pathLength: 1,
-    opacity: 1,
-    transition: { delay: t, pathLength: { delay: t, duration: 0.8, ease: "easeInOut" }, opacity: { delay: t, duration: 0.01 } },
-  }),
-};
-const dim: Variants = {
-  hidden: { opacity: 1, transition: { duration: 0 } },
-  final: { opacity: 0.25, transition: { duration: 0 } },
-  play: (t: number) => ({ opacity: 0.25, transition: { delay: t, duration: 0.4 } }),
-};
-const fade: Variants = {
-  hidden: { opacity: 0, transition: { duration: 0 } },
-  final: { opacity: 1, transition: { duration: 0 } },
-  play: (t: number) => ({ opacity: 1, transition: { delay: t, duration: 0.4 } }),
-};
-/* The bars hold at 0 with keyframes instead of a delay: a delayed transform
-   on an HTML element jumped straight to its end value. */
-const bar: Variants = {
-  hidden: { scaleX: 0, transition: { duration: 0 } },
-  final: { scaleX: 1, transition: { duration: 0 } },
-  play: (t: number) => ({
-    scaleX: [0, 0, 1],
-    transition: { duration: t + 0.6, times: [0, t / (t + 0.6), 1], ease: "easeOut" },
-  }),
-};
+const at = (s: number) => ({ "--d": `${s}s` }) as CSSProperties;
 
 type NeibrDiagramProps = {
   title: string;
@@ -68,58 +33,66 @@ type NeibrDiagramProps = {
 
 /**
  * How Neibr assigned a neighbour, in four steps that play once when the
- * diagram scrolls into view (motion/react). The server HTML, the no-JS page
+ * diagram scrolls into view: the failed delivery, the bounding box, the
+ * 200 m circle and the nearest neighbour. CSS transitions on data-phase do
+ * the animation (app/styles/experience.css). The server HTML, the no-JS page
  * and reduced motion all show the finished diagram.
  */
 export function NeibrDiagram({ title, note, steps }: NeibrDiagramProps) {
-  const [ref, phase] = useSequence<HTMLElement>(0.45);
-  const anim = { initial: false as const, animate: phase };
+  const [ref, phase] = useSequence<HTMLElement>();
   return (
-    <LazyMotion features={loadMotion} strict>
-      <figure ref={ref} className="ndiag" data-phase={phase}>
-        <figcaption className="ndiag__caption">
-          <span className="meta">{title}</span>
-          <span className="ndiag__note">{note}</span>
-        </figcaption>
-        <svg className="ndiag__svg" viewBox="0 0 480 250" aria-hidden focusable="false">
-          <path className="ndiag__streets" d={STREETS} />
-          {OUTSIDE.map(([x, y]) => (
-            <m.circle key={`o${x}`} className="ndiag__pt" cx={x} cy={y} r="5" variants={dim} custom={AT[1] + 0.6} {...anim} />
-          ))}
-          {IN_BOX.map(([x, y]) => (
-            <m.circle key={`b${x}`} className="ndiag__pt" cx={x} cy={y} r="5" variants={dim} custom={AT[2] + 0.6} {...anim} />
-          ))}
-          {IN_CIRCLE.map(([x, y]) => (
-            <circle key={`c${x}`} className="ndiag__pt" cx={x} cy={y} r="5" />
-          ))}
-          {/* 2. Bounding box prefilter */}
-          <m.rect className="ndiag__box" x={C.x - R} y={C.y - R} width={R * 2} height={R * 2} variants={draw} custom={AT[1]} {...anim} />
-          {/* 3. 200 m circle */}
-          <m.circle className="ndiag__ring" cx={C.x} cy={C.y} r={R} variants={draw} custom={AT[2]} {...anim} />
-          <m.text className="ndiag__label" x={C.x + 84} y={C.y - 84} variants={fade} custom={AT[2] + 0.6} {...anim}>
-            200 m
-          </m.text>
-          {/* 4. Nearest neighbour and its distance */}
-          <m.path className="ndiag__line" d={`M${C.x} ${C.y}L${NEAREST.x} ${NEAREST.y}`} variants={draw} custom={AT[3]} {...anim} />
-          <m.circle className="ndiag__pt ndiag__pt--hit" cx={NEAREST.x} cy={NEAREST.y} r="7" variants={pop} custom={AT[3] + 0.3} {...anim} />
-          <m.text className="ndiag__label ndiag__label--hit" x={NEAREST.x + 12} y={NEAREST.y - 10} variants={fade} custom={AT[3] + 0.4} {...anim}>
-            47 m
-          </m.text>
-          {/* 1. Failed delivery */}
-          <m.circle className="ndiag__origin" cx={C.x} cy={C.y} r="8" variants={pop} custom={AT[0]} {...anim} />
-        </svg>
-        <ol className="ndiag__steps">
-          {steps.map((s, i) => (
-            <li key={i}>
-              <span className="ndiag__num data" aria-hidden>
-                {i + 1}
-              </span>
-              <span>{s}</span>
-              <m.span className="ndiag__bar" aria-hidden variants={bar} custom={AT[i]} {...anim} />
-            </li>
-          ))}
-        </ol>
-      </figure>
-    </LazyMotion>
+    <figure ref={ref} className="ndiag" data-phase={phase}>
+      <figcaption className="ndiag__caption">
+        <span className="meta">{title}</span>
+        <span className="ndiag__note">{note}</span>
+      </figcaption>
+      <svg className="ndiag__svg" viewBox="0 0 480 250" aria-hidden focusable="false">
+        <path className="ndiag__streets" d={STREETS} />
+        {OUTSIDE.map(([x, y]) => (
+          <circle key={`o${x}`} className="ndiag__pt ndiag__dim" cx={x} cy={y} r="5" style={at(AT[1] + 0.6)} />
+        ))}
+        {IN_BOX.map(([x, y]) => (
+          <circle key={`b${x}`} className="ndiag__pt ndiag__dim" cx={x} cy={y} r="5" style={at(AT[2] + 0.6)} />
+        ))}
+        {IN_CIRCLE.map(([x, y]) => (
+          <circle key={`c${x}`} className="ndiag__pt" cx={x} cy={y} r="5" />
+        ))}
+        {/* 2. Bounding box prefilter */}
+        <rect className="ndiag__box ndiag__draw" x={C.x - R} y={C.y - R} width={R * 2} height={R * 2} pathLength="1" style={at(AT[1])} />
+        {/* 3. 200 m circle: the area fades in while its edge draws */}
+        <circle className="ndiag__area ndiag__fade" cx={C.x} cy={C.y} r={R} style={at(AT[2])} />
+        <circle className="ndiag__ring ndiag__draw" cx={C.x} cy={C.y} r={R} pathLength="1" style={at(AT[2])} />
+        {/* Outside the box, to its right, so no line or point crosses it. */}
+        <text className="ndiag__label ndiag__fade" x={C.x + R + 8} y={C.y - 84} style={at(AT[2] + 0.6)}>
+          200 m
+        </text>
+        {/* 4. Nearest neighbour and its distance */}
+        <path className="ndiag__line ndiag__draw" d={`M${C.x} ${C.y}L${NEAREST.x} ${NEAREST.y}`} pathLength="1" style={at(AT[3])} />
+        <circle className="ndiag__pt ndiag__pt--hit ndiag__pop" cx={NEAREST.x} cy={NEAREST.y} r="7" style={at(AT[3] + 0.3)} />
+        {/* Above and to the left of the hit, where there are no points. */}
+        <text
+          className="ndiag__label ndiag__label--hit ndiag__fade"
+          x={NEAREST.x - 6}
+          y={NEAREST.y - 14}
+          textAnchor="end"
+          style={at(AT[3] + 0.4)}
+        >
+          47 m
+        </text>
+        {/* 1. Failed delivery */}
+        <circle className="ndiag__origin ndiag__pop" cx={C.x} cy={C.y} r="8" style={at(AT[0])} />
+      </svg>
+      <ol className="ndiag__steps">
+        {steps.map((s, i) => (
+          <li key={i}>
+            <span className="ndiag__num data" aria-hidden>
+              {i + 1}
+            </span>
+            <span>{s}</span>
+            <span className="ndiag__bar" aria-hidden style={at(AT[i])} />
+          </li>
+        ))}
+      </ol>
+    </figure>
   );
 }

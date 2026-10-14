@@ -1,16 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { loadMotion } from "./loadMotion";
 
 /**
  * "final": complete, as the server rendered it (no JS yet, reduced motion, or
- * it was already on screen). "hidden": reset while still off screen, once the
- * motion features are loaded. "play": runs once when it scrolls into view.
+ * it was already on screen). "hidden": reset while still off screen. "play":
+ * runs once when it scrolls into view. The phase goes to data-phase and CSS
+ * does the rest (transitions with per-element delays).
  */
 export type SequencePhase = "final" | "hidden" | "play";
 
-export function useSequence<T extends Element>(threshold = 0.35) {
+export function useSequence<T extends Element>() {
   const ref = useRef<T>(null);
   const [phase, setPhase] = useState<SequencePhase>("final");
 
@@ -18,35 +18,32 @@ export function useSequence<T extends Element>(threshold = 0.35) {
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const onScreen = () => {
-      const r = el.getBoundingClientRect();
-      return r.top < window.innerHeight && r.bottom > 0;
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) return;
+    setPhase("hidden");
+    // Plays once its top passes the lower quarter of the screen, whatever its height.
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          // One frame in the hidden state first, so the transitions have a start.
+          requestAnimationFrame(() => setPhase("play"));
+          io.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -25% 0px" }
+    );
+    io.observe(el);
+    // Printing never scrolls: show it complete.
+    const print = () => {
+      io.disconnect();
+      setPhase("final");
     };
-    if (onScreen()) return;
-    let io: IntersectionObserver | null = null;
-    let cancelled = false;
-    loadMotion().then(() => {
-      // One frame later LazyMotion has rendered with the features in place.
-      requestAnimationFrame(() => {
-        if (cancelled || onScreen()) return;
-        setPhase("hidden");
-        io = new IntersectionObserver(
-          ([e]) => {
-            if (e.isIntersecting) {
-              setPhase("play");
-              io?.disconnect();
-            }
-          },
-          { threshold }
-        );
-        io.observe(el);
-      });
-    });
+    window.addEventListener("beforeprint", print);
     return () => {
-      cancelled = true;
-      io?.disconnect();
+      io.disconnect();
+      window.removeEventListener("beforeprint", print);
     };
-  }, [threshold]);
+  }, []);
 
   return [ref, phase] as const;
 }

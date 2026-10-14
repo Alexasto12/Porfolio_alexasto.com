@@ -24,7 +24,6 @@
   flex: 1;
   position: relative;
   font-size: 12px;
-  font-weight: 700;
   color: var(--accent);
 }
 .path__tick::before {
@@ -49,7 +48,6 @@
 .path__name {
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 800;
-  font-stretch: 85%;
   font-size: clamp(1.8rem, 2.8vw, 2.5rem);
   line-height: 1;
   letter-spacing: -0.03em;
@@ -63,7 +61,7 @@
   padding-top: 12px;
   border-top: 1px solid var(--line);
 }
-.path__year { font-weight: 700; color: var(--accent); padding-top: 3px; }
+.path__year { color: var(--accent); padding-top: 3px; }
 .path__title {
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 600;

@@ -147,11 +147,10 @@ img { max-width: 100%; }
 .font-mono { font-family: var(--font-mono), ui-monospace, monospace; letter-spacing: 0; }
 .tabular { font-variant-numeric: tabular-nums; }
 
-/* Section headings: Bricolage at a narrow width for contrast with the wide numbers. */
+/* Section headings: Bricolage, narrow cut, heavy. */
 .h-section {
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 800;
-  font-stretch: 80%;
   font-size: var(--fs-section);
   line-height: 0.9;
   letter-spacing: -0.035em;
@@ -160,7 +159,6 @@ img { max-width: 100%; }
 .h-block {
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 800;
-  font-stretch: 85%;
   font-size: clamp(2rem, 4vw, 3.4rem);
   line-height: 0.95;
   letter-spacing: -0.03em;
@@ -206,11 +204,10 @@ img { max-width: 100%; }
   letter-spacing: 0.02em;
   font-variant-numeric: tabular-nums;
 }
-/* Big figures: Bricolage 800 at full width, tabular so they don't jump while counting. */
+/* Big figures: Bricolage 800, tabular so they don't jump while counting. */
 .figure {
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 800;
-  font-stretch: 100%;
   font-variant-numeric: tabular-nums;
   line-height: 0.85;
   letter-spacing: -0.04em;
@@ -250,15 +247,17 @@ img { max-width: 100%; }
   background-repeat: repeat-x, no-repeat;
   pointer-events: none;
 }
-.sec[data-surface="paper"]::after {
-  content: "";
+/* Grain on paper (components/ui/Grain.tsx): at most 1.5 % so text keeps its contrast. */
+.grain {
   position: absolute;
   z-index: -2;
   inset: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0.015;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .08 0 0 0 0 .07 0 0 0 0 .05 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   pointer-events: none;
 }
+.grain-defs { position: absolute; }
 .sec[data-surface="paper"]::before { z-index: -1; }
 
 /* Section index line: number and name, as data. */
@@ -484,8 +483,9 @@ img { max-width: 100%; }
 }
 .terminal__bar {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
   min-width: 0;
   padding: 9px 14px;
   border-bottom: 1px solid var(--term-line);
@@ -495,15 +495,11 @@ img { max-width: 100%; }
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--term-text);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   min-width: 0;
 }
 .terminal__method {
   margin-left: auto;
   font-size: 11px;
-  font-weight: 700;
   letter-spacing: 0.1em;
   white-space: nowrap;
   flex-shrink: 0;
@@ -516,7 +512,18 @@ img { max-width: 100%; }
   overflow-x: auto;
 }
 .terminal__body:focus-visible { outline-offset: -4px; }
-.terminal__body .ln { display: block; white-space: pre; }
+.terminal__body .ln { display: block; width: max-content; white-space: pre; }
+
+/* Typing (components/ApiTerminal.tsx): each request line is revealed one
+   character per step, then the response lines arrive. */
+.terminal[data-phase="hidden"] .ln--type { clip-path: inset(0 100% 0 0); }
+.terminal[data-phase="hidden"] .ln--arrive { opacity: 0; }
+.terminal[data-phase="play"] .ln--type {
+  /* An explicit end value: a transition to "none" would not interpolate. */
+  clip-path: inset(0 0 0 0);
+  transition: clip-path var(--dur) steps(var(--n), end) var(--d);
+}
+.terminal[data-phase="play"] .ln--arrive { transition: opacity 0.25s ease var(--d); }
 .tok-key { color: var(--term-key); }
 .tok-str { color: var(--term-str); }
 .tok-num { color: var(--term-num); }
@@ -549,7 +556,6 @@ main:focus { outline: none; }
   color: var(--paper);
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 13px;
-  font-weight: 700;
 }
 .skip-link:focus-visible { top: 8px; outline-color: var(--wine); }
 

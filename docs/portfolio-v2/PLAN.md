@@ -69,10 +69,10 @@
 
 ## Fase 6. Movimiento, rendimiento y accesibilidad
 
-- [ ] **Repaso del movimiento contra `DISENO.md`:** cada animación explica algo y respeta `prefers-reduced-motion`. Comprueba con Playwright, emulando reduced-motion, que todo se ve en su estado final.
-- [ ] **Presupuesto de JavaScript:** como mucho 35 KB gzip de cliente nuevo. Apunta la cifra real en el PR.
-- [ ] **Métricas (`npm run lh`, mediana de 3 pasadas, móvil):** rendimiento ≥ 85 en el contenedor, accesibilidad 100, CLS ≤ 0,05 y LCP ≤ 2,5 s.
-- [ ] **Accesibilidad y desbordamiento:** `npm run a11y` sin errores serios ni críticos y sin desbordamiento a 320 px en los tres idiomas.
+- [x] **Repaso del movimiento contra `DISENO.md`:** cada animación explica algo y respeta `prefers-reduced-motion`. Comprueba con Playwright, emulando reduced-motion, que todo se ve en su estado final.
+- [x] **Presupuesto de JavaScript:** como mucho 35 KB gzip de cliente nuevo. Apunta la cifra real en el PR.
+- [x] **Métricas (`npm run lh`, mediana de 3 pasadas, móvil):** rendimiento ≥ 85 en el contenedor, accesibilidad 100, CLS ≤ 0,05 y LCP ≤ 2,5 s.
+- [x] **Accesibilidad y desbordamiento:** `npm run a11y` sin errores serios ni críticos y sin desbordamiento a 320 px en los tres idiomas.
 
 ## Fase 7. Cierre
 

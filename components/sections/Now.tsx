@@ -1,5 +1,6 @@
 import type { Card } from "@/lib/content";
 import { DATA } from "@/lib/content";
+import { Grain } from "../ui/Grain";
 import { pick, translator, type Locale } from "@/lib/i18n-types";
 import { SectionHead } from "../ui/SectionHead";
 import { ServiceGlyph } from "../ui/ServiceGlyph";
@@ -12,6 +13,7 @@ export function Now({ locale }: { locale: Locale }) {
   const d = DATA.now;
   return (
     <section id="ahora" className="sec now" data-surface="paper">
+      <Grain />
       <div className="shell">
         <SectionHead num={d.num} label={t(d.label)} heading={t(d.heading)} className="now__head" />
         <div className="now__intro grid">

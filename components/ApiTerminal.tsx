@@ -1,10 +1,11 @@
 "use client";
 
 /* Syntax-highlighted API request and response for the Neibr block. When it
-   scrolls into view the request types itself out and the response arrives
-   after it (motion/react). Server HTML, no JS and reduced motion: complete. */
-import { LazyMotion, m, type Variants } from "motion/react";
-import { loadMotion } from "./ui/loadMotion";
+   scrolls into view the request types itself out, one character at a time
+   (clip-path in steps), and the response arrives after it. CSS transitions
+   on data-phase do the animation (app/styles/base.css). Server HTML, no JS
+   and reduced motion: complete. */
+import type { CSSProperties } from "react";
 import { useSequence } from "./ui/useSequence";
 
 type Seg = [string, string];
@@ -43,54 +44,39 @@ const TYPING = (() => {
 })();
 const RESPONSE_AT = TYPING[TYPING.length - 1].t + TYPING[TYPING.length - 1].n * PER_CHAR + 0.4;
 
-const type: Variants = {
-  hidden: { clipPath: "inset(0 100% 0 0)", transition: { duration: 0 } },
-  final: { clipPath: "inset(0 0% 0 0)", transition: { duration: 0 } },
-  play: ({ t, n }: { t: number; n: number }) => ({
-    clipPath: "inset(0 0% 0 0)",
-    // One step per character: a typewriter, not a wipe.
-    transition: { delay: t, duration: n * PER_CHAR, ease: (p: number) => Math.floor(p * n) / n },
-  }),
-};
-const arrive: Variants = {
-  hidden: { opacity: 0, transition: { duration: 0 } },
-  final: { opacity: 1, transition: { duration: 0 } },
-  play: (t: number) => ({ opacity: 1, transition: { delay: t, duration: 0.25 } }),
-};
+/** Per-line timing for the CSS: delay, duration and, for typed lines, one step per character. */
+function timing(i: number): CSSProperties {
+  if (i < REQUEST_LINES) {
+    const { t, n } = TYPING[i];
+    return { "--d": `${t.toFixed(3)}s`, "--dur": `${(n * PER_CHAR).toFixed(3)}s`, "--n": n } as CSSProperties;
+  }
+  return { "--d": `${(RESPONSE_AT + (i - REQUEST_LINES) * 0.06).toFixed(3)}s` } as CSSProperties;
+}
 
 export function ApiTerminal({ title, label }: { title: string; label: string }) {
-  const [ref, phase] = useSequence<HTMLDivElement>(0.5);
+  const [ref, phase] = useSequence<HTMLDivElement>();
   return (
-    <LazyMotion features={loadMotion} strict>
-      <div className="terminal" ref={ref} data-phase={phase}>
-        <div className="terminal__bar">
-          <span className="terminal__title">{title}</span>
-          <span className="terminal__method">POST 201</span>
-        </div>
-        {/* Focusable so the horizontal scroll works from the keyboard. */}
-        <div className="terminal__body" tabIndex={0} role="region" aria-label={label}>
-          {LINES.map((segs, i) => (
-            <m.span
-              key={i}
-              className="ln"
-              initial={false}
-              animate={phase}
-              variants={i < REQUEST_LINES ? type : arrive}
-              custom={i < REQUEST_LINES ? TYPING[i] : RESPONSE_AT + (i - REQUEST_LINES) * 0.06}
-            >
-              {segs.map((seg, j) =>
-                seg[0] === "caret" ? (
-                  <span key={j} className="caret" aria-hidden />
-                ) : (
-                  <span key={j} className={seg[0] || undefined}>
-                    {seg[1]}
-                  </span>
-                )
-              )}
-            </m.span>
-          ))}
-        </div>
+    <div className="terminal" ref={ref} data-phase={phase}>
+      <div className="terminal__bar">
+        <span className="terminal__title">{title}</span>
+        <span className="terminal__method">POST 201</span>
       </div>
-    </LazyMotion>
+      {/* Focusable so the horizontal scroll works from the keyboard. */}
+      <div className="terminal__body" tabIndex={0} role="region" aria-label={label}>
+        {LINES.map((segs, i) => (
+          <span key={i} className={i < REQUEST_LINES ? "ln ln--type" : "ln ln--arrive"} style={timing(i)}>
+            {segs.map((seg, j) =>
+              seg[0] === "caret" ? (
+                <span key={j} className="caret" aria-hidden />
+              ) : (
+                <span key={j} className={seg[0] || undefined}>
+                  {seg[1]}
+                </span>
+              )
+            )}
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }

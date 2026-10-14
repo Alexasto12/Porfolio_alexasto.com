@@ -1,4 +1,5 @@
 import { DATA } from "@/lib/content";
+import { Grain } from "../ui/Grain";
 import { pick, translator, type Locale } from "@/lib/i18n-types";
 import { Scramble } from "../ui/Scramble";
 import { LocalTime } from "../ui/LocalTime";
@@ -13,13 +14,32 @@ export function Hero({ locale }: { locale: Locale }) {
   const d = DATA.hero;
   return (
     <section id="perfil" className="sec hero" data-surface="paper">
+      <Grain />
       <div className="shell">
         <div className="hero__grid grid">
           <h1 className="hero__name">
             <Scramble text={d.firstName} className="hero__first" />
             <Scramble text={d.lastName} offset={d.firstName.length} className="hero__last" />
           </h1>
-
+          <p className="hero__title lede hero__after">{t(d.title)}</p>
+          <div className="hero__intro hero__after">
+            <p className="copy">{t(d.line)}</p>
+            <div className="hero__ctas">
+              <a href={d.ctaWork.href} className="btn btn--solid">
+                {t(d.ctaWork.label)}
+                <span className="btn__arrow btn__arrow--down" aria-hidden>
+                  ↓
+                </span>
+              </a>
+              <a href={d.ctaTalk.href} className="btn">
+                {t(d.ctaTalk.label)}
+              </a>
+              <span className="hero__hint meta" aria-hidden>
+                {t(d.hint)}
+              </span>
+            </div>
+          </div>
+          {/* After the intro in reading order; on wide screens it sits beside the name. */}
           <aside className="hero__now hero__after" aria-labelledby="hero-now">
             <h2 id="hero-now" className="meta">
               {t(d.nowLabel)}
@@ -51,25 +71,6 @@ export function Hero({ locale }: { locale: Locale }) {
               </ul>
             </div>
           </aside>
-
-          <p className="hero__title lede hero__after">{t(d.title)}</p>
-          <div className="hero__intro hero__after">
-            <p className="copy">{t(d.line)}</p>
-            <div className="hero__ctas">
-              <a href={d.ctaWork.href} className="btn btn--solid">
-                {t(d.ctaWork.label)}
-                <span className="btn__arrow btn__arrow--down" aria-hidden>
-                  ↓
-                </span>
-              </a>
-              <a href={d.ctaTalk.href} className="btn">
-                {t(d.ctaTalk.label)}
-              </a>
-              <span className="hero__hint meta" aria-hidden>
-                {t(d.hint)}
-              </span>
-            </div>
-          </div>
         </div>
         <div className="hero__after">
           <ContactSheet locale={locale} />

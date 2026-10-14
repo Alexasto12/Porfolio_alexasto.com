@@ -23,7 +23,7 @@
   white-space: nowrap;
 }
 .site-header__name {
-  font-weight: 700;
+  color: var(--fg);
   min-height: 28px;
   display: inline-flex;
   align-items: center;

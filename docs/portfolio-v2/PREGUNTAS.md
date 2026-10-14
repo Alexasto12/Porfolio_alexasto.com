@@ -22,14 +22,14 @@ Lo que no cubrían `DISENO.md`, `DECISIONES.md` ni `CLAUDE.md`, qué se decidió
 - **Hover sin transiciones de color.** Los cambios de color al pasar el ratón son instantáneos; solo se anima el desplazamiento de las flechas y de las capturas, para cumplir la regla de propiedades animables.
 - **Limpieza extra:** además de `lucide-react` y `class-variance-authority`, se van `clsx`, `tailwind-merge` y `lib/cn.ts`, que tampoco se usaban. `TimelineRail` (JS que cambiaba un `height` en cada scroll) pasa a CSS con `scaleY` y `animation-timeline`.
 - **Estilos en línea que quedan:** las imágenes OG, `icon` y `apple-icon` (Satori, el motor de `next/og`, solo acepta estilos en línea) y el desplazamiento de cada captura en `BrowserFrame` (`--shift`, calculado con el alto de la imagen).
-- **Bricolage Grotesque variable con eje de anchura.** Los titulares van estrechos (`font-stretch: 80 %`) y las cifras a anchura completa. La fuente pasa de 41 KB a 78 KB (WOFF2, latin).
+- **Bricolage Grotesque variable con eje de anchura.** Los titulares van estrechos (`font-stretch: 80 %`) y las cifras a anchura completa. La fuente pasa de 41 KB a 78 KB (WOFF2, latin). (Cambiado en la Fase 6: anchura fija.)
 - **`overflow-x: clip` en `body`** en lugar de `hidden`: con `hidden` el `body` pasa a ser un contenedor de scroll y `position: sticky` deja de funcionar.
 - **Margen lateral en móvil de 16 px** (`max(16px, 4vw)`, antes `max(20px, 4vw)`).
 - **`theme-color` y el manifest** pasan a papel (`#F4EFE2`), que es el color con el que empieza la página.
 
 ## Fase 2
 
-- **Entrada del hero en CSS, no con `motion/react`.** Las letras del nombre suben con 40 ms entre una y otra y después aparece el resto (1,07 s en total). Con CSS la página está completa sin JavaScript, no cuesta JS y no depende de la hidratación. `motion/react` queda para las secuencias que lo necesitan (Neibr). El scramble del nombre ya no se lanza al cargar: solo al pasar un ratón (`hover: hover` y `pointer: fine`) y nunca con reduced motion.
+- **Entrada del hero en CSS, no con `motion/react`.** Las letras del nombre suben con 40 ms entre una y otra y después aparece el resto (1,07 s en total). Con CSS la página está completa sin JavaScript, no cuesta JS y no depende de la hidratación. `motion/react` queda para las secuencias que lo necesitan (Neibr). (Cambiado en la Fase 6: ya no se usa.) El scramble del nombre ya no se lanza al cargar: solo al pasar un ratón (`hover: hover` y `pointer: fine`) y nunca con reduced motion.
 - **Panel "ahora mismo".** La hora de Granollers solo existe con JavaScript (una página estática no puede saberla): sin JS esa línea queda sin hora. Se queda dentro del panel la lista "Con lo que trabajo", que `DISENO.md` no menciona, para no perder contenido.
 - **Hoja de contactos:** cinco capturas (Lara's Oak, Roses de Sant Jordi, Paula Krebel, GOK Thermal y Peer2Stream), numeradas como fotogramas y enlazadas a su caso en la página. En escritorio se desliza a la izquierda durante la primera pantalla de scroll (`scroll(root)`); si una miniatura recibe el foco de teclado, la tira vuelve a su sitio y caben las cinco (para que ningún enlace con foco quede oculto, WCAG 2.4.11). Sin soporte o con reduced motion caben las cinco y no se mueve. En móvil es un carrusel con scroll-snap. Las imágenes llevan `alt=""` porque el texto del enlace ya nombra el caso.
 - **Servicios numerados 01 a 04.** La renovación anterior quitó esos números por decorativos; `DISENO.md` los vuelve a pedir. Van en el orden de `DECISIONES.md` (webs, redes, automatizaciones, software), con el glifo de cada uno, no en el orden en que los lista `DISENO.md`.
@@ -60,7 +60,7 @@ Confirmaron 9 hallazgos y descartaron 4. Arreglados en la Fase 3:
   - **Neibr sin etiquetas de tecnologías y sin la frase de la asignación:** el diagrama ya cuenta el prefiltro por bounding box y Haversine paso a paso, y la frase del stack ("Go (Fiber), PostgreSQL y Redis") va en la banda vino con la de seguridad (API keys, idempotencia, HMAC y ledger). Las tres frases salen del texto que ya había, partido en tres.
   - **La terminal va dentro de la banda vino**, al lado de las cifras del stress test: es la petición que la API servía a ese ritmo. Su barra lleva el título del endpoint ("Crear envío y asignar vecino") en lugar de "shipments.http".
 - **Mapa de VMV:** "Mapa de lo que llevaba (esquema)". Un bus horizontal con "20 microservicios" y los ocho nodos de `DISENO.md`, sin nombres internos. Las conexiones se dibujan con el scroll (CSS, `view-timeline`): primero el bus, después los ramales y por último WAF → dominios y ERP → puente. En móvil, el mismo mapa en vertical para que ningún texto baje de 11 px.
-- **Diagrama de Neibr:** "Cómo se asigna un vecino (esquema)", con la nota "Puntos de ejemplo, no datos reales" (texto nuevo, en los tres idiomas). Puntos fijos sacados de un generador con semilla. El vecino más cercano está a 46,9 m y se muestra como "47 m", la misma distancia que devuelve la terminal. Los cuatro pasos (textos nuevos a partir de `DISENO.md` y `DECISIONES.md`) se reproducen una vez con `motion/react` (`LazyMotion` con `domAnimation` cargado aparte) al entrar en pantalla, con una barra que marca el paso en curso.
+- **Diagrama de Neibr:** "Cómo se asigna un vecino (esquema)", con la nota "Puntos de ejemplo, no datos reales" (texto nuevo, en los tres idiomas). Puntos fijos sacados de un generador con semilla. El vecino más cercano está a 46,9 m y se muestra como "47 m", la misma distancia que devuelve la terminal. Los cuatro pasos (textos nuevos a partir de `DISENO.md` y `DECISIONES.md`) se reproducen una vez al entrar en pantalla, con una barra que marca el paso en curso (con `motion/react` hasta la Fase 6, ahora con CSS).
 - **Terminal:** la petición se escribe carácter a carácter (`clip-path` en pasos) y la respuesta llega después. Con `motion/react` también.
 - **Cómo se protege el contenido:** el HTML del servidor trae el diagrama y la terminal completos. Solo si hay JavaScript, no hay reduced motion y el bloque aún no está en pantalla, se oculta para reproducirlo. Y solo después de que las funciones de Motion hayan cargado: antes, el estado oculto no se aplicaba y la secuencia no arrancaba.
 - **Cifras con contador:** las cuatro del stress test (2,9; ~968; < 100 ms; 0) usan el contador que ya existía, con prefijo y sufijo.
@@ -81,3 +81,35 @@ Confirmaron 9 hallazgos y descartaron 4. Arreglados en la Fase 3:
 - **Imagen OG nueva** en los tres idiomas: papel con la retícula, una línea de tinta arriba, "Alejandro" en tinta y "Cabrera" en vino, el título de cada idioma, el dominio en vino y "Granollers". Sigue siendo Bricolage Grotesque desde `assets/fonts/` (las versiones estáticas: Satori no lee la variable, así que aquí no hay eje de anchura).
 - **README:** el que había ya no decía "Systems Architect" ni "base papel clara" (lo corrigió la renovación anterior). Se reescribe para el diseño nuevo: superficies, estructura de componentes y hojas de estilo, y el comando `measure`.
 - **El pie** ya iba en tinta desde la Fase 1; no cambia de contenido.
+
+## Fase 6
+
+- **Fuera `motion/react`.** `DISENO.md` lo nombra para las secuencias orquestadas, pero al final solo lo usaban el diagrama de Neibr y la terminal, y costaba JS y tiempo de carga. Ahora las dos secuencias son transiciones de CSS: un hook pequeño (`useSequence`) pone `data-phase` en `hidden` mientras el bloque está fuera de pantalla y en `play` cuando entra, y cada pieza lleva su retardo en una variable (`--d`). Las demás animaciones ya eran CSS. Se desinstala `motion`. Sin JavaScript, con reduced motion o al imprimir, las dos se ven completas.
+- **Fuentes propias en subconjunto** (`scripts/subset-fonts.py`, `assets/fonts/`): solo los caracteres de los tres idiomas y los pesos que se usan. Bricolage pasa a 24 KB, Hanken Grotesk a 14 KB y Space Mono a 11 KB. Las licencias OFL van al lado.
+- **Bricolage con anchura fija (80 %), sin el eje de anchura.** Se aparta de `DISENO.md` ("con ejes de anchura y peso"): con el eje de anchura la fuente pesa el doble, y el LCP en móvil no bajaba de 2,5 s. Titulares y cifras van ahora con el mismo corte estrecho; el contraste lo dan el peso (600 a 800) y el tamaño. **Pendiente:** si se quiere recuperar el eje, hay que volver a medir el LCP en móvil.
+- **Space Mono solo en regular.** Ningún dato va en negrita, así que la 700 no se descarga.
+- **Grano como SVG en línea** en lugar de imagen de fondo: Lighthouse tomaba la imagen de fondo como elemento LCP.
+- **La entrada del hero ya no anima la opacidad** del bloque de debajo del nombre, solo lo desplaza 18 px. Con la opacidad, el texto del LCP no contaba como pintado hasta el final de la animación.
+- **Probado y descartado:** CSS en línea (`inlineCss`, el LCP empeoraba) y no precargar Space Mono (también empeoraba).
+- **Contadores:** antes, a los 1,8 s arrancaban aunque no estuvieran en pantalla, y al llegar ya habían terminado. Ahora solo cuentan al entrar en pantalla (comportamiento que ya estaba en `main`).
+- **Comprobación del movimiento:** `npm run motion` (script nuevo). Con reduced motion: ninguna animación en marcha, las secuencias en su estado final, ningún texto oculto o recortado y todas las líneas SVG dibujadas. Sin JavaScript: recorre la página pantalla a pantalla y comprueba que todo el texto se ve. Pasa en castellano, catalán e inglés a 375 y 1440 px.
+- **JS de cliente en `/`:** 111,7 KB transferidos (gzip), frente a 112,3 KB en la línea base. El cliente nuevo cabe en el presupuesto de 35 KB con un saldo de -0,6 KB.
+- **Lighthouse móvil (mediana de 3):** rendimiento 98, accesibilidad 100, buenas prácticas 100 y SEO 100; LCP 2,4 s, CLS 0,004 y TBT 90 ms. Escritorio: 100 en todo, LCP 0,6 s. Entre pasadas el LCP en móvil varía unos 0,15 s.
+- **`a11y`:** 0 fallos de axe en los tres idiomas a 375 y 1440, sin desbordamiento a 320 y 375 y ningún texto por debajo de 11 px.
+
+## Revisión de las Fases 2 y 3 (cuatro revisores y un verificador por hallazgo)
+
+Confirmaron 22 hallazgos (14 distintos, varios repetidos entre revisores) y descartaron 2. Arreglados en la Fase 6:
+
+- **El fotograma de Peer2Stream no llevaba a ningún sitio** (`#peer2stream` no existía). El proyecto de Formación lleva ahora su `id`.
+- **Textos de SVG por debajo de 11 px:** el mapa de VMV entre 861 y 1.100 px (ahora usa el diseño vertical hasta 1.100) y las etiquetas "200 m" y "47 m" en móviles estrechos (más grandes por debajo de 420 px).
+- **El título de la terminal se cortaba con puntos suspensivos en móvil.** La barra ahora parte el título en dos líneas.
+- **Las líneas de la terminal se recortaban a 320 px** y el scroll horizontal no las enseñaba. Cada línea mide ahora lo que su texto.
+- **La caja del diagrama de Neibr no se dibujaba** (el CSS pisaba los atributos de Motion). Resuelto al pasar las secuencias a CSS.
+- **El diagrama y la terminal podían quedarse ocultos** si el IntersectionObserver no llegaba a dispararse (un bloque más alto que la pantalla). Ahora se reproducen en cuanto su borde superior pasa del último cuarto de la pantalla, sea cual sea su alto, y al imprimir se muestran completos.
+- **La hoja de contactos saltaba al hacer clic** (`:focus-within` también salta con el ratón en Chrome). Ahora solo vuelve a su sitio con el foco de teclado (`:focus-visible`).
+- **El anillo de foco de los fotogramas se cortaba en móvil.** El carrusel deja espacio para él.
+- **El orden de lectura y de foco del hero no coincidía con el visual** por debajo de 1.100 px. El panel "ahora mismo" va ahora detrás del texto en el HTML.
+- **El header se volvía vino al pasar la tarjeta de Hidrotech.** Solo cambian el header las secciones, la banda del stress test y el pie.
+- **Solapes en los diagramas:** "47 m" encima de un punto gris, "200 m" cortado por la caja y el ramal de "Firma biométrica" tachando "20 microservicios". Etiquetas movidas.
+- **Descartados:** que las conexiones del mapa de VMV describan una arquitectura que no está en los documentos (el mapa se titula "esquema", las uniones salen de lo publicado, como el puente Java que expone el ERP, y no cuenta nada de cómo funcionan las defensas) y que haya puntos de ejemplo tocando los bordes del círculo y de la caja (ninguno queda en el grupo equivocado).

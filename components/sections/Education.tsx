@@ -1,5 +1,6 @@
 import type { Card } from "@/lib/content";
 import { DATA } from "@/lib/content";
+import { Grain } from "../ui/Grain";
 import { translator, type Locale } from "@/lib/i18n-types";
 import { SectionHead } from "../ui/SectionHead";
 import { Tags } from "../ui/Tags";
@@ -12,6 +13,7 @@ export function Education({ locale }: { locale: Locale }) {
   const d = DATA.education;
   return (
     <section id="formacion" className="sec edu" data-surface="paper">
+      <Grain />
       <div className="shell">
         <SectionHead
           num={d.num}

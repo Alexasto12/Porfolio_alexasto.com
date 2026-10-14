@@ -57,16 +57,14 @@ export function Counter({ to, prefix = "", suffix = "", locale = "es-ES", decima
       run();
       return;
     }
+    // Only counts when it comes into view: a count that runs off screen
+    // explains nothing.
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && run()),
       { threshold: 0.4 }
     );
     io.observe(el);
-    const fallback = setTimeout(run, 1800);
-    return () => {
-      io.disconnect();
-      clearTimeout(fallback);
-    };
+    return () => io.disconnect();
   }, [to, decimals, duration]);
 
   const display = val.toLocaleString(locale, {

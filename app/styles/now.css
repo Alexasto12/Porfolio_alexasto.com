@@ -82,7 +82,6 @@
 .bento__channels-name {
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 800;
-  font-stretch: 85%;
   font-size: clamp(2rem, 3.6vw, 3rem);
   line-height: 0.95;
   letter-spacing: -0.03em;

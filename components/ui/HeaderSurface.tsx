@@ -14,7 +14,10 @@ export function HeaderSurface() {
   useEffect(() => {
     const header = ref.current?.closest<HTMLElement>(".site-header");
     if (!header) return;
-    const targets = Array.from(document.querySelectorAll<HTMLElement>("main [data-surface], footer[data-surface]"));
+    // Full-width surfaces only: sections, the stress band and the footer (not cards).
+    const targets = Array.from(
+      document.querySelectorAll<HTMLElement>("main .sec[data-surface], main .stress[data-surface], footer[data-surface]")
+    );
     const crossing = new Set<HTMLElement>();
     let io: IntersectionObserver | null = null;
 
