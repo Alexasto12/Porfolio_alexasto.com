@@ -1,9 +1,9 @@
-/* Checks that every external link on /, /ca and /en answers 200 (after
-   redirects). mailto: links are listed but not requested.
+/* Checks that every external link on every page (three languages) answers
+   200 (after redirects). mailto: links are listed but not requested.
    Usage: npm run links [-- --out docs/portfolio-refresh/despues] */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { LOCALE_PAGES, outDir, withServer } from "./lib/server.mjs";
+import { ALL_PAGES, outDir, withServer } from "./lib/server.mjs";
 
 const dir = outDir();
 mkdirSync(dir, { recursive: true });
@@ -26,7 +26,7 @@ async function status(url) {
 
 const links = new Map();
 await withServer(async (base) => {
-  for (const p of LOCALE_PAGES) {
+  for (const p of ALL_PAGES) {
     const html = await (await fetch(base + p.path)).text();
     for (const [, href] of html.matchAll(/<a[^>]+href="([^"]+)"/g)) {
       const url = href.replace(/&amp;/g, "&");
@@ -60,7 +60,9 @@ writeFileSync(
     "",
     "| Enlace | Páginas | Resultado |",
     "|---|---|---|",
-    ...rows.map((r) => `| ${r.url} | ${r.pages.join(" ")} | ${r.ok ? "" : "✗ "}${r.result} |`),
+    ...rows.map(
+      (r) => `| ${r.url} | ${r.pages.length > 3 ? `${r.pages.length} páginas` : r.pages.join(" ")} | ${r.ok ? "" : "✗ "}${r.result} |`
+    ),
     "",
   ].join("\n")
 );

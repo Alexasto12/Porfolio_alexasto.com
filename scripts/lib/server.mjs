@@ -2,20 +2,24 @@
    Starts `next start` on a local port (building first if the build is
    missing or older than the sources), or reuses BASE_URL if it is set. */
 import { spawn, spawnSync } from "node:child_process";
-import { existsSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 const ROOT = resolve(import.meta.dirname, "..", "..");
+
+export const LOCALES = ["es", "ca", "en"];
+/** Every page per locale, from the same file the app reads (lib/routes.json). */
+export const ROUTES = JSON.parse(readFileSync(join(ROOT, "lib", "routes.json"), "utf8"));
+export const PAGE_KEYS = Object.keys(ROUTES);
+/** Every page in every locale: { locale, page, path }. */
+export const ALL_PAGES = PAGE_KEYS.flatMap((page) => LOCALES.map((locale) => ({ locale, page, path: ROUTES[page][locale] })));
 const NEXT_BIN = join(ROOT, "node_modules", ".bin", "next");
 /** Everything that changes the build output. */
 const SOURCE_DIRS = ["app", "components", "lib", "public", "assets"];
 const SOURCE_FILES = ["next.config.ts", "postcss.config.mjs", "tsconfig.json", "package.json", "package-lock.json"];
 
-export const LOCALE_PAGES = [
-  { locale: "es", path: "/" },
-  { locale: "ca", path: "/ca" },
-  { locale: "en", path: "/en" },
-];
+/** The three homes. */
+export const LOCALE_PAGES = ALL_PAGES.filter((p) => p.page === "home");
 
 /** Reads `--name value` or `--name=value` from argv. */
 export function arg(name, fallback) {
@@ -104,24 +108,21 @@ export async function withServer(fn) {
 }
 
 /**
- * Resolves how to load each locale. Once /ca and /en exist they are used as
- * is; before that (client-side i18n) the locale is forced via localStorage.
+ * The pages a check runs on, as { locale, page, path, url }. By default the
+ * homes, or every page with `all`; `--locales es,ca` and `--pages home,neibr`
+ * narrow it down.
  */
-export async function resolveLocalePages(base) {
-  const pages = [];
-  for (const p of LOCALE_PAGES) {
-    let ok = false;
-    try {
-      ok = (await fetch(base + p.path)).status === 200;
-    } catch {}
-    pages.push(
-      ok
-        ? { ...p, url: base + p.path, storage: null }
-        : { ...p, url: base + "/", storage: p.locale }
-    );
-  }
-  return pages;
+export function targets(base, { all = false } = {}) {
+  const locales = arg("locales", LOCALES.join(",")).split(",");
+  const pages = arg("pages", all ? PAGE_KEYS.join(",") : "home").split(",");
+  return ALL_PAGES.filter((p) => locales.includes(p.locale) && pages.includes(p.page)).map((p) => ({
+    ...p,
+    url: base + p.path,
+  }));
 }
+
+/** Short name of a target for logs and file names: es-home, ca-neibr… */
+export const targetName = (t) => `${t.locale}-${t.page}`;
 
 /** Opens a page in a fresh context, settled and fully revealed. */
 export async function openSettled(browser, target, viewport) {
@@ -134,13 +135,6 @@ export async function openSettled(browser, target, viewport) {
     reducedMotion: "reduce",
     locale: { es: "es-ES", ca: "ca-ES", en: "en-US" }[target.locale],
   });
-  if (target.storage) {
-    await context.addInitScript((lc) => {
-      try {
-        window.localStorage.setItem("alexasto.locale", lc);
-      } catch {}
-    }, target.storage);
-  }
   const page = await context.newPage();
   await page.goto(target.url, { waitUntil: "networkidle" });
   // Walk the page so lazy images and scroll-triggered effects settle.

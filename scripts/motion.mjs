@@ -1,4 +1,5 @@
-/* Motion check on /, /ca and /en at 375 and 1440 px, in four modes:
+/* Motion check on the three homes and the three Neibr pages (the pages with
+   the diagram) at 375 and 1440 px, in four modes:
    - reduced: prefers-reduced-motion emulated. Nothing may animate, every
      sequence (data-phase) stays "final", no text is hidden or clipped and
      every SVG line is fully drawn. (npm run shots also captures with
@@ -8,20 +9,19 @@
    - print: JavaScript on, normal motion, printed from the top of the page
      (sequences still waiting, scroll-driven lines not drawn yet). On paper
      nothing may animate, no text may be hidden and every line is drawn.
-   - play: JavaScript on, normal motion. Each sequence (Neibr diagram,
-     terminal) is scrolled into view; it must start and end complete.
+   - play: JavaScript on, normal motion. Each sequence (the Neibr diagram)
+     is scrolled into view; it must start and end complete.
    Exits 1 if anything fails.
-   Usage: npm run motion [-- --out docs/portfolio-v2/despues] [-- --locales es] */
+   Usage: npm run motion [-- --out docs/portfolio-v2/despues] [-- --locales es] [-- --pages home] */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { chromium } from "@playwright/test";
-import { arg, outDir, openSettled, resolveLocalePages, withServer } from "./lib/server.mjs";
+import { arg, outDir, openSettled, targetName, targets, withServer } from "./lib/server.mjs";
 
 const VIEWPORTS = [
   { width: 375, height: 812 },
   { width: 1440, height: 900 },
 ];
-const only = arg("locales", "").split(",").filter(Boolean);
 
 const dir = join(outDir(), "motion");
 mkdirSync(dir, { recursive: true });
@@ -29,8 +29,7 @@ mkdirSync(dir, { recursive: true });
 /**
  * Text that is on screen but invisible: opacity below 1 or clipped (a
  * clip-path of inset(0) clips nothing). With skipDecorative, aria-hidden
- * text is left out: the years on the Recorrido rail fade in with the scroll
- * by design, and the list below repeats them.
+ * text is left out (decoration that repeats visible text).
  */
 function hiddenText({ inViewOnly, root = "body", skipDecorative = false }) {
   const found = new Map();
@@ -87,8 +86,8 @@ let failed = false;
 function record(mode, target, vp, issues, extra = {}) {
   const ok = !issues.length;
   if (!ok) failed = true;
-  report[mode].push({ locale: target.locale, width: vp.width, ok, issues, ...extra });
-  console.log(`${ok ? "✓" : "✗"} ${mode} ${target.locale} ${vp.width}`);
+  report[mode].push({ page: targetName(target), width: vp.width, ok, issues, ...extra });
+  console.log(`${ok ? "✓" : "✗"} ${mode} ${targetName(target)} ${vp.width}`);
   for (const line of issues) console.log(`    ${line}`);
 }
 
@@ -96,15 +95,14 @@ async function openWithMotion(browser, target, vp) {
   const context = await browser.newContext({ viewport: vp, reducedMotion: "no-preference" });
   const page = await context.newPage();
   await page.goto(target.url, { waitUntil: "networkidle" });
-  // The hero entrance is time based (about 1.1 s).
-  await page.waitForTimeout(1500);
+  await page.waitForTimeout(500);
   return { context, page };
 }
 
 await withServer(async (base) => {
   const browser = await chromium.launch();
   try {
-    const pages = (await resolveLocalePages(base)).filter((p) => !only.length || only.includes(p.locale));
+    const pages = arg("pages") ? targets(base) : targets(base, { all: true }).filter((p) => p.page === "home" || p.page === "neibr");
     for (const target of pages) {
       for (const vp of VIEWPORTS) {
         // Reduced motion (openSettled emulates it and walks the whole page).
@@ -120,8 +118,7 @@ await withServer(async (base) => {
           const context = await browser.newContext({ viewport: vp, javaScriptEnabled: false, reducedMotion: "no-preference" });
           const page = await context.newPage();
           await page.goto(target.url, { waitUntil: "networkidle" });
-          // The hero entrance is time based (about 1.1 s).
-          await page.waitForTimeout(1500);
+          await page.waitForTimeout(500);
           const issues = new Set();
           const phases = await page.$$eval("[data-phase]", (els) => els.filter((e) => e.dataset.phase !== "final").length);
           if (phases) issues.add(`${phases} sequence(s) not in their final state`);
@@ -158,8 +155,8 @@ await withServer(async (base) => {
               const el = document.querySelector(sel);
               window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.4, behavior: "instant" });
             }, sel);
-            // The longest sequence (the terminal) takes about 4 s.
-            await page.waitForTimeout(5000);
+            // The diagram ends at about 3.7 s (components/NeibrDiagram.tsx).
+            await page.waitForTimeout(4500);
             const phase = await page.$eval(sel, (e) => e.dataset.phase);
             if (phase !== "play") issues.push(`${sel}: ${phase} after scrolling to it (expected play)`);
             const probe = await page.evaluate(reducedProbe, sel);
@@ -181,12 +178,12 @@ const MODES = { reduced: "Reduced motion", nojs: "Sin JavaScript", print: "Impre
 const md = [
   "# Movimiento",
   "",
-  `Generado: ${report.generatedAt}. Reduced motion: nada se mueve y todo está en su estado final. Sin JavaScript: todo el texto se ve. Impresión: desde arriba, sin nada oculto ni a medio dibujar. Secuencias: el diagrama y la terminal se reproducen al entrar en pantalla y acaban completos.`,
+  `Generado: ${report.generatedAt}. Reduced motion: nada se mueve y todo está en su estado final. Sin JavaScript: todo el texto se ve. Impresión: desde arriba, sin nada oculto ni a medio dibujar. Secuencias: el diagrama de Neibr se reproduce al entrar en pantalla y acaba completo.`,
   "",
-  "| Modo | Idioma | Ancho | Resultado |",
+  "| Modo | Página | Ancho | Resultado |",
   "|---|---|---|---|",
   ...Object.entries(MODES).flatMap(([mode, name]) =>
-    report[mode].map((r) => `| ${name} | ${r.locale} | ${r.width} | ${r.ok ? "✓" : `✗ ${r.issues.slice(0, 3).join("; ")}`} |`)
+    report[mode].map((r) => `| ${name} | ${r.page} | ${r.width} | ${r.ok ? "✓" : `✗ ${r.issues.slice(0, 3).join("; ")}`} |`)
   ),
   "",
 ];

@@ -1,12 +1,13 @@
-/* axe-core (WCAG 2.2 AA) on /, /ca and /en at 375 and 1440 px, plus two
-   checks axe does not cover: horizontal overflow at 320/375 px and text
-   rendered below 11 px. Exits 1 on serious/critical axe violations or overflow.
-   Usage: npm run a11y [-- --out docs/portfolio-refresh/antes] */
+/* axe-core (WCAG 2.2 AA) on every page in the three languages at 375 and
+   1440 px, plus two checks axe does not cover: horizontal overflow at
+   320/375 px and text rendered below 11 px. Exits 1 on serious/critical axe
+   violations or overflow.
+   Usage: npm run a11y [-- --out docs/portfolio-refresh/antes] [-- --locales es] [-- --pages home,neibr] */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { chromium } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
-import { outDir, openSettled, resolveLocalePages, withServer } from "./lib/server.mjs";
+import { outDir, openSettled, targetName, targets, withServer } from "./lib/server.mjs";
 
 const AXE_VIEWPORTS = [
   { width: 375, height: 812 },
@@ -29,6 +30,8 @@ function overflowProbe() {
     return false;
   };
   for (const el of document.body.querySelectorAll("*")) {
+    // Content of a closed <details> (the header menu) has boxes but is not shown.
+    if (!el.checkVisibility()) continue;
     const r = el.getBoundingClientRect();
     if (r.width && r.right > vw + 1 && !clipped(el)) {
       const cls = typeof el.className === "string" ? el.className.split(" ")[0] : "";
@@ -63,7 +66,7 @@ let failed = false;
 await withServer(async (base) => {
   const browser = await chromium.launch();
   try {
-    for (const target of await resolveLocalePages(base)) {
+    for (const target of targets(base, { all: true })) {
       for (const vp of AXE_VIEWPORTS) {
         const { context, page } = await openSettled(browser, target, vp);
         const res = await new AxeBuilder({ page }).withTags(TAGS).analyze();
@@ -76,12 +79,12 @@ await withServer(async (base) => {
         }));
         const blocking = violations.filter((v) => BLOCKING.has(v.impact));
         if (blocking.length) failed = true;
-        report.axe.push({ locale: target.locale, width: vp.width, violations });
+        report.axe.push({ page: targetName(target), width: vp.width, violations });
         if (vp.width === 375) {
-          report.smallText.push({ locale: target.locale, items: await page.evaluate(smallTextProbe) });
+          report.smallText.push({ page: targetName(target), items: await page.evaluate(smallTextProbe) });
         }
         console.log(
-          `${blocking.length ? "✗" : "✓"} axe ${target.locale} @${vp.width}: ` +
+          `${blocking.length ? "✗" : "✓"} axe ${targetName(target)} @${vp.width}: ` +
             `${violations.length} rules (${blocking.length} serious/critical)` +
             (blocking.length ? ` → ${blocking.map((v) => v.id).join(", ")}` : "")
         );
@@ -92,9 +95,9 @@ await withServer(async (base) => {
         const o = await page.evaluate(overflowProbe);
         const ok = o.scrollWidth <= o.innerWidth && o.offenders.length === 0;
         if (!ok) failed = true;
-        report.overflow.push({ locale: target.locale, width, ...o, ok });
+        report.overflow.push({ page: targetName(target), width, ...o, ok });
         console.log(
-          `${ok ? "✓" : "✗"} overflow ${target.locale} @${width}: scrollWidth ${o.scrollWidth}` +
+          `${ok ? "✓" : "✗"} overflow ${targetName(target)} @${width}: scrollWidth ${o.scrollWidth}` +
             (o.offenders.length ? ` · ${o.offenders.join(" | ")}` : "")
         );
         await context.close();
@@ -112,26 +115,26 @@ const md = [
   "",
   "## axe",
   "",
-  "| Idioma | Ancho | Reglas con fallos | Serias o críticas | Detalle |",
+  "| Página | Ancho | Reglas con fallos | Serias o críticas | Detalle |",
   "|---|---|---|---|---|",
   ...report.axe.map((r) => {
     const b = r.violations.filter((v) => BLOCKING.has(v.impact));
     const detail = r.violations.map((v) => `${v.id} (${v.impact}, ${v.nodes})`).join("; ") || "sin fallos";
-    return `| ${r.locale} | ${r.width} | ${r.violations.length} | ${b.length} | ${detail} |`;
+    return `| ${r.page} | ${r.width} | ${r.violations.length} | ${b.length} | ${detail} |`;
   }),
   "",
   "## Desbordamiento horizontal",
   "",
-  "| Idioma | Ancho | scrollWidth | Resultado | Elementos que se salen |",
+  "| Página | Ancho | scrollWidth | Resultado | Elementos que se salen |",
   "|---|---|---|---|---|",
   ...report.overflow.map(
-    (o) => `| ${o.locale} | ${o.width} | ${o.scrollWidth} | ${o.ok ? "ok" : "desborda"} | ${o.offenders.join("<br>") || "ninguno"} |`
+    (o) => `| ${o.page} | ${o.width} | ${o.scrollWidth} | ${o.ok ? "ok" : "desborda"} | ${o.offenders.join("<br>") || "ninguno"} |`
   ),
   "",
   "## Texto por debajo de 11 px (375 px)",
   "",
   ...report.smallText.flatMap((s) => [
-    `### ${s.locale}`,
+    `### ${s.page}`,
     "",
     ...(s.items.length ? s.items.map((i) => `- ${i}`) : ["- ninguno"]),
     "",
