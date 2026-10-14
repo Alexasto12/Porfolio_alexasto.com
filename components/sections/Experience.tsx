@@ -20,7 +20,7 @@ export function Experience({ locale }: { locale: Locale }) {
   return (
     <section id="experiencia" className="sec xp" data-surface="ink">
       <div className="shell">
-        <SectionHead num={d.num} label={t(d.label)} heading={t(d.heading)} description={t(d.description)} className="xp__head" />
+        <SectionHead num={d.num} label={t(d.label)} heading={t(d.heading)} description={t(d.description)} className="xp__head sec-head--split" />
         <Vmv locale={locale} />
         <NeibrIntro locale={locale} />
       </div>

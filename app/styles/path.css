@@ -1,35 +1,140 @@
-/* ───────── 4. Recorrido (paper) ───────── */
-.tl { position: relative; margin-top: clamp(34px, 5vw, 64px); }
-.tl__rail {
+/* ───────── 4. Recorrido (paper) ─────────
+   Three stages side by side under a rail of years (wide), or stacked along
+   a vertical rail (phones). */
+.path { padding-block: clamp(72px, 6vw, 88px) clamp(56px, 5vw, 72px); }
+.path__rail {
+  position: relative;
+  margin-top: clamp(32px, 3.6vw, 48px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: var(--gap);
+  padding-top: 18px;
+}
+.path__line {
   position: absolute;
-  left: 0;
   top: 0;
-  bottom: 0;
-  width: 2px;
+  left: 0;
+  right: 0;
+  height: 2px;
   background: var(--accent-lg);
-  transform-origin: top;
+  transform-origin: left;
 }
-.tl__row { position: relative; padding: 0 0 clamp(28px, 4vw, 44px) clamp(28px, 5vw, 64px); }
-.tl__row:last-child { padding-bottom: 0; }
-.tl__year { display: block; font-size: 15px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
-.tl__meta { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-bottom: 8px; }
-.tl__kind[data-kind="project"] { color: var(--accent); }
-.tl__title { margin-bottom: 8px; max-width: 34ch; }
-@media (min-width: 861px) {
-  .tl__row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
-    gap: var(--gap);
-  }
+.path__seg { display: flex; }
+.path__tick {
+  flex: 1;
+  position: relative;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
 }
-/* The rail draws itself as the list scrolls past. */
+.path__tick::before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent-lg);
+}
+.path__stages {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: var(--gap);
+  row-gap: 40px;
+}
+.path__stage { display: flex; flex-direction: column; gap: 6px; }
+.path__name {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-stretch: 85%;
+  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.path__range { color: var(--fg-2); }
+.path__items { margin-top: 14px; display: grid; gap: 14px; }
+.path__item {
+  display: grid;
+  grid-template-columns: 3.4em minmax(0, 1fr);
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.path__year { font-weight: 700; color: var(--accent); padding-top: 3px; }
+.path__title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.12rem;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+.path__place { margin-top: 6px; }
+
+/* The rail draws itself left to right, and each stage's years light up as it passes. */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .tl { view-timeline-name: --tl; }
-    .tl__rail {
-      animation: draw-y linear both;
-      animation-timeline: --tl;
-      animation-range: entry 20% exit 60%;
+    .path { view-timeline-name: --path; }
+    .path__line {
+      animation: draw-x linear both;
+      animation-timeline: --path;
+      animation-range: entry 55% cover 42%;
+    }
+    .path__seg { animation: tick-in linear both; animation-timeline: --path; }
+    .path__seg--1 { animation-range: entry 60% entry 80%; }
+    .path__seg--2 { animation-range: entry 85% cover 35%; }
+    .path__seg--3 { animation-range: cover 36% cover 42%; }
+  }
+}
+@keyframes draw-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes tick-in {
+  from { opacity: 0; }
+}
+
+/* Phones and narrow tablets: no horizontal rail; the stages stack along a
+   vertical line that draws itself downwards. */
+@media (max-width: 860px) {
+  .path__rail { display: none; }
+  .path__stages {
+    position: relative;
+    grid-template-columns: minmax(0, 1fr);
+    padding-left: 22px;
+  }
+  .path__stages::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 0;
+    width: 2px;
+    background: var(--accent-lg);
+    transform-origin: top;
+  }
+  .path__name::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    width: 12px;
+    height: 12px;
+    margin-top: 0.45em;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent-lg);
+  }
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .path__stages { view-timeline-name: --stages; }
+      .path__stages::before {
+        animation: draw-y linear both;
+        animation-timeline: --stages;
+        animation-range: entry 10% cover 60%;
+      }
     }
   }
 }

@@ -65,3 +65,12 @@ Confirmaron 9 hallazgos y descartaron 4. Arreglados en la Fase 3:
 - **Cómo se protege el contenido:** el HTML del servidor trae el diagrama y la terminal completos. Solo si hay JavaScript, no hay reduced motion y el bloque aún no está en pantalla, se oculta para reproducirlo. Y solo después de que las funciones de Motion hayan cargado: antes, el estado oculto no se aplicaba y la secuencia no arrancaba.
 - **Cifras con contador:** las cuatro del stress test (2,9; ~968; < 100 ms; 0) usan el contador que ya existía, con prefijo y sufijo.
 - **La captura de neibr.es ya no se muestra:** `DISENO.md` no le da sitio en el nuevo bloque de Neibr. Sigue en `public/shots/`.
+
+## Fase 4
+
+- **Recorrido mide 1.058 px a 1440** (946 en catalán e inglés, donde el titular cabe en dos líneas), frente a 2.243 antes. El límite era 1,2 pantallas (1.080 px a 900 de alto).
+- **Hitos en una o dos líneas, como pide `DISENO.md`:** año, título y lugar. Los diez hitos siguen, en tres etapas (Hardware 2011-2016, Soporte y formación 2019-2022, Desarrollo 2024-2026; "Hardware" igual en los tres idiomas, "Suport i formació" y "Support and study"). El párrafo largo de cada hito y la etiqueta de tipo (hito, formación, trabajo, estudio) dejan de verse; siguen en `lib/content.ts`. Así se pierde a la vista, por ejemplo, el detalle de los 9.600 baudios de Automated Transactions; el hito sigue con su título.
+- **El raíl de años es decorativo** (`aria-hidden`): repite los años, que la lista de cada etapa ya da a todo el mundo. Se dibuja de izquierda a derecha con el scroll y los años de cada etapa aparecen al pasar la línea. En móvil no hay raíl horizontal: las etapas van en vertical con una línea a la izquierda que se dibuja hacia abajo.
+- **Cabecera partida** (`sec-head--split`): en pantallas anchas, la frase de introducción va al lado de la última línea del titular, en Experiencia, Recorrido, Formación y Principios.
+- **Formación:** Peer2Stream y la Pokédex a 6 columnas cada una, con su captura, créditos, tecnologías y enlaces. La línea de WordPress.org va debajo, más pequeña.
+- **Principios:** el número va en contorno (`-webkit-text-stroke` de 1,5 px en el acento) y solo si el navegador lo dibuja; si no, en color sólido. `DISENO.md` dice "el título y una frase", pero cada principio tiene tres frases y se quedan las tres, para no recortar contenido sin necesidad (aquí no hay un objetivo de altura que lo pida).

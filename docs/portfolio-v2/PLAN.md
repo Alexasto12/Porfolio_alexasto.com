@@ -55,9 +55,9 @@
 
 ## Fase 4. Recorrido, Formación y Principios
 
-- [ ] **Recorrido:** tres etapas, con raíl horizontal en escritorio y vertical en móvil, sin perder ningún hito.
-- [ ] **Formación:** Peer2Stream y Pokédex con `BrowserFrame`, con sus créditos.
-- [ ] **Principios:** en tinta, cuatro columnas con números en contorno y sin cajas.
+- [x] **Recorrido:** tres etapas, con raíl horizontal en escritorio y vertical en móvil, sin perder ningún hito.
+- [x] **Formación:** Peer2Stream y Pokédex con `BrowserFrame`, con sus créditos.
+- [x] **Principios:** en tinta, cuatro columnas con números en contorno y sin cajas.
 
 **Hecho cuando:** el Recorrido mide como mucho 1,2 pantallas en escritorio.
 

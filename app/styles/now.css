@@ -1,7 +1,3 @@
-/* ───────── Shared section head ───────── */
-.sec-head__title { margin-top: clamp(24px, 4vw, 48px); }
-.sec-head__intro { margin-top: clamp(18px, 2.4vw, 28px); }
-
 /* ───────── 2. Ahora: Digital DesAny (paper) ─────────
    Heading across the page, four numbered columns of services, cases in a
    bento and a closing line to the studio. */

@@ -575,6 +575,12 @@ stack: {
       ca: "De canviar el disc dur del portàtil familiar a muntar un estudi propi. Aquesta és la versió curta.",
       en: "From swapping the family laptop's hard drive to starting my own studio. This is the short version.",
     } as Localized,
+    /** The path in three stages; each one takes the entries whose years fall in its range. */
+    stages: [
+      { name: { es: "Hardware", ca: "Hardware", en: "Hardware" }, from: 2011, to: 2016 },
+      { name: { es: "Soporte y formación", ca: "Suport i formació", en: "Support and study" }, from: 2019, to: 2022 },
+      { name: { es: "Desarrollo", ca: "Desenvolupament", en: "Development" }, from: 2024, to: 2026 },
+    ] as { name: Localized; from: number; to: number }[],
     kindLabels: {
       milestone: { es: "Hito", ca: "Fita", en: "Milestone" },
       education: { es: "Formación", ca: "Formació", en: "Education" },

@@ -1,19 +1,18 @@
 /* ───────── 5. Formación (paper) ───────── */
-.edu__projects {
-  margin-top: clamp(30px, 4vw, 56px);
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(28px, 3vw, 44px) var(--gap);
-}
+.edu__projects { margin-top: clamp(32px, 4vw, 52px); row-gap: 48px; }
+.edu__project { grid-column: span 6; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.edu__head { margin-top: 6px; display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; }
 .edu__wp {
-  margin-top: clamp(28px, 4vw, 48px);
-  padding-top: 16px;
+  margin-top: clamp(32px, 4vw, 48px);
+  padding-top: 14px;
   border-top: 1px solid var(--line);
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 6px 24px;
+  gap: 4px 20px;
+  font-size: 15px;
+  line-height: 1.5;
 }
 @media (max-width: 860px) {
-  .edu__projects { grid-template-columns: minmax(0, 1fr); }
+  .edu__project { grid-column: 1 / -1; }
 }

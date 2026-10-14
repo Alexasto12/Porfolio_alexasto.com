@@ -271,6 +271,21 @@ img { max-width: 100%; }
 }
 .sec-index__num { color: var(--accent); }
 
+/* Section head: index, heading and intro. The split variant puts the intro
+   next to the heading's last line on wide screens, to save a row. */
+.sec-head__title { margin-top: clamp(20px, 3vw, 40px); }
+.sec-head__intro { margin-top: clamp(14px, 2vw, 24px); }
+@media (min-width: 1101px) {
+  .sec-head--split {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gap);
+  }
+  .sec-head--split .sec-index { grid-column: 1 / -1; }
+  .sec-head--split .sec-head__title { grid-column: 1 / span 9; }
+  .sec-head--split .sec-head__intro { grid-column: 10 / span 3; align-self: end; margin: 0; font-size: 15px; }
+}
+
 /* ───────── Surface transition ─────────
    The page fades from paper to ink as Experiencia comes in, and back as it
    leaves. A fixed ink layer sits behind the content; only opacity is

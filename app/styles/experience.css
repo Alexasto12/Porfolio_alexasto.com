@@ -4,14 +4,6 @@
    then the terminal and the story. GOK Thermal closes the section. */
 .xp { padding-block: clamp(80px, 6.6vw, 96px) clamp(48px, 4.4vw, 64px); }
 .xp__head .sec-head__title { margin-top: 20px; }
-.xp__head .sec-head__intro { margin-top: 16px; max-width: 52ch; }
-/* Wide: the intro sits next to the heading's second line. */
-@media (min-width: 1101px) {
-  .xp__head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); }
-  .xp__head .sec-index { grid-column: 1 / -1; }
-  .xp__head .sec-head__title { grid-column: 1 / span 9; }
-  .xp__head .sec-head__intro { grid-column: 10 / span 3; align-self: end; margin: 0; font-size: 15px; }
-}
 
 /* VMV */
 .vmv { margin-top: clamp(36px, 3.4vw, 48px); row-gap: 40px; align-items: start; }
