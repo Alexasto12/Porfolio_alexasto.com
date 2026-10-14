@@ -1,8 +1,12 @@
 /* Screenshots of /, /ca and /en at 375 and 1440 px (full page + first screen).
-   Usage: npm run shots [-- --out docs/portfolio-refresh/antes] [-- --locales es] */
+   With --sections, also one image per top-level section (by id) in
+   shots/secciones/, for the before/after gallery; the 1440 ones are scaled
+   to 960 px wide to keep the repo light.
+   Usage: npm run shots [-- --out docs/portfolio-refresh/antes] [-- --locales es] [-- --sections] */
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { chromium } from "@playwright/test";
+import sharp from "sharp";
 import { arg, outDir, openSettled, resolveLocalePages, withServer } from "./lib/server.mjs";
 
 const VIEWPORTS = [
@@ -11,8 +15,29 @@ const VIEWPORTS = [
 ];
 
 const locales = arg("locales", "es,ca,en").split(",");
+const sections = process.argv.includes("--sections");
 const dir = join(outDir(), "shots");
 mkdirSync(dir, { recursive: true });
+if (sections) mkdirSync(join(dir, "secciones"), { recursive: true });
+
+/** Top-level sections by id; fixed and sticky chrome outside <main> is hidden so it doesn't cover them. */
+async function shootSections(page, name, width) {
+  const ids = await page.evaluate(() => {
+    for (const el of document.body.querySelectorAll("*")) {
+      const pos = getComputedStyle(el).position;
+      if ((pos === "fixed" || pos === "sticky") && !el.closest("main")) el.style.visibility = "hidden";
+    }
+    return [...document.querySelectorAll("section[id]")]
+      .filter((s) => !s.parentElement.closest("section[id]"))
+      .map((s) => s.id);
+  });
+  for (const id of ids) {
+    const shot = await page.locator(`#${id}`).screenshot({ type: "png" });
+    const img = width > 960 ? sharp(shot).resize({ width: 960 }) : sharp(shot);
+    await img.jpeg({ quality: 68, mozjpeg: true }).toFile(join(dir, "secciones", `${name}-${id}.jpg`));
+  }
+  return ids;
+}
 
 await withServer(async (base) => {
   const browser = await chromium.launch();
@@ -28,7 +53,8 @@ await withServer(async (base) => {
           quality: 65,
           fullPage: true,
         });
-        console.log(`✓ ${name}  ${target.url}${target.storage ? ` (locale via localStorage)` : ""}`);
+        const ids = sections ? await shootSections(page, name, vp.width) : [];
+        console.log(`✓ ${name}  ${target.url}${target.storage ? ` (locale via localStorage)` : ""}${ids.length ? ` · ${ids.length} sections` : ""}`);
         await context.close();
       }
     }
