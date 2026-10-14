@@ -1,10 +1,12 @@
-import { DATA } from "@/lib/content";
+import { CONTACT, DATA } from "@/lib/content";
 import { translator, type Locale } from "@/lib/i18n-types";
+import { ContactButtons } from "../ui/ContactButtons";
+import { ExtLink } from "../ui/Links";
 
 /**
- * Contact (wine, full width): the closing line at hero size, two big buttons
- * for project enquiries, then the personal address and the profiles as a
- * list with arrows.
+ * Contact (wine): the same words as the hero's main button, the two direct
+ * channels with the message already written, and, apart, the personal
+ * address and profiles. Every page ends with it, so "#contacto" always works.
  */
 export function Contact({ locale }: { locale: Locale }) {
   const t = translator(locale);
@@ -12,66 +14,29 @@ export function Contact({ locale }: { locale: Locale }) {
   return (
     <section id="contacto" className="sec contact" data-surface="wine" aria-labelledby="contact-title">
       <div className="shell">
-        <p className="sec-index meta">
-          <span className="sec-index__num">{d.num}</span>
-          <span>{t(d.label)}</span>
-        </p>
         <h2 id="contact-title" className="contact__title">
-          {t(d.heading)} {t(d.headingAccent)}
+          {t(d.heading)}
         </h2>
-        <div className="contact__lead grid">
-          <p className="contact__body">{t(d.body)}</p>
-          <p className="contact__note">
-            <span className="meta">{t(d.work.label)}</span> {t(d.work.note)}
+        <p className="contact__body">{t(d.body)}</p>
+        <ContactButtons locale={locale} size="lg" />
+        <div className="contact__personal">
+          <h3 className="contact__label">{t(d.personalLabel)}</h3>
+          <p>
+            {t(d.personalNote)} <a href={`mailto:${CONTACT.personalEmail}`} className="link">{CONTACT.personalEmail}</a>
           </p>
-        </div>
-        <div className="contact__ctas">
-          <a href={`mailto:${d.work.email}`} className="contact__cta contact__cta--solid">
-            <span>{t(d.work.cta)}</span>
-            <span className="contact__arrow" aria-hidden>
-              ↗
-            </span>
-          </a>
-          <a href={d.work.whatsapp.href} target="_blank" rel="noreferrer" className="contact__cta">
-            <span>{d.work.whatsapp.label}</span>
-            <span className="contact__arrow" aria-hidden>
-              ↗
-            </span>
-          </a>
-        </div>
-        <ul className="contact__list">
-          <li>
-            <a href={`mailto:${d.work.email}`} className="contact__row">
-              <span className="meta">{t(d.work.label)}</span>
-              <span className="contact__value">{d.work.email}</span>
-              <span className="contact__arrow" aria-hidden>
-                ↗
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href={`mailto:${d.personal.email}`} className="contact__row">
-              <span className="meta">{t(d.personal.label)}</span>
-              <span className="contact__value">
-                {d.personal.email} <span className="contact__aside">{t(d.personal.note)}</span>
-              </span>
-              <span className="contact__arrow" aria-hidden>
-                ↗
-              </span>
-            </a>
-          </li>
-          {d.links.map((ln, i) => (
-            <li key={i}>
-              <a href={t(ln.href)} target="_blank" rel="noreferrer" className="contact__row">
-                <span className="meta">{t(d.channelsLabel)}</span>
-                <span className="contact__value">{t(ln.label)}</span>
-                <span className="contact__arrow" aria-hidden>
-                  ↗
-                </span>
-              </a>
+          <ul className="links" aria-label={t(d.profilesLabel)}>
+            {CONTACT.profiles.map((p) => (
+              <li key={p.href}>
+                <ExtLink href={p.href} me>
+                  {p.label}
+                </ExtLink>
+              </li>
+            ))}
+            <li>
+              <ExtLink href={CONTACT.desanyLinkedIn}>{t(d.desanyLinkedIn)}</ExtLink>
             </li>
-          ))}
-        </ul>
+          </ul>
+        </div>
       </div>
     </section>
   );

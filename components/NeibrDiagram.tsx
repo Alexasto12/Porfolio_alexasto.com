@@ -27,7 +27,6 @@ const at = (s: number) => ({ "--d": `${s}s` }) as CSSProperties;
 
 type NeibrDiagramProps = {
   title: string;
-  note: string;
   steps: string[];
 };
 
@@ -38,14 +37,11 @@ type NeibrDiagramProps = {
  * the animation (app/styles/experience.css). The server HTML, the no-JS page
  * and reduced motion all show the finished diagram.
  */
-export function NeibrDiagram({ title, note, steps }: NeibrDiagramProps) {
+export function NeibrDiagram({ title, steps }: NeibrDiagramProps) {
   const [ref, phase] = useSequence<HTMLElement>();
   return (
     <figure ref={ref} className="ndiag" data-phase={phase}>
-      <figcaption className="ndiag__caption">
-        <span className="meta">{title}</span>
-        <span className="ndiag__note">{note}</span>
-      </figcaption>
+      <figcaption className="ndiag__caption">{title}</figcaption>
       <svg className="ndiag__svg" viewBox="0 0 480 250" aria-hidden focusable="false">
         <path className="ndiag__streets" d={STREETS} />
         {OUTSIDE.map(([x, y]) => (

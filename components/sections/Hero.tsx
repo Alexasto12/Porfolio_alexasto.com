@@ -1,80 +1,47 @@
 import { DATA } from "@/lib/content";
-import { Grain } from "../ui/Grain";
-import { pick, translator, type Locale } from "@/lib/i18n-types";
-import { Scramble } from "../ui/Scramble";
-import { LocalTime } from "../ui/LocalTime";
-import { ContactSheet } from "../ContactSheet";
+import { translator, type Locale } from "@/lib/i18n-types";
 
 /**
- * Hero (paper): the name over 8 of the 12 columns, a "right now" panel in the
- * other 4, the title and line, two calls to action and the contact sheet.
+ * Hero (paper): the name and the trade in the h1, the offer, two calls to
+ * action and a row of published figures, each linking to its story below.
+ * No motion: the name is plain text, so nothing can shift the layout.
  */
 export function Hero({ locale }: { locale: Locale }) {
   const t = translator(locale);
   const d = DATA.hero;
   return (
-    <section id="perfil" className="sec hero" data-surface="paper">
-      <Grain />
+    <section id="inicio" className="sec hero" data-surface="paper" aria-labelledby="hero-title">
       <div className="shell">
         <div className="hero__grid grid">
-          <h1 className="hero__name">
-            <Scramble text={d.firstName} className="hero__first" />
-            <Scramble text={d.lastName} offset={d.firstName.length} className="hero__last" />
+          <h1 id="hero-title" className="hero__title">
+            <span className="hero__name">
+              <span className="hero__first">{d.firstName}</span> <span className="hero__last">{d.lastName}</span>
+            </span>{" "}
+            <span className="hero__role">{t(d.role)}</span>
           </h1>
-          <p className="hero__title lede hero__after">{t(d.title)}</p>
-          <div className="hero__intro hero__after">
-            <p className="copy">{t(d.line)}</p>
+          <div className="hero__intro">
+            <p className="hero__lead">{t(d.lead)}</p>
+            <p className="hero__sub copy">{t(d.sub)}</p>
             <div className="hero__ctas">
-              <a href={d.ctaWork.href} className="btn btn--solid">
-                {t(d.ctaWork.label)}
-                <span className="btn__arrow btn__arrow--down" aria-hidden>
-                  ↓
-                </span>
+              <a href="#contacto" className="btn btn--solid">
+                {t(d.ctaPrimary)}
               </a>
-              <a href={d.ctaTalk.href} className="btn">
-                {t(d.ctaTalk.label)}
+              <a href="#trabajos" className="btn">
+                {t(d.ctaWork)}
               </a>
-              <span className="hero__hint meta" aria-hidden>
-                {t(d.hint)}
-              </span>
             </div>
           </div>
-          {/* After the intro in reading order; on wide screens it sits beside the name. */}
-          <aside className="hero__now hero__after" aria-labelledby="hero-now">
-            <h2 id="hero-now" className="meta">
-              {t(d.nowLabel)}
-            </h2>
-            <p className="hero__clock">
-              <span className="hero__place">{d.place}</span>
-              <LocalTime className="hero__time figure" />
-              <span className="meta">{t(d.timeLabel)}</span>
-            </p>
-            <p className="hero__avail">
-              <span className="dot" aria-hidden />
-              {t(DATA.header.availability)}
-            </p>
-            <p className="hero__studio">
-              <span className="meta">{t(d.studioLabel)}</span>
-              <a href={pick(d.studio.href, locale)} target="_blank" rel="noreferrer" className="link-data">
-                <span>{t(d.studio.label)}</span>
-                <span className="link-data__arrow" aria-hidden>
-                  ↗
-                </span>
+        </div>
+        <ul className="proof grid" aria-label={t(d.proofLabel)}>
+          {d.proof.map((p, i) => (
+            <li key={i} className="proof__item">
+              <a href={`#${p.href}`} className="proof__link">
+                <span className="proof__value">{t(p.value)}</span>
+                <span className="proof__text">{t(p.text)}</span>
               </a>
-            </p>
-            <div className="hero__stack">
-              <h3 className="meta">{t(d.stackLabel)}</h3>
-              <ul className="data">
-                {d.stack.map((s) => (
-                  <li key={s}>{s}</li>
-                ))}
-              </ul>
-            </div>
-          </aside>
-        </div>
-        <div className="hero__after">
-          <ContactSheet locale={locale} />
-        </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

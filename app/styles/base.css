@@ -1,6 +1,8 @@
 /* =========================================================
-   Alejandro Cabrera · portfolio v2: papel, tinta y vino
-   Visual system from docs/portfolio-v2/DISENO.md.
+   Alejandro Cabrera · portfolio: papel, tinta y vino
+   Visual system from docs/portfolio-v2/DISENO.md, as changed in round 2
+   (docs/portfolio-v2/RONDA2.md): no visible grid or grain, mono only for
+   data, a spacing scale and more room inside blocks.
    Fonts come from next/font: --font-display, --font-body, --font-mono.
    ========================================================= */
 
@@ -9,10 +11,9 @@
   --paper: #f4efe2;
   --ink: #14130e;
   --wine: #c12c52;
-  --wine-deep: #8b1e3f;
   --paper-muted: #6b675a; /* secondary text on paper, 4.9:1 */
   --ink-muted: #b6b2a2; /* secondary text on ink */
-  --wine-on-ink: #de5a7a; /* accent text on ink: 5.2:1, 4.6:1 over a grid line */
+  --wine-on-ink: #de5a7a; /* accent text on ink, 5.2:1 */
 
   /* Terminal (Neibr API example): its own dark panel, on any surface. */
   --term-bg: #0d0c08;
@@ -31,10 +32,25 @@
   --pad: max(16px, 4vw);
   --gap: clamp(16px, 2vw, 28px);
   --cols: 12;
-  --section-y: clamp(72px, 9vw, 128px);
+
+  /* Spacing scale: one step per role. Fixed up to 16px; from step 5 it
+     grows with the screen (first value at 375px, second at 1440px). */
+  --space-1: 4px;                                 /* lines inside a label */
+  --space-2: 8px;                                 /* a title and its meta line */
+  --space-3: 12px;                                /* a label and what it names */
+  --space-4: 16px;                                /* steps of a text stack */
+  --space-5: clamp(20px, 18.6px + 0.38vw, 24px);  /* media and its text */
+  --space-6: clamp(28px, 25.2px + 0.75vw, 36px);  /* items of a list or grid */
+  --space-7: clamp(40px, 34.4px + 1.5vw, 56px);   /* heading block to content */
+  --space-8: clamp(56px, 44.7px + 3vw, 88px);     /* groups inside a section */
+  --space-9: clamp(72px, 55.1px + 4.5vw, 120px);  /* section padding */
+  --section-y: var(--space-9);
+
+  /* Sticky header height plus some air: where in-page links land. */
+  --header-h: 56px;
 
   /* Type scale */
-  --fs-section: clamp(2.75rem, 7vw, 6.5rem);
+  --fs-section: clamp(2.25rem, 1.6rem + 3vw, 4.5rem);
   --fs-read: 17px;
 }
 @media (min-width: 1100px) {
@@ -66,8 +82,6 @@
   --on-mark: var(--paper);
   --line: rgba(20, 19, 14, 0.2);
   --line-soft: rgba(20, 19, 14, 0.1);
-  /* Grid and grain kept low enough that every text token stays at 4.5:1 on them. */
-  --grid: rgba(20, 19, 14, 0.025);
   --focus: var(--ink);
 }
 [data-surface="ink"] {
@@ -80,7 +94,6 @@
   --on-mark: var(--paper);
   --line: rgba(244, 239, 226, 0.2);
   --line-soft: rgba(244, 239, 226, 0.1);
-  --grid: rgba(244, 239, 226, 0.05);
   --focus: var(--paper);
 }
 /* Wine: paper text only (4.9:1). Ink is the accent, and only for large text. */
@@ -94,7 +107,6 @@
   --on-mark: var(--ink);
   --line: rgba(244, 239, 226, 0.45);
   --line-soft: rgba(244, 239, 226, 0.25);
-  --grid: rgba(244, 239, 226, 0.05);
   --focus: var(--paper);
 }
 [data-surface] {
@@ -111,20 +123,13 @@
 html {
   background: var(--paper);
   color: var(--ink);
+  /* The header is sticky at every width: keep anchors and focused elements clear of it.
+     No CSS smooth scroll: it drops a second jump made during the first (AnchorScroll does it). */
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  /* The fonts ship only the weights in use (Space Mono 400, Hanken 400-500):
+     never fake a bolder cut of either. */
+  font-synthesis-weight: none;
 }
-@media (prefers-reduced-motion: no-preference) {
-  html { scroll-behavior: smooth; }
-}
-/* The header is sticky from 861px: keep anchors and focused elements clear of it. */
-@media (width > 860px) {
-  html { scroll-padding-top: 96px; }
-}
-@media (width >= 1280px) {
-  html { scroll-padding-top: 64px; }
-}
-/* The fonts ship only the weights in use (Space Mono 400, Hanken 400-500):
-   never fake a bolder cut of either. */
-html { font-synthesis-weight: none; }
 body {
   margin: 0;
   min-height: 100vh;
@@ -137,7 +142,7 @@ body {
 ::selection { background: var(--fg); color: var(--bg); }
 
 a { color: inherit; text-decoration: none; }
-h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; }
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure, pre { margin: 0; }
 ul, ol { list-style: none; padding: 0; }
 button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
 img { max-width: 100%; }
@@ -146,74 +151,51 @@ img { max-width: 100%; }
 .site-footer { position: relative; z-index: 1; }
 
 /* ───────── Type ───────── */
-.font-display { font-family: var(--font-display), system-ui, sans-serif; letter-spacing: -0.02em; }
-.font-mono { font-family: var(--font-mono), ui-monospace, monospace; letter-spacing: 0; }
-.tabular { font-variant-numeric: tabular-nums; }
-
-/* Section headings: Bricolage, narrow cut, heavy. */
 .h-section {
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 800;
   font-size: var(--fs-section);
-  line-height: 0.9;
-  letter-spacing: -0.035em;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 .h-block {
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 800;
-  font-size: clamp(2rem, 4vw, 3.4rem);
-  line-height: 0.95;
+  font-size: clamp(2rem, 1.5rem + 2vw, 3.2rem);
+  line-height: 0.98;
   letter-spacing: -0.03em;
 }
 .h-item {
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 700;
-  font-size: clamp(1.3rem, 2vw, 1.75rem);
-  line-height: 1.05;
+  font-size: clamp(1.35rem, 1.15rem + 0.8vw, 1.75rem);
+  line-height: 1.08;
   letter-spacing: -0.02em;
 }
 .lede {
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 600;
-  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
-  line-height: 1.2;
+  font-size: clamp(1.25rem, 1.1rem + 0.8vw, 1.65rem);
+  line-height: 1.22;
   letter-spacing: -0.015em;
   text-wrap: balance;
 }
 .copy {
   font-size: var(--fs-read);
-  line-height: 1.55;
-  max-width: 62ch;
+  line-height: 1.6;
+  max-width: 64ch;
   text-wrap: pretty;
 }
-.copy + .copy { margin-top: 0.9em; }
 .muted { color: var(--fg-2); }
 .accent { color: var(--accent); }
-.accent-lg { color: var(--accent-lg); }
 
-/* Space Mono only for data: figures, dates, endpoints and metadata. */
-.meta {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  line-height: 1.5;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--fg-2);
-}
+/* Space Mono only for data: years, figures, domains and code. */
 .data {
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 13px;
-  letter-spacing: 0.02em;
+  font-size: 0.82em;
+  letter-spacing: 0.01em;
   font-variant-numeric: tabular-nums;
-}
-/* Big figures: Bricolage 800, tabular so they don't jump while counting. */
-.figure {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-weight: 800;
-  font-variant-numeric: tabular-nums;
-  line-height: 0.85;
-  letter-spacing: -0.04em;
 }
 
 /* ───────── Layout ───────── */
@@ -228,125 +210,33 @@ img { max-width: 100%; }
   column-gap: var(--gap);
 }
 
-/* A section paints its surface, the visible 12-column grid and, on paper, the grain. */
+/* A section paints its surface. Its top padding is cancelled out for
+   in-page links (negative scroll-margin), so every heading lands at the
+   same distance under the header, whatever the section's padding. */
 .sec {
+  --sec-pt: var(--section-y);
   position: relative;
   isolation: isolate;
-  padding-block: var(--section-y);
+  padding-block: var(--sec-pt) var(--section-y);
+  scroll-margin-top: calc(var(--space-5) - var(--sec-pt));
 }
-.sec::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset-block: 0;
-  /* Same box as .shell's content, plus one gap so a line falls on every column start. */
-  left: calc((100% - min(100%, var(--shell-max))) / 2 + var(--pad));
-  right: calc((100% - min(100%, var(--shell-max))) / 2 + var(--pad) - var(--gap));
-  background-image:
-    linear-gradient(to right, var(--grid) 1px, transparent 1px),
-    linear-gradient(var(--grid), var(--grid));
-  background-size: calc(100% / var(--cols)) 100%, 1px 100%;
-  background-position: 0 0, calc(100% - var(--gap)) 0;
-  background-repeat: repeat-x, no-repeat;
-  pointer-events: none;
-}
-/* Grain on paper (components/ui/Grain.tsx): at most 1.5 % so text keeps its contrast. */
-.grain {
-  position: absolute;
-  z-index: -2;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.015;
-  pointer-events: none;
-}
-.grain-defs { position: absolute; }
-.sec[data-surface="paper"]::before { z-index: -1; }
 
-/* Section index line: number and name, as data. */
-.sec-index {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
-}
-.sec-index__num { color: var(--accent); }
-
-/* Section head: index, heading and intro. The split variant puts the intro
-   next to the heading's last line on wide screens, to save a row. */
-.sec-head__title { margin-top: clamp(20px, 3vw, 40px); }
-.sec-head__intro { margin-top: clamp(14px, 2vw, 24px); }
+/* Section head: the heading and, on wide screens, the intro beside it. */
+.sec-head__intro { margin-top: var(--space-5); color: var(--fg-2); }
 @media (min-width: 1101px) {
   .sec-head--split {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: var(--gap);
+    align-items: end;
   }
-  .sec-head--split .sec-index { grid-column: 1 / -1; }
-  .sec-head--split .sec-head__title { grid-column: 1 / span 9; }
-  .sec-head--split .sec-head__intro { grid-column: 10 / span 3; align-self: end; margin: 0; font-size: 15px; }
+  .sec-head--split .sec-head__title { grid-column: 1 / span 8; }
+  .sec-head--split .sec-head__intro { grid-column: 9 / span 4; margin: 0; font-size: 16px; line-height: 1.55; }
 }
 
-/* ───────── Surface transition ─────────
-   The page fades from paper to ink as Experiencia comes in, and back as it
-   leaves. A fixed ink layer sits behind the content; only opacity is
-   animated, on a view timeline of #experiencia, and only while nothing but
-   the section's padding is on screen, so text never sits on a half-faded
-   background. The inner layer fades in over the top padding, the outer one
-   fades out over the bottom padding. Without support, or with reduced
-   motion, Experiencia keeps its own ink background (a hard cut). */
-.surface-fade {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-.surface-fade__ink {
-  position: absolute;
-  inset: 0;
-  background: var(--ink);
-  opacity: 0;
-}
-@supports (animation-timeline: view()) and (timeline-scope: --a) {
-  @media (prefers-reduced-motion: no-preference) {
-    body { timeline-scope: --xp; }
-    #experiencia {
-      view-timeline-name: --xp;
-      background-color: transparent;
-    }
-    .surface-fade__ink {
-      animation: fade-in linear both;
-      animation-timeline: --xp;
-      animation-range: entry 0px entry 64px;
-    }
-    .surface-fade {
-      animation: fade-out linear both;
-      animation-timeline: --xp;
-      animation-range: exit calc(100% - 40px) exit 100%;
-    }
-  }
-}
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-/* Lines drawn in with stroke-dashoffset (paths carry pathLength="1"). */
-@keyframes draw {
-  from { stroke-dashoffset: 1; }
-  to { stroke-dashoffset: 0; }
-}
-
-/* Paper shows the final state of everything: no scroll-driven lines caught
-   half drawn and no sequences waiting for their turn. */
+/* Paper shows the final state of everything: no sequence waiting for its turn. */
 @media print {
-  .surface-fade { display: none; }
-  #experiencia { background-color: var(--ink); }
+  .site-header { position: static; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 
@@ -354,14 +244,15 @@ img { max-width: 100%; }
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   min-height: 52px;
   padding: 12px 24px;
-  border-radius: 3px;
+  border-radius: 4px;
   border: 1.5px solid var(--fg);
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 700;
-  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
   letter-spacing: -0.01em;
   line-height: 1.1;
 }
@@ -375,11 +266,8 @@ img { max-width: 100%; }
   border-color: var(--fg);
   color: var(--bg);
 }
-.btn__arrow { display: inline-block; transition: transform 0.35s var(--ease-in-out); }
-.btn:hover .btn__arrow { transform: translate(3px, -3px); }
-.btn:hover .btn__arrow--down { transform: translateY(3px); }
 
-/* Inline link with a drawn underline. */
+/* Inline link with a quiet underline that firms up on hover. */
 .link {
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -388,73 +276,97 @@ img { max-width: 100%; }
 }
 .link:hover { text-decoration-color: currentColor; color: var(--accent); }
 
-/* Data link (mono) with an arrow, for URLs and profiles. */
-.link-data {
+/* A link to another site, with the ↗ that says so. */
+.link-ext {
   display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  align-items: baseline;
+  gap: 6px;
   min-height: 24px;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 13px;
-  letter-spacing: 0.02em;
-  color: var(--fg);
+  padding-block: 2px;
+  font-weight: 500;
   overflow-wrap: anywhere;
 }
-.link-data__arrow { color: var(--accent); transition: transform 0.3s var(--ease-in-out); }
-.link-data:hover { color: var(--accent); }
-.link-data:hover .link-data__arrow { transform: translate(2px, -2px); }
+.link-ext > span:first-child {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: var(--line);
+}
+.link-ext__arrow { color: var(--accent); }
+.link-ext:hover { color: var(--accent); }
+.link-ext:hover > span:first-child { text-decoration-color: currentColor; }
 .links {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 22px;
+  gap: var(--space-2) var(--space-5);
 }
+.links--big { font-size: 1.15rem; gap: var(--space-3) var(--space-6); }
 
-/* Tags: technologies as one line of data, not as pills. */
-.tags {
+/* A link to another part of this site: a little heavier, no arrow. */
+.more-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.25em;
+  text-decoration-color: var(--accent-lg);
+}
+.more-link:hover { color: var(--accent); }
+
+/* ───────── Contact buttons (WhatsApp, email) ───────── */
+.cbtns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  gap: var(--space-3) var(--gap);
+}
+.cbtn {
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px 0;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--fg-2);
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-height: 64px;
+  padding: 12px 22px;
+  border: 1.5px solid var(--fg);
+  border-radius: 4px;
 }
-.tags li:not(:last-child)::after { content: "·"; padding-inline: 0.7em; }
-
-.dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent-lg);
-  flex-shrink: 0;
+.cbtn__label {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.cbtn__detail { font-size: 14px; line-height: 1.3; }
+.cbtn--solid { background: var(--mark); border-color: var(--mark); color: var(--on-mark); }
+.cbtn:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+.cbtns--lg .cbtn { min-height: 84px; padding: 16px 28px; }
+.cbtns--lg .cbtn__label { font-size: clamp(1.2rem, 1rem + 0.8vw, 1.6rem); }
+@media (max-width: 640px) {
+  .cbtns { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ───────── BrowserFrame ─────────
-   A thin bar with the domain and the real capture. Captures can be up to
-   three screens tall; the frame shows the first one and, on hover, slowly
-   scrolls to the bottom (--shift, computed per image). */
+   The real capture under a thin bar with its domain. Captures can be up to
+   three screens tall; the frame shows the first one and, after a
+   deliberate hover, slowly scrolls to the bottom (--shift, per image). */
 .bframe {
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   background: var(--bg);
 }
 .bframe__bar {
   display: flex;
   align-items: center;
-  gap: 12px;
   min-width: 0;
-  padding: 7px 12px;
+  padding: 6px 12px;
   border-bottom: 1px solid var(--line);
 }
-.bframe__dots { display: flex; gap: 5px; flex-shrink: 0; }
-.bframe__dots i { width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--line); }
 .bframe__url {
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.04em;
+  font-size: 12px;
   color: var(--fg-2);
   white-space: nowrap;
   overflow: hidden;
@@ -472,79 +384,47 @@ img { max-width: 100%; }
 }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .bframe__img { transition: transform 1.2s var(--ease-out); }
+  /* The 0.6 s delay: a frame passing under a resting pointer while the page scrolls never moves. */
   .bframe[data-scrolls]:hover .bframe__img {
     transform: translateY(var(--shift, 0));
-    transition: transform 7s linear;
+    transition: transform 7s linear 0.6s;
   }
 }
 
 /* ───────── Terminal (Neibr API example) ───────── */
 .terminal {
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   border: 1px solid var(--line);
   background: var(--term-bg);
   color: var(--term-text);
-  font-family: var(--font-mono), ui-monospace, monospace;
 }
 .terminal__bar {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 4px 12px;
-  min-width: 0;
-  padding: 9px 14px;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding: 10px 16px;
   border-bottom: 1px solid var(--term-line);
+  font-size: 14px;
 }
-.terminal__title {
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--term-text);
-  min-width: 0;
-}
-.terminal__method {
-  margin-left: auto;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  white-space: nowrap;
-  flex-shrink: 0;
-  color: var(--wine-on-ink);
-}
+.terminal__label { color: var(--paper); font-weight: 500; }
+.terminal__title { color: var(--term-text); }
 .terminal__body {
-  padding: 12px 16px;
-  font-size: 12px;
-  line-height: 1.5;
+  padding: 14px 16px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12.5px;
+  line-height: 1.55;
   overflow-x: auto;
 }
 .terminal__body:focus-visible { outline-offset: -4px; }
 .terminal__body .ln { display: block; width: max-content; white-space: pre; }
-
-/* Typing (components/ApiTerminal.tsx): each request line is revealed one
-   character per step, then the response lines arrive. */
-/* Screen only: on paper the request is always complete. */
-@media screen {
-  .terminal[data-phase="hidden"] .ln--type { clip-path: inset(0 100% 0 0); }
-  .terminal[data-phase="hidden"] .ln--arrive { opacity: 0; }
-}
-.terminal[data-phase="play"] .ln--type {
-  /* An explicit end value: a transition to "none" would not interpolate. */
-  clip-path: inset(0 0 0 0);
-  transition: clip-path var(--dur) steps(var(--n), end) var(--d);
-}
-.terminal[data-phase="play"] .ln--arrive { transition: opacity 0.25s ease var(--d); }
 .tok-key { color: var(--term-key); }
 .tok-str { color: var(--term-str); }
 .tok-num { color: var(--term-num); }
 .tok-punc { color: var(--term-punc); }
 .tok-com { color: var(--term-punc); font-style: italic; }
-.caret {
-  display: inline-block;
-  width: 8px;
-  height: 15px;
-  background: var(--wine-on-ink);
-  vertical-align: -2px;
-}
 
 /* ───────── Focus, skip link, helpers ───────── */
 :focus { outline: none; }
@@ -553,7 +433,9 @@ img { max-width: 100%; }
   outline-offset: 3px;
   border-radius: 2px;
 }
-main:focus { outline: none; }
+main:focus,
+.sec:focus,
+article[id]:focus { outline: none; }
 .skip-link {
   position: absolute;
   left: 12px;
@@ -563,8 +445,8 @@ main:focus { outline: none; }
   border-radius: 4px;
   background: var(--ink);
   color: var(--paper);
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 13px;
+  font-size: 15px;
+  font-weight: 500;
 }
 .skip-link:focus-visible { top: 8px; outline-color: var(--wine); }
 
@@ -578,12 +460,6 @@ main:focus { outline: none; }
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-
-/* Only advertise hover effects on devices that can hover. */
-.hover-only { display: none; }
-@media (hover: hover) and (pointer: fine) {
-  .hover-only { display: inline; }
 }
 
 /* Reduced motion: no movement at all, everything in its final state. */

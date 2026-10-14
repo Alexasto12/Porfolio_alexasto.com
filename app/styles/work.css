@@ -1,0 +1,93 @@
+/* ───────── Trabajos (paper) ─────────
+   The cases in an even two-column grid: the capture, the name, one
+   paragraph and the links. A case with nothing to capture is a framed text. */
+.work__grid {
+  margin-top: var(--space-7);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-8) var(--gap);
+  align-items: start;
+}
+.work__stack { display: grid; gap: var(--space-7); align-content: start; }
+.case { min-width: 0; }
+.case__body { margin-top: var(--space-5); display: grid; gap: var(--space-3); }
+.case__body .links { margin-top: var(--space-1); }
+.case--text {
+  padding: var(--space-6);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.case--text .case__body { margin-top: 0; }
+.bframe__view.case__poster-view {
+  background: var(--bg);
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(16px, 3vw, 32px);
+}
+.case__poster-view ul { display: grid; gap: 0.04em; }
+.case__poster-view li {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.9rem, 1rem + 3vw, 3.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+.case__poster-view li:last-child { color: var(--accent-lg); }
+@media (max-width: 860px) {
+  .work__grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-7); }
+}
+
+/* ───────── Servicios (paper) ─────────
+   Right after Trabajos, on the same paper: less padding between the two
+   and a hairline above the heading mark the change. */
+.work { padding-bottom: var(--space-8); }
+.services { --sec-pt: var(--space-7); }
+.services .sec-head { padding-top: var(--space-6); border-top: 1px solid var(--line); }
+.services__own {
+  margin-top: var(--space-6);
+  max-width: 40ch;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.6rem);
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.services__grid { margin-top: var(--space-7); row-gap: var(--space-7); }
+.service {
+  grid-column: span 6;
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--fg);
+}
+.service__ex { font-size: 15px; color: var(--fg-2); }
+.service__ex .link { color: var(--fg); }
+.service__more {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-5);
+  font-size: 15px;
+}
+@media (max-width: 860px) {
+  .service { grid-column: 1 / -1; }
+}
+
+/* A call to action in the middle of the page: one line and the two channels. */
+.cta-band {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: var(--space-5);
+  justify-items: start;
+}
+.cta-band__line {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}

@@ -1,21 +1,19 @@
 type SectionHeadProps = {
-  num: string;
-  label: string;
-  heading?: string;
+  /** id of the heading, for the section's aria-labelledby. */
+  id: string;
+  heading: string;
   description?: string;
   className?: string;
 };
 
-/** Section index (number and name, as data), the heading and an optional intro. */
-export function SectionHead({ num, label, heading, description, className = "" }: SectionHeadProps) {
+/** A section's heading and its optional intro. On wide screens the intro sits beside the heading. */
+export function SectionHead({ id, heading, description, className = "" }: SectionHeadProps) {
   return (
-    <div className={`sec-head ${className}`.trim()}>
-      <p className="sec-index meta">
-        <span className="sec-index__num">{num}</span>
-        <span>{label}</span>
-      </p>
-      {heading && <h2 className="sec-head__title h-section">{heading}</h2>}
-      {description && <p className="sec-head__intro copy muted">{description}</p>}
+    <div className={`sec-head ${description ? "sec-head--split" : ""} ${className}`.trim()}>
+      <h2 id={id} className="sec-head__title h-section">
+        {heading}
+      </h2>
+      {description && <p className="sec-head__intro copy">{description}</p>}
     </div>
   );
 }

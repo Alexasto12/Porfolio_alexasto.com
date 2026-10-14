@@ -1,22 +1,25 @@
 import type { Locale } from "@/lib/i18n-types";
 import { Hero } from "./sections/Hero";
-import { Now } from "./sections/Now";
+import { Work } from "./sections/Work";
+import { Services } from "./sections/Services";
 import { Experience } from "./sections/Experience";
-import { Timeline } from "./sections/Timeline";
-import { Education } from "./sections/Education";
-import { Principles } from "./sections/Principles";
+import { About } from "./sections/About";
+import { Process } from "./sections/Process";
 import { Contact } from "./sections/Contact";
 
-/** The whole page body for one locale, in section order. */
+/**
+ * The home for one locale, in section order: promise, proof, offer, depth,
+ * who, how, and the call to action (docs/portfolio-v2/RONDA2.md).
+ */
 export function Sections({ locale }: { locale: Locale }) {
   return (
     <>
       <Hero locale={locale} />
-      <Now locale={locale} />
+      <Work locale={locale} />
+      <Services locale={locale} />
       <Experience locale={locale} />
-      <Timeline locale={locale} />
-      <Education locale={locale} />
-      <Principles locale={locale} />
+      <About locale={locale} />
+      <Process locale={locale} />
       <Contact locale={locale} />
     </>
   );

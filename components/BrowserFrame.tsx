@@ -17,10 +17,10 @@ type BrowserFrameProps = {
 const FRAME_RATIO = 10 / 16;
 
 /**
- * A browser window drawn in CSS: a thin bar with the domain, and the real
- * capture inside. Captures taller than the window scroll to their bottom on
- * hover (CSS only, never with reduced motion). Renders nothing if the site
- * has no capture.
+ * The real capture of a site under a thin bar with its domain. Captures
+ * taller than the window scroll to their bottom after a deliberate hover
+ * (CSS only, never with reduced motion), not when the page merely scrolls
+ * past under a resting pointer. Renders nothing if the site has no capture.
  */
 export function BrowserFrame({ id, alt, sizes, priority, className = "" }: BrowserFrameProps) {
   const shot = SHOTS[id];
@@ -32,11 +32,6 @@ export function BrowserFrame({ id, alt, sizes, priority, className = "" }: Brows
   return (
     <figure className={`bframe ${className}`.trim()} data-scrolls={shift ? "" : undefined}>
       <div className="bframe__bar">
-        <span className="bframe__dots" aria-hidden>
-          <i />
-          <i />
-          <i />
-        </span>
         <span className="bframe__url">{domain}</span>
       </div>
       <div className="bframe__view" style={shift ? ({ "--shift": shift } as CSSProperties) : undefined}>

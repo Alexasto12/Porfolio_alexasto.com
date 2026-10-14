@@ -1,77 +1,36 @@
-/* ───────── 7. Contacto (wine, full width) ─────────
-   Paper on wine everywhere (4.9:1); ink only on the big filled button. */
-.contact { padding-block: clamp(72px, 8vw, 120px) clamp(64px, 7vw, 104px); }
+/* ───────── Contacto (wine, full width) ─────────
+   Paper on wine everywhere (4.9:1); ink only on the filled button. */
 .contact__title {
-  margin-top: clamp(28px, 4vw, 48px);
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 800;
-  /* Minimum: "Construyamos", the longest word, fits in 288 px (320 px screen). */
-  font-size: clamp(3.05rem, 11vw, 10.5rem);
-  line-height: 0.86;
-  letter-spacing: -0.045em;
+  /* Minimum: "Explica'm", the longest word, fits in 288px (320px screen). */
+  font-size: clamp(3.05rem, 1.6rem + 6.5vw, 8.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
   text-wrap: balance;
   overflow-wrap: break-word;
+  max-width: 14ch;
 }
-.contact__lead { margin-top: clamp(32px, 4vw, 56px); row-gap: 28px; align-items: end; }
-.contact__body { grid-column: 1 / span 6; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; max-width: 44ch; }
-.contact__note { grid-column: 7 / span 6; font-size: 15px; line-height: 1.5; }
-.contact__note .meta { margin-right: 8px; }
-.contact__ctas { margin-top: 20px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); }
-.contact__cta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  min-height: 76px;
-  padding: 16px 22px;
-  border: 2px solid var(--fg);
-  border-radius: 4px;
+.contact__body {
+  margin-top: var(--space-6);
+  max-width: 52ch;
+  font-size: clamp(17px, 16px + 0.3vw, 20px);
+  line-height: 1.55;
+}
+.contact .cbtns { margin-top: var(--space-7); }
+.contact__personal {
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: var(--space-3);
+}
+.contact__label {
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 700;
-  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
-  line-height: 1.1;
-  letter-spacing: -0.015em;
+  font-size: 1.15rem;
 }
-.contact__cta--solid { background: var(--mark); color: var(--on-mark); border-color: var(--mark); }
-.contact__cta:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-.contact__arrow { flex-shrink: 0; transition: transform 0.35s var(--ease-in-out); }
-.contact__cta:hover .contact__arrow,
-.contact__row:hover .contact__arrow { transform: translate(4px, -4px); }
-
-.contact__list { margin-top: clamp(48px, 6vw, 80px); border-bottom: 1px solid var(--line); }
-.contact__row {
-  display: grid;
-  grid-template-columns: minmax(7rem, 2fr) minmax(0, 9fr) auto;
-  align-items: baseline;
-  gap: 6px var(--gap);
-  padding-block: 16px;
-  border-top: 1px solid var(--line);
-  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-.contact__row .meta { color: var(--fg); font-weight: 400; }
-.contact__aside {
-  font-family: var(--font-body), system-ui, sans-serif;
-  font-weight: 400;
-  font-size: 15px;
-  letter-spacing: 0;
-  margin-left: 10px;
-}
-.contact__value { min-width: 0; overflow-wrap: anywhere; }
-.contact__row:hover .contact__value { text-decoration: underline; text-underline-offset: 5px; }
-
-@media (max-width: 860px) {
-  .contact__body,
-  .contact__note { grid-column: 1 / -1; }
-}
-/* One button per row before "WhatsApp +34 624 905 650" would split. */
-@media (max-width: 640px) {
-  .contact__ctas { grid-template-columns: minmax(0, 1fr); }
-}
-@media (max-width: 560px) {
-  .contact__row { grid-template-columns: minmax(0, 1fr) auto; }
-  .contact__row .meta { grid-column: 1 / -1; }
-  .contact__aside { display: block; margin: 4px 0 0; }
-}
+.contact__personal .links { margin-top: var(--space-2); }
+.contact .link { text-decoration-color: var(--line); }
+.contact .link:hover { color: var(--fg); text-decoration-color: currentColor; }
+.contact .link-ext__arrow { color: var(--fg); }
