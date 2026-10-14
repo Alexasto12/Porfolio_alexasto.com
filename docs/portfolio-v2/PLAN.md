@@ -63,9 +63,9 @@
 
 ## Fase 5. Contacto, footer y metadatos
 
-- [ ] **Contacto:** en vino a todo el ancho, con los dos botones grandes y los perfiles. Footer en tinta.
-- [ ] **Imágenes OG:** regenera las de los tres idiomas con la estética nueva (papel, nombre y titular).
-- [ ] **README del repo:** actualízalo. Hoy aún dice "Systems Architect" y "base papel clara" como algo pendiente.
+- [x] **Contacto:** en vino a todo el ancho, con los dos botones grandes y los perfiles. Footer en tinta.
+- [x] **Imágenes OG:** regenera las de los tres idiomas con la estética nueva (papel, nombre y titular).
+- [x] **README del repo:** actualízalo. Hoy aún dice "Systems Architect" y "base papel clara" como algo pendiente.
 
 ## Fase 6. Movimiento, rendimiento y accesibilidad
 

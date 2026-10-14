@@ -1,34 +1,73 @@
-/* ───────── 7. Contacto (wine, full width) ───────── */
+/* ───────── 7. Contacto (wine, full width) ─────────
+   Paper on wine everywhere (4.9:1); ink only on the big filled button. */
+.contact { padding-block: clamp(72px, 8vw, 120px) clamp(64px, 7vw, 104px); }
 .contact__title {
-  margin-top: clamp(28px, 5vw, 56px);
+  margin-top: clamp(28px, 4vw, 48px);
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 800;
   font-stretch: 80%;
-  font-size: clamp(3rem, 9vw, 8rem);
-  line-height: 0.88;
-  letter-spacing: -0.04em;
+  font-size: clamp(3.4rem, 11vw, 10.5rem);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
   text-wrap: balance;
 }
-.contact__grid { margin-top: clamp(34px, 5vw, 56px); row-gap: 40px; align-items: start; }
-.contact__main { grid-column: 1 / span 6; }
-.contact__label { margin-top: 30px; margin-bottom: 8px; }
-.contact__ctas { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 14px; }
-.contact__mail { margin-top: 12px; }
-.contact__profiles { grid-column: 8 / span 5; }
-.contact__profiles ul { margin-top: 12px; }
-.contact__profile {
+.contact__lead { margin-top: clamp(32px, 4vw, 56px); row-gap: 28px; align-items: end; }
+.contact__body { grid-column: 1 / span 6; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; max-width: 44ch; }
+.contact__note { grid-column: 7 / span 6; font-size: 15px; line-height: 1.5; }
+.contact__note .meta { margin-right: 8px; }
+.contact__ctas { margin-top: 20px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); }
+.contact__cta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 16px 0;
-  border-top: 1px solid var(--line);
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 13px;
-  letter-spacing: 0.04em;
+  gap: 16px;
+  min-height: 76px;
+  padding: 16px 22px;
+  border: 2px solid var(--fg);
+  border-radius: 4px;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
 }
-.contact__profile:hover { text-decoration: underline; text-underline-offset: 4px; }
+.contact__cta--solid { background: var(--mark); color: var(--on-mark); border-color: var(--mark); }
+.contact__cta:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.contact__arrow { flex-shrink: 0; transition: transform 0.35s var(--ease-in-out); }
+.contact__cta:hover .contact__arrow,
+.contact__row:hover .contact__arrow { transform: translate(4px, -4px); }
+
+.contact__list { margin-top: clamp(48px, 6vw, 80px); border-bottom: 1px solid var(--line); }
+.contact__row {
+  display: grid;
+  grid-template-columns: minmax(7rem, 2fr) minmax(0, 9fr) auto;
+  align-items: baseline;
+  gap: 6px var(--gap);
+  padding-block: 16px;
+  border-top: 1px solid var(--line);
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.contact__row .meta { color: var(--fg); }
+.contact__aside {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0;
+  margin-left: 10px;
+}
+.contact__value { min-width: 0; overflow-wrap: anywhere; }
+.contact__row:hover .contact__value { text-decoration: underline; text-underline-offset: 5px; }
+
 @media (max-width: 860px) {
-  .contact__main,
-  .contact__profiles { grid-column: 1 / -1; }
+  .contact__body,
+  .contact__note { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .contact__ctas { grid-template-columns: minmax(0, 1fr); }
+  .contact__row { grid-template-columns: minmax(0, 1fr) auto; }
+  .contact__row .meta { grid-column: 1 / -1; }
+  .contact__aside { display: block; margin: 4px 0 0; }
 }

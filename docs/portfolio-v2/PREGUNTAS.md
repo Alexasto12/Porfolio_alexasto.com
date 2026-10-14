@@ -74,3 +74,10 @@ Confirmaron 9 hallazgos y descartaron 4. Arreglados en la Fase 3:
 - **Cabecera partida** (`sec-head--split`): en pantallas anchas, la frase de introducción va al lado de la última línea del titular, en Experiencia, Recorrido, Formación y Principios.
 - **Formación:** Peer2Stream y la Pokédex a 6 columnas cada una, con su captura, créditos, tecnologías y enlaces. La línea de WordPress.org va debajo, más pequeña.
 - **Principios:** el número va en contorno (`-webkit-text-stroke` de 1,5 px en el acento) y solo si el navegador lo dibuja; si no, en color sólido. `DISENO.md` dice "el título y una frase", pero cada principio tiene tres frases y se quedan las tres, para no recortar contenido sin necesidad (aquí no hay un objetivo de altura que lo pida).
+
+## Fase 5
+
+- **Contacto en vino a todo el ancho:** "Construyamos algo robusto." a tamaño de titular de portada, en papel. Debajo, la frase de siempre y la nota de encargos, y los dos botones grandes (escribir a DesAny, relleno papel con texto tinta; WhatsApp, con borde) en una fila propia para que no se partan. Al final, una lista con flecha: encargos (info@digitaldesany.com), personal (contact@alexasto.com, con "Para todo lo demás, escríbeme a mí.") y los cuatro perfiles. Todo el texto sobre vino va en papel (4,9:1).
+- **Imagen OG nueva** en los tres idiomas: papel con la retícula, una línea de tinta arriba, "Alejandro" en tinta y "Cabrera" en vino, el título de cada idioma, el dominio en vino y "Granollers". Sigue siendo Bricolage Grotesque desde `assets/fonts/` (las versiones estáticas: Satori no lee la variable, así que aquí no hay eje de anchura).
+- **README:** el que había ya no decía "Systems Architect" ni "base papel clara" (lo corrigió la renovación anterior). Se reescribe para el diseño nuevo: superficies, estructura de componentes y hojas de estilo, y el comando `measure`.
+- **El pie** ya iba en tinta desde la Fase 1; no cambia de contenido.
