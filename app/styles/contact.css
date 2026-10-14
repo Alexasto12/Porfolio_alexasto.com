@@ -5,10 +5,12 @@
   margin-top: clamp(28px, 4vw, 48px);
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 800;
-  font-size: clamp(3.4rem, 11vw, 10.5rem);
+  /* Minimum: "Construyamos", the longest word, fits in 288 px (320 px screen). */
+  font-size: clamp(3.05rem, 11vw, 10.5rem);
   line-height: 0.86;
   letter-spacing: -0.045em;
   text-wrap: balance;
+  overflow-wrap: break-word;
 }
 .contact__lead { margin-top: clamp(32px, 4vw, 56px); row-gap: 28px; align-items: end; }
 .contact__body { grid-column: 1 / span 6; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; max-width: 44ch; }
@@ -49,7 +51,7 @@
   font-weight: 600;
   letter-spacing: -0.01em;
 }
-.contact__row .meta { color: var(--fg); }
+.contact__row .meta { color: var(--fg); font-weight: 400; }
 .contact__aside {
   font-family: var(--font-body), system-ui, sans-serif;
   font-weight: 400;
@@ -64,8 +66,11 @@
   .contact__body,
   .contact__note { grid-column: 1 / -1; }
 }
-@media (max-width: 560px) {
+/* One button per row before "WhatsApp +34 624 905 650" would split. */
+@media (max-width: 640px) {
   .contact__ctas { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
   .contact__row { grid-template-columns: minmax(0, 1fr) auto; }
   .contact__row .meta { grid-column: 1 / -1; }
   .contact__aside { display: block; margin: 4px 0 0; }

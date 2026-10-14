@@ -43,7 +43,7 @@ npm ci
 npm run dev        # http://localhost:3000
 npm run check      # lint, tipos y build
 npm run a11y       # axe + desbordamiento a 320/375 px + texto < 11 px
-npm run motion     # reduced motion y sin JS: todo en su estado final
+npm run motion     # reduced motion, sin JS, impresión y secuencias
 npm run shots      # capturas a 375 y 1440 px de /, /ca y /en
 npm run lh         # Lighthouse móvil y escritorio
 npm run seo        # lang, canonical, hreflang, JSON-LD, sitemap, OG

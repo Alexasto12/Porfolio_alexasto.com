@@ -76,11 +76,11 @@
 
 ## Fase 7. Cierre
 
-- [ ] Ejecuta `check`, `a11y`, `seo`, `links`, `shots` y `lh`, y guarda los resultados en `docs/portfolio-v2/despues/`.
-- [ ] Monta una galería de antes y después en `docs/portfolio-v2/CAPTURAS.md`, con las capturas de cada sección a 1440 y 375 px.
-- [ ] Completa la descripción del PR:
+- [x] Ejecuta `check`, `a11y`, `seo`, `links`, `shots` y `lh`, y guarda los resultados en `docs/portfolio-v2/despues/`.
+- [x] Monta una galería de antes y después en `docs/portfolio-v2/CAPTURAS.md`, con las capturas de cada sección a 1440 y 375 px.
+- [x] Completa la descripción del PR:
   - resumen por fase,
   - tabla de métricas antes y después,
   - peso de JavaScript,
   - lo que queda en `PREGUNTAS.md`.
-- [ ] Marca el PR como listo para revisar.
+- [x] Marca el PR como listo para revisar.

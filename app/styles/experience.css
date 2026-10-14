@@ -136,12 +136,15 @@
 .ndiag__pop { transform-box: fill-box; transform-origin: center; }
 
 /* The sequence (components/NeibrDiagram.tsx): "hidden" resets while the
-   diagram is still off screen, "play" runs each step at its --d delay. */
-.ndiag[data-phase="hidden"] .ndiag__draw { stroke-dashoffset: 1; }
-.ndiag[data-phase="hidden"] .ndiag__pop { transform: scale(0); }
-.ndiag[data-phase="hidden"] .ndiag__fade { opacity: 0; }
-.ndiag[data-phase="hidden"] .ndiag__dim { opacity: 1; }
-.ndiag[data-phase="hidden"] .ndiag__bar { transform: scaleX(0); }
+   diagram is still off screen (screen only: printed, it is complete), "play"
+   runs each step at its --d delay. */
+@media screen {
+  .ndiag[data-phase="hidden"] .ndiag__draw { stroke-dashoffset: 1; }
+  .ndiag[data-phase="hidden"] .ndiag__pop { transform: scale(0); }
+  .ndiag[data-phase="hidden"] .ndiag__fade { opacity: 0; }
+  .ndiag[data-phase="hidden"] .ndiag__dim { opacity: 1; }
+  .ndiag[data-phase="hidden"] .ndiag__bar { transform: scaleX(0); }
+}
 .ndiag[data-phase="play"] .ndiag__draw { transition: stroke-dashoffset 0.8s var(--ease-in-out) var(--d); }
 .ndiag[data-phase="play"] .ndiag__pop { transition: transform 0.45s var(--ease-out) var(--d); }
 .ndiag[data-phase="play"] .ndiag__fade,

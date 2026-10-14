@@ -122,6 +122,9 @@ html {
 @media (width >= 1280px) {
   html { scroll-padding-top: 64px; }
 }
+/* The fonts ship only the weights in use (Space Mono 400, Hanken 400-500):
+   never fake a bolder cut of either. */
+html { font-synthesis-weight: none; }
 body {
   margin: 0;
   min-height: 100vh;
@@ -339,9 +342,12 @@ img { max-width: 100%; }
   to { stroke-dashoffset: 0; }
 }
 
+/* Paper shows the final state of everything: no scroll-driven lines caught
+   half drawn and no sequences waiting for their turn. */
 @media print {
   .surface-fade { display: none; }
   #experiencia { background-color: var(--ink); }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 
 /* ───────── Buttons and links ───────── */
@@ -516,8 +522,11 @@ img { max-width: 100%; }
 
 /* Typing (components/ApiTerminal.tsx): each request line is revealed one
    character per step, then the response lines arrive. */
-.terminal[data-phase="hidden"] .ln--type { clip-path: inset(0 100% 0 0); }
-.terminal[data-phase="hidden"] .ln--arrive { opacity: 0; }
+/* Screen only: on paper the request is always complete. */
+@media screen {
+  .terminal[data-phase="hidden"] .ln--type { clip-path: inset(0 100% 0 0); }
+  .terminal[data-phase="hidden"] .ln--arrive { opacity: 0; }
+}
 .terminal[data-phase="play"] .ln--type {
   /* An explicit end value: a transition to "none" would not interpolate. */
   clip-path: inset(0 0 0 0);

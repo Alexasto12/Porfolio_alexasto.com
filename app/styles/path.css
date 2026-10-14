@@ -72,19 +72,22 @@
 }
 .path__place { margin-top: 6px; }
 
-/* The rail draws itself left to right, and each stage's years light up as it passes. */
+/* The rail draws itself left to right while it rises from 85 % to 50 % of
+   the screen, and each stage's years light up as the line reaches them. The
+   rail is its own timeline and every range is on the same axis (cover), so
+   the order holds whatever the height of the section. */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .path { view-timeline-name: --path; }
+    .path__rail { view-timeline-name: --rail; }
     .path__line {
       animation: draw-x linear both;
-      animation-timeline: --path;
-      animation-range: entry 55% cover 42%;
+      animation-timeline: --rail;
+      animation-range: cover 15% cover 50%;
     }
-    .path__seg { animation: tick-in linear both; animation-timeline: --path; }
-    .path__seg--1 { animation-range: entry 60% entry 80%; }
-    .path__seg--2 { animation-range: entry 85% cover 35%; }
-    .path__seg--3 { animation-range: cover 36% cover 42%; }
+    .path__seg { animation: tick-in linear both; animation-timeline: --rail; }
+    .path__seg--1 { animation-range: cover 15% cover 20%; }
+    .path__seg--2 { animation-range: cover 27% cover 32%; }
+    .path__seg--3 { animation-range: cover 38% cover 43%; }
   }
 }
 @keyframes draw-x {

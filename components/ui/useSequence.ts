@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * "final": complete, as the server rendered it (no JS yet, reduced motion, or
- * it was already on screen). "hidden": reset while still off screen. "play":
- * runs once when it scrolls into view. The phase goes to data-phase and CSS
- * does the rest (transitions with per-element delays).
+ * it was already on screen). "hidden": reset while still off screen (screen
+ * only: the CSS never applies it in print). "play": runs once when it scrolls
+ * into view. The phase goes to data-phase and CSS does the rest (transitions
+ * with per-element delays).
  */
 export type SequencePhase = "final" | "hidden" | "play";
 
@@ -33,16 +34,7 @@ export function useSequence<T extends Element>() {
       { rootMargin: "0px 0px -25% 0px" }
     );
     io.observe(el);
-    // Printing never scrolls: show it complete.
-    const print = () => {
-      io.disconnect();
-      setPhase("final");
-    };
-    window.addEventListener("beforeprint", print);
-    return () => {
-      io.disconnect();
-      window.removeEventListener("beforeprint", print);
-    };
+    return () => io.disconnect();
   }, []);
 
   return [ref, phase] as const;
