@@ -1,0 +1,99 @@
+{
+  "generatedAt": "2026-10-14T08:39:18.226Z",
+  "axe": [
+    {
+      "locale": "es",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "locale": "es",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "locale": "ca",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "locale": "ca",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "locale": "en",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "violations": []
+    }
+  ],
+  "overflow": [
+    {
+      "locale": "es",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "locale": "es",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "locale": "ca",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "locale": "ca",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "locale": "en",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "offenders": [],
+      "ok": true
+    },
+    {
+      "locale": "en",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "offenders": [],
+      "ok": true
+    }
+  ],
+  "smallText": [
+    {
+      "locale": "es",
+      "items": []
+    },
+    {
+      "locale": "ca",
+      "items": []
+    },
+    {
+      "locale": "en",
+      "items": []
+    }
+  ]
+}

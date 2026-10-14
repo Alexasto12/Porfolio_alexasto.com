@@ -1,0 +1,86 @@
+/* ───────── Inicio (paper) ─────────
+   The name and the trade in the h1 over 7 columns, the offer and the two
+   buttons in the other 5, then a row of figures. No motion. */
+/* #inicio goes back to the very top, not to the heading. */
+.hero { --sec-pt: var(--space-7); padding-bottom: var(--space-8); scroll-margin-top: 0; }
+.hero__grid { row-gap: var(--space-6); align-items: end; }
+
+.hero__title { grid-column: 1 / span 7; }
+.hero__name {
+  display: block;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(3.5rem, 1.6rem + 9vw, 10.5rem);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+}
+/* One line per word, never wrapped inside a word, whatever font is showing. */
+.hero__first,
+.hero__last { display: block; white-space: nowrap; }
+.hero__last { color: var(--accent-lg); }
+.hero__role {
+  display: block;
+  margin-top: var(--space-5);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.3rem, 1.05rem + 1vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.hero__intro { grid-column: 8 / span 5; padding-bottom: 6px; }
+.hero__lead {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 1.2rem + 0.9vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.hero__sub { margin-top: var(--space-4); color: var(--fg-2); }
+.hero__ctas {
+  margin-top: var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* Figures: each one links to where the page tells its story. */
+.proof {
+  margin-top: var(--space-8);
+  row-gap: var(--space-5);
+}
+.proof__item { grid-column: span 3; min-width: 0; }
+.proof__link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  height: 100%;
+  padding-top: var(--space-3);
+  border-top: 2px solid var(--fg);
+}
+.proof__value {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.7rem + 2vw, 3.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-lg);
+}
+.proof__text { font-size: 15px; line-height: 1.45; color: var(--fg-2); max-width: 30ch; }
+.proof__link:hover .proof__text { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 1100px) {
+  .hero__title,
+  .hero__intro { grid-column: 1 / -1; }
+  .hero__intro { max-width: 46rem; }
+  .proof__item { grid-column: span 6; }
+}
+@media (max-width: 860px) {
+  .proof__item { grid-column: span 2; }
+}
+@media (max-width: 440px) {
+  .proof__item { grid-column: 1 / -1; }
+}

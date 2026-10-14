@@ -1,0 +1,83 @@
+/* ───────── Subpages ─────────
+   Breadcrumbs, the page's h1 and lede, then sections with an h2 each. */
+.page-head { --sec-pt: var(--space-7); padding-bottom: var(--space-7); }
+.crumbs ol { display: flex; flex-wrap: wrap; gap: var(--space-1) 0; font-size: 15px; color: var(--fg-2); }
+.crumbs li:not(:last-child)::after { content: "/"; padding-inline: 0.6em; color: var(--line); }
+.crumbs a { display: inline-flex; align-items: center; min-height: 24px; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
+.crumbs a:hover { color: var(--fg); text-decoration-color: currentColor; }
+.crumbs [aria-current] { color: var(--fg); }
+.page-head__title {
+  margin-top: var(--space-6);
+  max-width: 20ch;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.4rem, 1.5rem + 4vw, 5.2rem);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.page-head__meta { margin-top: var(--space-4); color: var(--fg-2); font-size: 16px; }
+.page-head__lede {
+  margin-top: var(--space-6);
+  max-width: 44ch;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.25rem, 1.1rem + 0.8vw, 1.65rem);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.page-head__note {
+  margin-top: var(--space-5);
+  max-width: 60ch;
+  padding-left: var(--space-4);
+  border-left: 3px solid var(--accent-lg);
+  font-weight: 500;
+}
+.page-head__extra { margin-top: var(--space-4); color: var(--fg-2); }
+
+.page-sec { --sec-pt: var(--space-7); padding-bottom: var(--space-7); }
+/* A hairline between two paper sections, as wide as the text (not the shell's padding). */
+.page-sec[data-surface="paper"] + .page-sec[data-surface="paper"] > .shell::before {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-bottom: var(--space-6);
+  background: var(--line);
+}
+.page-sec__title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 1.4rem + 1.8vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  margin-bottom: var(--space-5);
+}
+.page-sec__intro { margin-bottom: var(--space-6); }
+.page-sec__more { margin-top: var(--space-5); }
+.page-sec .work__grid { margin-top: 0; }
+.page-sec .caps { margin-top: var(--space-2); }
+.page-sec > .shell > .more-link { margin-top: var(--space-6); }
+/* A stress band between paper sections keeps its own margins out. */
+.page-main > .stress { margin-block: 0; }
+
+.page-split { row-gap: var(--space-6); align-items: start; }
+.page-split__text { grid-column: 1 / span 5; display: grid; gap: var(--space-4); align-content: start; }
+.page-split__media { grid-column: 7 / span 6; min-width: 0; }
+@media (max-width: 1100px) {
+  .page-split__text,
+  .page-split__media { grid-column: 1 / -1; }
+}
+
+/* ───────── 404 ───────── */
+.notfound { min-height: 100vh; }
+.notfound__code { font-size: 1rem; color: var(--accent); }
+.notfound__line { margin-top: var(--space-7); display: grid; gap: var(--space-3); justify-items: start; }
+.notfound__heading {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 1.5rem + 2.5vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}

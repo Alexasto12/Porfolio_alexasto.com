@@ -1,28 +1,39 @@
-import { localeUrl } from "@/lib/site";
+import { LOCALES } from "@/lib/i18n-types";
+import { PAGE_NAME, SEO } from "@/lib/pages";
+import { PAGE_KEYS } from "@/lib/routes";
+import { pageUrl } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 /** Plain-text summary for LLM crawlers; the site URLs follow SITE_URL. */
 export function GET() {
+  const pages = PAGE_KEYS.map(
+    (k) => `- ${PAGE_NAME[k].en}: ${SEO[k].description.en}\n  ${LOCALES.map((lc) => `${lc} ${pageUrl(k, lc)}`).join(" · ")}`
+  ).join("\n");
   const body = `# Alejandro Cabrera
 
-> Personal site of **Alejandro Cabrera**, backend and full-stack developer and
-> co-founder of Digital DesAny, a web studio in Granollers (Barcelona, Spain).
-> "Alexasto" and "alexasto12" are his username and domain.
+> Personal site of **Alejandro Cabrera**, web and backend developer in
+> Granollers (Barcelona, Spain) and co-founder of Digital DesAny, a web
+> studio for small and medium businesses across Catalonia. "Alexasto" and
+> "alexasto12" are his username and domain.
 
-Alejandro builds websites, backends and automations from Granollers. Most of
-his work goes through Digital DesAny, the studio he runs with Oriol Tamborero
-for small and medium businesses across Catalonia.
+Alejandro builds websites, backends and automations. Most of his work goes
+through Digital DesAny, the studio he runs with Oriol Tamborero, in person or
+remotely. Once a project is paid for, the code and the design belong to the
+client, with full technical documentation.
 
 ## Identity
 
 - Name: Alejandro Cabrera
 - Username: alexasto12 (domain alexasto.com)
-- Role: Backend and full-stack developer. Co-founder of Digital DesAny.
+- Role: Web and backend developer. Co-founder of Digital DesAny.
 - Location: Granollers, Barcelona, Spain
-- Site: ${localeUrl("es")} (Spanish), ${localeUrl("ca")} (Catalan), ${localeUrl("en")} (English)
 - Personal contact: contact@alexasto.com
-- Client projects: info@digitaldesany.com
+- Client projects: info@digitaldesany.com, WhatsApp +34 624 905 650
+
+## Pages
+
+${pages}
 
 ## Profiles
 
@@ -35,8 +46,9 @@ for small and medium businesses across Catalonia.
 
 Custom websites (design, development, digitalisation and deployment), social
 media management, automations with or without AI, and custom software.
-Case studies: Lara's Oak (https://larasoak.art), Paula Krebel, Roses de Sant
-Jordi (https://rosesstjordi.com) and Hidrotech Bordalló.
+Case studies: Roses de Sant Jordi (https://rosesstjordi.com; over 500 digital
+roses sent and trending on Reddit Catalunya), Lara's Oak
+(https://larasoak.art), Paula Krebel and Hidrotech Bordalló.
 
 ## Experience
 
@@ -45,8 +57,10 @@ Jordi (https://rosesstjordi.com) and Hidrotech Bordalló.
   microservices in Go, Java and Node.
 - Neibr (closed in 2026): co-founder and only backend developer of a B2B API
   for parcel carriers that assigned failed deliveries to a neighbour within
-  200 m. Go (Fiber), PostgreSQL and Redis. One of the winning projects of the
-  Santander X Spain Awards 2026 (UVic). https://neibr.es
+  200 m. Go (Fiber), PostgreSQL and Redis. Stress test: about 2.9 million
+  requests in 50 minutes (~968 per second), p95 under 100 ms and no 5xx
+  errors. One of the winning projects of the Santander X Spain Awards 2026
+  (UVic). https://neibr.es
 - GOK Thermal: website for an HVAC installer in Granollers, freelance job
   outside Digital DesAny. https://gokthermal.com
 

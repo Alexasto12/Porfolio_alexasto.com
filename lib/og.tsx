@@ -1,20 +1,17 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { DATA, PERSON_NAME } from "./content";
 import type { Locale } from "./i18n-types";
-import { SITE_HOST } from "./site";
+import type { PageKey } from "./routes";
+import { SITE_HOST, ogLine } from "./site";
 
 export const OG_SIZE = { width: 1200, height: 630 };
-export const OG_CONTENT_TYPE = "image/png";
 
-export const ogAlt = (locale: Locale) => `${PERSON_NAME}. ${DATA.hero.title[locale]}`;
-
-const BG = "#14130e";
-const INK = "#f4efe2";
-const ACCENT_LARGE = "#c12c52";
-const ACCENT_TEXT = "#d64b6e";
-const LINE = "rgba(244,239,226,0.16)";
+/* Paper, ink and wine, as on the page (docs/portfolio-v2/DISENO.md). */
+const PAPER = "#f4efe2";
+const INK = "#14130e";
+const WINE = "#c12c52";
+const LINE = "rgba(20,19,14,0.2)";
 
 /** Bricolage Grotesque from the repo (Satori needs woff/ttf, not woff2). */
 async function loadFonts() {
@@ -29,8 +26,8 @@ async function loadFonts() {
   ];
 }
 
-/** Open Graph image for one locale: name, title and domain. */
-export async function ogImage(locale: Locale) {
+/** Open Graph image of one page, on paper: name, the trade or the page title, and the domain. */
+export async function ogImage(locale: Locale, page: PageKey = "home") {
   return new ImageResponse(
     (
       <div
@@ -40,33 +37,33 @@ export async function ogImage(locale: Locale) {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: BG,
+          position: "relative",
+          background: PAPER,
           color: INK,
-          padding: "72px 80px",
+          padding: "64px 80px 60px",
           fontFamily: "Bricolage Grotesque",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 150, fontWeight: 800, lineHeight: 0.9, letterSpacing: -6 }}>Alejandro</div>
-          <div style={{ fontSize: 150, fontWeight: 800, lineHeight: 0.9, letterSpacing: -6, color: ACCENT_LARGE }}>
-            Cabrera
-          </div>
+        <div style={{ display: "flex", flexDirection: "column", borderTop: `3px solid ${INK}`, paddingTop: 28 }}>
+          <div style={{ fontSize: 156, fontWeight: 800, lineHeight: 0.86, letterSpacing: -7 }}>Alejandro</div>
+          <div style={{ fontSize: 156, fontWeight: 800, lineHeight: 0.86, letterSpacing: -7, color: WINE }}>Cabrera</div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-          <div style={{ fontSize: 40, fontWeight: 600, lineHeight: 1.2, letterSpacing: -0.5, maxWidth: 980 }}>
-            {DATA.hero.title[locale]}
+        <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
+          <div style={{ fontSize: 40, fontWeight: 600, lineHeight: 1.15, letterSpacing: -0.5, maxWidth: 900 }}>
+            {ogLine(locale, page)}
           </div>
           <div
             style={{
               display: "flex",
+              justifyContent: "space-between",
               borderTop: `1px solid ${LINE}`,
-              paddingTop: 24,
-              fontSize: 30,
+              paddingTop: 22,
+              fontSize: 28,
               fontWeight: 600,
-              color: ACCENT_TEXT,
             }}
           >
-            {SITE_HOST}
+            <span style={{ color: WINE }}>{SITE_HOST}</span>
+            <span>Granollers</span>
           </div>
         </div>
       </div>

@@ -1,6 +1,8 @@
 /* Lighthouse (mobile and desktop) using Playwright's Chromium. Each case runs
    several times and keeps the run with the median performance score, since a
    single run in a shared container is noisy.
+   By default the Spanish home; --all for the three homes, --pages and
+   --locales to pick others (e.g. --pages neibr,web --locales es).
    Usage: npm run lh [-- --out docs/portfolio-refresh/antes] [-- --runs 3] [-- --all] */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -8,7 +10,7 @@ import { chromium } from "@playwright/test";
 import * as chromeLauncher from "chrome-launcher";
 import lighthouse from "lighthouse";
 import desktopConfig from "lighthouse/core/config/desktop-config.js";
-import { arg, outDir, resolveLocalePages, withServer } from "./lib/server.mjs";
+import { arg, outDir, targetName, targets, withServer } from "./lib/server.mjs";
 
 const dir = join(outDir(), "lighthouse");
 mkdirSync(dir, { recursive: true });
@@ -27,7 +29,7 @@ const METRICS = {
 const rows = [];
 
 await withServer(async (base) => {
-  const pages = (await resolveLocalePages(base)).filter((p) => !p.storage && (all || p.locale === "es"));
+  const pages = targets(base).filter((p) => all || arg("locales") || p.locale === "es");
   const chrome = await chromeLauncher.launch({
     chromePath: chromium.executablePath(),
     chromeFlags: ["--headless=new", "--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"],
@@ -54,7 +56,7 @@ await withServer(async (base) => {
         }
         results.sort((a, b) => a.lhr.categories.performance.score - b.lhr.categories.performance.score);
         const { lhr, report } = results[Math.floor(results.length / 2)];
-        const name = `${target.locale}-${formFactor}`;
+        const name = `${target.page === "home" ? target.locale : targetName(target)}-${formFactor}`;
         writeFileSync(join(dir, `${name}.html`), report);
         const row = { page: target.path, formFactor, runs };
         for (const c of CATEGORIES) row[c] = Math.round((lhr.categories[c]?.score ?? 0) * 100);

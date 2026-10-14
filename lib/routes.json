@@ -1,0 +1,13 @@
+{
+  "home": { "es": "/", "ca": "/ca", "en": "/en" },
+  "projects": { "es": "/proyectos", "ca": "/ca/projectes", "en": "/en/projects" },
+  "neibr": { "es": "/proyectos/neibr", "ca": "/ca/projectes/neibr", "en": "/en/projects/neibr" },
+  "vmv": {
+    "es": "/proyectos/vmv-cosmetic-group",
+    "ca": "/ca/projectes/vmv-cosmetic-group",
+    "en": "/en/projects/vmv-cosmetic-group"
+  },
+  "about": { "es": "/sobre-mi", "ca": "/ca/sobre-mi", "en": "/en/about" },
+  "backend": { "es": "/desarrollo-backend", "ca": "/ca/desenvolupament-backend", "en": "/en/backend-development" },
+  "web": { "es": "/desarrollo-web", "ca": "/ca/desenvolupament-web", "en": "/en/web-development" }
+}

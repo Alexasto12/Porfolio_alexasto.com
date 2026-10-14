@@ -1,0 +1,161 @@
+{
+  "generatedAt": "2026-10-14T08:40:06.763Z",
+  "reduced": [
+    {
+      "locale": "es",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "locale": "es",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "locale": "ca",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "locale": "ca",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "locale": "en",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    }
+  ],
+  "nojs": [
+    {
+      "locale": "es",
+      "width": 375,
+      "ok": true,
+      "issues": [],
+      "screens": 24
+    },
+    {
+      "locale": "es",
+      "width": 1440,
+      "ok": true,
+      "issues": [],
+      "screens": 15
+    },
+    {
+      "locale": "ca",
+      "width": 375,
+      "ok": true,
+      "issues": [],
+      "screens": 23
+    },
+    {
+      "locale": "ca",
+      "width": 1440,
+      "ok": true,
+      "issues": [],
+      "screens": 15
+    },
+    {
+      "locale": "en",
+      "width": 375,
+      "ok": true,
+      "issues": [],
+      "screens": 23
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "ok": true,
+      "issues": [],
+      "screens": 15
+    }
+  ],
+  "print": [
+    {
+      "locale": "es",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "locale": "es",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "locale": "ca",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "locale": "ca",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "locale": "en",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    }
+  ],
+  "play": [
+    {
+      "locale": "es",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "locale": "es",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "locale": "ca",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "locale": "ca",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "locale": "en",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    }
+  ]
+}
