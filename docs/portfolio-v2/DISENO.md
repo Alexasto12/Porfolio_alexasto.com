@@ -2,6 +2,8 @@
 
 Este documento manda sobre la dirección visual. Sustituye a la línea "Dirección visual" de `docs/portfolio-refresh/DECISIONES.md`. Los hechos, textos y reglas de contenido siguen siendo los de `DECISIONES.md` y `CLAUDE.md`.
 
+> **Ronda 2 (14/10/2026).** Tras ver la v2, Alejandro pidió cambios y `RONDA2.md` manda sobre este documento donde no coinciden: la paleta y la tipografía se quedan; se van la retícula y el grano, el fundido de papel a tinta, la hoja de contactos del hero, el scramble del nombre, el panel "ahora mismo", los contadores, la terminal que se escribe sola, el mapa de VMV y el raíl del Recorrido; cambia el orden de la portada y se añaden seis subpáginas. Lo que sigue describe la v2 tal como se planteó.
+
 ## Diagnóstico de la versión actual
 
 Medido el 13/10/2026 sobre dev.alexasto.com:

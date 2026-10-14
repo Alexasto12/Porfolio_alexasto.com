@@ -134,3 +134,39 @@ Confirmaron 22 hallazgos (14 distintos, varios repetidos entre revisores) y desc
 - **Roses de Sant Jordi:** el DNS de rosesstjordi.com y rosesstjordi.es no estaba bien configurado y ya apunta bien; se pueden usar los tres dominios. Comprobado: los tres responden 200 con la misma web (mismo HTML, sin redirigir de uno a otro). Se usa **rosesstjordi.com**, que es el dominio de `DECISIONES.md`, en el enlace, el `alt` de la captura (en los tres idiomas), `llms.txt` y `scripts/capture.mjs`. La captura se ha repetido desde .com (`npm run capture -- --only roses`). En `DECISIONES.md` se añade que la web responde también en .es y .cat.
 - **Bricolage con anchura fija al 80 %:** aprobado; se queda así.
 - **LinkedIn personal:** el enlace está bien. `npm run links` lo seguirá marcando con 999 porque LinkedIn rechaza las peticiones automáticas.
+
+## Ronda 2 (14 de octubre)
+
+Alejandro pidió más SEO, quitar los saltos que provocaba la animación del nombre, que los trabajos no se movieran con el scroll, que los enlaces llevaran bien a las secciones, más espacio, menos AI slop y una estructura más de marketing. El plan está en `RONDA2.md`, y las comprobaciones de esta ronda en `ronda2/`.
+
+### Decisiones tomadas sin preguntar
+
+- **Por qué fallaban los enlaces a secciones.** Con `scroll-behavior: smooth`, un segundo clic durante el primer desplazamiento se perdía (27 de 30 veces en la prueba). Ahora lo hace un manejador pequeño: desplaza, cambia el hash y mueve el foco; sin JavaScript el salto es instantáneo. Cada sección compensa su relleno con un `scroll-margin-top` negativo y el titular queda entre 35 y 46 px bajo la cabecera en las cinco secciones del índice, a 1440 y a 375, también desde una subpágina (Servicios queda algo más abajo porque cuenta la línea que lo separa de Trabajos).
+- **Nombre sin animación.** El scramble cambiaba el ancho de las letras y movía las líneas de debajo. El nombre es texto normal y no se anima.
+- **Trabajos quietos.** La hoja de contactos que se deslizaba con el scroll (`DISENO.md`, Trabajos) se quita porque lo pide Alejandro. Una captura solo se desplaza dentro de su marco si el puntero se queda encima 0,6 s.
+- **Cabecera fija también en móvil.** El índice se pliega en un desplegable por debajo de 1.024 px y, por debajo de 560 px, los idiomas van dentro del desplegable para que quepan el nombre, "Hablemos" y el botón del índice (comprobado a 320, 360, 375 y 414 px en los tres idiomas).
+- **Orden de la portada:** Inicio, Trabajos, Servicios, Experiencia, Sobre mí, Cómo trabajo y Contacto. Primero lo que se ofrece y la prueba, después la trayectoria. GOK Thermal sigue en Experiencia y no en Trabajos porque fue un encargo propio, fuera de Digital DesAny (`DECISIONES.md`).
+- **H1:** "Alejandro Cabrera" y debajo "Desarrollador web y backend en Granollers", dentro del mismo H1, para que el titular diga oficio y lugar. Los títulos de la pestaña dicen lo mismo en los tres idiomas ("in Granollers" en inglés, antes "near Barcelona"); "cerca de Barcelona" va en el texto y en las descripciones, también en los tres.
+- **Cifras en el inicio:** +500 rosas, 32 dominios, 2,9 millones de peticiones y el premio, cada una con enlace a donde se cuenta. El premio usa el texto de `DECISIONES.md`, que ya estaba publicado; su nombre exacto sigue pendiente (abajo).
+- **Lo que se quita por sonar a plantilla:** la retícula y el grano, el panel "ahora mismo" con reloj, los contadores, la terminal que se escribe sola (ahora es estática), los glifos de servicios, el mapa de VMV, el raíl de años, la numeración de secciones, las etiquetas mono en mayúsculas, los puntos del marco de navegador, las flechas en enlaces internos, los titulares de eslogan y la nota "Sin plantillas" del pie. Space Mono queda solo para datos (dominios, años, código).
+- **También se quita el fundido de papel a tinta al entrar en Experiencia.** Lighthouse medía la sección con el fondo todavía en papel y daba accesibilidad 96 por contraste. Con el corte seco cada sección pinta su superficie y el contraste es el de la paleta en todo momento.
+- **Hidrotech Bordalló no tiene web que capturar.** Su tarjeta lleva en el lugar de la captura los canales en letra grande sobre tinta (Reels, LinkedIn, YouTube, Emails), que repiten lo que dice el párrafo; para lectores de pantalla va oculto (`aria-hidden`) y solo se lee el párrafo.
+- **Neibr en su página:** la captura de neibr.es va junto a "Mi parte" (antes tenía una sección propia con la columna de texto vacía).
+- **Espacio:** escala de nueve pasos (`--space-1` a `--space-9`). Los límites de alto de la v2 (Experiencia hasta 2.400 px y Recorrido hasta 1.080 px a 1440) dejan de aplicarse porque esas secciones ya no son las mismas. La portada mide ahora 10.052 px a 1440 y 15.172 px a 375 (`ronda2/medidas.md`).
+- **Seis subpáginas en los tres idiomas** (21 URL en total, en `lib/routes.json`): Proyectos, Neibr, VMV Cosmetic Group, Sobre mí, Desarrollo backend y Desarrollo web. Solo llevan hechos de `DECISIONES.md` y textos que ya estaban aprobados (los cuerpos del recorrido, las frases completas de las capacidades de VMV y la asignación de Neibr). La de VMV cuenta capacidades y escala, nada de cómo funcionan sus defensas ni nombres internos.
+- **Imágenes OG por página** en `/og/{idioma}-{página}.png`. La convención `opengraph-image` de Next no puede ir dentro de una ruta catch-all: el build pasaba, pero al servir rompía todas las rutas con un error 500.
+- **Las rutas que no existen responden 404** con la página propia en los tres idiomas y `noindex`. `next start` escribe en el log "Error: Internal: NoFallbackError" cada vez; es cosa de Next 15.5 con `dynamicParams = false` y no cambia la respuesta.
+- **Verificación de Search Console y Bing:** la web añade la etiqueta solo si existen las variables `GOOGLE_SITE_VERIFICATION` o `BING_SITE_VERIFICATION`. Definirlas en Vercel es cosa de Alejandro (abajo).
+
+### Pendiente de Alejandro
+
+Nada de esto se publica hasta tener respuesta:
+
+1. **Nombre exacto del premio** de Neibr (pendiente desde el refresh). Hoy dice "uno de los proyectos ganadores de los Santander X Spain Awards 2026 (UVic)".
+2. **Dominio final.** `alexasto.com` hace una redirección temporal (302) a GitHub, `www.alexasto.com` no resuelve y `dev.` parece un entorno de pruebas. Si la web pasa a `alexasto.com`: `SITE_URL=https://alexasto.com` en Vercel, 301 de `dev.alexasto.com` y de `www` al dominio, y cambiar el `sameAs` de digitaldesany.com el mismo día. Mientras tanto, mejor una 301 de `alexasto.com` a `dev.alexasto.com` que la 302 a GitHub. DNS y Vercel quedan fuera de mi alcance.
+3. **Search Console y Bing Webmaster Tools:** dar de alta el dominio, definir las variables de verificación (o el registro TXT en el DNS) y enviar `/sitemap.xml`.
+4. **Enlaces que apunten aquí** (gratis y del mismo tema): un enlace visible desde digitaldesany.com (hoy solo aparece en su JSON-LD), el campo de web en GitHub, LinkedIn y WordPress.org, un crédito en el pie de gokthermal.com y de peer2stream.alexasto.com y, si los clientes quieren, en las páginas de caso de Digital DesAny.
+5. **Resultados medibles** de Lara's Oak, Paula Krebel, Hidrotech Bordalló y GOK Thermal (lanzamiento, visitas, contactos, lo que haya) y **testimonios** de clientes con su permiso. Hoy solo Roses tiene un resultado publicado.
+6. **Tiempo de respuesta u horario en Contacto.** digitaldesany.com publica "de lunes a viernes, de 09:00 a 20:00", pero no lo pongo aquí sin que lo confirmes. Confirma también que el mensaje de WhatsApp que se rellena solo ("Hola, os escribo desde dev.alexasto.com…") le va bien al estudio.
+7. **Pasos de trabajo con plazos** (primera llamada, presupuesto, entrega), si quieres que "Cómo trabajo" los cuente. Hoy son cuatro principios, cada uno con una prueba publicada.
+8. **Foto tuya**, opcional: ayuda a la confianza y al perfil (`Person.image`).

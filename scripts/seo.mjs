@@ -123,7 +123,7 @@ await withServer(async (base) => {
     const description = metaContent(h, "description");
     check(`${at} title ≤ ${TITLE_MAX}`, title.length > 0 && title.length <= TITLE_MAX, `${title.length}: ${title}`);
     check(
-      `${at} one description of ${DESCRIPTION.join("–")}`,
+      `${at} one description of ${DESCRIPTION.join("-")} chars`,
       description.length === 1 && description[0].length >= DESCRIPTION[0] && description[0].length <= DESCRIPTION[1],
       `${description[0]?.length}: ${description[0]}`
     );
@@ -134,7 +134,7 @@ await withServer(async (base) => {
     check(`${at} indexable`, !/<meta name="robots" content="[^"]*noindex/.test(h));
 
     const dashes = [title, ...description, ...lines[at]].filter((t) => /[—–]/.test(t));
-    check(`${at} no dashes (— –)`, dashes.length === 0, dashes.slice(0, 2).join(" | "));
+    check(`${at} no long dashes`, dashes.length === 0, dashes.slice(0, 2).join(" | "));
 
     // Structured data: one graph, every reference resolves inside it.
     const ld = h.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)?.[1];
