@@ -18,8 +18,6 @@ const NEXT_BIN = join(ROOT, "node_modules", ".bin", "next");
 const SOURCE_DIRS = ["app", "components", "lib", "public", "assets"];
 const SOURCE_FILES = ["next.config.ts", "postcss.config.mjs", "tsconfig.json", "package.json", "package-lock.json"];
 
-/** The three homes. */
-export const LOCALE_PAGES = ALL_PAGES.filter((p) => p.page === "home");
 
 /** Reads `--name value` or `--name=value` from argv. */
 export function arg(name, fallback) {

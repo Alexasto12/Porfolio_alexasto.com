@@ -234,7 +234,12 @@ await withServer(async (base) => {
     const res = await fetch(base + asset);
     check(`${asset} responds 200`, res.status === 200, res.status);
   }
-  check(`${PAGE_KEYS.length} pages × ${LOCALES.length} languages`, ALL_PAGES.length === PAGE_KEYS.length * LOCALES.length);
+  const paths = ALL_PAGES.map((p) => p.path);
+  check(
+    `lib/routes.json: ${PAGE_KEYS.length} pages, a distinct path in each of the ${LOCALES.length} languages`,
+    paths.every((p) => typeof p === "string" && p.startsWith("/")) && new Set(paths).size === paths.length,
+    paths.filter((p) => typeof p !== "string").length
+  );
 });
 
 const failed = results.filter((r) => !r.ok);

@@ -1,5 +1,6 @@
-/* Motion check on the three homes and the three Neibr pages (the pages with
-   the diagram) at 375 and 1440 px, in four modes:
+/* Motion check on the pages with the Neibr diagram (the homes, Neibr and
+   backend development, in the three languages) at 375 and 1440 px, in
+   four modes:
    - reduced: prefers-reduced-motion emulated. Nothing may animate, every
      sequence (data-phase) stays "final", no text is hidden or clipped and
      every SVG line is fully drawn. (npm run shots also captures with
@@ -10,7 +11,8 @@
      (sequences still waiting, scroll-driven lines not drawn yet). On paper
      nothing may animate, no text may be hidden and every line is drawn.
    - play: JavaScript on, normal motion. Each sequence (the Neibr diagram)
-     is scrolled into view; it must start and end complete.
+     is scrolled into view; it must start and end complete. One already on
+     screen at load stays complete ("final") by design.
    Exits 1 if anything fails.
    Usage: npm run motion [-- --out docs/portfolio-v2/despues] [-- --locales es] [-- --pages home] */
 import { mkdirSync, writeFileSync } from "node:fs";
@@ -102,7 +104,8 @@ async function openWithMotion(browser, target, vp) {
 await withServer(async (base) => {
   const browser = await chromium.launch();
   try {
-    const pages = arg("pages") ? targets(base) : targets(base, { all: true }).filter((p) => p.page === "home" || p.page === "neibr");
+    const WITH_DIAGRAM = ["home", "neibr", "backend"];
+    const pages = arg("pages") ? targets(base) : targets(base, { all: true }).filter((p) => WITH_DIAGRAM.includes(p.page));
     for (const target of pages) {
       for (const vp of VIEWPORTS) {
         // Reduced motion (openSettled emulates it and walks the whole page).
@@ -150,7 +153,15 @@ await withServer(async (base) => {
           const issues = [];
           for (const sel of await page.$$eval("[data-phase]", (els) => els.map((e) => `.${e.classList[0]}`))) {
             const before = await page.$eval(sel, (e) => e.dataset.phase);
-            if (before !== "hidden") issues.push(`${sel}: ${before} before scrolling to it (expected hidden)`);
+            // useSequence leaves a sequence that is on screen at load complete, with nothing to play.
+            const onScreen = await page.$eval(sel, (e) => {
+              const r = e.getBoundingClientRect();
+              return r.top < window.innerHeight && r.bottom > 0;
+            });
+            const expected = onScreen ? "final" : "play";
+            if (before !== (onScreen ? "final" : "hidden")) {
+              issues.push(`${sel}: ${before} before scrolling to it (expected ${onScreen ? "final" : "hidden"})`);
+            }
             await page.evaluate((sel) => {
               const el = document.querySelector(sel);
               window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.4, behavior: "instant" });
@@ -158,7 +169,7 @@ await withServer(async (base) => {
             // The diagram ends at about 3.7 s (components/NeibrDiagram.tsx).
             await page.waitForTimeout(4500);
             const phase = await page.$eval(sel, (e) => e.dataset.phase);
-            if (phase !== "play") issues.push(`${sel}: ${phase} after scrolling to it (expected play)`);
+            if (phase !== expected) issues.push(`${sel}: ${phase} after scrolling to it (expected ${expected})`);
             const probe = await page.evaluate(reducedProbe, sel);
             const hidden = await page.evaluate(hiddenText, { inViewOnly: false, root: sel });
             issues.push(...probe.running.map((r) => `${sel}: still running ${r}`), ...probe.undrawn, ...hidden);

@@ -29,7 +29,13 @@ await withServer(async (base) => {
   for (const p of ALL_PAGES) {
     const html = await (await fetch(base + p.path)).text();
     for (const [, href] of html.matchAll(/<a[^>]+href="([^"]+)"/g)) {
-      const url = href.replace(/&amp;/g, "&");
+      // React writes ' as &#x27; (the WhatsApp text in ca and en): decode it, &amp; last.
+      const url = href
+        .replace(/&#x27;|&#39;/g, "'")
+        .replace(/&quot;/g, '"')
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&amp;/g, "&");
       if (/^(https?:|mailto:)/.test(url)) {
         if (!links.has(url)) links.set(url, new Set());
         links.get(url).add(p.path);
