@@ -36,7 +36,7 @@ for small and medium businesses across Catalonia.
 Custom websites (design, development, digitalisation and deployment), social
 media management, automations with or without AI, and custom software.
 Case studies: Lara's Oak (https://larasoak.art), Paula Krebel, Roses de Sant
-Jordi (https://rosesstjordi.cat) and Hidrotech Bordalló.
+Jordi (https://rosesstjordi.com) and Hidrotech Bordalló.
 
 ## Experience
 

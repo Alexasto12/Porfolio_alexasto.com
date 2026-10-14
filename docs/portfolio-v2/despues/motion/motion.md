@@ -1,6 +1,6 @@
 # Movimiento
 
-Generado: 2026-10-14T08:01:39.309Z. Reduced motion: nada se mueve y todo está en su estado final. Sin JavaScript: todo el texto se ve. Impresión: desde arriba, sin nada oculto ni a medio dibujar. Secuencias: el diagrama y la terminal se reproducen al entrar en pantalla y acaban completos.
+Generado: 2026-10-14T08:40:06.763Z. Reduced motion: nada se mueve y todo está en su estado final. Sin JavaScript: todo el texto se ve. Impresión: desde arriba, sin nada oculto ni a medio dibujar. Secuencias: el diagrama y la terminal se reproducen al entrar en pantalla y acaban completos.
 
 | Modo | Idioma | Ancho | Resultado |
 |---|---|---|---|

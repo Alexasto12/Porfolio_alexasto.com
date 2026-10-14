@@ -1,6 +1,6 @@
 # Comprobación de SEO e idiomas
 
-Generado: 2026-10-14T08:04:00.579Z. SITE_URL: https://dev.alexasto.com.
+Generado: 2026-10-14T08:42:24.466Z. SITE_URL: https://dev.alexasto.com.
 
 | Comprobación | Resultado | Detalle |
 |---|---|---|

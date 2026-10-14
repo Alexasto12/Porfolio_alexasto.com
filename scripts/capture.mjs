@@ -22,8 +22,7 @@ const MAX_HEIGHT = VIEWPORT.height * 3;
 const SITES = {
   larasoak: "https://larasoak.art",
   gokthermal: "https://gokthermal.com",
-  // rosesstjordi.com is parked (HTTPS 525); the studio case study links to .cat.
-  roses: "https://rosesstjordi.cat",
+  roses: "https://rosesstjordi.com",
   neibr: "https://neibr.es",
   peer2stream: "https://peer2stream.alexasto.com/discover",
   pokeapi: "https://alexasto12.github.io/ProjectePokeAPI/",

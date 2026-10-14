@@ -1,6 +1,6 @@
 # Medidas de /
 
-Generado: 2026-10-14T08:06:24.259Z. Alto en px de cada sección; JS de cliente transferido (gzip) al cargar /.
+Generado: 2026-10-14T08:44:29.910Z. Alto en px de cada sección; JS de cliente transferido (gzip) al cargar /.
 
 | Medida | 1440×900 | 375×812 |
 |---|---|---|

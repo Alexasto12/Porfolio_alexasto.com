@@ -235,13 +235,13 @@ export const DATA = {
         tags: ["CA · ES", "+500"],
         links: [
           { label: caseLinkLabel, href: desanyCase("rosesstjordi") },
-          { label: "rosesstjordi.cat", href: "https://rosesstjordi.cat" },
+          { label: "rosesstjordi.com", href: "https://rosesstjordi.com" },
         ],
         shot: {
           alt: {
-            es: "Portada de rosesstjordi.cat, con la rosa digital de Sant Jordi",
-            ca: "Portada de rosesstjordi.cat, amb la rosa digital de Sant Jordi",
-            en: "Home page of rosesstjordi.cat, with the Sant Jordi digital rose",
+            es: "Portada de rosesstjordi.com, con la rosa digital de Sant Jordi",
+            ca: "Portada de rosesstjordi.com, amb la rosa digital de Sant Jordi",
+            en: "Home page of rosesstjordi.com, with the Sant Jordi digital rose",
           },
         },
       },

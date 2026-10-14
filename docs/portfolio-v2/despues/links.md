@@ -1,6 +1,6 @@
 # Enlaces externos
 
-Generado: 2026-10-14T08:04:15.940Z. 26 enlaces, 1 sin 200.
+Generado: 2026-10-14T08:42:38.687Z. 26 enlaces, 1 sin 200.
 
 | Enlace | Páginas | Resultado |
 |---|---|---|
@@ -14,7 +14,7 @@ Generado: 2026-10-14T08:04:15.940Z. 26 enlaces, 1 sin 200.
 | https://neibr.es | / /ca /en | 200 → https://neibr.es/ |
 | https://peer2stream.alexasto.com/discover | / /ca /en | 200 |
 | https://profiles.wordpress.org/alexasto12/ | / /ca /en | 200 |
-| https://rosesstjordi.cat | / /ca /en | 200 → https://www.rosesstjordi.cat/ |
+| https://rosesstjordi.com | / /ca /en | 200 → https://www.rosesstjordi.com/ |
 | https://wa.me/34624905650 | / /ca /en | 200 → https://api.whatsapp.com/send/?phone=34624905650&text&type=phone_number&app_absent=0 |
 | https://www.digitaldesany.com/ca | /ca | 200 |
 | https://www.digitaldesany.com/ca/casos-exit/lara-oak | /ca | 200 |

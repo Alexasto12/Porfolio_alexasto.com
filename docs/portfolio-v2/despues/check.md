@@ -1,6 +1,6 @@
 # npm run check
 
-Generado: 2026-10-14T07:58:26Z en la rama claude/portfolio-v2.
+Generado: 2026-10-14T08:39:17Z en la rama claude/portfolio-v2.
 
 ```
 > portfolio-alexasto@0.1.0 check
@@ -13,7 +13,7 @@ Generado: 2026-10-14T07:58:26Z en la rama claude/portfolio-v2.
 > next build
    ▲ Next.js 15.5.18
    Creating an optimized production build ...
- ✓ Compiled successfully in 3.2s
+ ✓ Compiled successfully in 7.8s
    Linting and checking validity of types ...
    Collecting page data ...
    Generating static pages (0/15) ...
