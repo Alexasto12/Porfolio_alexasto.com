@@ -187,6 +187,13 @@ export function jsonLd(locale: Locale, page: PageKey = "home") {
         name: JOB_TITLE[locale],
         occupationLocation: { "@type": "City", name: "Granollers", sameAs: wiki("Granollers") },
       },
+      image: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}${DATA.about.portrait.src}`,
+        width: DATA.about.portrait.width,
+        height: DATA.about.portrait.height,
+        caption: DATA.about.portrait.alt[locale],
+      },
       email: CONTACT.personalEmail,
       worksFor: { "@id": DESANY_ID },
       award: AWARD[locale],

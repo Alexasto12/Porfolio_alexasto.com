@@ -8,7 +8,7 @@ Next.js 15 (App Router, componentes de servidor), TypeScript y Tailwind CSS v4. 
 
 Papel, tinta y vino. La base es papel (`#F4EFE2`). Experiencia y Cómo trabajo van en tinta, igual que el pie. El vino (`#C12C52`) es la banda del stress test de Neibr y el Contacto entero. Cada sección declara su superficie con `data-surface` y los componentes solo usan los tokens de esa superficie, así que el contraste se mantiene en las tres (detalle en `CLAUDE.md`).
 
-La portada sigue el orden de una página de venta: quién soy y qué hago, con cifras publicadas; los trabajos; los servicios con WhatsApp y correo a mano; la experiencia; el recorrido; cómo trabajo; y el contacto. Imágenes: capturas reales de cada web en un marco sencillo y un diagrama de la asignación de Neibr en SVG hecho a mano, el único elemento que se anima (y se apaga con `prefers-reduced-motion`). Todo se ve completo sin JavaScript.
+La portada sigue el orden de una página de venta: quién soy y qué hago, con cifras publicadas; los trabajos; los servicios con WhatsApp y correo a mano; la experiencia; el recorrido; cómo trabajo; y el contacto. Imágenes: capturas reales de cada web en un marco sencillo, mi foto en tinta y papel en Sobre mí y un diagrama de la asignación de Neibr en SVG hecho a mano, el único elemento que se anima (y se apaga con `prefers-reduced-motion`). Todo se ve completo sin JavaScript.
 
 ## Estructura
 
@@ -25,6 +25,7 @@ components/
   sections/                 Hero, Work, Services, Experience, About, Process, Contact
   pages/                    las subpáginas (Pages) y sus piezas (PageParts)
   CaseCard · BrowserFrame   tarjeta de trabajo y marco con la captura (next/image)
+  Portrait                  mi foto, en Sobre mí (portada y página)
   VmvBlocks · NeibrBlocks   bloques de VMV y Neibr que comparten portada y subpáginas
   NeibrDiagram · ApiTerminal  diagrama de Neibr (SVG) y ejemplo de petición y respuesta
   ui/                       AnchorScroll, HeaderSurface y useSequence (cliente) y piezas sin estado
@@ -37,6 +38,7 @@ lib/
   shots.json                capturas disponibles (lo escribe npm run capture)
 scripts/                    shots, a11y, motion, lh, seo, links, capture y measure (lib/server.mjs común)
                             subset-fonts.py: subconjuntos de las fuentes en assets/fonts
+                            portrait.mjs: el retrato de public/photos/ en tinta y papel
 docs/                       planes, decisiones, preguntas y resultados de las comprobaciones
 ```
 

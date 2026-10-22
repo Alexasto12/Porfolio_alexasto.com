@@ -155,6 +155,10 @@ export const DATA = {
       ca: "Webs a mida, una campanya de Sant Jordi i xarxes socials. Cada cas complet és a digitaldesany.com.",
       en: "Custom websites, a Sant Jordi campaign and social media. Each full case study is on digitaldesany.com.",
     } as Localized,
+    allCases: {
+      label: { es: "Todos los casos en digitaldesany.com", ca: "Tots els casos a digitaldesany.com", en: "All case studies at digitaldesany.com" },
+      href: desany("/casos-exito", "/casos-exit"),
+    } as Link,
     cases: [
       {
         id: "roses",
@@ -221,7 +225,17 @@ export const DATA = {
           ca: "Xarxes socials per a una empresa de maquinària de neteja industrial: reels de demostració, LinkedIn, YouTube i correus a la seva base de clients.",
           en: "Social media for an industrial cleaning machinery company: demo reels, LinkedIn, YouTube and emails to its customer base.",
         },
-        links: [],
+        // digitaldesany.com has no case page for it (yet): the service it was part of.
+        links: [
+          {
+            label: {
+              es: "Gestión de redes en digitaldesany.com",
+              ca: "Gestió de xarxes a digitaldesany.com",
+              en: "Social media management at digitaldesany.com",
+            },
+            href: desany("/servicios/gestion-rrss", "/serveis/gestio-xarxes-socials"),
+          },
+        ],
         poster: {
           label: { es: "Redes sociales", ca: "Xarxes socials", en: "Social media" },
           words: {
@@ -505,6 +519,8 @@ export const DATA = {
         ] as Localized[],
       },
       site: { label: "neibr.es", href: "https://neibr.es" } as Link,
+      /** digitaldesany.com tells the website side (design, development and deployment). */
+      caseLink: { label: CASE_LINK, href: desanyCase("neibr") } as Link,
       shotAlt: {
         es: "Portada de neibr.es, la web de Neibr",
         ca: "Portada de neibr.es, la web de Neibr",
@@ -713,6 +729,13 @@ export const DATA = {
       },
     ] as TimelineEntry[],
     educationLabel: { es: "Formación y código abierto", ca: "Formació i codi obert", en: "Education and open source" } as Localized,
+    /** public/photos/, built by scripts/portrait.mjs (ink on paper). */
+    portrait: {
+      src: "/photos/alejandro-cabrera.jpg",
+      width: 1200,
+      height: 1500,
+      alt: { es: "Retrato de Alejandro Cabrera", ca: "Retrat de l'Alejandro Cabrera", en: "Portrait of Alejandro Cabrera" } as Localized,
+    },
     peer2stream: {
       id: "peer2stream",
       name: "Peer2Stream",

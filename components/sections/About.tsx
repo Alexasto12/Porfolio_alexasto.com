@@ -4,6 +4,7 @@ import { ROUTES } from "@/lib/routes";
 import { SectionHead } from "../ui/SectionHead";
 import { ExtLink, LinkRow } from "../ui/Links";
 import { CaseCard } from "../CaseCard";
+import { Portrait } from "../Portrait";
 
 /** The path in three stages, each with the milestones whose years fall in it. */
 export function stagesOf() {
@@ -15,9 +16,9 @@ export function stagesOf() {
 }
 
 /**
- * About (paper): where it started, the path in three stages (year, what,
- * where), the stack in one sentence, and education with open source. The
- * full story is on its own page.
+ * About (paper): where it started, with my photo beside it, the path in
+ * three stages (year, what, where), the stack in one sentence, and
+ * education with open source. The full story is on its own page.
  */
 export function About({ locale }: { locale: Locale }) {
   const t = translator(locale);
@@ -25,8 +26,14 @@ export function About({ locale }: { locale: Locale }) {
   return (
     <section id="sobre-mi" className="sec about" data-surface="paper" aria-labelledby="about-title">
       <div className="shell">
-        <SectionHead id="about-title" heading={t(d.heading)} description={t(d.description)} />
-        <p className="about__stack copy">{t(d.stack)}</p>
+        <div className="about__intro grid">
+          <div className="about__text">
+            <SectionHead id="about-title" heading={t(d.heading)} />
+            <p className="about__lead copy">{t(d.description)}</p>
+            <p className="about__stack copy">{t(d.stack)}</p>
+          </div>
+          <Portrait locale={locale} className="about__photo" sizes="(max-width: 860px) 300px, 360px" />
+        </div>
         <ol className="stages grid">
           {stagesOf().map((st) => (
             <li key={st.from} className="stage">

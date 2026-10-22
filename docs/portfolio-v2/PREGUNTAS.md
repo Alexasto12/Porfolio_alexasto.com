@@ -190,3 +190,14 @@ Confirmaron 19 hallazgos y descartaron 7. Todos los confirmados están arreglado
 - **Lighthouse (mediana de 3), las tres portadas:** móvil 98 de rendimiento y 100 en accesibilidad, buenas prácticas y SEO, LCP 2,4 s, CLS 0 y TBT entre 50 y 60 ms; escritorio 100 en todo, LCP 0,5 a 0,6 s.
 - **`links`:** 45 enlaces; solo el LinkedIn personal da 999 (ya explicado).
 - **`measure`:** portada de 10.052 px a 1440 y 15.145 px a 375, 5 imágenes, 1 SVG y 110 KB de JavaScript.
+
+## Respuestas de Alejandro (22 de octubre)
+
+- **Foto (pendiente 8 de la ronda 2):** Alejandro manda un retrato y pregunta si ponerlo en blanco y negro. Va en tinta sobre papel, con los dos colores de la paleta en lugar de un gris neutro, así que parece impreso en la página. `scripts/portrait.mjs` recorta a 4:5, quita un cable fino de la pared por encima de la cabeza (solo el fondo; la persona no se toca), aplica el bitono y no copia metadatos. El original no está en el repositorio. Sale en "Sobre mí" de la portada (carga diferida, lejos de la primera pantalla) y en la cabecera de la página Sobre mí (con prioridad, porque ahí sí está en la primera pantalla). No va en el inicio, porque sería la imagen más grande de la primera pantalla y el LCP en móvil ya está en 2,4 s, y porque el inicio tiene que contar primero qué hago. También va en `Person.image` del JSON-LD y en el sitemap de la portada y de Sobre mí. Lighthouse móvil: portada 97 (LCP 2,4 s) y Sobre mí 99 (LCP 2,1 s).
+- **Enlazar cada caso a digitaldesany.com:** Roses, Lara's Oak y Paula Krebel ya llevaban "El caso en digitaldesany.com". Se añade:
+  - **Neibr**, que también tiene caso en digitaldesany.com (la web: diseño, desarrollo y despliegue). El enlace sale en Experiencia, en la página de Neibr y en Proyectos.
+  - **"Todos los casos en digitaldesany.com"** debajo de los trabajos, en la portada y en Proyectos.
+  - **Hidrotech Bordalló**, que no tiene página de caso en digitaldesany.com. De momento enlaza al servicio de gestión de redes del estudio.
+- **Pendiente:**
+  - **Página de caso de Hidrotech** en digitaldesany.com: si se publica, el enlace pasa a apuntar ahí.
+  - **Visitas de Roses.** La página de caso de Roses en digitaldesany.com dice "cerca de 5.000 visitas reales". No está en `DECISIONES.md`, así que aquí no se publica hasta que Alejandro lo confirme.

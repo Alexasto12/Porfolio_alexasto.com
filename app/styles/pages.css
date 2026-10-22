@@ -35,6 +35,15 @@
   font-weight: 500;
 }
 .page-head__extra { margin-top: var(--space-4); color: var(--fg-2); }
+/* With a photo (About): text on the left, the photo level with the title. */
+.page-head__split { row-gap: var(--space-6); align-items: start; }
+.page-head__text { grid-column: 1 / span 7; }
+.page-head__photo { grid-column: 9 / span 4; margin-top: var(--space-6); }
+@media (max-width: 860px) {
+  .page-head__text,
+  .page-head__photo { grid-column: 1 / -1; }
+  .page-head__photo { max-width: 300px; margin-top: 0; }
+}
 
 .page-sec { --sec-pt: var(--space-7); padding-bottom: var(--space-7); }
 /* A hairline between two paper sections, as wide as the text (not the shell's padding). */
