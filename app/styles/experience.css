@@ -1,0 +1,211 @@
+/* ───────── Experiencia (ink) ─────────
+   VMV and Neibr as two jobs side by side with their proof (figures and
+   capabilities, the assignment diagram), the wine band of the stress
+   test, then GOK Thermal. */
+.xp { --sec-pt: clamp(80px, 60px + 3vw, 104px); padding-bottom: clamp(64px, 50px + 2vw, 88px); }
+
+.xp-job {
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 2px solid var(--fg);
+  row-gap: var(--space-7);
+  align-items: start;
+}
+.xp-job__side { grid-column: 1 / span 5; display: grid; gap: var(--space-4); align-content: start; }
+.xp-job__main { grid-column: 7 / span 6; min-width: 0; display: grid; gap: var(--space-5); align-content: start; }
+.xp-job__meta { color: var(--fg-2); font-size: 15px; margin-top: calc(var(--space-2) * -1); }
+.xp-job__label {
+  margin-top: var(--space-3);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+.xp-job__main > .xp-job__label { margin-top: 0; }
+.xp-job__links { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-5); margin-top: var(--space-2); }
+
+/* Figures: the number, then what it counts. */
+.figures {
+  margin-top: var(--space-3);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4) var(--gap);
+}
+.figures__item {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--line);
+}
+.figures__value {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.4rem, 1.9rem + 2vw, 3.6rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-lg);
+}
+.figures__label { font-size: 14px; line-height: 1.45; color: var(--fg-2); }
+
+/* Capabilities: title and one sentence each, in two columns. */
+.caps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5) var(--gap);
+}
+.caps__item {
+  display: grid;
+  align-content: start;
+  gap: var(--space-1);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--line-soft);
+}
+.caps__title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.caps__text { font-size: 15px; line-height: 1.5; color: var(--fg-2); }
+.caps__item .link-ext { margin-top: var(--space-1); font-size: 15px; }
+
+.neibr__award {
+  padding-left: var(--space-4);
+  border-left: 3px solid var(--accent-lg);
+  font-weight: 500;
+  font-size: var(--fs-read);
+  line-height: 1.5;
+}
+
+/* Neibr diagram (components/NeibrDiagram.tsx). */
+.ndiag { margin: 0; }
+.ndiag__caption { margin-bottom: var(--space-3); font-size: 15px; color: var(--fg-2); }
+.ndiag__dim { opacity: 0.25; }
+.ndiag__draw { stroke-dasharray: 1 1; }
+.ndiag__pop { transform-box: fill-box; transform-origin: center; }
+
+/* The sequence: "hidden" resets while the diagram is still off screen
+   (screen only: printed, it is complete), "play" runs each step at its
+   --d delay. The one animation left on the page: it explains the algorithm. */
+@media screen {
+  .ndiag[data-phase="hidden"] .ndiag__draw { stroke-dashoffset: 1; }
+  .ndiag[data-phase="hidden"] .ndiag__pop { transform: scale(0); }
+  .ndiag[data-phase="hidden"] .ndiag__fade { opacity: 0; }
+  .ndiag[data-phase="hidden"] .ndiag__dim { opacity: 1; }
+  .ndiag[data-phase="hidden"] .ndiag__bar { transform: scaleX(0); }
+}
+.ndiag[data-phase="play"] .ndiag__draw { transition: stroke-dashoffset 0.8s var(--ease-in-out) var(--d); }
+.ndiag[data-phase="play"] .ndiag__pop { transition: transform 0.45s var(--ease-out) var(--d); }
+.ndiag[data-phase="play"] .ndiag__fade,
+.ndiag[data-phase="play"] .ndiag__dim { transition: opacity 0.4s ease var(--d); }
+.ndiag[data-phase="play"] .ndiag__bar { transition: transform 0.6s var(--ease-out) var(--d); }
+.ndiag__svg { display: block; width: 100%; height: auto; overflow: visible; border: 1px solid var(--line-soft); border-radius: 6px; }
+.ndiag__streets { fill: none; stroke: var(--line-soft); stroke-width: 6; }
+.ndiag__pt { fill: var(--fg-2); }
+.ndiag__pt--hit { fill: var(--accent-lg); }
+.ndiag__origin { fill: var(--paper); stroke: var(--accent-lg); stroke-width: 4; }
+.ndiag__box { fill: none; stroke: var(--fg-2); stroke-width: 1.5; }
+.ndiag__area { fill: color-mix(in srgb, var(--accent-lg) 9%, transparent); }
+.ndiag__ring { fill: none; stroke: var(--accent-lg); stroke-width: 1.5; }
+.ndiag__line { stroke: var(--accent-lg); stroke-width: 2; stroke-linecap: round; }
+.ndiag__label {
+  fill: var(--fg);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 16px;
+}
+.ndiag__label--hit { fill: var(--accent); }
+.ndiag__steps {
+  margin-top: var(--space-4);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3) var(--gap);
+}
+.ndiag__steps li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.4em minmax(0, 1fr);
+  gap: 6px;
+  padding-top: 10px;
+  font-size: 15px;
+  line-height: 1.45;
+  border-top: 1px solid var(--line-soft);
+}
+.ndiag__num { color: var(--accent); }
+.ndiag__bar {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-lg);
+  transform-origin: left;
+}
+
+/* Wine band, full width: the figures, the same facts in a sentence, and the request. */
+.stress { margin-block: var(--space-8); padding-block: var(--space-7); }
+.stress__grid { row-gap: var(--space-7); align-items: start; }
+.stress__figures { grid-column: 1 / span 6; }
+.stress__title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+.stress__list {
+  margin-top: var(--space-5);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5) var(--gap);
+}
+.stress__item { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: var(--space-2); padding-top: var(--space-3); border-top: 1px solid var(--line); }
+.stress__item--main { grid-column: 1 / -1; }
+.stress__label { font-size: 15px; line-height: 1.4; }
+.stress__value {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 1.6rem + 1.4vw, 2.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.stress__item--main .stress__value { font-size: clamp(4rem, 2.8rem + 5vw, 7rem); }
+.stress__sentence,
+.stress__stack { margin-top: var(--space-5); font-size: 15.5px; line-height: 1.55; max-width: 58ch; }
+.stress__stack { margin-top: var(--space-3); }
+.stress__terminal { grid-column: 7 / span 6; min-width: 0; }
+.stress__terminal .terminal { border-color: var(--accent-lg); }
+
+/* GOK Thermal: one case, frame and text side by side. */
+.xp__gok { padding-top: var(--space-5); border-top: 2px solid var(--fg); }
+.xp__gok .case { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); align-items: start; }
+.xp__gok .bframe { grid-column: 1 / span 5; }
+.xp__gok .case__body { grid-column: 7 / span 6; margin-top: 0; }
+
+@media (max-width: 1100px) {
+  .xp-job__side,
+  .xp-job__main { grid-column: 1 / -1; }
+  .xp-job__side { max-width: 46rem; }
+  .stress__figures,
+  .stress__terminal { grid-column: 1 / -1; }
+}
+@media (max-width: 860px) {
+  .caps,
+  .ndiag__steps { grid-template-columns: minmax(0, 1fr); }
+  .stress__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .xp__gok .case { display: block; }
+  .xp__gok .case__body { margin-top: var(--space-5); }
+}
+@media (max-width: 520px) {
+  .figures { grid-template-columns: minmax(0, 1fr); }
+  .figures__item { flex-direction: row-reverse; justify-content: flex-end; align-items: baseline; gap: var(--space-4); }
+  .stress__value { font-size: clamp(2rem, 10vw, 2.6rem); }
+}
+/* The diagram scales down with the screen: keep its labels at 11px or more. */
+@media (max-width: 420px) {
+  .ndiag__label { font-size: 20px; }
+}

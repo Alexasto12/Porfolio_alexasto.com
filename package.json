@@ -11,20 +11,17 @@
     "check": "npm run lint && npm run typecheck && npm run build",
     "shots": "node scripts/shots.mjs",
     "a11y": "node scripts/a11y.mjs",
+    "motion": "node scripts/motion.mjs",
     "lh": "node scripts/lh.mjs",
     "capture": "node scripts/capture.mjs",
     "seo": "node scripts/seo.mjs",
-    "links": "node scripts/links.mjs"
+    "links": "node scripts/links.mjs",
+    "measure": "node scripts/measure.mjs"
   },
   "dependencies": {
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "lucide-react": "^0.460.0",
-    "motion": "^11.15.0",
     "next": "^15.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tailwind-merge": "^2.5.5"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.0",

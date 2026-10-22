@@ -1,0 +1,82 @@
+/* ───────── Sobre mí (paper) ─────────
+   The path in three stages (year, what, where), the stack in one sentence,
+   then education and open source. */
+.about__stack { margin-top: var(--space-5); }
+.stages { margin-top: var(--space-7); row-gap: var(--space-7); }
+.stage { grid-column: span 4; display: grid; gap: var(--space-2); align-content: start; }
+.stage__name {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.7rem, 1.4rem + 1.2vw, 2.4rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--fg);
+}
+.stage__range { color: var(--fg-2); }
+.stage__items { margin-top: var(--space-4); display: grid; gap: var(--space-4); }
+.stage__item {
+  display: grid;
+  grid-template-columns: 3.6em minmax(0, 1fr);
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--line-soft);
+}
+.stage__year { color: var(--accent); padding-top: 3px; }
+.stage__title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.12rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+.stage__place { margin-top: var(--space-1); font-size: 15px; color: var(--fg-2); }
+.stage__body { margin-top: var(--space-2); font-size: 16px; line-height: 1.55; text-wrap: pretty; }
+@media (max-width: 1100px) {
+  .stages--full .stage { grid-column: 1 / -1; }
+}
+@media (max-width: 860px) {
+  .stage { grid-column: 1 / -1; }
+}
+
+.about__label {
+  margin-top: var(--space-8);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.35rem, 1.15rem + 0.8vw, 1.75rem);
+  letter-spacing: -0.02em;
+}
+.edu { margin-top: var(--space-5); row-gap: var(--space-7); align-items: start; }
+.edu__main { grid-column: 1 / span 6; }
+.edu__side { grid-column: 8 / span 5; display: grid; gap: var(--space-6); align-content: start; }
+.edu__item { display: grid; gap: var(--space-3); }
+@media (max-width: 860px) {
+  .edu__main,
+  .edu__side { grid-column: 1 / -1; }
+}
+
+/* ───────── Cómo trabajo (ink) ───────── */
+.process { margin-top: var(--space-7); row-gap: var(--space-7); }
+.process__item {
+  grid-column: span 3;
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--accent-lg);
+}
+.process__title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+.process__text { font-size: 16px; line-height: 1.6; color: var(--fg-2); text-wrap: pretty; }
+@media (max-width: 1100px) {
+  .process__item { grid-column: span 6; }
+}
+@media (max-width: 860px) {
+  .process__item { grid-column: 1 / -1; }
+}

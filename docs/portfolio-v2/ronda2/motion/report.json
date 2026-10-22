@@ -1,0 +1,461 @@
+{
+  "generatedAt": "2026-10-14T14:09:19.380Z",
+  "reduced": [
+    {
+      "page": "es-home",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "es-home",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-home",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-home",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-home",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-home",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "es-neibr",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "es-neibr",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-neibr",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-neibr",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-neibr",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-neibr",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "es-backend",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "es-backend",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-backend",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-backend",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-backend",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-backend",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    }
+  ],
+  "nojs": [
+    {
+      "page": "es-home",
+      "width": 375,
+      "ok": true,
+      "issues": [],
+      "screens": 24
+    },
+    {
+      "page": "es-home",
+      "width": 1440,
+      "ok": true,
+      "issues": [],
+      "screens": 14
+    },
+    {
+      "page": "ca-home",
+      "width": 375,
+      "ok": true,
+      "issues": [],
+      "screens": 24
+    },
+    {
+      "page": "ca-home",
+      "width": 1440,
+      "ok": true,
+      "issues": [],
+      "screens": 14
+    },
+    {
+      "page": "en-home",
+      "width": 375,
+      "ok": true,
+      "issues": [],
+      "screens": 23
+    },
+    {
+      "page": "en-home",
+      "width": 1440,
+      "ok": true,
+      "issues": [],
+      "screens": 14
+    },
+    {
+      "page": "es-neibr",
+      "width": 375,
+      "ok": true,
+      "issues": [],
+      "screens": 8
+    },
+    {
+      "page": "es-neibr",
+      "width": 1440,
+      "ok": true,
+      "issues": [],
+      "screens": 7
+    },
+    {
+      "page": "ca-neibr",
+      "width": 375,
+      "ok": true,
+      "issues": [],
+      "screens": 8
+    },
+    {
+      "page": "ca-neibr",
+      "width": 1440,
+      "ok": true,
+      "issues": [],
+      "screens": 7
+    },
+    {
+      "page": "en-neibr",
+      "width": 375,
+      "ok": true,
+      "issues": [],
+      "screens": 8
+    },
+    {
+      "page": "en-neibr",
+      "width": 1440,
+      "ok": true,
+      "issues": [],
+      "screens": 7
+    },
+    {
+      "page": "es-backend",
+      "width": 375,
+      "ok": true,
+      "issues": [],
+      "screens": 9
+    },
+    {
+      "page": "es-backend",
+      "width": 1440,
+      "ok": true,
+      "issues": [],
+      "screens": 7
+    },
+    {
+      "page": "ca-backend",
+      "width": 375,
+      "ok": true,
+      "issues": [],
+      "screens": 9
+    },
+    {
+      "page": "ca-backend",
+      "width": 1440,
+      "ok": true,
+      "issues": [],
+      "screens": 7
+    },
+    {
+      "page": "en-backend",
+      "width": 375,
+      "ok": true,
+      "issues": [],
+      "screens": 9
+    },
+    {
+      "page": "en-backend",
+      "width": 1440,
+      "ok": true,
+      "issues": [],
+      "screens": 7
+    }
+  ],
+  "print": [
+    {
+      "page": "es-home",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "es-home",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-home",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-home",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-home",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-home",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "es-neibr",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "es-neibr",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-neibr",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-neibr",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-neibr",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-neibr",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "es-backend",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "es-backend",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-backend",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-backend",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-backend",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-backend",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    }
+  ],
+  "play": [
+    {
+      "page": "es-home",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "es-home",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-home",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-home",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-home",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-home",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "es-neibr",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "es-neibr",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-neibr",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-neibr",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-neibr",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-neibr",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "es-backend",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "es-backend",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-backend",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "ca-backend",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-backend",
+      "width": 375,
+      "ok": true,
+      "issues": []
+    },
+    {
+      "page": "en-backend",
+      "width": 1440,
+      "ok": true,
+      "issues": []
+    }
+  ]
+}

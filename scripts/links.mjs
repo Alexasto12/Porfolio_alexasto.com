@@ -1,9 +1,9 @@
-/* Checks that every external link on /, /ca and /en answers 200 (after
-   redirects). mailto: links are listed but not requested.
+/* Checks that every external link on every page (three languages) answers
+   200 (after redirects). mailto: links are listed but not requested.
    Usage: npm run links [-- --out docs/portfolio-refresh/despues] */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { LOCALE_PAGES, outDir, withServer } from "./lib/server.mjs";
+import { ALL_PAGES, outDir, withServer } from "./lib/server.mjs";
 
 const dir = outDir();
 mkdirSync(dir, { recursive: true });
@@ -26,10 +26,16 @@ async function status(url) {
 
 const links = new Map();
 await withServer(async (base) => {
-  for (const p of LOCALE_PAGES) {
+  for (const p of ALL_PAGES) {
     const html = await (await fetch(base + p.path)).text();
     for (const [, href] of html.matchAll(/<a[^>]+href="([^"]+)"/g)) {
-      const url = href.replace(/&amp;/g, "&");
+      // React writes ' as &#x27; (the WhatsApp text in ca and en): decode it, &amp; last.
+      const url = href
+        .replace(/&#x27;|&#39;/g, "'")
+        .replace(/&quot;/g, '"')
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&amp;/g, "&");
       if (/^(https?:|mailto:)/.test(url)) {
         if (!links.has(url)) links.set(url, new Set());
         links.get(url).add(p.path);
@@ -60,7 +66,9 @@ writeFileSync(
     "",
     "| Enlace | Páginas | Resultado |",
     "|---|---|---|",
-    ...rows.map((r) => `| ${r.url} | ${r.pages.join(" ")} | ${r.ok ? "" : "✗ "}${r.result} |`),
+    ...rows.map(
+      (r) => `| ${r.url} | ${r.pages.length > 3 ? `${r.pages.length} páginas` : r.pages.join(" ")} | ${r.ok ? "" : "✗ "}${r.result} |`
+    ),
     "",
   ].join("\n")
 );

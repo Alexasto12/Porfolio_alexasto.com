@@ -1,0 +1,474 @@
+/* =========================================================
+   Alejandro Cabrera · portfolio: papel, tinta y vino
+   Visual system from docs/portfolio-v2/DISENO.md, as changed in round 2
+   (docs/portfolio-v2/RONDA2.md): no visible grid or grain, mono only for
+   data, a spacing scale and more room inside blocks.
+   Fonts come from next/font: --font-display, --font-body, --font-mono.
+   ========================================================= */
+
+:root {
+  /* Palette. Contrast ratios are listed in CLAUDE.md. */
+  --paper: #f4efe2;
+  --ink: #14130e;
+  --wine: #c12c52;
+  --paper-muted: #6b675a; /* secondary text on paper, 4.9:1 */
+  --ink-muted: #b6b2a2; /* secondary text on ink */
+  --wine-on-ink: #de5a7a; /* accent text on ink, 5.2:1 */
+
+  /* Terminal (Neibr API example): its own dark panel, on any surface. */
+  --term-bg: #0d0c08;
+  --term-line: rgba(244, 239, 226, 0.12);
+  --term-text: #b6b2a2;
+  --term-key: #e9e4d4;
+  --term-str: #7fc8a0;
+  --term-num: #e8798f;
+  --term-punc: #8f8b7d;
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.7, 0, 0.2, 1);
+
+  /* Layout: a 12-column grid (4 below 860px) inside a centred shell. */
+  --shell-max: 1320px;
+  --pad: max(16px, 4vw);
+  --gap: clamp(16px, 2vw, 28px);
+  --cols: 12;
+
+  /* Spacing scale: one step per role. Fixed up to 16px; from step 5 it
+     grows with the screen (first value at 375px, second at 1440px). */
+  --space-1: 4px;                                 /* lines inside a label */
+  --space-2: 8px;                                 /* a title and its meta line */
+  --space-3: 12px;                                /* a label and what it names */
+  --space-4: 16px;                                /* steps of a text stack */
+  --space-5: clamp(20px, 18.6px + 0.38vw, 24px);  /* media and its text */
+  --space-6: clamp(28px, 25.2px + 0.75vw, 36px);  /* items of a list or grid */
+  --space-7: clamp(40px, 34.4px + 1.5vw, 56px);   /* heading block to content */
+  --space-8: clamp(56px, 44.7px + 3vw, 88px);     /* groups inside a section */
+  --space-9: clamp(72px, 55.1px + 4.5vw, 120px);  /* section padding */
+  --section-y: var(--space-9);
+
+  /* Sticky header height plus some air: where in-page links land. */
+  --header-h: 56px;
+
+  /* Type scale */
+  --fs-section: clamp(2.25rem, 1.6rem + 3vw, 4.5rem);
+  --fs-read: 17px;
+}
+@media (min-width: 1100px) {
+  :root { --fs-read: 18px; }
+}
+@media (max-width: 860px) {
+  :root { --cols: 4; }
+}
+
+@theme inline {
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+  --font-body: var(--font-body);
+}
+
+/* ───────── Surfaces ─────────
+   Every section declares data-surface. The tokens below are the only
+   colours components use, so a block reads well on any surface.
+   --accent is safe for text of any size; --accent-lg only for 24px+ text,
+   fills and lines; --mark/--on-mark are a filled button and its text. */
+:root,
+[data-surface="paper"] {
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --fg-2: var(--paper-muted);
+  --accent: var(--wine);
+  --accent-lg: var(--wine);
+  --mark: var(--wine);
+  --on-mark: var(--paper);
+  --line: rgba(20, 19, 14, 0.2);
+  --line-soft: rgba(20, 19, 14, 0.1);
+  --focus: var(--ink);
+}
+[data-surface="ink"] {
+  --bg: var(--ink);
+  --fg: var(--paper);
+  --fg-2: var(--ink-muted);
+  --accent: var(--wine-on-ink);
+  --accent-lg: var(--wine-on-ink);
+  --mark: var(--wine);
+  --on-mark: var(--paper);
+  --line: rgba(244, 239, 226, 0.2);
+  --line-soft: rgba(244, 239, 226, 0.1);
+  --focus: var(--paper);
+}
+/* Wine: paper text only (4.9:1). Ink is the accent, and only for large text. */
+[data-surface="wine"] {
+  --bg: var(--wine);
+  --fg: var(--paper);
+  --fg-2: var(--paper);
+  --accent: var(--paper);
+  --accent-lg: var(--ink);
+  --mark: var(--paper);
+  --on-mark: var(--ink);
+  --line: rgba(244, 239, 226, 0.45);
+  --line-soft: rgba(244, 239, 226, 0.25);
+  --focus: var(--paper);
+}
+[data-surface] {
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+/* ───────── Base ───────── */
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html {
+  background: var(--paper);
+  color: var(--ink);
+  /* The header is sticky at every width: keep anchors and focused elements clear of it.
+     No CSS smooth scroll: it drops a second jump made during the first (AnchorScroll does it). */
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  /* The fonts ship only the weights in use (Space Mono 400, Hanken 400-500):
+     never fake a bolder cut of either. */
+  font-synthesis-weight: none;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  /* clip, not hidden: hidden would make body a scroll container and break sticky. */
+  overflow-x: clip;
+}
+::selection { background: var(--fg); color: var(--bg); }
+
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure, pre { margin: 0; }
+ul, ol { list-style: none; padding: 0; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+img { max-width: 100%; }
+
+.page-main,
+.site-footer { position: relative; z-index: 1; }
+
+/* ───────── Type ───────── */
+.h-section {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: var(--fs-section);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.h-block {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 1.5rem + 2vw, 3.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+.h-item {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.35rem, 1.15rem + 0.8vw, 1.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.lede {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.25rem, 1.1rem + 0.8vw, 1.65rem);
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.copy {
+  font-size: var(--fs-read);
+  line-height: 1.6;
+  max-width: 64ch;
+  text-wrap: pretty;
+}
+.muted { color: var(--fg-2); }
+.accent { color: var(--accent); }
+
+/* Space Mono only for data: years, figures, domains and code. */
+.data {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.82em;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ───────── Layout ───────── */
+.shell {
+  max-width: var(--shell-max);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  column-gap: var(--gap);
+}
+
+/* A section paints its surface. Its top padding is cancelled out for
+   in-page links (negative scroll-margin), so every heading lands at the
+   same distance under the header, whatever the section's padding. */
+.sec {
+  --sec-pt: var(--section-y);
+  position: relative;
+  isolation: isolate;
+  padding-block: var(--sec-pt) var(--section-y);
+  scroll-margin-top: calc(var(--space-5) - var(--sec-pt));
+}
+
+/* Section head: the heading and, on wide screens, the intro beside it. */
+.sec-head__intro { margin-top: var(--space-5); color: var(--fg-2); }
+@media (min-width: 1101px) {
+  .sec-head--split {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gap);
+    align-items: start;
+  }
+  .sec-head--split .sec-head__title { grid-column: 1 / span 8; }
+  /* Only the intro sits on the bottom line: the title stays at the top of
+     the row, so every heading lands at the same height after a jump. */
+  .sec-head--split .sec-head__intro { grid-column: 9 / span 4; align-self: end; margin: 0; font-size: 16px; line-height: 1.55; }
+}
+
+/* Paper shows the final state of everything: no sequence waiting for its turn. */
+@media print {
+  .site-header { position: static; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ───────── Buttons and links ───────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 12px 24px;
+  border-radius: 4px;
+  border: 1.5px solid var(--fg);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.btn--solid {
+  background: var(--mark);
+  border-color: var(--mark);
+  color: var(--on-mark);
+}
+.btn:hover {
+  background: var(--fg);
+  border-color: var(--fg);
+  color: var(--bg);
+}
+
+/* Inline link with a quiet underline that firms up on hover. */
+.link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: var(--line);
+}
+.link:hover { text-decoration-color: currentColor; color: var(--accent); }
+
+/* A link to another site, with the ↗ that says so. */
+.link-ext {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  min-height: 24px;
+  padding-block: 2px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.link-ext > span:first-child {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: var(--line);
+}
+.link-ext__arrow { color: var(--accent); }
+.link-ext:hover { color: var(--accent); }
+.link-ext:hover > span:first-child { text-decoration-color: currentColor; }
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+}
+.links--big { font-size: 1.15rem; gap: var(--space-3) var(--space-6); }
+
+/* A link to another part of this site: a little heavier, no arrow. */
+.more-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.25em;
+  text-decoration-color: var(--accent-lg);
+}
+.more-link:hover { color: var(--accent); }
+
+/* ───────── Contact buttons (WhatsApp, email) ───────── */
+.cbtns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  gap: var(--space-3) var(--gap);
+}
+.cbtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-height: 64px;
+  padding: 12px 22px;
+  border: 1.5px solid var(--fg);
+  border-radius: 4px;
+}
+.cbtn__label {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.cbtn__detail { font-size: 14px; line-height: 1.3; }
+.cbtn--solid { background: var(--mark); border-color: var(--mark); color: var(--on-mark); }
+.cbtn:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+.cbtns--lg .cbtn { min-height: 84px; padding: 16px 28px; }
+.cbtns--lg .cbtn__label { font-size: clamp(1.2rem, 1rem + 0.8vw, 1.6rem); }
+@media (max-width: 640px) {
+  .cbtns { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ───────── BrowserFrame ─────────
+   The real capture under a thin bar with its domain. Captures can be up to
+   three screens tall; the frame shows the first one and, after a
+   deliberate hover, slowly scrolls to the bottom (--shift, per image). */
+.bframe {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--bg);
+}
+.bframe__bar {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--line);
+}
+.bframe__url {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--fg-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bframe__view {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--line-soft);
+}
+.bframe__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .bframe__img { transition: transform 1.2s var(--ease-out); }
+  /* The 0.6 s delay: a frame passing under a resting pointer while the page scrolls never moves. */
+  .bframe[data-scrolls]:hover .bframe__img {
+    transform: translateY(var(--shift, 0));
+    transition: transform 7s linear 0.6s;
+  }
+}
+
+/* ───────── Terminal (Neibr API example) ───────── */
+.terminal {
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--term-bg);
+  color: var(--term-text);
+}
+.terminal__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--term-line);
+  font-size: 14px;
+}
+.terminal__label { color: var(--paper); font-weight: 500; }
+.terminal__title { color: var(--term-text); }
+.terminal__body {
+  padding: 14px 16px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12.5px;
+  line-height: 1.55;
+  overflow-x: auto;
+}
+.terminal__body:focus-visible { outline-offset: -4px; }
+.terminal__body .ln { display: block; width: max-content; white-space: pre; }
+.tok-key { color: var(--term-key); }
+.tok-str { color: var(--term-str); }
+.tok-num { color: var(--term-num); }
+.tok-punc { color: var(--term-punc); }
+.tok-com { color: var(--term-punc); font-style: italic; }
+
+/* ───────── Focus, skip link, helpers ───────── */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+main:focus,
+.sec:focus,
+article[id]:focus { outline: none; }
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -100px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 4px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 15px;
+  font-weight: 500;
+}
+.skip-link:focus-visible { top: 8px; outline-color: var(--wine); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reduced motion: no movement at all, everything in its final state. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

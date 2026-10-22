@@ -40,7 +40,7 @@ Este archivo manda sobre cualquier otro. Lo marcado como **(por defecto)** es un
 - Casos (enlazar a su ficha en digitaldesany.com):
   - **Lara's Oak** (`/es/casos-exito/lara-oak`): portfolio de storyboard y concept art, con un CMS hecho sobre un sistema de bloques propio. Web: https://larasoak.art
   - **Paula Krebel** (`/es/casos-exito/paula-krebel`): portfolio trilingüe de ilustración infantil y juvenil, con diseño de marca y design system.
-  - **Roses de Sant Jordi** (`/es/casos-exito/rosesstjordi`): rosa digital con dedicatoria para Sant Jordi, en catalán y castellano. Más de 500 rosas enviadas y tendencia en Reddit Catalunya. Web: https://rosesstjordi.com
+  - **Roses de Sant Jordi** (`/es/casos-exito/rosesstjordi`): rosa digital con dedicatoria para Sant Jordi, en catalán y castellano. Más de 500 rosas enviadas y tendencia en Reddit Catalunya. Web: https://rosesstjordi.com (la misma web responde también en rosesstjordi.es y rosesstjordi.cat).
   - **Hidrotech Bordalló:** redes sociales para una empresa de maquinaria de limpieza industrial (reels de demostración, LinkedIn, YouTube y emails a su base de clientes). Sin web propia que capturar.
 
 ### Encargos freelance (aparte de DesAny)

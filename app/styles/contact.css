@@ -1,0 +1,36 @@
+/* ───────── Contacto (wine, full width) ─────────
+   Paper on wine everywhere (4.9:1); ink only on the filled button. */
+.contact__title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  /* Minimum: "Explica'm", the longest word, fits in 288px (320px screen). */
+  font-size: clamp(3.05rem, 1.6rem + 6.5vw, 8.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  max-width: 14ch;
+}
+.contact__body {
+  margin-top: var(--space-6);
+  max-width: 52ch;
+  font-size: clamp(17px, 16px + 0.3vw, 20px);
+  line-height: 1.55;
+}
+.contact .cbtns { margin-top: var(--space-7); }
+.contact__personal {
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: var(--space-3);
+}
+.contact__label {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+.contact__personal .links { margin-top: var(--space-2); }
+.contact .link { text-decoration-color: var(--line); }
+.contact .link:hover { color: var(--fg); text-decoration-color: currentColor; }
+.contact .link-ext__arrow { color: var(--fg); }
