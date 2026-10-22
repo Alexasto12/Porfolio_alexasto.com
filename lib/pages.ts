@@ -16,9 +16,9 @@ export const SEO: Record<PageKey, { title: Localized; description: Localized }> 
       en: "Alejandro Cabrera, web and backend developer in Granollers",
     },
     description: {
-      es: "Desarrollador web y backend en Granollers (Barcelona). Hago webs, APIs y automatizaciones con Go, Java y Next.js. Cofundador de Digital DesAny.",
-      ca: "Desenvolupador web i backend a Granollers (Barcelona). Faig webs, APIs i automatitzacions amb Go, Java i Next.js. Cofundador de Digital DesAny.",
-      en: "Web and backend developer in Granollers, near Barcelona. I build websites, APIs and automations in Go, Java and Next.js. Co-founder of Digital DesAny.",
+      es: "Hago webs, automatizaciones y software a medida para pymes de toda Cataluña, desde Granollers. El código y el diseño son tuyos cuando el proyecto está pagado.",
+      ca: "Faig webs, automatitzacions i programari a mida per a pimes de tot Catalunya, des de Granollers. El codi i el disseny són teus quan el projecte està pagat.",
+      en: "I build websites, automations and custom software for SMEs across Catalonia, from Granollers. The code and the design are yours once the project is paid for.",
     },
   },
   projects: {
@@ -40,9 +40,9 @@ export const SEO: Record<PageKey, { title: Localized; description: Localized }> 
       en: "Neibr: a B2B API backend in Go · Alejandro Cabrera",
     },
     description: {
-      es: "Cómo hice el backend de Neibr en Go, PostgreSQL y Redis: vecinos en un radio de 200 m, webhooks con HMAC y 2,9 millones de peticiones en 50 minutos.",
-      ca: "Com vaig fer el backend de Neibr en Go, PostgreSQL i Redis: veïns en un radi de 200 m, webhooks amb HMAC i 2,9 milions de peticions en 50 minuts.",
-      en: "How I built the Neibr backend in Go, PostgreSQL and Redis: neighbours within 200 m, HMAC-signed webhooks and 2.9 million requests in 50 minutes.",
+      es: "Cómo hice el backend de Neibr en Go, PostgreSQL y Redis: vecinos en un radio de 200 m, webhooks con HMAC y unos 2,9 millones de peticiones en 50 minutos.",
+      ca: "Com vaig fer el backend de Neibr en Go, PostgreSQL i Redis: veïns en un radi de 200 m, webhooks amb HMAC i uns 2,9 milions de peticions en 50 minuts.",
+      en: "How I built the Neibr backend in Go, PostgreSQL and Redis: neighbours within 200 m, HMAC-signed webhooks and about 2.9 million requests in 50 minutes.",
     },
   },
   vmv: {
@@ -83,14 +83,14 @@ export const SEO: Record<PageKey, { title: Localized; description: Localized }> 
   },
   web: {
     title: {
-      es: "Desarrollador Next.js y WordPress en Granollers",
-      ca: "Desenvolupador Next.js i WordPress a Granollers",
-      en: "Next.js and WordPress developer in Granollers",
+      es: "Webs a medida para pymes en Granollers: Next.js y WordPress",
+      ca: "Webs a mida per a pimes a Granollers: Next.js i WordPress",
+      en: "Custom Next.js and WordPress websites for SMEs in Granollers",
     },
     description: {
-      es: "Webs a medida en Next.js y WordPress desde Granollers. En VMV llevé 32 dominios y 12 plugins internos; con Digital DesAny hago webs para pymes.",
-      ca: "Webs a mida en Next.js i WordPress des de Granollers. A VMV portava 32 dominis i 12 plugins interns; amb Digital DesAny faig webs per a pimes.",
-      en: "Custom Next.js and WordPress websites from Granollers. At VMV I ran 32 domains and 12 internal plugins; with Digital DesAny I build sites for SMEs.",
+      es: "Webs a medida con Next.js y WordPress para pymes de toda Cataluña, desde Granollers. Diseño, desarrollo, digitalización y despliegue, juntos o por separado.",
+      ca: "Webs a mida amb Next.js i WordPress per a pimes de tot Catalunya, des de Granollers. Disseny, desenvolupament, digitalització i desplegament, junts o separats.",
+      en: "Custom Next.js and WordPress websites for SMEs across Catalonia, from Granollers. Design, development, digitalisation and deployment, together or separately.",
     },
   },
 };
@@ -149,6 +149,12 @@ export const PAGES = {
       assignment: { es: "Cómo se asignaba un vecino", ca: "Com s'assignava un veí", en: "How a neighbour was assigned" },
       security: { es: "Seguridad e integridad", ca: "Seguretat i integritat", en: "Security and integrity" },
     } as Record<"role" | "assignment" | "security", Localized>,
+    /** The security line in plain words, before the exact terms (DATA.experience.neibr.security). */
+    securityPlain: {
+      es: "Cada operador tenía sus propias claves, una petición repetida no duplicaba nada y los avisos iban firmados. Las operaciones quedaban en un registro de auditoría que no se podía modificar.",
+      ca: "Cada operador tenia les seves pròpies claus, una petició repetida no duplicava res i els avisos anaven signats. Les operacions quedaven en un registre d'auditoria que no es podia modificar.",
+      en: "Each carrier had its own keys, a repeated request didn't create duplicates and notifications were signed. Operations went into an audit record that couldn't be changed.",
+    } as Localized,
   },
 
   vmv: {
@@ -208,9 +214,9 @@ export const PAGES = {
     } as Record<"neibr" | "vmv" | "hardware" | "process" | "tech", Localized>,
     service: desany("/servicios/software-a-medida", "/serveis/programari-a-mida"),
     serviceLabel: {
-      es: "Software a medida en digitaldesany.com",
-      ca: "Programari a mida a digitaldesany.com",
-      en: "Custom software at digitaldesany.com",
+      es: "Software a medida para tu empresa: el servicio en digitaldesany.com",
+      ca: "Programari a mida per a la teva empresa: el servei a digitaldesany.com",
+      en: "Custom software for your business: the service page at digitaldesany.com",
     } as Localized,
   },
 
@@ -221,25 +227,25 @@ export const PAGES = {
       en: "Custom websites in Next.js and WordPress, from Granollers",
     } as Localized,
     lede: {
-      es: "Con Digital DesAny hago webs a medida para pymes de toda Cataluña, en cuatro partes que se contratan juntas o por separado: diseño, desarrollo, digitalización y despliegue.",
-      ca: "Amb Digital DesAny faig webs a mida per a pimes de tot Catalunya, en quatre parts que es contracten juntes o per separat: disseny, desenvolupament, digitalització i desplegament.",
-      en: "With Digital DesAny I build custom websites for small and medium businesses across Catalonia, in four parts you can hire together or separately: design, development, digitalisation and deployment.",
+      es: "Con Digital DesAny hago webs a medida para pymes de toda Cataluña. Contratas solo las partes que te faltan: diseño, desarrollo, digitalización o despliegue. O las cuatro juntas.",
+      ca: "Amb Digital DesAny faig webs a mida per a pimes de tot Catalunya. Contractes només les parts que et falten: disseny, desenvolupament, digitalització o desplegament. O les quatre juntes.",
+      en: "With Digital DesAny I build custom websites for small and medium businesses across Catalonia. You only hire the parts you need: design, development, digitalisation or deployment. Or all four together.",
     } as Localized,
     sections: {
-      cases: { es: "Webs publicadas", ca: "Webs publicades", en: "Published websites" },
+      cases: { es: "Webs publicadas", ca: "Webs publicats", en: "Published websites" },
       nextjs: { es: "Next.js", ca: "Next.js", en: "Next.js" },
       wordpress: { es: "WordPress", ca: "WordPress", en: "WordPress" },
       parts: { es: "Las cuatro partes", ca: "Les quatre parts", en: "The four parts" },
     } as Record<"cases" | "nextjs" | "wordpress" | "parts", Localized>,
     nextjs: {
       es: "Lara's Oak y GOK Thermal están hechas con Next.js, igual que la plataforma de firma de documentos de VMV Cosmetic Group y Peer2Stream, mi trabajo de fin de grado.",
-      ca: "Lara's Oak i GOK Thermal estan fetes amb Next.js, igual que la plataforma de signatura de documents de VMV Cosmetic Group i Peer2Stream, el meu treball de final de grau.",
+      ca: "Lara's Oak i GOK Thermal estan fets amb Next.js, igual que la plataforma de signatura de documents de VMV Cosmetic Group i Peer2Stream, el meu treball de final de grau.",
       en: "Lara's Oak and GOK Thermal are built with Next.js, as are the VMV Cosmetic Group document signing platform and Peer2Stream, my final project.",
     } as Localized,
     wordpress: {
-      es: "En VMV Cosmetic Group llevaba 32 dominios, 21 de ellos con web activa, con 12 plugins internos de WordPress y un store interno propio. En WordPress.org tengo publicado el plugin Simply Bootstrap Carousel.",
-      ca: "A VMV Cosmetic Group portava 32 dominis, 21 d'ells amb web activa, amb 12 plugins interns de WordPress i un store intern propi. A WordPress.org tinc publicat el plugin Simply Bootstrap Carousel.",
-      en: "At VMV Cosmetic Group I looked after 32 domains, 21 of them with a live site, with 12 internal WordPress plugins and an in-house plugin store. On WordPress.org I publish the Simply Bootstrap Carousel plugin.",
+      es: "En VMV Cosmetic Group llevaba 32 dominios (21 de ellos con web activa), 12 plugins internos de WordPress y una tienda interna de plugins. En WordPress.org tengo publicado el plugin Simply Bootstrap Carousel.",
+      ca: "A VMV Cosmetic Group portava 32 dominis (21 d'ells amb web actiu), 12 plugins interns de WordPress i una botiga interna de plugins. A WordPress.org tinc publicat el plugin Simply Bootstrap Carousel.",
+      en: "At VMV Cosmetic Group I looked after 32 domains (21 of them with a live site), 12 internal WordPress plugins and an in-house plugin store. On WordPress.org I've published the Simply Bootstrap Carousel plugin.",
     } as Localized,
     parts: [
       { label: { es: "Diseño", ca: "Disseny", en: "Design" }, href: desany("/servicios/diseno", "/serveis/disseny") },

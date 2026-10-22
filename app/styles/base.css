@@ -348,6 +348,8 @@ img { max-width: 100%; }
 @media (max-width: 640px) {
   .cbtns { grid-template-columns: minmax(0, 1fr); }
 }
+/* What the WhatsApp button does, right under it: --fg-2 on paper, paper on wine. */
+.cbtns__note { margin-top: var(--space-3); font-size: 15px; line-height: 1.5; color: var(--fg-2); }
 
 /* ───────── BrowserFrame ─────────
    The real capture under a thin bar with its domain. Captures can be up to

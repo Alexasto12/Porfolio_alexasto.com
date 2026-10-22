@@ -1,4 +1,4 @@
-import { DATA, desany } from "@/lib/content";
+import { DATA } from "@/lib/content";
 import { pick, translator, type Locale } from "@/lib/i18n-types";
 import { ROUTES } from "@/lib/routes";
 import { SectionHead } from "../ui/SectionHead";
@@ -6,9 +6,10 @@ import { ExtLink } from "../ui/Links";
 import { ContactButtons } from "../ui/ContactButtons";
 
 /**
- * Services (paper): the studio's four lines, each with its example on this
- * page and its page at digitaldesany.com; who owns the code; and the first
- * direct contact, right where the offer is read.
+ * Services (paper): who owns the code, the studio's four lines (what each
+ * one solves first, then how), each with its example on this page and its
+ * page at digitaldesany.com, and the first direct contact, right where the
+ * offer is read.
  */
 export function Services({ locale }: { locale: Locale }) {
   const t = translator(locale);
@@ -16,7 +17,7 @@ export function Services({ locale }: { locale: Locale }) {
   return (
     <section id="servicios" className="sec services" data-surface="paper" aria-labelledby="services-title">
       <div className="shell">
-        <SectionHead id="services-title" heading={t(d.heading)} description={t(d.description)} />
+        <SectionHead id="services-title" heading={t(d.heading)} />
         <p className="services__own">{t(d.ownership)}</p>
         <ul className="services__grid grid">
           {d.items.map((s, i) => (
@@ -44,7 +45,7 @@ export function Services({ locale }: { locale: Locale }) {
                 )}
                 <ExtLink href={pick(s.more, locale)}>
                   <span className="sr-only">{t(s.title)}: </span>
-                  {t(d.moreLabel)}
+                  {t(s.moreLabel ?? d.moreLabel)}
                 </ExtLink>
               </p>
             </li>
@@ -53,7 +54,6 @@ export function Services({ locale }: { locale: Locale }) {
         <div className="cta-band">
           <p className="cta-band__line">{t(d.cta.line)}</p>
           <ContactButtons locale={locale} />
-          <ExtLink href={pick(desany("", ""), locale)}>{t(d.cta.studio)}</ExtLink>
         </div>
       </div>
     </section>

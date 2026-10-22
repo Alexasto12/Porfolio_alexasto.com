@@ -17,7 +17,7 @@ export function GET() {
 > studio for small and medium businesses across Catalonia. "Alexasto" and
 > "alexasto12" are his username and domain.
 
-Alejandro builds websites, backends and automations. Most of his work goes
+Alejandro builds websites, automations and custom software. Most of his work goes
 through Digital DesAny, the studio he runs with Oriol Tamborero, in person or
 remotely. Once a project is paid for, the code and the design belong to the
 client, with full technical documentation.
