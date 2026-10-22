@@ -95,9 +95,15 @@ export const DATA = {
       en: "Web and backend developer in Granollers",
     } as Localized,
     lead: {
-      es: "Hago webs, backends y automatizaciones para pymes de toda Cataluña.",
-      ca: "Faig webs, backends i automatitzacions per a pimes de tot Catalunya.",
-      en: "I build websites, backends and automations for small and medium businesses across Catalonia.",
+      es: "Hago webs, automatizaciones y software a medida para pymes de toda Cataluña.",
+      ca: "Faig webs, automatitzacions i programari a mida per a pimes de tot Catalunya.",
+      en: "I build websites, automations and custom software for small and medium businesses across Catalonia.",
+    } as Localized,
+    /** Rendered right after the lead; the same words as services.ownership (at most twice per page). */
+    ownership: {
+      es: "El código y el diseño son tuyos cuando el proyecto está pagado.",
+      ca: "El codi i el disseny són teus quan el projecte està pagat.",
+      en: "The code and the design are yours once the project is paid for.",
     } as Localized,
     sub: {
       es: "Casi todo pasa por Digital DesAny, el estudio que llevo con Oriol Tamborero en Granollers, cerca de Barcelona. Trabajamos en persona o en remoto.",
@@ -105,16 +111,16 @@ export const DATA = {
       en: "Most of it goes through Digital DesAny, the studio I run with Oriol Tamborero in Granollers, near Barcelona. We work in person or remotely.",
     } as Localized,
     ctaPrimary: { es: "Cuéntame tu proyecto", ca: "Explica'm el teu projecte", en: "Tell me about your project" } as Localized,
-    ctaWork: { es: "Ver trabajos", ca: "Veure treballs", en: "See my work" } as Localized,
+    ctaWork: { es: "Ver trabajos", ca: "Veure treballs", en: "See the work" } as Localized,
     proofLabel: { es: "Algunas cifras", ca: "Algunes xifres", en: "Some figures" } as Localized,
     /** Published figures, each pointing to where the page tells the story. */
     proof: [
       {
         value: { es: "+500", ca: "+500", en: "500+" },
         text: {
-          es: "rosas digitales enviadas por Sant Jordi",
-          ca: "roses digitals enviades per Sant Jordi",
-          en: "digital roses sent for Sant Jordi",
+          es: "rosas digitales enviadas por Sant Jordi (tendencia en Reddit Catalunya)",
+          ca: "roses digitals enviades per Sant Jordi (tendència a Reddit Catalunya)",
+          en: "digital roses sent for Sant Jordi (trending on Reddit Catalunya)",
         },
         href: "roses",
       },
@@ -130,9 +136,9 @@ export const DATA = {
       {
         value: { es: "2,9 M", ca: "2,9 M", en: "2.9 M" },
         text: {
-          es: "peticiones en 50 minutos en el stress test de Neibr, con 0 errores 5xx",
-          ca: "peticions en 50 minuts a l'stress test de Neibr, amb 0 errors 5xx",
-          en: "requests in 50 minutes in the Neibr stress test, with zero 5xx errors",
+          es: "peticiones en 50 minutos sin ningún error del servidor (stress test de Neibr)",
+          ca: "peticions en 50 minuts sense cap error del servidor (stress test de Neibr)",
+          en: "requests in 50 minutes without a single server error (Neibr stress test)",
         },
         href: "neibr",
       },
@@ -151,21 +157,32 @@ export const DATA = {
   work: {
     heading: { es: "Trabajos con Digital DesAny", ca: "Treballs amb Digital DesAny", en: "Work with Digital DesAny" } as Localized,
     description: {
-      es: "Webs a medida, una campaña de Sant Jordi y redes sociales. Cada caso completo está en digitaldesany.com.",
-      ca: "Webs a mida, una campanya de Sant Jordi i xarxes socials. Cada cas complet és a digitaldesany.com.",
-      en: "Custom websites, a Sant Jordi campaign and social media. Each full case study is on digitaldesany.com.",
+      es: "Una campaña de Sant Jordi, dos webs a medida para artistas y las redes sociales de una empresa de maquinaria de limpieza industrial. Cada caso completo está en digitaldesany.com.",
+      ca: "Una campanya de Sant Jordi, dos webs a mida per a artistes i les xarxes socials d'una empresa de maquinària de neteja industrial. Cada cas complet és a digitaldesany.com.",
+      en: "A Sant Jordi campaign, two custom websites for artists, and social media for an industrial cleaning machinery company. Each full case study is on digitaldesany.com.",
     } as Localized,
+    allCases: {
+      label: { es: "Todos los casos en digitaldesany.com", ca: "Tots els casos a digitaldesany.com", en: "All case studies at digitaldesany.com" },
+      href: desany("/casos-exito", "/casos-exit"),
+    } as Link,
     cases: [
       {
         id: "roses",
         name: "Roses de Sant Jordi",
         description: {
-          es: "Más de 500 rosas enviadas y tendencia en Reddit Catalunya. Una rosa digital con dedicatoria para Sant Jordi, en catalán y castellano.",
-          ca: "Més de 500 roses enviades i tendència a Reddit Catalunya. Una rosa digital amb dedicatòria per Sant Jordi, en català i castellà.",
-          en: "Over 500 roses sent and trending on Reddit Catalunya. A digital rose with a dedication for Sant Jordi, in Catalan and Spanish.",
+          es: "Más de 500 rosas enviadas, cerca de 5.000 visitas y tendencia en Reddit Catalunya. Una rosa digital con dedicatoria para Sant Jordi, en catalán y castellano.",
+          ca: "Més de 500 roses enviades, prop de 5.000 visites i tendència a Reddit Catalunya. Una rosa digital amb dedicatòria per Sant Jordi, en català i castellà.",
+          en: "Over 500 roses sent, close to 5,000 visits and trending on Reddit Catalunya. A digital rose with a dedication for Sant Jordi, in Catalan and Spanish.",
         },
         links: [
-          { label: CASE_LINK, href: desanyCase("rosesstjordi") },
+          {
+            label: {
+              es: "Las cifras y el caso en digitaldesany.com",
+              ca: "Les xifres i el cas a digitaldesany.com",
+              en: "The figures and the case study at digitaldesany.com",
+            },
+            href: desanyCase("rosesstjordi"),
+          },
           { label: "rosesstjordi.com", href: "https://rosesstjordi.com" },
         ],
         shot: {
@@ -182,7 +199,7 @@ export const DATA = {
         description: {
           es: "Portfolio de storyboard y concept art, con un CMS hecho sobre un sistema de bloques propio.",
           ca: "Portfolio de storyboard i concept art, amb un CMS fet sobre un sistema de blocs propi.",
-          en: "Storyboard and concept art portfolio, with a CMS built on our own block system.",
+          en: "Storyboard and concept art portfolio, with a CMS built on its own block system.",
         },
         links: [
           { label: CASE_LINK, href: desanyCase("lara-oak") },
@@ -200,8 +217,8 @@ export const DATA = {
         id: "paulakrebel",
         name: "Paula Krebel",
         description: {
-          es: "Portfolio trilingüe de ilustración infantil y juvenil, con diseño de marca y design system.",
-          ca: "Portfolio trilingüe d'il·lustració infantil i juvenil, amb disseny de marca i design system.",
+          es: "Portfolio trilingüe de ilustración infantil y juvenil, con diseño de marca y un sistema de diseño.",
+          ca: "Portfolio trilingüe d'il·lustració infantil i juvenil, amb disseny de marca i un sistema de disseny.",
           en: "Trilingual portfolio of children's and young adult illustration, with brand design and a design system.",
         },
         links: [{ label: CASE_LINK, href: desanyCase("paula-krebel") }],
@@ -221,7 +238,8 @@ export const DATA = {
           ca: "Xarxes socials per a una empresa de maquinària de neteja industrial: reels de demostració, LinkedIn, YouTube i correus a la seva base de clients.",
           en: "Social media for an industrial cleaning machinery company: demo reels, LinkedIn, YouTube and emails to its customer base.",
         },
-        links: [],
+        // Its case is a card on the social media service page (/es/casos-exito/hidrotech-bordallo redirects there).
+        links: [{ label: CASE_LINK, href: desany("/servicios/gestion-rrss", "/serveis/gestio-xarxes-socials") }],
         poster: {
           label: { es: "Redes sociales", ca: "Xarxes socials", en: "Social media" },
           words: {
@@ -240,24 +258,19 @@ export const DATA = {
       ca: "Webs, xarxes, automatitzacions i programari a mida",
       en: "Websites, social media, automations and custom software",
     } as Localized,
-    description: {
-      es: "Trabajamos para pymes de toda Cataluña, en persona o en remoto.",
-      ca: "Treballem per a pimes de tot Catalunya, en persona o en remot.",
-      en: "We work for small and medium businesses across Catalonia, in person or remotely.",
-    } as Localized,
     ownership: {
-      es: "Cuando el proyecto está pagado, el código y el diseño son tuyos, con documentación técnica completa.",
-      ca: "Quan el projecte està pagat, el codi i el disseny són teus, amb documentació tècnica completa.",
-      en: "Once the project is paid for, the code and the design are yours, with full technical documentation.",
+      es: "El código y el diseño son tuyos cuando el proyecto está pagado, con documentación técnica completa.",
+      ca: "El codi i el disseny són teus quan el projecte està pagat, amb documentació tècnica completa.",
+      en: "The code and the design are yours once the project is paid for, with full technical documentation.",
     } as Localized,
     examplesLabel: { es: "Ejemplos", ca: "Exemples", en: "Examples" } as Localized,
     items: [
       {
         title: { es: "Webs a medida", ca: "Webs a mida", en: "Custom websites" },
         text: {
-          es: "En cuatro partes que se contratan juntas o por separado: diseño, desarrollo, digitalización y despliegue.",
-          ca: "En quatre parts que es contracten juntes o per separat: disseny, desenvolupament, digitalització i desplegament.",
-          en: "In four parts you can hire together or separately: design, development, digitalisation and deployment.",
+          es: "Contratas solo las partes que te faltan: diseño, desarrollo, digitalización o despliegue. O las cuatro juntas.",
+          ca: "Contractes només les parts que et falten: disseny, desenvolupament, digitalització o desplegament. O les quatre juntes.",
+          en: "You only hire the parts you're missing: design, development, digitalisation or deployment. Or all four together.",
         },
         examples: [
           { label: "Roses de Sant Jordi", id: "roses" },
@@ -266,13 +279,19 @@ export const DATA = {
         ],
         page: "web",
         more: desany("/servicios", "/serveis"),
+        // The studio's general services page, where the four parts are listed.
+        moreLabel: {
+          es: "Las cuatro partes en digitaldesany.com",
+          ca: "Les quatre parts a digitaldesany.com",
+          en: "The four parts at digitaldesany.com",
+        },
       },
       {
         title: { es: "Gestión de redes sociales", ca: "Gestió de xarxes socials", en: "Social media management" },
         text: {
-          es: "Para Hidrotech Bordalló, por ejemplo: reels de demostración, LinkedIn, YouTube y emails a su base de clientes.",
-          ca: "Per a Hidrotech Bordalló, per exemple: reels de demostració, LinkedIn, YouTube i correus a la seva base de clients.",
-          en: "For Hidrotech Bordalló, for example: demo reels, LinkedIn, YouTube and emails to its customer base.",
+          es: "Reels de demostración, LinkedIn, YouTube y emails a la base de clientes, como en el caso de Hidrotech Bordalló.",
+          ca: "Reels de demostració, LinkedIn, YouTube i correus a la base de clients, com en el cas d'Hidrotech Bordalló.",
+          en: "Demo reels, LinkedIn, YouTube and emails to the customer base, as in our work for Hidrotech Bordalló.",
         },
         examples: [{ label: "Hidrotech Bordalló", id: "hidrotech" }],
         more: desany("/servicios/gestion-rrss", "/serveis/gestio-xarxes-socials"),
@@ -280,18 +299,18 @@ export const DATA = {
       {
         title: { es: "Automatizaciones", ca: "Automatitzacions", en: "Automations" },
         text: {
-          es: "Con y sin IA, según lo que pida el caso.",
-          ca: "Amb IA i sense, segons el que demani el cas.",
-          en: "With or without AI, depending on what the job needs.",
+          es: "Las tareas que repites a mano, las automatizamos con IA o sin ella, según el caso. Un ejemplo de mi etapa en VMV Cosmetic Group: los avisos de WhatsApp Business para las delegaciones.",
+          ca: "Les tasques que repeteixes a mà, les automatitzem amb IA o sense, segons el cas. Un exemple de la meva etapa a VMV Cosmetic Group: els avisos de WhatsApp Business per a les delegacions.",
+          en: "We automate the tasks you repeat by hand, with or without AI, depending on the job. One example from my time at VMV Cosmetic Group: WhatsApp Business notifications for the regional offices.",
         },
         more: desany("/servicios/automatizaciones", "/serveis/automatitzacions"),
       },
       {
         title: { es: "Software a medida", ca: "Programari a mida", en: "Custom software" },
         text: {
-          es: "APIs, integraciones y aplicaciones hechas para un caso concreto.",
-          ca: "APIs, integracions i aplicacions fetes per a un cas concret.",
-          en: "APIs, integrations and applications built for one specific case.",
+          es: "Cuando ningún programa estándar encaja con cómo trabajas: aplicaciones hechas para tu caso y conexiones entre los programas que ya usas (APIs e integraciones).",
+          ca: "Quan cap programa estàndard no encaixa amb com treballes: aplicacions fetes per al teu cas i connexions entre els programes que ja fas servir (APIs i integracions).",
+          en: "When no off-the-shelf software fits the way you work: applications built for your case and connections between the programs you already use (APIs and integrations).",
         },
         page: "backend",
         more: desany("/servicios/software-a-medida", "/serveis/programari-a-mida"),
@@ -302,32 +321,28 @@ export const DATA = {
       examples?: { label: string; id: string }[];
       page?: "web" | "backend";
       more: Localized;
+      moreLabel?: Localized;
     }[],
-    moreLabel: { es: "En digitaldesany.com", ca: "A digitaldesany.com", en: "On digitaldesany.com" } as Localized,
+    moreLabel: { es: "El servicio en digitaldesany.com", ca: "El servei a digitaldesany.com", en: "The service page at digitaldesany.com" } as Localized,
     pageLabel: {
       web: { es: "Desarrollo web", ca: "Desenvolupament web", en: "Web development" },
       backend: { es: "Desarrollo backend", ca: "Desenvolupament backend", en: "Backend development" },
     } as Record<"web" | "backend", Localized>,
     cta: {
       line: {
-        es: "Si tienes un proyecto en mente, escríbenos.",
-        ca: "Si tens un projecte al cap, escriu-nos.",
-        en: "If you have a project in mind, get in touch.",
-      } as Localized,
-      studio: {
-        es: "Más sobre el estudio en digitaldesany.com",
-        ca: "Més sobre l'estudi a digitaldesany.com",
-        en: "More about the studio at digitaldesany.com",
+        es: "Cuéntanos qué necesitas y para cuándo.",
+        ca: "Explica'ns què necessites i per a quan.",
+        en: "Tell us what you need and by when.",
       } as Localized,
     },
   },
 
   experience: {
-    heading: { es: "Experiencia en backend y web", ca: "Experiència en backend i web", en: "Backend and web experience" } as Localized,
+    heading: { es: "Experiencia: VMV Cosmetic Group, Neibr y GOK Thermal", ca: "Experiència: VMV Cosmetic Group, Neibr i GOK Thermal", en: "Experience: VMV Cosmetic Group, Neibr and GOK Thermal" } as Localized,
     description: {
-      es: "Fui programador web principal en VMV Cosmetic Group y cofundé Neibr, una API B2B que cerramos antes de lanzar. Aparte, hice la web de GOK Thermal como encargo freelance.",
-      ca: "Vaig ser programador web principal a VMV Cosmetic Group i vaig cofundar Neibr, una API B2B que vam tancar abans de llançar-la. A part, vaig fer el web de GOK Thermal com a encàrrec freelance.",
-      en: "I was lead web developer at VMV Cosmetic Group and co-founded Neibr, a B2B API we shut down before launch. Separately, I built the GOK Thermal website as a freelance job.",
+      es: "Fui el programador web principal de VMV Cosmetic Group y cofundé Neibr, una API B2B para operadores de paquetería. Aparte, hice la web de GOK Thermal como encargo freelance.",
+      ca: "Vaig ser el programador web principal de VMV Cosmetic Group i vaig cofundar Neibr, una API B2B per a operadors de paqueteria. A part, vaig fer el web de GOK Thermal com a encàrrec freelance.",
+      en: "I was the lead web developer at VMV Cosmetic Group and co-founded Neibr, a B2B API for parcel carriers. Separately, I built the GOK Thermal website as a freelance job.",
     } as Localized,
 
     vmv: {
@@ -342,11 +357,11 @@ export const DATA = {
       stats: [
         {
           value: "32",
-          label: { es: "dominios, 21 de ellos con web activa", ca: "dominis, 21 d'ells amb web activa", en: "domains, 21 of them with a live site" },
+          label: { es: "dominios, 21 de ellos con web activa", ca: "dominis, 21 d'ells amb web actiu", en: "domains, 21 of them with a live site" },
         },
         {
           value: "12",
-          label: { es: "plugins internos y un store interno propio", ca: "plugins interns i un store intern propi", en: "internal plugins and an in-house plugin store" },
+          label: { es: "plugins internos y una tienda interna de plugins", ca: "plugins interns i una botiga interna de plugins", en: "internal plugins and an in-house plugin store" },
         },
         {
           value: "20",
@@ -372,14 +387,14 @@ export const DATA = {
           },
         },
         {
-          title: { es: "Magazine corporativo", ca: "Magazine corporatiu", en: "Corporate magazine" },
+          title: { es: "Revista corporativa", ca: "Revista corporativa", en: "Corporate magazine" },
           description: {
             es: "Edición colaborativa, versiones por número y previsualización en tiempo real.",
             ca: "Edició col·laborativa, versions per número i previsualització en temps real.",
             en: "Collaborative editing, per-issue versions and real-time preview.",
           },
           link: {
-            label: { es: "Demo pública del magazine", ca: "Demo pública del magazine", en: "Public demo of the magazine" },
+            label: { es: "Demo pública de la revista", ca: "Demo pública de la revista", en: "Public demo of the magazine" },
             href: "https://magazine.salerm.com/s/7611600d-0ac8-4b56-b5a3-f54e1ed7522c",
           },
         },
@@ -430,9 +445,9 @@ export const DATA = {
     neibr: {
       title: "Neibr",
       sub: {
-        es: "Cofundador, cerrada en 2026",
-        ca: "Cofundador, tancada el 2026",
-        en: "Co-founder, shut down in 2026",
+        es: "Cofundador y único desarrollador de backend",
+        ca: "Cofundador i únic desenvolupador de backend",
+        en: "Co-founder and sole backend developer",
       } as Localized,
       tagline: {
         es: "API B2B para operadores de paquetería.",
@@ -445,9 +460,9 @@ export const DATA = {
         en: "When a delivery fails, the parcel goes to a neighbour within 200 m instead of going back to the depot.",
       } as Localized,
       role: {
-        es: "Fui cofundador y el único desarrollador de backend. También monté el despliegue y la web, y participé en la parte comercial y en las redes de la empresa.",
-        ca: "Vaig ser cofundador i l'únic desenvolupador de backend. També vaig muntar el desplegament i la web, i vaig participar en la part comercial i a les xarxes de l'empresa.",
-        en: "I was a co-founder and the only backend developer. I also set up the deployment and the website, and took part in sales and the company's social media.",
+        es: "Además del backend, monté el despliegue y la web, y participé en la parte comercial y en las redes de la empresa.",
+        ca: "A més del backend, vaig muntar el desplegament i el web, i vaig participar en la part comercial i a les xarxes de l'empresa.",
+        en: "Besides the backend, I set up the deployment and the website, and took part in sales and the company's social media.",
       } as Localized,
       stack: {
         es: "Go (Fiber), PostgreSQL y Redis.",
@@ -469,11 +484,11 @@ export const DATA = {
         ca: "Va ser un dels projectes guanyadors dels Santander X Spain Awards 2026 (UVic).",
         en: "It was one of the winning projects of the Santander X Spain Awards 2026 (UVic).",
       } as Localized,
-      closureLabel: { es: "Por qué cerramos Neibr", ca: "Per què vam tancar Neibr", en: "Why we shut it down" } as Localized,
+      closureLabel: { es: "Por qué cerramos Neibr", ca: "Per què vam tancar Neibr", en: "Why we shut Neibr down" } as Localized,
       closure: {
-        es: "Hablar con un gran operador nos mostró problemas del modelo que el código no iba a resolver, y lo cerramos antes de lanzar.",
-        ca: "Parlar amb un gran operador ens va mostrar problemes del model que el codi no resoldria, i el vam tancar abans de llançar-lo.",
-        en: "Talking to a large carrier showed us problems in the model that code wasn't going to fix, so we shut it down before launch.",
+        es: "Hablar con un gran operador nos mostró problemas del modelo que el código no iba a resolver, y lo cerramos en 2026, antes de lanzar.",
+        ca: "Parlar amb un gran operador ens va mostrar problemes del model que el codi no resoldria, i el vam tancar el 2026, abans de llançar-lo.",
+        en: "Talking to a large carrier showed us problems in the model that code wasn't going to fix, so we shut it down in 2026, before launch.",
       } as Localized,
       diagram: {
         title: {
@@ -505,9 +520,11 @@ export const DATA = {
         ] as Localized[],
       },
       site: { label: "neibr.es", href: "https://neibr.es" } as Link,
+      /** digitaldesany.com tells the website side (design, development and deployment). */
+      caseLink: { label: CASE_LINK, href: desanyCase("neibr") } as Link,
       shotAlt: {
         es: "Portada de neibr.es, la web de Neibr",
-        ca: "Portada de neibr.es, la web de Neibr",
+        ca: "Portada de neibr.es, el web de Neibr",
         en: "Home page of neibr.es, the Neibr website",
       } as Localized,
       more: { es: "Cómo hice el backend de Neibr", ca: "Com vaig fer el backend de Neibr", en: "How I built the Neibr backend" } as Localized,
@@ -529,13 +546,13 @@ export const DATA = {
           main: true,
         },
         { value: { es: "~968", ca: "~968", en: "~968" }, label: { es: "peticiones por segundo", ca: "peticions per segon", en: "requests per second" } },
-        { value: { es: "< 100 ms", ca: "< 100 ms", en: "< 100 ms" }, label: { es: "p95", ca: "p95", en: "p95" } },
-        { value: { es: "0", ca: "0", en: "0" }, label: { es: "errores 5xx", ca: "errors 5xx", en: "5xx errors" } },
+        { value: { es: "< 100 ms", ca: "< 100 ms", en: "< 100 ms" }, label: { es: "95 de cada 100 respuestas (p95)", ca: "95 de cada 100 respostes (p95)", en: "95 out of 100 responses (p95)" } },
+        { value: { es: "0", ca: "0", en: "0" }, label: { es: "errores del servidor (5xx)", ca: "errors del servidor (5xx)", en: "server errors (5xx)" } },
       ] as { value: Localized; label: Localized; main?: boolean }[],
       stressSentence: {
-        es: "Unos 2,9 millones de peticiones en 50 minutos: unas 968 por segundo, con el p95 por debajo de 100 ms y ningún error 5xx.",
-        ca: "Uns 2,9 milions de peticions en 50 minuts: unes 968 per segon, amb el p95 per sota de 100 ms i cap error 5xx.",
-        en: "About 2.9 million requests in 50 minutes: some 968 per second, with p95 under 100 ms and no 5xx errors.",
+        es: "Unos 2,9 millones de peticiones en 50 minutos, unas 968 por segundo. El 95 % se respondió en menos de 100 ms (p95) y ninguna dio error del servidor (5xx).",
+        ca: "Uns 2,9 milions de peticions en 50 minuts, unes 968 per segon. El 95 % es va respondre en menys de 100 ms (p95) i cap no va donar error del servidor (5xx).",
+        en: "About 2.9 million requests in 50 minutes, some 968 per second. Of those, 95% were answered in under 100 ms (p95) and none returned a server error (5xx).",
       } as Localized,
     },
 
@@ -543,15 +560,15 @@ export const DATA = {
       id: "gokthermal",
       name: "GOK Thermal",
       description: {
-        es: "Web de un instalador de climatización de Granollers, con galería de proyectos, reseñas y contacto directo por WhatsApp o llamada. La hice como encargo freelance propio, fuera de Digital DesAny.",
-        ca: "Web d'un instal·lador de climatització de Granollers, amb galeria de projectes, ressenyes i contacte directe per WhatsApp o trucada. La vaig fer com a encàrrec freelance propi, fora de Digital DesAny.",
-        en: "Website for an HVAC installer in Granollers, with a project gallery, reviews and direct contact by WhatsApp or phone. I built it as my own freelance job, outside Digital DesAny.",
+        es: "Web de un instalador de climatización de Granollers. Sus clientes pueden ver los proyectos y las reseñas, y escribirle por WhatsApp o llamarlo directamente. La hice como encargo freelance propio, fuera de Digital DesAny.",
+        ca: "Web d'un instal·lador de climatització de Granollers. Els seus clients hi poden veure els projectes i les ressenyes, i escriure-li per WhatsApp o trucar-li directament. El vaig fer com a encàrrec freelance propi, fora de Digital DesAny.",
+        en: "Website for an HVAC installer in Granollers. Its customers can see the projects and reviews, and get in touch directly by WhatsApp or phone. I built it as my own freelance job, outside Digital DesAny.",
       },
       links: [{ label: "gokthermal.com", href: "https://gokthermal.com" }],
       shot: {
         alt: {
           es: "Portada de gokthermal.com, la web de GOK Thermal",
-          ca: "Portada de gokthermal.com, la web de GOK Thermal",
+          ca: "Portada de gokthermal.com, el web de GOK Thermal",
           en: "Home page of gokthermal.com, the GOK Thermal website",
         },
       },
@@ -565,9 +582,9 @@ export const DATA = {
       en: "I started by opening up the family laptop at 11",
     } as Localized,
     description: {
-      es: "Después vinieron las reparaciones, el soporte técnico, el grado de DAW, VMV Cosmetic Group y Digital DesAny.",
-      ca: "Després van venir les reparacions, el suport tècnic, el grau de DAW, VMV Cosmetic Group i Digital DesAny.",
-      en: "Then came repairs, tech support, the DAW web development course, VMV Cosmetic Group and Digital DesAny.",
+      es: "Luego arreglé ordenadores de vecinos, familia y amigos. Aprendí a programar en los ratos libres de las guardias de helpdesk y, más tarde, en el grado de DAW. Después vinieron VMV Cosmetic Group y Digital DesAny.",
+      ca: "Després vaig arreglar ordinadors de veïns, família i amics. Vaig aprendre a programar a les estones lliures de les guàrdies de helpdesk i, més tard, al grau de DAW. Llavors van venir VMV Cosmetic Group i Digital DesAny.",
+      en: "Then I fixed computers for neighbours, family and friends. I learned to code in the quiet hours of helpdesk shifts, and later on the DAW web development course. Next came VMV Cosmetic Group and Digital DesAny.",
     } as Localized,
     stack: {
       es: "Hoy trabajo con Go y Fiber, Java 21 y Spring Boot 3, Next.js, React y TypeScript, WordPress y PHP, PostgreSQL, Redis y Docker.",
@@ -612,15 +629,15 @@ export const DATA = {
       {
         year: "2014",
         title: {
-          es: "Monto mi primer PC tras hacer de helpdesk freelance.",
-          ca: "Munto el meu primer PC després de fer d'helpdesk freelance.",
-          en: "I build my first PC after doing freelance helpdesk work.",
+          es: "Monto mi primer PC con lo que gano arreglando ordenadores.",
+          ca: "Munto el meu primer PC amb el que guanyo arreglant ordinadors.",
+          en: "I build my first PC with what I earn fixing computers.",
         },
         place: { es: "Para vecinos, familia y amigos", ca: "Per a veïns, família i amics", en: "For neighbours, family and friends" },
         body: {
-          es: "Empecé a arreglar ordenadores de gente cercana: pequeñas reparaciones, reinstalaciones y configuraciones. Con eso me pagué el primer PC.",
-          ca: "Vaig començar a arreglar ordinadors de gent propera: petites reparacions, reinstal·lacions i configuracions. Amb això em vaig pagar el primer PC.",
-          en: "I started fixing computers for people around me: small repairs, reinstalls and setups. That paid for my first PC.",
+          es: "Empecé a arreglar ordenadores de gente cercana: pequeñas reparaciones, reinstalaciones y configuraciones.",
+          ca: "Vaig començar a arreglar ordinadors de gent propera: petites reparacions, reinstal·lacions i configuracions.",
+          en: "I started fixing computers for people around me: small repairs, reinstalls and setups.",
         },
       },
       {
@@ -678,9 +695,9 @@ export const DATA = {
           en: "Payments over a serial bus at 9600 baud",
         },
         body: {
-          es: "Integración del pago cashless WiPay con máquinas expendedoras por MDB. El trabajo concreto: traducir los payloads de pago a hexadecimal por bus serie a 9600 baudios.",
-          ca: "Integració del pagament cashless WiPay amb màquines expenedores per MDB. La feina concreta: traduir els payloads de pagament a hexadecimal pel bus sèrie a 9600 bauds.",
-          en: "Integrating WiPay cashless payments with vending machines over MDB. The actual work: translating payment payloads to hexadecimal over a serial bus at 9600 baud.",
+          es: "El pago cashless se conecta a la máquina por MDB. El trabajo concreto: traducir los payloads de pago a hexadecimal por bus serie a 9600 baudios.",
+          ca: "El pagament cashless es connecta a la màquina per MDB. La feina concreta: traduir els payloads de pagament a hexadecimal pel bus sèrie a 9600 bauds.",
+          en: "The cashless payment connects to the machine over MDB. The actual work: translating payment payloads to hexadecimal over a serial bus at 9600 baud.",
         },
       },
       {
@@ -713,13 +730,20 @@ export const DATA = {
       },
     ] as TimelineEntry[],
     educationLabel: { es: "Formación y código abierto", ca: "Formació i codi obert", en: "Education and open source" } as Localized,
+    /** public/photos/, built by scripts/portrait.mjs (ink on paper). */
+    portrait: {
+      src: "/photos/alejandro-cabrera.jpg",
+      width: 1200,
+      height: 1500,
+      alt: { es: "Retrato de Alejandro Cabrera", ca: "Retrat de l'Alejandro Cabrera", en: "Portrait of Alejandro Cabrera" } as Localized,
+    },
     peer2stream: {
       id: "peer2stream",
       name: "Peer2Stream",
       description: {
-        es: "Mi trabajo de fin de grado de DAW, con nota 10/10, hecho con Ismael Delgado. Sirve para descubrir, ver y organizar películas y series con los datos de TMDB. Next.js 15, React 19 y MongoDB.",
-        ca: "El meu treball de final de grau de DAW, amb nota 10/10, fet amb l'Ismael Delgado. Serveix per descobrir, veure i organitzar pel·lícules i sèries amb les dades de TMDB. Next.js 15, React 19 i MongoDB.",
-        en: "My DAW final project, graded 10/10, built with Ismael Delgado. It helps you discover, watch and organise films and series with TMDB data. Next.js 15, React 19 and MongoDB.",
+        es: "Una aplicación web para descubrir, ver y organizar películas y series con los datos de TMDB. Fue mi trabajo de fin de grado de DAW, con nota 10/10, y lo hice con Ismael Delgado. Next.js 15, React 19 y MongoDB.",
+        ca: "Una aplicació web per descobrir, veure i organitzar pel·lícules i sèries amb les dades de TMDB. Va ser el meu treball de final de grau de DAW, amb nota 10/10, i el vaig fer amb l'Ismael Delgado. Next.js 15, React 19 i MongoDB.",
+        en: "A web app for discovering, watching and organising films and series with TMDB data. It was my DAW final project, graded 10/10, and I built it with Ismael Delgado. Next.js 15, React 19 and MongoDB.",
       },
       links: [
         { label: { es: "Demo de Peer2Stream", ca: "Demo de Peer2Stream", en: "Peer2Stream demo" }, href: "https://peer2stream.alexasto.com/discover" },
@@ -750,7 +774,7 @@ export const DATA = {
       text: {
         es: "En WordPress.org tengo publicado el plugin Simply Bootstrap Carousel, con más de 10 instalaciones activas.",
         ca: "A WordPress.org tinc publicat el plugin Simply Bootstrap Carousel, amb més de 10 instal·lacions actives.",
-        en: "On WordPress.org I publish the Simply Bootstrap Carousel plugin, with over 10 active installs.",
+        en: "On WordPress.org I've published the Simply Bootstrap Carousel plugin, which has over 10 active installs.",
       } as Localized,
       link: {
         label: { es: "Mi perfil en WordPress.org", ca: "El meu perfil a WordPress.org", en: "My WordPress.org profile" },
@@ -766,9 +790,9 @@ export const DATA = {
       {
         title: { es: "Primero, la API y los datos", ca: "Primer, l'API i les dades", en: "The API and the data first" },
         body: {
-          es: "Antes de escribir lógica de negocio diseño el contrato de la API y el esquema de la base de datos, con OpenAPI versionado y el esquema documentado.",
-          ca: "Abans d'escriure lògica de negoci dissenyo el contracte de l'API i l'esquema de la base de dades, amb OpenAPI versionat i l'esquema documentat.",
-          en: "Before writing business logic I design the API contract and the database schema, with versioned OpenAPI and a documented schema.",
+          es: "Antes de escribir lógica de negocio, diseño el contrato de la API y el esquema de la base de datos. Los dos quedan documentados, la API con OpenAPI versionado.",
+          ca: "Abans d'escriure lògica de negoci, dissenyo el contracte de l'API i l'esquema de la base de dades. Tots dos queden documentats, l'API amb OpenAPI versionat.",
+          en: "Before writing business logic, I design the API contract and the database schema. Both are documented, the API in versioned OpenAPI.",
         },
       },
       {
@@ -782,9 +806,9 @@ export const DATA = {
       {
         title: { es: "Cuento con los fallos", ca: "Compto amb els errors", en: "I plan for failure" },
         body: {
-          es: "Timeouts, reintentos y rate limits desde el inicio, y los datos externos se validan antes de procesarlos. En Neibr, escrituras idempotentes y webhooks firmados con HMAC.",
-          ca: "Timeouts, reintents i rate limits des de l'inici, i les dades externes es validen abans de processar-les. A Neibr, escriptures idempotents i webhooks signats amb HMAC.",
-          en: "Timeouts, retries and rate limits from the start, and external data is validated before it is processed. In Neibr, idempotent writes and HMAC-signed webhooks.",
+          es: "Timeouts, reintentos y rate limits desde el inicio, y valido los datos externos antes de procesarlos. En Neibr, escrituras idempotentes y webhooks firmados con HMAC.",
+          ca: "Timeouts, reintents i rate limits des de l'inici, i valido les dades externes abans de processar-les. A Neibr, escriptures idempotents i webhooks signats amb HMAC.",
+          en: "Timeouts, retries and rate limits from the start, and I validate external data before processing it. In Neibr, idempotent writes and HMAC-signed webhooks.",
         },
       },
       {
@@ -801,11 +825,17 @@ export const DATA = {
   contact: {
     heading: { es: "Cuéntame tu proyecto", ca: "Explica'm el teu projecte", en: "Tell me about your project" } as Localized,
     body: {
-      es: "Escríbenos por WhatsApp o por correo y cuéntanos qué necesitas y para cuándo. Los proyectos los llevamos desde Digital DesAny.",
-      ca: "Escriu-nos per WhatsApp o per correu i explica'ns què necessites i per a quan. Els projectes els portem des de Digital DesAny.",
-      en: "Message us on WhatsApp or by email and tell us what you need and by when. Client projects go through Digital DesAny.",
+      es: "Los proyectos los llevamos Oriol Tamborero y yo desde Digital DesAny, en Granollers. Cuéntanos qué necesitas y para cuándo, por WhatsApp o por correo.",
+      ca: "Els projectes els portem l'Oriol Tamborero i jo des de Digital DesAny, a Granollers. Explica'ns què necessites i per a quan, per WhatsApp o per correu.",
+      en: "Oriol Tamborero and I run client projects through Digital DesAny, in Granollers. Tell us what you need and by when, on WhatsApp or by email.",
     } as Localized,
     whatsapp: { es: "Escribir por WhatsApp", ca: "Escriure per WhatsApp", en: "Message on WhatsApp" } as Localized,
+    /** Under the two buttons: what the WhatsApp one does (whatsappText). */
+    whatsappNote: {
+      es: "WhatsApp se abre con el mensaje ya escrito.",
+      ca: "WhatsApp s'obre amb el missatge ja escrit.",
+      en: "WhatsApp opens with the message already written.",
+    } as Localized,
     email: { es: "Escribir por correo", ca: "Escriure per correu", en: "Send an email" } as Localized,
     /** Prefilled message and subject; {host} is the site's domain. */
     whatsappText: {

@@ -5,6 +5,7 @@ import { ROUTES, type PageKey } from "@/lib/routes";
 import { SubPage, PageHead, PageSection, ProjectItem } from "./PageParts";
 import { CaseCard } from "../CaseCard";
 import { BrowserFrame } from "../BrowserFrame";
+import { Portrait } from "../Portrait";
 import { ExtLink, LinkRow } from "../ui/Links";
 import { VmvCapabilities, VmvFigures } from "../VmvBlocks";
 import { NeibrFigure, StressBand } from "../NeibrBlocks";
@@ -28,6 +29,9 @@ function ProjectsPage({ locale }: { locale: Locale }) {
             <CaseCard key={c.id} card={c} locale={locale} sizes={SIZES_HALF} />
           ))}
         </div>
+        <p className="page-sec__more">
+          <ExtLink href={pick(DATA.work.allCases.href, locale)}>{pick(DATA.work.allCases.label, locale)}</ExtLink>
+        </p>
       </PageSection>
       <PageSection id="backend" title={t(p.groups.backend)}>
         <div className="work__grid">
@@ -39,6 +43,10 @@ function ProjectsPage({ locale }: { locale: Locale }) {
             pageLabel={t(xp.neibr.more)}
             locale={locale}
           >
+            <ExtLink href={pick(xp.neibr.caseLink.href, locale)}>
+              <span className="sr-only">Neibr: </span>
+              {pick(xp.neibr.caseLink.label, locale)}
+            </ExtLink>
             <ExtLink href={pick(xp.neibr.site.href, locale)}>{pick(xp.neibr.site.label, locale)}</ExtLink>
           </ProjectItem>
           <ProjectItem id="vmv" name={xp.vmv.client} text={t(xp.vmv.intro)} page="vmv" pageLabel={t(xp.vmv.more)} locale={locale} />
@@ -80,7 +88,13 @@ function NeibrPage({ locale }: { locale: Locale }) {
         <div className="page-split grid">
           <div className="page-split__text">
             <p className="copy">{t(d.role)}</p>
-            <ExtLink href={pick(d.site.href, locale)}>{pick(d.site.label, locale)}</ExtLink>
+            <p className="xp-job__links">
+              <ExtLink href={pick(d.caseLink.href, locale)}>
+                <span className="sr-only">Neibr: </span>
+                {pick(d.caseLink.label, locale)}
+              </ExtLink>
+              <ExtLink href={pick(d.site.href, locale)}>{pick(d.site.label, locale)}</ExtLink>
+            </p>
           </div>
           <div className="page-split__media">
             <BrowserFrame id="neibr" alt={t(d.shotAlt)} sizes={SIZES_HALF} />
@@ -99,9 +113,10 @@ function NeibrPage({ locale }: { locale: Locale }) {
         </div>
       </PageSection>
       <PageSection id="seguridad" title={t(p.sections.security)}>
-        <p className="copy">{t(d.security)}</p>
+        <p className="copy">{t(p.securityPlain)}</p>
+        <p className="copy muted page-sec__more">{t(d.security)}</p>
       </PageSection>
-      <StressBand locale={locale} headingLevel={2} />
+      <StressBand locale={locale} headingLevel={2} withStack={false} />
       <PageSection id="cierre" title={t(d.closureLabel)}>
         <p className="copy">{t(d.closure)}</p>
       </PageSection>
@@ -145,7 +160,13 @@ function AboutPage({ locale }: { locale: Locale }) {
   const d = DATA.about;
   return (
     <SubPage locale={locale} page="about">
-      <PageHead locale={locale} page="about" title={t(p.h1)} lede={t(p.lede)}>
+      <PageHead
+        locale={locale}
+        page="about"
+        title={t(p.h1)}
+        lede={t(p.lede)}
+        aside={<Portrait locale={locale} className="page-head__photo" priority />}
+      >
         <p className="copy page-head__extra">{t(d.stack)}</p>
       </PageHead>
       <PageSection id="recorrido" title={t(p.sections.path)}>

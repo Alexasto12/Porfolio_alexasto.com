@@ -24,6 +24,7 @@ export function PageHead({
   title,
   meta,
   lede,
+  aside,
   children,
 }: {
   locale: Locale;
@@ -31,6 +32,8 @@ export function PageHead({
   title: string;
   meta?: ReactNode;
   lede?: string;
+  /** Beside the text on wide screens (the About page's photo). */
+  aside?: ReactNode;
   children?: ReactNode;
 }) {
   const t = translator(locale);
@@ -51,12 +54,17 @@ export function PageHead({
             ))}
           </ol>
         </nav>
-        <h1 id="page-title" className="page-head__title">
-          {title}
-        </h1>
-        {meta && <p className="page-head__meta">{meta}</p>}
-        {lede && <p className="page-head__lede">{lede}</p>}
-        {children}
+        <div className={aside ? "page-head__split grid" : undefined}>
+          <div className={aside ? "page-head__text" : undefined}>
+            <h1 id="page-title" className="page-head__title">
+              {title}
+            </h1>
+            {meta && <p className="page-head__meta">{meta}</p>}
+            {lede && <p className="page-head__lede">{lede}</p>}
+            {children}
+          </div>
+          {aside}
+        </div>
       </div>
     </section>
   );

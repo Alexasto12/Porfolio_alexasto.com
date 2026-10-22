@@ -17,7 +17,7 @@ export function GET() {
 > studio for small and medium businesses across Catalonia. "Alexasto" and
 > "alexasto12" are his username and domain.
 
-Alejandro builds websites, backends and automations. Most of his work goes
+Alejandro builds websites, automations and custom software. Most of his work goes
 through Digital DesAny, the studio he runs with Oriol Tamborero, in person or
 remotely. Once a project is paid for, the code and the design belong to the
 client, with full technical documentation.
@@ -47,7 +47,7 @@ ${pages}
 Custom websites (design, development, digitalisation and deployment), social
 media management, automations with or without AI, and custom software.
 Case studies: Roses de Sant Jordi (https://rosesstjordi.com; over 500 digital
-roses sent and trending on Reddit Catalunya), Lara's Oak
+roses sent, close to 5,000 visits and trending on Reddit Catalunya), Lara's Oak
 (https://larasoak.art), Paula Krebel and Hidrotech Bordalló.
 
 ## Experience

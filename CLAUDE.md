@@ -6,6 +6,8 @@ Si estás ejecutando la renovación de octubre de 2026, el plan está en `docs/p
 
 La dirección visual es la de `docs/portfolio-v2/DISENO.md` (papel, tinta y vino), que sustituye a la de `DECISIONES.md`. Su plan está en `docs/portfolio-v2/PLAN.md`. La ronda 2 (`docs/portfolio-v2/RONDA2.md`, comentarios de Alejandro) manda sobre `DISENO.md` donde no coinciden: portada en orden de venta, subpáginas para SEO y fuera la retícula, el grano y los efectos decorativos.
 
+Para escribir o reescribir textos, la guía es `docs/portfolio-v2/MARKETING.md` (propuesta de valor, lo importante primero, palabras llanas antes del término técnico, una palabra para cada cosa, frases prohibidas y checklist). En catalán, "web" (lloc web) va en masculino.
+
 Las 21 URL (portada y seis subpáginas en tres idiomas) salen de `lib/routes.json`, que leen la app y los scripts. Una página nueva se añade ahí, en `lib/pages.ts` (título, descripción y texto) y en `components/pages/Pages.tsx`.
 
 ## Reglas fijas
@@ -56,6 +58,7 @@ Tres superficies (`docs/portfolio-v2/DISENO.md`). Cada sección declara `data-su
 - **`links`:** `npm run links`. Comprueba que los enlaces externos de las 21 páginas responden 200. Necesita salida a internet. El perfil personal de LinkedIn sale con 999 porque LinkedIn rechaza las peticiones automáticas; el enlace está bien.
 - **`capture`:** `npm run capture`. Captura con una ventana de 1440×900 las webs de los proyectos (hasta tres pantallas de alto, para el desplazamiento de `BrowserFrame`) y guarda WebP de 200 KB como máximo en `public/shots/`, más el manifiesto `lib/shots.json`. Necesita salida a internet.
 - **`measure`:** `npm run measure`. Alto de cada sección de `/` a 1440 y 375 px, número de imágenes y SVG, y JS de cliente transferido.
+- **Retrato:** `node scripts/portrait.mjs <original.jpg>` (a mano). Rehace `public/photos/alejandro-cabrera.jpg` desde el original de 2000×2000 (que no está en el repositorio): recorte 4:5, sin el cable de la pared, en tinta y papel y sin metadatos.
 - **Fuentes:** `python3 scripts/subset-fonts.py` (a mano, necesita fonttools y brotli). Regenera los subconjuntos de `assets/fonts/` desde Google Fonts: solo los caracteres de los tres idiomas y los pesos en uso (Bricolage 600 a 800 con la anchura fija al 80 %, Hanken 400 a 500 y Space Mono 400). Si un texto nuevo usa un carácter que no está en `UNICODES`, añádelo ahí y vuelve a ejecutarlo; el script dice qué caracteres no tiene la fuente. No pidas en CSS pesos fuera de esos rangos: no hay negrita sintética (`font-synthesis-weight: none`).
 
 `shots`, `a11y`, `motion`, `lh`, `seo`, `links` y `measure` levantan `next start` en el puerto 3100 (o `CHECK_PORT`; fallan si ya está ocupado) y recompilan si el código, `assets/` o la configuración son más nuevos que el build. Con `BASE_URL` apuntan a otro servidor. Por defecto guardan en `docs/portfolio-refresh/despues/`; `-- --out docs/portfolio-refresh/antes` cambia la carpeta.

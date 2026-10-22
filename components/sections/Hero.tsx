@@ -20,7 +20,9 @@ export function Hero({ locale }: { locale: Locale }) {
             <span className="hero__role">{t(d.role)}</span>
           </h1>
           <div className="hero__intro">
-            <p className="hero__lead">{t(d.lead)}</p>
+            <p className="hero__lead">
+              {t(d.lead)} {t(d.ownership)}
+            </p>
             <p className="hero__sub copy">{t(d.sub)}</p>
             <div className="hero__ctas">
               <a href="#contacto" className="btn btn--solid">

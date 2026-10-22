@@ -19,7 +19,7 @@ export const SITE_URL = (process.env.SITE_URL || "https://dev.alexasto.com").rep
 export const SITE_HOST = new URL(SITE_URL).host;
 
 /** Date the content last changed (sitemap lastmod, dateModified). Update with the copy. */
-export const CONTENT_UPDATED = "2026-10-14";
+export const CONTENT_UPDATED = "2026-10-22";
 
 export const OG_LOCALE: Record<Locale, string> = { es: "es_ES", ca: "ca_ES", en: "en_US" };
 
@@ -186,6 +186,13 @@ export function jsonLd(locale: Locale, page: PageKey = "home") {
         "@type": "Occupation",
         name: JOB_TITLE[locale],
         occupationLocation: { "@type": "City", name: "Granollers", sameAs: wiki("Granollers") },
+      },
+      image: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}${DATA.about.portrait.src}`,
+        width: DATA.about.portrait.width,
+        height: DATA.about.portrait.height,
+        caption: DATA.about.portrait.alt[locale],
       },
       email: CONTACT.personalEmail,
       worksFor: { "@id": DESANY_ID },

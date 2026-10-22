@@ -14,20 +14,23 @@ export function mailtoHref(locale: Locale) {
   return `mailto:${CONTACT.workEmail}?subject=${encodeURIComponent(subject)}`;
 }
 
-/** The two direct channels for a project: WhatsApp (solid) and email. */
+/** The two direct channels for a project: WhatsApp (solid) and email, and a line on what WhatsApp does. */
 export function ContactButtons({ locale, size = "md" }: { locale: Locale; size?: "md" | "lg" }) {
   const t = translator(locale);
   const d = DATA.contact;
   return (
-    <div className={`cbtns cbtns--${size}`}>
-      <a href={whatsappHref(locale)} target="_blank" rel="noopener" className="cbtn cbtn--solid">
-        <span className="cbtn__label">{t(d.whatsapp)}</span>
-        <span className="cbtn__detail">{CONTACT.whatsappLabel}</span>
-      </a>
-      <a href={mailtoHref(locale)} className="cbtn">
-        <span className="cbtn__label">{t(d.email)}</span>
-        <span className="cbtn__detail">{CONTACT.workEmail}</span>
-      </a>
+    <div className="cbtns-wrap">
+      <div className={`cbtns cbtns--${size}`}>
+        <a href={whatsappHref(locale)} target="_blank" rel="noopener" className="cbtn cbtn--solid">
+          <span className="cbtn__label">{t(d.whatsapp)}</span>
+          <span className="cbtn__detail">{CONTACT.whatsappLabel}</span>
+        </a>
+        <a href={mailtoHref(locale)} className="cbtn">
+          <span className="cbtn__label">{t(d.email)}</span>
+          <span className="cbtn__detail">{CONTACT.workEmail}</span>
+        </a>
+      </div>
+      <p className="cbtns__note">{t(d.whatsappNote)}</p>
     </div>
   );
 }

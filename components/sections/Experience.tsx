@@ -78,6 +78,10 @@ function Neibr({ locale }: { locale: Locale }) {
           <a href={ROUTES.neibr[locale]} className="more-link">
             {t(d.more)}
           </a>
+          <ExtLink href={pick(d.caseLink.href, locale)}>
+            <span className="sr-only">Neibr: </span>
+            {pick(d.caseLink.label, locale)}
+          </ExtLink>
           <ExtLink href={pick(d.site.href, locale)}>{pick(d.site.label, locale)}</ExtLink>
         </p>
       </div>

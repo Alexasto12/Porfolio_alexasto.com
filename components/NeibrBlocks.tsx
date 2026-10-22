@@ -13,8 +13,18 @@ export function NeibrFigure({ locale }: { locale: Locale }) {
 /**
  * Full-width wine band: the stress test figures, the same facts as a
  * sentence, the stack and, next to it, the request the API answered.
+ * `withStack={false}` where the page has just told the stack and the
+ * security (the Neibr page), so it is not repeated.
  */
-export function StressBand({ locale, headingLevel = 3 }: { locale: Locale; headingLevel?: 2 | 3 }) {
+export function StressBand({
+  locale,
+  headingLevel = 3,
+  withStack = true,
+}: {
+  locale: Locale;
+  headingLevel?: 2 | 3;
+  withStack?: boolean;
+}) {
   const t = translator(locale);
   const d = DATA.experience.neibr;
   const Heading = headingLevel === 2 ? "h2" : "h3";
@@ -34,9 +44,11 @@ export function StressBand({ locale, headingLevel = 3 }: { locale: Locale; headi
             ))}
           </dl>
           <p className="stress__sentence">{t(d.stressSentence)}</p>
-          <p className="stress__stack">
-            {t(d.stack)} {t(d.security)}
-          </p>
+          {withStack && (
+            <p className="stress__stack">
+              {t(d.stack)} {t(d.security)}
+            </p>
+          )}
         </section>
         <div className="stress__terminal">
           <ApiTerminal title={t(d.endpointTitle)} label={t(d.terminalLabel)} />

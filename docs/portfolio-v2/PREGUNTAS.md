@@ -190,3 +190,67 @@ Confirmaron 19 hallazgos y descartaron 7. Todos los confirmados están arreglado
 - **Lighthouse (mediana de 3), las tres portadas:** móvil 98 de rendimiento y 100 en accesibilidad, buenas prácticas y SEO, LCP 2,4 s, CLS 0 y TBT entre 50 y 60 ms; escritorio 100 en todo, LCP 0,5 a 0,6 s.
 - **`links`:** 45 enlaces; solo el LinkedIn personal da 999 (ya explicado).
 - **`measure`:** portada de 10.052 px a 1440 y 15.145 px a 375, 5 imágenes, 1 SVG y 110 KB de JavaScript.
+
+## Respuestas de Alejandro (22 de octubre)
+
+- **Foto (pendiente 8 de la ronda 2):** Alejandro manda un retrato y pregunta si ponerlo en blanco y negro. Va en tinta sobre papel, con los dos colores de la paleta en lugar de un gris neutro, así que parece impreso en la página. `scripts/portrait.mjs` recorta a 4:5, quita un cable fino de la pared por encima de la cabeza (solo el fondo; la persona no se toca), aplica el bitono y no copia metadatos. El original no está en el repositorio. Sale en "Sobre mí" de la portada (carga diferida, lejos de la primera pantalla) y en la cabecera de la página Sobre mí (con prioridad, porque ahí sí está en la primera pantalla). No va en el inicio, porque sería la imagen más grande de la primera pantalla y el LCP en móvil ya está en 2,4 s, y porque el inicio tiene que contar primero qué hago. También va en `Person.image` del JSON-LD y en el sitemap de la portada y de Sobre mí. Lighthouse móvil (mediana de 3, tras la revisión): portada 99 (LCP 2,3 s) y Sobre mí 99 (LCP 2,1 s); escritorio, 100 en las dos.
+- **Enlazar cada caso a digitaldesany.com:** Roses, Lara's Oak y Paula Krebel ya llevaban "El caso en digitaldesany.com". Se añade:
+  - **Neibr**, que también tiene caso en digitaldesany.com (la web: diseño, desarrollo y despliegue). El enlace sale en Experiencia, en la página de Neibr y en Proyectos.
+  - **"Todos los casos en digitaldesany.com"** debajo de los trabajos, en la portada y en Proyectos.
+  - **Hidrotech Bordalló**, cuyo caso está como ficha en la página del servicio de gestión de redes ("Con quién hemos trabajado"). `/es/casos-exito/hidrotech-bordallo` redirige ahí, así que lleva el mismo "El caso en digitaldesany.com". La ficha no tiene ancla propia: si el estudio le pone un `id`, el enlace puede ir directo a ella.
+- **Visitas de Roses:** la página de caso de Roses en digitaldesany.com dice "cerca de 5.000 visitas reales" y Alejandro lo confirma. Se añade a `DECISIONES.md` y a la tarjeta de Roses en los tres idiomas ("cerca de 5.000 visitas", "prop de 5.000 visites", "close to 5,000 visits") y a `llms.txt`.
+- **Revisión de este cambio** (dos revisores y un verificador por dimensión): 2 hallazgos confirmados, los dos arreglados. El `sizes` del retrato pedía una imagen de 640 px para un hueco de 384 como mucho en escritorio (ahora sigue el ancho real de la columna). Y la fecha de contenido (`lastmod` del sitemap y `dateModified`) seguía en el 14 de octubre. Descartados 3: la etiqueta del enlace de Neibr (es correcta), que la entradilla de Trabajos diga que cada caso está en digitaldesany.com (lo está, también el de Hidrotech) y `llms.txt` (no cambiaba en este commit).
+
+## Capa de marketing (22 de octubre)
+
+Alejandro pide aplicar una capa de marketing y reformular los textos, contando lo mismo pero mejor, después de investigar técnicas. La investigación (cuatro ángulos: conversión, confianza, redacción de interfaz y portfolios) y la guía que sale de ella están en `MARKETING.md`. Cada texto cambiado, con su antes y después, está en `marketing/CAMBIOS.md`.
+
+### Decisiones tomadas sin preguntar
+
+- **Lo que se aplica:**
+  - La frase del inicio dice qué hago, para quién y por qué elegirme: la propiedad del código, que es la única diferencia comercial que se puede demostrar. Sale dos veces en la portada, con las mismas palabras (inicio y Servicios), y no entra en la descripción de `Person` del JSON-LD.
+  - Lo técnico va en palabras llanas allí donde lee la pyme ("sin ningún error del servidor", "95 de cada 100 respuestas"), con el término exacto entre paréntesis.
+  - Los servicios empiezan por lo que resuelven y después dicen cómo.
+  - Contacto explica quién lleva los proyectos (Oriol Tamborero y yo, desde Digital DesAny), para que "Cuéntame" y "Cuéntanos" no choquen.
+  - Neibr se presenta por el papel (cofundador y único desarrollador de backend). El cierre se cuenta en su bloque como decisión, con el año.
+  - Los enlaces dicen adónde llevan ("El servicio en digitaldesany.com", "Las cifras y el caso en digitaldesany.com").
+  - Se quitan la entradilla de Servicios, que repetía el inicio, y el enlace al estudio de la franja de la mitad de la página, que sacaba de la web justo donde se decide.
+  - La página de Neibr explica la seguridad en palabras llanas antes de los términos técnicos.
+- **Lo que no se aplica sin datos:** el plan de pasos tras el primer mensaje, el tiempo de respuesta, "si cambias de proveedor, te los llevas" y el nuevo mensaje de WhatsApp que proponía la guía (lo recibe el estudio).
+- **Debajo de los botones** va una línea con lo que hace el de WhatsApp: "WhatsApp se abre con el mensaje ya escrito". Es lo que ya hace el código.
+- **"Web" en catalán va en masculino** en toda la web ("el web", "dos webs", "webs publicats"): es lo que dice Optimot para "lloc web" y lo que escribe digitaldesany.com/ca. Antes había de los dos géneros.
+- **Calcos fuera:** "store" pasa a "tienda" o "botiga", "magazine" a "revista" y "design system" a "sistema de diseño". "Backends" sale de la frase para pymes, pero el H1 sigue diciendo "Desarrollador web y backend".
+- **Descartadas por el verificador** (no eran claramente mejores): las descripciones de tres capacidades de VMV. Para quien evalúa, el término exacto sirve más que la versión llana.
+
+### Pendiente de Alejandro
+
+La capa de marketing quedaría más fuerte con estos datos. No se publica nada de esto sin respuesta:
+
+1. **Qué pasa después del primer mensaje** (llamada, visita, presupuesto por escrito, si la primera reunión es gratis). Con eso se puede poner en Contacto un plan de tres pasos.
+2. **Horario o tiempo de respuesta.** digitaldesany.com publica "de lunes a viernes, de 09:00 a 20:00".
+3. **Quién lee el WhatsApp e info@**: tú, Oriol o los dos.
+4. **Idiomas en que atiende el estudio** (catalán, castellano, inglés), para decirlo junto a los botones.
+5. **Si se puede publicar "Si un día cambias de proveedor, te los llevas"**, y si dominio y hosting quedan a nombre del cliente.
+6. **Qué incluyen "digitalización" y "despliegue"**, para explicar las cuatro partes de una web.
+7. **Qué parte hiciste tú en Roses, Lara's Oak, Paula Krebel e Hidrotech**, para una línea "Mi parte" en cada tarjeta. Hoy se cuentan en "nosotros".
+8. **Un caso de automatización del estudio**, con permiso del cliente, para que el servicio de Automatizaciones no tenga que tirar del ejemplo de VMV.
+9. **Testimonios reales** con nombre y permiso, y si Digital DesAny tiene reseñas en Google.
+10. **Los primeros mensajes reales de clientes** (anonimizados), para escribir con sus palabras.
+11. **Visto bueno al mensaje de WhatsApp propuesto**, que deja al cliente solo con escribir lo que necesita: "Hola, os escribo desde dev.alexasto.com. Lo que necesito y para cuándo: ".
+12. **Siguen abiertos** el nombre exacto del premio, el dominio final y Search Console (ronda 2).
+
+### Revisión final de la capa de marketing (dos revisores y un verificador por dimensión)
+
+Se revisó el resultado ya publicado en las 21 páginas: coherencia entre páginas e idiomas, hechos y voz, y la implementación y la maqueta. Hubo 5 hallazgos confirmados, todos menores y todos arreglados:
+
+- **El título de `/desarrollo-web` decía "para pymes en Granollers"** y estrechaba el mercado frente a "toda Cataluña". Pasa a "Webs a medida desde Granollers: Next.js y WordPress", con 51, 50 y 54 caracteres.
+- **El inglés decía "the parts you need"** donde el castellano y el catalán dicen "las partes que te faltan". Pasa a "the parts you're missing".
+- **El primer PC salía contado dos veces seguidas** en Sobre mí. Ahora solo lo cuenta el hito de 2014.
+- **Los paréntesis de la banda del stress test quedaban solos en una línea**, igual que la última palabra de una cifra del inicio, de la línea de WhatsApp y de la frase de la franja. Ahora esos textos reparten las líneas (`text-wrap: balance`).
+- **Un repetido que ya estaba antes:** la página de Neibr repetía la frase técnica de seguridad en la banda del stress test, justo después de su sección. La banda ya no la repite en esa página.
+
+Descartados 4:
+
+- Dos repeticiones entre la entradilla y las tarjetas de Experiencia y Trabajos. Ya estaban o son el resumen que pide la guía.
+- El segundo botón del inicio queda por debajo de la primera pantalla a 360×640 y 375×667. El principal sigue a la vista, y la guía comprueba a 375×812 y 360×740.
+- La frase técnica de Neibr repetida: no la introdujo este cambio, pero se ha quitado igualmente.

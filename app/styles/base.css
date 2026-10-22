@@ -348,6 +348,8 @@ img { max-width: 100%; }
 @media (max-width: 640px) {
   .cbtns { grid-template-columns: minmax(0, 1fr); }
 }
+/* What the WhatsApp button does, right under it: --fg-2 on paper, paper on wine. */
+.cbtns__note { margin-top: var(--space-3); font-size: 15px; line-height: 1.5; color: var(--fg-2); text-wrap: balance; }
 
 /* ───────── BrowserFrame ─────────
    The real capture under a thin bar with its domain. Captures can be up to
@@ -392,6 +394,12 @@ img { max-width: 100%; }
     transition: transform 7s linear 0.6s;
   }
 }
+
+/* ───────── Portrait ─────────
+   Already in ink and paper (scripts/portrait.mjs); the soft fill shows
+   while it loads. */
+.portrait { margin: 0; background: var(--line-soft); }
+.portrait img { display: block; width: 100%; height: auto; }
 
 /* ───────── Terminal (Neibr API example) ───────── */
 .terminal {
