@@ -200,3 +200,41 @@ Confirmaron 19 hallazgos y descartaron 7. Todos los confirmados están arreglado
   - **Hidrotech Bordalló**, cuyo caso está como ficha en la página del servicio de gestión de redes ("Con quién hemos trabajado"). `/es/casos-exito/hidrotech-bordallo` redirige ahí, así que lleva el mismo "El caso en digitaldesany.com". La ficha no tiene ancla propia: si el estudio le pone un `id`, el enlace puede ir directo a ella.
 - **Visitas de Roses:** la página de caso de Roses en digitaldesany.com dice "cerca de 5.000 visitas reales" y Alejandro lo confirma. Se añade a `DECISIONES.md` y a la tarjeta de Roses en los tres idiomas ("cerca de 5.000 visitas", "prop de 5.000 visites", "close to 5,000 visits") y a `llms.txt`.
 - **Revisión de este cambio** (dos revisores y un verificador por dimensión): 2 hallazgos confirmados, los dos arreglados. El `sizes` del retrato pedía una imagen de 640 px para un hueco de 384 como mucho en escritorio (ahora sigue el ancho real de la columna). Y la fecha de contenido (`lastmod` del sitemap y `dateModified`) seguía en el 14 de octubre. Descartados 3: la etiqueta del enlace de Neibr (es correcta), que la entradilla de Trabajos diga que cada caso está en digitaldesany.com (lo está, también el de Hidrotech) y `llms.txt` (no cambiaba en este commit).
+
+## Capa de marketing (22 de octubre)
+
+Alejandro pide aplicar una capa de marketing y reformular los textos, contando lo mismo pero mejor, después de investigar técnicas. La investigación (cuatro ángulos: conversión, confianza, redacción de interfaz y portfolios) y la guía que sale de ella están en `MARKETING.md`. Cada texto cambiado, con su antes y después, está en `marketing/CAMBIOS.md`.
+
+### Decisiones tomadas sin preguntar
+
+- **Lo que se aplica:**
+  - La frase del inicio dice qué hago, para quién y por qué elegirme: la propiedad del código, que es la única diferencia comercial que se puede demostrar. Sale dos veces en la portada, con las mismas palabras (inicio y Servicios), y no entra en la descripción de `Person` del JSON-LD.
+  - Lo técnico va en palabras llanas allí donde lee la pyme ("sin ningún error del servidor", "95 de cada 100 respuestas"), con el término exacto entre paréntesis.
+  - Los servicios empiezan por lo que resuelven y después dicen cómo.
+  - Contacto explica quién lleva los proyectos (Oriol Tamborero y yo, desde Digital DesAny), para que "Cuéntame" y "Cuéntanos" no choquen.
+  - Neibr se presenta por el papel (cofundador y único desarrollador de backend). El cierre se cuenta en su bloque como decisión, con el año.
+  - Los enlaces dicen adónde llevan ("El servicio en digitaldesany.com", "Las cifras y el caso en digitaldesany.com").
+  - Se quitan la entradilla de Servicios, que repetía el inicio, y el enlace al estudio de la franja de la mitad de la página, que sacaba de la web justo donde se decide.
+  - La página de Neibr explica la seguridad en palabras llanas antes de los términos técnicos.
+- **Lo que no se aplica sin datos:** el plan de pasos tras el primer mensaje, el tiempo de respuesta, "si cambias de proveedor, te los llevas" y el nuevo mensaje de WhatsApp que proponía la guía (lo recibe el estudio).
+- **Debajo de los botones** va una línea con lo que hace el de WhatsApp: "WhatsApp se abre con el mensaje ya escrito". Es lo que ya hace el código.
+- **"Web" en catalán va en masculino** en toda la web ("el web", "dos webs", "webs publicats"): es lo que dice Optimot para "lloc web" y lo que escribe digitaldesany.com/ca. Antes había de los dos géneros.
+- **Calcos fuera:** "store" pasa a "tienda" o "botiga", "magazine" a "revista" y "design system" a "sistema de diseño". "Backends" sale de la frase para pymes, pero el H1 sigue diciendo "Desarrollador web y backend".
+- **Descartadas por el verificador** (no eran claramente mejores): las descripciones de tres capacidades de VMV. Para quien evalúa, el término exacto sirve más que la versión llana.
+
+### Pendiente de Alejandro
+
+La capa de marketing quedaría más fuerte con estos datos. No se publica nada de esto sin respuesta:
+
+1. **Qué pasa después del primer mensaje** (llamada, visita, presupuesto por escrito, si la primera reunión es gratis). Con eso se puede poner en Contacto un plan de tres pasos.
+2. **Horario o tiempo de respuesta.** digitaldesany.com publica "de lunes a viernes, de 09:00 a 20:00".
+3. **Quién lee el WhatsApp e info@**: tú, Oriol o los dos.
+4. **Idiomas en que atiende el estudio** (catalán, castellano, inglés), para decirlo junto a los botones.
+5. **Si se puede publicar "Si un día cambias de proveedor, te los llevas"**, y si dominio y hosting quedan a nombre del cliente.
+6. **Qué incluyen "digitalización" y "despliegue"**, para explicar las cuatro partes de una web.
+7. **Qué parte hiciste tú en Roses, Lara's Oak, Paula Krebel e Hidrotech**, para una línea "Mi parte" en cada tarjeta. Hoy se cuentan en "nosotros".
+8. **Un caso de automatización del estudio**, con permiso del cliente, para que el servicio de Automatizaciones no tenga que tirar del ejemplo de VMV.
+9. **Testimonios reales** con nombre y permiso, y si Digital DesAny tiene reseñas en Google.
+10. **Los primeros mensajes reales de clientes** (anonimizados), para escribir con sus palabras.
+11. **Visto bueno al mensaje de WhatsApp propuesto**, que deja al cliente solo con escribir lo que necesita: "Hola, os escribo desde dev.alexasto.com. Lo que necesito y para cuándo: ".
+12. **Siguen abiertos** el nombre exacto del premio, el dominio final y Search Console (ronda 2).

@@ -6,6 +6,8 @@ Si estás ejecutando la renovación de octubre de 2026, el plan está en `docs/p
 
 La dirección visual es la de `docs/portfolio-v2/DISENO.md` (papel, tinta y vino), que sustituye a la de `DECISIONES.md`. Su plan está en `docs/portfolio-v2/PLAN.md`. La ronda 2 (`docs/portfolio-v2/RONDA2.md`, comentarios de Alejandro) manda sobre `DISENO.md` donde no coinciden: portada en orden de venta, subpáginas para SEO y fuera la retícula, el grano y los efectos decorativos.
 
+Para escribir o reescribir textos, la guía es `docs/portfolio-v2/MARKETING.md` (propuesta de valor, lo importante primero, palabras llanas antes del término técnico, una palabra para cada cosa, frases prohibidas y checklist). En catalán, "web" (lloc web) va en masculino.
+
 Las 21 URL (portada y seis subpáginas en tres idiomas) salen de `lib/routes.json`, que leen la app y los scripts. Una página nueva se añade ahí, en `lib/pages.ts` (título, descripción y texto) y en `components/pages/Pages.tsx`.
 
 ## Reglas fijas
