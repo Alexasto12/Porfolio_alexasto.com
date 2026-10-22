@@ -1,8 +1,18 @@
 # Textos antes y después (capa de marketing)
 
-Cada texto visible que cambió el 22 de octubre de 2026, con su ruta en `lib/content.ts` o `lib/pages.ts` y las técnicas de `../MARKETING.md` que aplica. Primero el castellano de antes y de después; debajo, el catalán y el inglés nuevos. Los textos que no aparecen aquí no cambian.
+Cada texto visible que cambió el 22 de octubre de 2026, con su ruta en `lib/content.ts` o `lib/pages.ts` y las técnicas de `../MARKETING.md` que aplica. Primero el castellano de antes y de después; debajo, el catalán y el inglés nuevos. Los textos que no aparecen aquí no cambian. Incluye los arreglos de la revisión final.
 
-54 textos cambiados, añadidos o quitados.
+Antes (izquierda) y después (derecha), en castellano:
+
+| Inicio, 1440 px | Inicio, 375 px |
+|---|---|
+| <img src="hero-1440.jpg" width="560" alt="Inicio a 1440 px, antes y después"> | <img src="hero-375.jpg" width="320" alt="Inicio a 375 px, antes y después"> |
+
+| Servicios, 1440 px | Contacto, 375 px |
+|---|---|
+| <img src="servicios-1440.jpg" width="560" alt="Servicios a 1440 px, antes y después"> | <img src="contacto-375.jpg" width="320" alt="Contacto a 375 px, antes y después"> |
+
+55 textos cambiados, añadidos o quitados.
 
 ### `DATA.hero.lead` (T1, T3, T5)
 
@@ -77,7 +87,7 @@ Cada texto visible que cambió el 22 de octubre de 2026, con su ruta en `lib/con
 - **Antes:** En cuatro partes que se contratan juntas o por separado: diseño, desarrollo, digitalización y despliegue.
 - **Después:** Contratas solo las partes que te faltan: diseño, desarrollo, digitalización o despliegue. O las cuatro juntas.
 - **CA:** Contractes només les parts que et falten: disseny, desenvolupament, digitalització o desplegament. O les quatre juntes.
-- **EN:** You only hire the parts you need: design, development, digitalisation or deployment. Or all four together.
+- **EN:** You only hire the parts you're missing: design, development, digitalisation or deployment. Or all four together.
 
 ### `DATA.services.items[1].text` (T2)
 
@@ -234,9 +244,9 @@ Cada texto visible que cambió el 22 de octubre de 2026, con su ruta en `lib/con
 ### `DATA.about.description` (T8, T14, T10)
 
 - **Antes:** Después vinieron las reparaciones, el soporte técnico, el grado de DAW, VMV Cosmetic Group y Digital DesAny.
-- **Después:** Luego arreglé ordenadores de vecinos, familia y amigos, y con eso me pagué el primer PC. Aprendí a programar en los ratos libres de las guardias de helpdesk y, más tarde, en el grado de DAW. Después vinieron VMV Cosmetic Group y Digital DesAny.
-- **CA:** Després vaig arreglar ordinadors de veïns, família i amics, i amb això em vaig pagar el primer PC. Vaig aprendre a programar a les estones lliures de les guàrdies de helpdesk i, més tard, al grau de DAW. Llavors van venir VMV Cosmetic Group i Digital DesAny.
-- **EN:** Then I fixed computers for neighbours, family and friends, and that paid for my first PC. I learned to code in the quiet hours of helpdesk shifts, and later on the DAW web development course. Next came VMV Cosmetic Group and Digital DesAny.
+- **Después:** Luego arreglé ordenadores de vecinos, familia y amigos. Aprendí a programar en los ratos libres de las guardias de helpdesk y, más tarde, en el grado de DAW. Después vinieron VMV Cosmetic Group y Digital DesAny.
+- **CA:** Després vaig arreglar ordinadors de veïns, família i amics. Vaig aprendre a programar a les estones lliures de les guàrdies de helpdesk i, més tard, al grau de DAW. Llavors van venir VMV Cosmetic Group i Digital DesAny.
+- **EN:** Then I fixed computers for neighbours, family and friends. I learned to code in the quiet hours of helpdesk shifts, and later on the DAW web development course. Next came VMV Cosmetic Group and Digital DesAny.
 
 ### `DATA.about.entries[2].title` (T8, T3)
 
@@ -244,6 +254,13 @@ Cada texto visible que cambió el 22 de octubre de 2026, con su ruta en `lib/con
 - **Después:** Monto mi primer PC con lo que gano arreglando ordenadores.
 - **CA:** Munto el meu primer PC amb el que guanyo arreglant ordinadors.
 - **EN:** I build my first PC with what I earn fixing computers.
+
+### `DATA.about.entries[2].body` (T14)
+
+- **Antes:** Empecé a arreglar ordenadores de gente cercana: pequeñas reparaciones, reinstalaciones y configuraciones. Con eso me pagué el primer PC.
+- **Después:** Empecé a arreglar ordenadores de gente cercana: pequeñas reparaciones, reinstalaciones y configuraciones.
+- **CA:** Vaig començar a arreglar ordinadors de gent propera: petites reparacions, reinstal·lacions i configuracions.
+- **EN:** I started fixing computers for people around me: small repairs, reinstalls and setups.
 
 ### `DATA.about.entries[6].body` (T14)
 
@@ -304,9 +321,9 @@ Cada texto visible que cambió el 22 de octubre de 2026, con su ruta en `lib/con
 ### `SEO.web.title` (T13)
 
 - **Antes:** Desarrollador Next.js y WordPress en Granollers
-- **Después:** Webs a medida para pymes en Granollers: Next.js y WordPress
-- **CA:** Webs a mida per a pimes a Granollers: Next.js i WordPress
-- **EN:** Custom Next.js and WordPress websites for SMEs in Granollers
+- **Después:** Webs a medida desde Granollers: Next.js y WordPress
+- **CA:** Webs a mida des de Granollers: Next.js i WordPress
+- **EN:** Custom Next.js and WordPress websites, from Granollers
 
 ### `SEO.web.description` (T13, T4)
 
@@ -327,7 +344,7 @@ Cada texto visible que cambió el 22 de octubre de 2026, con su ruta en `lib/con
 - **Antes:** Con Digital DesAny hago webs a medida para pymes de toda Cataluña, en cuatro partes que se contratan juntas o por separado: diseño, desarrollo, digitalización y despliegue.
 - **Después:** Con Digital DesAny hago webs a medida para pymes de toda Cataluña. Contratas solo las partes que te faltan: diseño, desarrollo, digitalización o despliegue. O las cuatro juntas.
 - **CA:** Amb Digital DesAny faig webs a mida per a pimes de tot Catalunya. Contractes només les parts que et falten: disseny, desenvolupament, digitalització o desplegament. O les quatre juntes.
-- **EN:** With Digital DesAny I build custom websites for small and medium businesses across Catalonia. You only hire the parts you need: design, development, digitalisation or deployment. Or all four together.
+- **EN:** With Digital DesAny I build custom websites for small and medium businesses across Catalonia. You only hire the parts you're missing: design, development, digitalisation or deployment. Or all four together.
 
 ### `PAGES.web.sections.cases` (Voz: glosario (web en catalán, un solo género))
 
@@ -350,7 +367,7 @@ Cada texto visible que cambió el 22 de octubre de 2026, con su ruta en `lib/con
 - **CA:** A VMV Cosmetic Group portava 32 dominis (21 d'ells amb web actiu), 12 plugins interns de WordPress i una botiga interna de plugins. A WordPress.org tinc publicat el plugin Simply Bootstrap Carousel.
 - **EN:** At VMV Cosmetic Group I looked after 32 domains (21 of them with a live site), 12 internal WordPress plugins and an in-house plugin store. On WordPress.org I've published the Simply Bootstrap Carousel plugin.
 
-### `DATA.hero.ownership`
+### `DATA.hero.ownership` (T1, T3, T5)
 
 - **Antes:** (no existía)
 - **Después:** El código y el diseño son tuyos cuando el proyecto está pagado.

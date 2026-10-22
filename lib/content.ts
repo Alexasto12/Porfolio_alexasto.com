@@ -270,7 +270,7 @@ export const DATA = {
         text: {
           es: "Contratas solo las partes que te faltan: diseño, desarrollo, digitalización o despliegue. O las cuatro juntas.",
           ca: "Contractes només les parts que et falten: disseny, desenvolupament, digitalització o desplegament. O les quatre juntes.",
-          en: "You only hire the parts you need: design, development, digitalisation or deployment. Or all four together.",
+          en: "You only hire the parts you're missing: design, development, digitalisation or deployment. Or all four together.",
         },
         examples: [
           { label: "Roses de Sant Jordi", id: "roses" },
@@ -582,9 +582,9 @@ export const DATA = {
       en: "I started by opening up the family laptop at 11",
     } as Localized,
     description: {
-      es: "Luego arreglé ordenadores de vecinos, familia y amigos, y con eso me pagué el primer PC. Aprendí a programar en los ratos libres de las guardias de helpdesk y, más tarde, en el grado de DAW. Después vinieron VMV Cosmetic Group y Digital DesAny.",
-      ca: "Després vaig arreglar ordinadors de veïns, família i amics, i amb això em vaig pagar el primer PC. Vaig aprendre a programar a les estones lliures de les guàrdies de helpdesk i, més tard, al grau de DAW. Llavors van venir VMV Cosmetic Group i Digital DesAny.",
-      en: "Then I fixed computers for neighbours, family and friends, and that paid for my first PC. I learned to code in the quiet hours of helpdesk shifts, and later on the DAW web development course. Next came VMV Cosmetic Group and Digital DesAny.",
+      es: "Luego arreglé ordenadores de vecinos, familia y amigos. Aprendí a programar en los ratos libres de las guardias de helpdesk y, más tarde, en el grado de DAW. Después vinieron VMV Cosmetic Group y Digital DesAny.",
+      ca: "Després vaig arreglar ordinadors de veïns, família i amics. Vaig aprendre a programar a les estones lliures de les guàrdies de helpdesk i, més tard, al grau de DAW. Llavors van venir VMV Cosmetic Group i Digital DesAny.",
+      en: "Then I fixed computers for neighbours, family and friends. I learned to code in the quiet hours of helpdesk shifts, and later on the DAW web development course. Next came VMV Cosmetic Group and Digital DesAny.",
     } as Localized,
     stack: {
       es: "Hoy trabajo con Go y Fiber, Java 21 y Spring Boot 3, Next.js, React y TypeScript, WordPress y PHP, PostgreSQL, Redis y Docker.",
@@ -635,9 +635,9 @@ export const DATA = {
         },
         place: { es: "Para vecinos, familia y amigos", ca: "Per a veïns, família i amics", en: "For neighbours, family and friends" },
         body: {
-          es: "Empecé a arreglar ordenadores de gente cercana: pequeñas reparaciones, reinstalaciones y configuraciones. Con eso me pagué el primer PC.",
-          ca: "Vaig començar a arreglar ordinadors de gent propera: petites reparacions, reinstal·lacions i configuracions. Amb això em vaig pagar el primer PC.",
-          en: "I started fixing computers for people around me: small repairs, reinstalls and setups. That paid for my first PC.",
+          es: "Empecé a arreglar ordenadores de gente cercana: pequeñas reparaciones, reinstalaciones y configuraciones.",
+          ca: "Vaig començar a arreglar ordinadors de gent propera: petites reparacions, reinstal·lacions i configuracions.",
+          en: "I started fixing computers for people around me: small repairs, reinstalls and setups.",
         },
       },
       {

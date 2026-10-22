@@ -1,6 +1,6 @@
 # Capa de marketing: guía de redacción
 
-> **Estado (22 de octubre de 2026).** Aplicada a los textos de la web: 54 textos cambiados, añadidos o quitados, uno por uno en [`marketing/CAMBIOS.md`](marketing/CAMBIOS.md). Cada propuesta pasó por un verificador que rechazaba todo lo que añadiera un hecho, rompiera los tres idiomas o no fuera claramente mejor: de 57 propuestas se aplicaron 54 (algunas corregidas) y se descartaron 3 (las descripciones de tres capacidades de VMV, donde el término exacto sirve mejor a quien evalúa). Decisiones tomadas al aplicarla:
+> **Estado (22 de octubre de 2026).** Aplicada a los textos de la web: 55 textos cambiados, añadidos o quitados, uno por uno en [`marketing/CAMBIOS.md`](marketing/CAMBIOS.md). Cada propuesta pasó por un verificador que rechazaba todo lo que añadiera un hecho, rompiera los tres idiomas o no fuera claramente mejor: de 57 propuestas se aplicaron 54 (algunas corregidas) y se descartaron 3 (las descripciones de tres capacidades de VMV, donde el término exacto sirve mejor a quien evalúa). Decisiones tomadas al aplicarla:
 >
 > - **"Web" en catalán va en masculino** ("el web", "dos webs", "webs publicats"), como dice Optimot para "lloc web" y como escribe digitaldesany.com/ca.
 > - **No se publica** "Si un día cambias de proveedor, te los llevas", ningún plan de pasos tras el primer mensaje ni tiempos de respuesta: faltan los datos (ver "Datos que faltan" y `PREGUNTAS.md`).

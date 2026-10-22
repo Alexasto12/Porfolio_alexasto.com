@@ -93,4 +93,5 @@
   font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.4rem);
   line-height: 1.1;
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }

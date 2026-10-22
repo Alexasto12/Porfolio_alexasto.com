@@ -238,3 +238,19 @@ La capa de marketing quedaría más fuerte con estos datos. No se publica nada d
 10. **Los primeros mensajes reales de clientes** (anonimizados), para escribir con sus palabras.
 11. **Visto bueno al mensaje de WhatsApp propuesto**, que deja al cliente solo con escribir lo que necesita: "Hola, os escribo desde dev.alexasto.com. Lo que necesito y para cuándo: ".
 12. **Siguen abiertos** el nombre exacto del premio, el dominio final y Search Console (ronda 2).
+
+### Revisión final de la capa de marketing (dos revisores y un verificador por dimensión)
+
+Se revisó el resultado ya publicado en las 21 páginas: coherencia entre páginas e idiomas, hechos y voz, y la implementación y la maqueta. Hubo 5 hallazgos confirmados, todos menores y todos arreglados:
+
+- **El título de `/desarrollo-web` decía "para pymes en Granollers"** y estrechaba el mercado frente a "toda Cataluña". Pasa a "Webs a medida desde Granollers: Next.js y WordPress", con 51, 50 y 54 caracteres.
+- **El inglés decía "the parts you need"** donde el castellano y el catalán dicen "las partes que te faltan". Pasa a "the parts you're missing".
+- **El primer PC salía contado dos veces seguidas** en Sobre mí. Ahora solo lo cuenta el hito de 2014.
+- **Los paréntesis de la banda del stress test quedaban solos en una línea**, igual que la última palabra de una cifra del inicio, de la línea de WhatsApp y de la frase de la franja. Ahora esos textos reparten las líneas (`text-wrap: balance`).
+- **Un repetido que ya estaba antes:** la página de Neibr repetía la frase técnica de seguridad en la banda del stress test, justo después de su sección. La banda ya no la repite en esa página.
+
+Descartados 4:
+
+- Dos repeticiones entre la entradilla y las tarjetas de Experiencia y Trabajos. Ya estaban o son el resumen que pide la guía.
+- El segundo botón del inicio queda por debajo de la primera pantalla a 360×640 y 375×667. El principal sigue a la vista, y la guía comprueba a 375×812 y 360×740.
+- La frase técnica de Neibr repetida: no la introdujo este cambio, pero se ha quitado igualmente.

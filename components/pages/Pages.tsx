@@ -116,7 +116,7 @@ function NeibrPage({ locale }: { locale: Locale }) {
         <p className="copy">{t(p.securityPlain)}</p>
         <p className="copy muted page-sec__more">{t(d.security)}</p>
       </PageSection>
-      <StressBand locale={locale} headingLevel={2} />
+      <StressBand locale={locale} headingLevel={2} withStack={false} />
       <PageSection id="cierre" title={t(d.closureLabel)}>
         <p className="copy">{t(d.closure)}</p>
       </PageSection>

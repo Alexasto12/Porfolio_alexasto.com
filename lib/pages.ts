@@ -83,9 +83,9 @@ export const SEO: Record<PageKey, { title: Localized; description: Localized }> 
   },
   web: {
     title: {
-      es: "Webs a medida para pymes en Granollers: Next.js y WordPress",
-      ca: "Webs a mida per a pimes a Granollers: Next.js i WordPress",
-      en: "Custom Next.js and WordPress websites for SMEs in Granollers",
+      es: "Webs a medida desde Granollers: Next.js y WordPress",
+      ca: "Webs a mida des de Granollers: Next.js i WordPress",
+      en: "Custom Next.js and WordPress websites, from Granollers",
     },
     description: {
       es: "Webs a medida con Next.js y WordPress para pymes de toda Cataluña, desde Granollers. Diseño, desarrollo, digitalización y despliegue, juntos o por separado.",
@@ -229,7 +229,7 @@ export const PAGES = {
     lede: {
       es: "Con Digital DesAny hago webs a medida para pymes de toda Cataluña. Contratas solo las partes que te faltan: diseño, desarrollo, digitalización o despliegue. O las cuatro juntas.",
       ca: "Amb Digital DesAny faig webs a mida per a pimes de tot Catalunya. Contractes només les parts que et falten: disseny, desenvolupament, digitalització o desplegament. O les quatre juntes.",
-      en: "With Digital DesAny I build custom websites for small and medium businesses across Catalonia. You only hire the parts you need: design, development, digitalisation or deployment. Or all four together.",
+      en: "With Digital DesAny I build custom websites for small and medium businesses across Catalonia. You only hire the parts you're missing: design, development, digitalisation or deployment. Or all four together.",
     } as Localized,
     sections: {
       cases: { es: "Webs publicadas", ca: "Webs publicats", en: "Published websites" },
