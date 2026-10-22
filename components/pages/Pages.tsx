@@ -164,7 +164,7 @@ function AboutPage({ locale }: { locale: Locale }) {
         page="about"
         title={t(p.h1)}
         lede={t(p.lede)}
-        aside={<Portrait locale={locale} className="page-head__photo" sizes="(max-width: 860px) 300px, 400px" priority />}
+        aside={<Portrait locale={locale} className="page-head__photo" priority />}
       >
         <p className="copy page-head__extra">{t(d.stack)}</p>
       </PageHead>

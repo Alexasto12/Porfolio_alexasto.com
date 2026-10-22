@@ -19,7 +19,7 @@ export const SITE_URL = (process.env.SITE_URL || "https://dev.alexasto.com").rep
 export const SITE_HOST = new URL(SITE_URL).host;
 
 /** Date the content last changed (sitemap lastmod, dateModified). Update with the copy. */
-export const CONTENT_UPDATED = "2026-10-14";
+export const CONTENT_UPDATED = "2026-10-22";
 
 export const OG_LOCALE: Record<Locale, string> = { es: "es_ES", ca: "ca_ES", en: "en_US" };
 

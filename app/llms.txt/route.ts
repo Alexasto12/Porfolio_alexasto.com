@@ -47,7 +47,7 @@ ${pages}
 Custom websites (design, development, digitalisation and deployment), social
 media management, automations with or without AI, and custom software.
 Case studies: Roses de Sant Jordi (https://rosesstjordi.com; over 500 digital
-roses sent and trending on Reddit Catalunya), Lara's Oak
+roses sent, close to 5,000 visits and trending on Reddit Catalunya), Lara's Oak
 (https://larasoak.art), Paula Krebel and Hidrotech Bordalló.
 
 ## Experience

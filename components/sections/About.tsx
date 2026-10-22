@@ -32,7 +32,7 @@ export function About({ locale }: { locale: Locale }) {
             <p className="about__lead copy">{t(d.description)}</p>
             <p className="about__stack copy">{t(d.stack)}</p>
           </div>
-          <Portrait locale={locale} className="about__photo" sizes="(max-width: 860px) 300px, 360px" />
+          <Portrait locale={locale} className="about__photo" />
         </div>
         <ol className="stages grid">
           {stagesOf().map((st) => (

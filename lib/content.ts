@@ -164,9 +164,9 @@ export const DATA = {
         id: "roses",
         name: "Roses de Sant Jordi",
         description: {
-          es: "Más de 500 rosas enviadas y tendencia en Reddit Catalunya. Una rosa digital con dedicatoria para Sant Jordi, en catalán y castellano.",
-          ca: "Més de 500 roses enviades i tendència a Reddit Catalunya. Una rosa digital amb dedicatòria per Sant Jordi, en català i castellà.",
-          en: "Over 500 roses sent and trending on Reddit Catalunya. A digital rose with a dedication for Sant Jordi, in Catalan and Spanish.",
+          es: "Más de 500 rosas enviadas, cerca de 5.000 visitas y tendencia en Reddit Catalunya. Una rosa digital con dedicatoria para Sant Jordi, en catalán y castellano.",
+          ca: "Més de 500 roses enviades, prop de 5.000 visites i tendència a Reddit Catalunya. Una rosa digital amb dedicatòria per Sant Jordi, en català i castellà.",
+          en: "Over 500 roses sent, close to 5,000 visits and trending on Reddit Catalunya. A digital rose with a dedication for Sant Jordi, in Catalan and Spanish.",
         },
         links: [
           { label: CASE_LINK, href: desanyCase("rosesstjordi") },
@@ -225,17 +225,8 @@ export const DATA = {
           ca: "Xarxes socials per a una empresa de maquinària de neteja industrial: reels de demostració, LinkedIn, YouTube i correus a la seva base de clients.",
           en: "Social media for an industrial cleaning machinery company: demo reels, LinkedIn, YouTube and emails to its customer base.",
         },
-        // digitaldesany.com has no case page for it (yet): the service it was part of.
-        links: [
-          {
-            label: {
-              es: "Gestión de redes en digitaldesany.com",
-              ca: "Gestió de xarxes a digitaldesany.com",
-              en: "Social media management at digitaldesany.com",
-            },
-            href: desany("/servicios/gestion-rrss", "/serveis/gestio-xarxes-socials"),
-          },
-        ],
+        // Its case is a card on the social media service page (/es/casos-exito/hidrotech-bordallo redirects there).
+        links: [{ label: CASE_LINK, href: desany("/servicios/gestion-rrss", "/serveis/gestio-xarxes-socials") }],
         poster: {
           label: { es: "Redes sociales", ca: "Xarxes socials", en: "Social media" },
           words: {
