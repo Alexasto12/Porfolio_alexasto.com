@@ -7,7 +7,11 @@
 > - **El mensaje de WhatsApp que se rellena solo no cambia**, porque lo recibe el estudio. Debajo de los botones hay una línea que dice lo que hace el botón.
 > - **La propiedad del código sale dos veces en la portada** (frase del inicio y Servicios), con las mismas palabras, y no entra en la descripción de `Person` del JSON-LD.
 >
-> Comprobado con `check`, `seo` (392 de 392), `a11y` (0 fallos en las 21 páginas), `motion` (72 de 72), `links` y Lighthouse en las tres portadas (móvil de 97 a 99, escritorio 100). Lo que sigue es la guía tal como salió de la investigación; sus ejemplos de antes y después pueden diferir un poco de lo publicado.
+> Comprobado con `check`, `seo` (392 de 392), `a11y` (0 fallos en las 21 páginas), `motion` (72 de 72), `links` y Lighthouse en las tres portadas (móvil de 97 a 99, escritorio 100).
+>
+> **23 de octubre: Sobre mí.** La misma capa en la sección Sobre mí de la portada y en `/sobre-mi`: 18 cambios (15 textos, un pie de foto, un enlace a la página de VMV desde el hito de 2025 y fuera "Dónde encontrarme", que repetía Contacto). Cada hecho sale una vez por página y el giro de la historia (empezar a programar en las guardias de helpdesk) pasa a los títulos, que es lo que enseña la portada. Detalle al final de [`marketing/CAMBIOS.md`](marketing/CAMBIOS.md). Mismas comprobaciones, mismo resultado.
+>
+> Lo que sigue es la guía tal como salió de la investigación; sus ejemplos de antes y después pueden diferir un poco de lo publicado.
 
 Esta guía sirve para reescribir los textos de la web (`lib/content.ts` y `lib/pages.ts`) con una capa de marketing, contando lo mismo pero mejor. Sale de cuatro investigaciones: conversión, confianza, redacción de interfaz (UX writing) y portfolios de estudios y desarrolladores. Contrasté los resultados con `CLAUDE.md`, `docs/portfolio-refresh/DECISIONES.md`, `docs/portfolio-v2/RONDA2.md`, los dos `PREGUNTAS.md` y la web servida en local, en los tres idiomas, a 1440 y a 375 px (build del 22 de octubre de 2026).
 

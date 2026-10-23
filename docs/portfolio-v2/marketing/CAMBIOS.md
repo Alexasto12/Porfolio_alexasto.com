@@ -1,6 +1,6 @@
 # Textos antes y después (capa de marketing)
 
-Cada texto visible que cambió el 22 de octubre de 2026, con su ruta en `lib/content.ts` o `lib/pages.ts` y las técnicas de `../MARKETING.md` que aplica. Primero el castellano de antes y de después; debajo, el catalán y el inglés nuevos. Los textos que no aparecen aquí no cambian. Incluye los arreglos de la revisión final.
+Cada texto visible que cambió el 22 de octubre de 2026 (y, al final, los de Sobre mí del 23), con su ruta en `lib/content.ts` o `lib/pages.ts` y las técnicas de `../MARKETING.md` que aplica. Primero el castellano de antes y de después; debajo, el catalán y el inglés nuevos. Los textos que no aparecen aquí no cambian. Incluye los arreglos de la revisión final.
 
 Antes (izquierda) y después (derecha), en castellano:
 
@@ -394,3 +394,153 @@ Antes (izquierda) y después (derecha), en castellano:
 - **Después:** Cada operador tenía sus propias claves, una petición repetida no duplicaba nada y los avisos iban firmados. Las operaciones quedaban en un registro de auditoría que no se podía modificar.
 - **CA:** Cada operador tenia les seves pròpies claus, una petició repetida no duplicava res i els avisos anaven signats. Les operacions quedaven en un registre d'auditoria que no es podia modificar.
 - **EN:** Each carrier had its own keys, a repeated request didn't create duplicates and notifications were signed. Operations went into an audit record that couldn't be changed.
+
+## Sobre mí (23 de octubre)
+
+La misma capa aplicada a la sección Sobre mí de la portada y a la página `/sobre-mi`. Un editor propuso los cambios y un verificador los revisó uno por uno con las mismas reglas: se aplicaron las 18 propuestas. El verificador corrigió una (el texto alternativo de la foto) y en el título de 2019 se queda "Empiezo a programar" en vez del "Aprendo" propuesto, porque es lo que decía el texto original: ahí empecé, no acabé de aprender. Antes (izquierda, la web publicada) y después (derecha), en castellano:
+
+| Sobre mí en la portada, 1440 px |
+|---|
+| <img src="sobre-mi-inicio-1440.jpg" width="720" alt="Sobre mí en la portada a 1440 px, antes y después"> |
+
+| Página Sobre mí, 1440 px | Recorrido, 1440 px |
+|---|---|
+| <img src="sobre-mi-pagina-1440.jpg" width="440" alt="Cabecera de la página Sobre mí a 1440 px, antes y después"> | <img src="sobre-mi-recorrido-1440.jpg" width="440" alt="Recorrido de la página Sobre mí a 1440 px, antes y después"> |
+
+Qué cambia y por qué:
+
+- **Cada hecho sale una vez por página, donde mejor se lee.** El resumen de la portada ya no repite lo que dicen los hitos justo debajo (vecinos, helpdesk, DAW, VMV, DesAny). Cuenta lo que la portada no enseña: lo que descubrí al abrir el portátil, el camino en una línea y para quién trabajo hoy.
+- **El giro de la historia pasa a los títulos.** Empezar a programar en las guardias de helpdesk estaba escondido en un texto que la portada no muestra. Ahora es el título de 2019. Todos los títulos son acciones en primera persona, también el de VMV.
+- **Los textos de los hitos no repiten su título** (Mandriva, VMV) y las frases largas se parten.
+- **La entradilla de la página dice qué hago y para quién**, con las mismas palabras que el inicio, y el título de la sección cuenta el arco: "del portátil de casa a Digital DesAny".
+- **Debajo de la foto de la portada** va un pie con nombre, oficio y lugar, las palabras del H1. El texto alternativo describe la foto en vez de decir "Retrato de".
+- **El hito de 2025 enlaza a la página de VMV**, con la etiqueta que ya usa Experiencia ("Todo lo que llevaba en VMV"): la prueba al lado de lo que se afirma.
+- **Fuera "Dónde encontrarme".** Repetía los mismos perfiles y el mismo correo que Contacto, que va justo después. Ahora la página acaba en Contacto.
+
+18 cambios: 15 textos cambiados, un texto nuevo, un enlace nuevo y una sección quitada.
+
+### `PAGES.about.lede` (T1, T10)
+
+- **Antes:** Soy Alejandro Cabrera, desarrollador web y backend en Granollers y cofundador de Digital DesAny, el estudio que llevo con Oriol Tamborero.
+- **Después:** Soy Alejandro Cabrera, desarrollador web y backend en Granollers. Hago webs, automatizaciones y software a medida para pymes de toda Cataluña, desde Digital DesAny, el estudio que llevo con Oriol Tamborero.
+- **CA:** Sóc l'Alejandro Cabrera, desenvolupador web i backend a Granollers. Faig webs, automatitzacions i programari a mida per a pimes de tot Catalunya, des de Digital DesAny, l'estudi que porto amb l'Oriol Tamborero.
+- **EN:** I'm Alejandro Cabrera, a web and backend developer in Granollers. I build websites, automations and custom software for small and medium businesses across Catalonia, through Digital DesAny, the studio I run with Oriol Tamborero.
+
+### `SEO.about.description` (T13)
+
+- **Antes:** De cambiar el disco duro del portátil familiar con 11 años a cofundar Digital DesAny. Mi recorrido, el Grado Superior DAW y cómo trabajo.
+- **Después:** De cambiar el disco duro del portátil familiar con 11 años a cofundar Digital DesAny, donde hago webs y software a medida para pymes de toda Cataluña.
+- **CA:** De canviar el disc dur del portàtil familiar amb 11 anys a cofundar Digital DesAny, on faig webs i programari a mida per a pimes de tot Catalunya.
+- **EN:** From swapping the family laptop's hard drive at 11 to co-founding Digital DesAny, where I build websites and custom software for SMEs across Catalonia.
+
+### `PAGES.about.sections.path` (T12)
+
+- **Antes:** Recorrido
+- **Después:** Recorrido: del portátil de casa a Digital DesAny
+- **CA:** Recorregut: del portàtil de casa a Digital DesAny
+- **EN:** My path: from the family laptop to Digital DesAny
+
+### `DATA.about.description` (T2, T14)
+
+- **Antes:** Luego arreglé ordenadores de vecinos, familia y amigos. Aprendí a programar en los ratos libres de las guardias de helpdesk y, más tarde, en el grado de DAW. Después vinieron VMV Cosmetic Group y Digital DesAny.
+- **Después:** Detrás de la pantalla descubrí un sistema entero que se podía leer. Desde entonces he pasado del hardware al soporte y del soporte al código. Hoy, desde Digital DesAny, trabajo para pymes de toda Cataluña.
+- **CA:** Darrere de la pantalla vaig descobrir un sistema sencer que es podia llegir. Des d'aleshores he passat del hardware al suport i del suport al codi. Avui, des de Digital DesAny, treballo per a pimes de tot Catalunya.
+- **EN:** Behind the screen I found a whole system I could read. Since then I've moved from hardware to support, and from support to code. Today, through Digital DesAny, I work for small and medium businesses across Catalonia.
+
+### `DATA.about.stack` (T14)
+
+- **Antes:** Hoy trabajo con Go y Fiber, Java 21 y Spring Boot 3, Next.js, React y TypeScript, WordPress y PHP, PostgreSQL, Redis y Docker.
+- **Después:** Uso Go y Fiber, Java 21 y Spring Boot 3, Next.js, React y TypeScript, WordPress y PHP, PostgreSQL, Redis y Docker.
+- **CA:** Utilitzo Go i Fiber, Java 21 i Spring Boot 3, Next.js, React i TypeScript, WordPress i PHP, PostgreSQL, Redis i Docker.
+- **EN:** I use Go and Fiber, Java 21 and Spring Boot 3, Next.js, React and TypeScript, WordPress and PHP, PostgreSQL, Redis and Docker.
+
+### `DATA.about.portrait.alt` (T8)
+
+- **Antes:** Retrato de Alejandro Cabrera
+- **Después:** Alejandro Cabrera, de medio lado, con americana oscura y camisa clara, sonríe a cámara
+- **CA:** L'Alejandro Cabrera, girat de costat, amb americana fosca i camisa clara, somriu a la càmera
+- **EN:** Alejandro Cabrera, turned side-on in a dark jacket and light shirt, smiles at the camera
+
+### `DATA.about.portrait.caption` (T10)
+
+- **Antes:** (no existía)
+- **Después:** Alejandro Cabrera, desarrollador web y backend en Granollers
+- **CA:** Alejandro Cabrera, desenvolupador web i backend a Granollers
+- **EN:** Alejandro Cabrera, web and backend developer in Granollers
+
+### `DATA.about.stages[2].name` (T8, T12)
+
+- **Antes:** Desarrollo
+- **Después:** Web y backend
+- **CA:** Web i backend
+- **EN:** Web and backend
+
+### `DATA.about.entries[0].body` (T8, T14)
+
+- **Antes:** Se rompió el portátil de casa y, en vez de tirarlo, lo abrí, cambié el disco y descubrí que detrás de la pantalla había un sistema entero que se podía leer.
+- **Después:** Se rompió el portátil de casa. En vez de tirarlo, lo abrí y le cambié el disco. Así descubrí que detrás de la pantalla había un sistema entero que se podía leer.
+- **CA:** Es va trencar el portàtil de casa. En lloc de llençar-lo, el vaig obrir i li vaig canviar el disc. Així vaig descobrir que darrere de la pantalla hi havia un sistema sencer que es podia llegir.
+- **EN:** The family laptop broke. Instead of throwing it out, I opened it up and swapped the drive. That's how I found a whole system behind the screen that I could read.
+
+### `DATA.about.entries[1].body` (T14)
+
+- **Antes:** El motor fue jugar. Instalé Mandriva en aquel portátil y me peleé con paquetes, repositorios y la consola.
+- **Después:** El motor fue jugar. En aquel portátil me peleé con paquetes, repositorios y la consola.
+- **CA:** El motor va ser jugar. En aquell portàtil em vaig barallar amb paquets, repositoris i la consola.
+- **EN:** Gaming was the driver. On that laptop I fought with packages, repositories and the terminal.
+
+### `DATA.about.entries[4].title` (T2, T12)
+
+- **Antes:** Helpdesk presencial en un centro de vacunación.
+- **Después:** Empiezo a programar por mi cuenta en las guardias de helpdesk.
+- **CA:** Començo a programar pel meu compte a les guàrdies de helpdesk.
+- **EN:** I start teaching myself to code on helpdesk shifts.
+
+### `DATA.about.entries[4].place` (T10)
+
+- **Antes:** Primer empleo formal
+- **Después:** Centro de vacunación, primer empleo formal
+- **CA:** Centre de vacunació, primera feina formal
+- **EN:** Vaccination centre, first formal job
+
+### `DATA.about.entries[4].body` (T14)
+
+- **Antes:** Soporte técnico presencial: tickets, diagnóstico y escalado de incidencias. En los ratos libres de las guardias empiezo a aprender a programar y preparo las pruebas de acceso a un grado superior.
+- **Después:** Soporte técnico presencial: tickets, diagnóstico y escalado de incidencias. En los ratos libres también preparo las pruebas de acceso a un grado superior.
+- **CA:** Suport tècnic presencial: tiquets, diagnòstic i escalat d'incidències. A les estones lliures també preparo les proves d'accés a un grau superior.
+- **EN:** On-site tech support: tickets, diagnosis and escalation. In the quiet hours I also prepare for the entrance exams to a higher vocational course.
+
+### `DATA.about.entries[5].body` (T2)
+
+- **Antes:** Java (POO), MySQL, HTML, CSS, JavaScript, Angular, React, PHP y Laravel. De aprender solo en las guardias a aprender con estructura y compañeros.
+- **Después:** De aprender solo en las guardias a aprender con estructura y compañeros: Java (POO), MySQL, HTML, CSS, JavaScript, Angular, React, PHP y Laravel.
+- **CA:** D'aprendre sol a les guàrdies a aprendre amb estructura i companys: Java (POO), MySQL, HTML, CSS, JavaScript, Angular, React, PHP i Laravel.
+- **EN:** From learning alone on shift to learning with structure and classmates: Java (OOP), MySQL, HTML, CSS, JavaScript, Angular, React, PHP and Laravel.
+
+### `DATA.about.entries[7].title` (T12)
+
+- **Antes:** Programador web principal en VMV Cosmetic Group.
+- **Después:** Me incorporo a VMV Cosmetic Group como programador web principal.
+- **CA:** M'incorporo a VMV Cosmetic Group com a programador web principal.
+- **EN:** I join VMV Cosmetic Group as lead web developer.
+
+### `DATA.about.entries[7].body` (T14)
+
+- **Antes:** Entré como programador web principal. En pocos meses escribía microservicios en Go, integraba el AS/400 desde Java y montaba el primer WAF interno.
+- **Después:** En pocos meses ya escribía microservicios en Go, integraba el AS/400 desde Java y montaba el primer WAF interno.
+- **CA:** En pocs mesos ja escrivia microserveis en Go, integrava l'AS/400 des de Java i muntava el primer WAF intern.
+- **EN:** Within months I was already writing Go microservices, integrating the AS/400 from Java and building the first internal WAF.
+
+### `PAGES.about.sections.profiles`, la sección con perfiles y correo (T14)
+
+- **Antes:** Dónde encontrarme
+- **Después:** (se quita)
+
+### Enlace del hito de 2025 a la página de VMV (T7, T9)
+
+- **Antes:** (no existía)
+- **Después:** Todo lo que llevaba en VMV
+- **CA:** Tot el que portava a VMV
+- **EN:** Everything I looked after at VMV
+
+Reutiliza `DATA.experience.vmv.more` y lleva a `/proyectos/vmv-cosmetic-group` (`/ca/projectes/vmv-cosmetic-group`, `/en/projects/vmv-cosmetic-group`). Solo en la página Sobre mí; en la portada los hitos no llevan texto.

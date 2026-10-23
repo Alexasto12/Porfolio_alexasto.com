@@ -13,16 +13,19 @@ type PortraitProps = {
   locale: Locale;
   /** Only where it is in the first screen (the About page), so it does not delay the LCP elsewhere. */
   priority?: boolean;
+  /** Visible caption under the photo (the home section only). */
+  caption?: string;
   className?: string;
 };
 
 /** My photo in ink on paper (scripts/portrait.mjs), 4:5. */
-export function Portrait({ locale, priority, className = "" }: PortraitProps) {
+export function Portrait({ locale, priority, caption, className = "" }: PortraitProps) {
   const t = translator(locale);
   const p = DATA.about.portrait;
   return (
     <figure className={`portrait ${className}`.trim()}>
       <Image src={p.src} width={p.width} height={p.height} alt={t(p.alt)} sizes={SIZES} priority={priority} />
+      {caption && <figcaption className="portrait__caption">{caption}</figcaption>}
     </figure>
   );
 }

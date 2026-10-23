@@ -254,3 +254,21 @@ Descartados 4:
 - Dos repeticiones entre la entradilla y las tarjetas de Experiencia y Trabajos. Ya estaban o son el resumen que pide la guía.
 - El segundo botón del inicio queda por debajo de la primera pantalla a 360×640 y 375×667. El principal sigue a la vista, y la guía comprueba a 375×812 y 360×740.
 - La frase técnica de Neibr repetida: no la introdujo este cambio, pero se ha quitado igualmente.
+
+## Capa de marketing en Sobre mí (23 de octubre)
+
+Alejandro recuerda que la revisión de marketing también tocaba Sobre mí. Se aplica a la sección de la portada y a `/sobre-mi` con el mismo proceso (un editor, un verificador por propuesta). El detalle está al final de `marketing/CAMBIOS.md`.
+
+### Decisiones tomadas sin preguntar
+
+- **Cada hecho, una vez por página.** El resumen de la portada deja de repetir los hitos que tiene debajo y cuenta lo que la portada no enseña. Los hitos no repiten su título.
+- **Todos los títulos del recorrido son acciones en primera persona**, también los de 2019 y VMV. El de 2019 dice "Empiezo a programar por mi cuenta en las guardias de helpdesk": "empiezo" y no "aprendo", que es lo que decía el texto original.
+- **La etapa "Desarrollo" pasa a "Web y backend"**, las palabras del H1.
+- **Pie de foto en la portada** con nombre, oficio y lugar. También es el `caption` de la imagen en el JSON-LD de `Person`. En `/sobre-mi` la foto va sin pie, al lado del nombre.
+- **El hito de 2025 enlaza a la página de VMV**, con la etiqueta de Experiencia.
+- **Fuera "Dónde encontrarme"** de `/sobre-mi`: repetía los perfiles y el correo de Contacto, que va justo después.
+
+### Pendiente de Alejandro
+
+- **Opcional:** el texto de 2026 ("Un estudio web para pymes de toda Cataluña: webs a medida, redes sociales, automatizaciones y software a medida") repite casi entera la entradilla de `/sobre-mi`. Se podría dejar en lo que la entradilla no dice (las redes sociales) o en algo nuevo del estudio. No se toca sin un dato nuevo.
+
