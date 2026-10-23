@@ -64,9 +64,9 @@ export const SEO: Record<PageKey, { title: Localized; description: Localized }> 
       en: "About · Alejandro Cabrera, developer in Granollers",
     },
     description: {
-      es: "De cambiar el disco duro del portátil familiar con 11 años a cofundar Digital DesAny. Mi recorrido, el Grado Superior DAW y cómo trabajo.",
-      ca: "De canviar el disc dur del portàtil familiar amb 11 anys a cofundar Digital DesAny. El meu recorregut, el Grau Superior DAW i com treballo.",
-      en: "From swapping the family laptop's hard drive at 11 to co-founding Digital DesAny. My path, the DAW vocational course and how I work.",
+      es: "De cambiar el disco duro del portátil familiar con 11 años a cofundar Digital DesAny, donde hago webs y software a medida para pymes de toda Cataluña.",
+      ca: "De canviar el disc dur del portàtil familiar amb 11 anys a cofundar Digital DesAny, on faig webs i programari a mida per a pimes de tot Catalunya.",
+      en: "From swapping the family laptop's hard drive at 11 to co-founding Digital DesAny, where I build websites and custom software for SMEs across Catalonia.",
     },
   },
   backend: {
@@ -178,16 +178,15 @@ export const PAGES = {
   about: {
     h1: { es: "Sobre mí", ca: "Sobre mi", en: "About me" } as Localized,
     lede: {
-      es: "Soy Alejandro Cabrera, desarrollador web y backend en Granollers y cofundador de Digital DesAny, el estudio que llevo con Oriol Tamborero.",
-      ca: "Sóc l'Alejandro Cabrera, desenvolupador web i backend a Granollers i cofundador de Digital DesAny, l'estudi que porto amb l'Oriol Tamborero.",
-      en: "I'm Alejandro Cabrera, a web and backend developer in Granollers and co-founder of Digital DesAny, the studio I run with Oriol Tamborero.",
+      es: "Soy Alejandro Cabrera, desarrollador web y backend en Granollers. Hago webs, automatizaciones y software a medida para pymes de toda Cataluña, desde Digital DesAny, el estudio que llevo con Oriol Tamborero.",
+      ca: "Sóc l'Alejandro Cabrera, desenvolupador web i backend a Granollers. Faig webs, automatitzacions i programari a mida per a pimes de tot Catalunya, des de Digital DesAny, l'estudi que porto amb l'Oriol Tamborero.",
+      en: "I'm Alejandro Cabrera, a web and backend developer in Granollers. I build websites, automations and custom software for small and medium businesses across Catalonia, through Digital DesAny, the studio I run with Oriol Tamborero.",
     } as Localized,
     sections: {
-      path: { es: "Recorrido", ca: "Recorregut", en: "My path" },
+      path: { es: "Recorrido: del portátil de casa a Digital DesAny", ca: "Recorregut: del portàtil de casa a Digital DesAny", en: "My path: from the family laptop to Digital DesAny" },
       education: { es: "Formación y código abierto", ca: "Formació i codi obert", en: "Education and open source" },
       process: { es: "Cómo trabajo", ca: "Com treballo", en: "How I work" },
-      profiles: { es: "Dónde encontrarme", ca: "On trobar-me", en: "Where to find me" },
-    } as Record<"path" | "education" | "process" | "profiles", Localized>,
+    } as Record<"path" | "education" | "process", Localized>,
   },
 
   backend: {

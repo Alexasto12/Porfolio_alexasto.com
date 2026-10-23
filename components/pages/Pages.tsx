@@ -1,4 +1,4 @@
-import { CONTACT, DATA } from "@/lib/content";
+import { DATA } from "@/lib/content";
 import { pick, translator, type Locale } from "@/lib/i18n-types";
 import { PAGES } from "@/lib/pages";
 import { ROUTES, type PageKey } from "@/lib/routes";
@@ -13,6 +13,9 @@ import { ProcessList } from "../sections/Process";
 import { stagesOf } from "../sections/About";
 
 const SIZES_HALF = "(max-width: 860px) 100vw, 640px";
+
+/** Label of the link from a path entry to the page that tells it in full. */
+const STAGE_PAGE_LABEL = { vmv: DATA.experience.vmv.more, neibr: DATA.experience.neibr.more };
 
 /** Every piece of work, grouped, with one sentence of fact each. */
 function ProjectsPage({ locale }: { locale: Locale }) {
@@ -153,7 +156,7 @@ function VmvPage({ locale }: { locale: Locale }) {
   );
 }
 
-/** About me: the full path, education, how I work and where to find me. */
+/** About me: the full path, education and how I work. */
 function AboutPage({ locale }: { locale: Locale }) {
   const t = translator(locale);
   const p = PAGES.about;
@@ -185,6 +188,11 @@ function AboutPage({ locale }: { locale: Locale }) {
                       <h4 className="stage__title">{t(e.title)}</h4>
                       <p className="stage__place">{t(e.place)}</p>
                       <p className="stage__body">{t(e.body)}</p>
+                      {e.page && (
+                        <a href={ROUTES[e.page][locale]} className="more-link stage__link">
+                          {t(STAGE_PAGE_LABEL[e.page])}
+                        </a>
+                      )}
                     </div>
                   </li>
                 ))}
@@ -208,22 +216,6 @@ function AboutPage({ locale }: { locale: Locale }) {
       </PageSection>
       <PageSection id="como-trabajo" title={t(p.sections.process)} surface="ink">
         <ProcessList locale={locale} />
-      </PageSection>
-      <PageSection id="perfiles" title={t(p.sections.profiles)}>
-        <ul className="links links--big">
-          {CONTACT.profiles.map((pr) => (
-            <li key={pr.href}>
-              <ExtLink href={pr.href} me>
-                {pr.label}
-              </ExtLink>
-            </li>
-          ))}
-          <li>
-            <a href={`mailto:${CONTACT.personalEmail}`} className="link">
-              {CONTACT.personalEmail}
-            </a>
-          </li>
-        </ul>
       </PageSection>
     </SubPage>
   );

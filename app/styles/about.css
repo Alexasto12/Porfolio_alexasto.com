@@ -43,6 +43,7 @@
 }
 .stage__place { margin-top: var(--space-1); font-size: 15px; color: var(--fg-2); }
 .stage__body { margin-top: var(--space-2); font-size: 16px; line-height: 1.55; text-wrap: pretty; }
+.stage__link { margin-top: var(--space-2); font-size: 16px; }
 @media (max-width: 1100px) {
   .stages--full .stage { grid-column: 1 / -1; }
 }

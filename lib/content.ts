@@ -34,6 +34,8 @@ export interface TimelineEntry {
   title: Localized;
   place: Localized;
   body: Localized;
+  /** A page of this site that tells this stage in full (linked from the About page). */
+  page?: "vmv" | "neibr";
 }
 
 export const DESANY = "https://www.digitaldesany.com";
@@ -582,20 +584,20 @@ export const DATA = {
       en: "I started by opening up the family laptop at 11",
     } as Localized,
     description: {
-      es: "Luego arreglé ordenadores de vecinos, familia y amigos. Aprendí a programar en los ratos libres de las guardias de helpdesk y, más tarde, en el grado de DAW. Después vinieron VMV Cosmetic Group y Digital DesAny.",
-      ca: "Després vaig arreglar ordinadors de veïns, família i amics. Vaig aprendre a programar a les estones lliures de les guàrdies de helpdesk i, més tard, al grau de DAW. Llavors van venir VMV Cosmetic Group i Digital DesAny.",
-      en: "Then I fixed computers for neighbours, family and friends. I learned to code in the quiet hours of helpdesk shifts, and later on the DAW web development course. Next came VMV Cosmetic Group and Digital DesAny.",
+      es: "Detrás de la pantalla descubrí un sistema entero que se podía leer. Desde entonces he pasado del hardware al soporte y del soporte al código. Hoy, desde Digital DesAny, trabajo para pymes de toda Cataluña.",
+      ca: "Darrere de la pantalla vaig descobrir un sistema sencer que es podia llegir. Des d'aleshores he passat del hardware al suport i del suport al codi. Avui, des de Digital DesAny, treballo per a pimes de tot Catalunya.",
+      en: "Behind the screen I found a whole system I could read. Since then I've moved from hardware to support, and from support to code. Today, through Digital DesAny, I work for small and medium businesses across Catalonia.",
     } as Localized,
     stack: {
-      es: "Hoy trabajo con Go y Fiber, Java 21 y Spring Boot 3, Next.js, React y TypeScript, WordPress y PHP, PostgreSQL, Redis y Docker.",
-      ca: "Avui treballo amb Go i Fiber, Java 21 i Spring Boot 3, Next.js, React i TypeScript, WordPress i PHP, PostgreSQL, Redis i Docker.",
-      en: "Today I work with Go and Fiber, Java 21 and Spring Boot 3, Next.js, React and TypeScript, WordPress and PHP, PostgreSQL, Redis and Docker.",
+      es: "Uso Go y Fiber, Java 21 y Spring Boot 3, Next.js, React y TypeScript, WordPress y PHP, PostgreSQL, Redis y Docker.",
+      ca: "Utilitzo Go i Fiber, Java 21 i Spring Boot 3, Next.js, React i TypeScript, WordPress i PHP, PostgreSQL, Redis i Docker.",
+      en: "I use Go and Fiber, Java 21 and Spring Boot 3, Next.js, React and TypeScript, WordPress and PHP, PostgreSQL, Redis and Docker.",
     } as Localized,
     /** The path in three stages; each one takes the entries whose years fall in its range. */
     stages: [
       { name: { es: "Hardware", ca: "Hardware", en: "Hardware" }, from: 2011, to: 2016 },
       { name: { es: "Soporte y formación", ca: "Suport i formació", en: "Support and study" }, from: 2019, to: 2022 },
-      { name: { es: "Desarrollo", ca: "Desenvolupament", en: "Development" }, from: 2024, to: 2026 },
+      { name: { es: "Web y backend", ca: "Web i backend", en: "Web and backend" }, from: 2024, to: 2026 },
     ] as { name: Localized; from: number; to: number }[],
     entries: [
       {
@@ -607,9 +609,9 @@ export const DATA = {
         },
         place: { es: "Granollers, con 11 años", ca: "Granollers, amb 11 anys", en: "Granollers, aged 11" },
         body: {
-          es: "Se rompió el portátil de casa y, en vez de tirarlo, lo abrí, cambié el disco y descubrí que detrás de la pantalla había un sistema entero que se podía leer.",
-          ca: "Es va trencar el portàtil de casa i, en lloc de llençar-lo, el vaig obrir, vaig canviar el disc i vaig descobrir que darrere de la pantalla hi havia un sistema sencer que es podia llegir.",
-          en: "The family laptop broke and, instead of throwing it out, I opened it, swapped the drive and found a whole readable system behind the screen.",
+          es: "Se rompió el portátil de casa. En vez de tirarlo, lo abrí y le cambié el disco. Así descubrí que detrás de la pantalla había un sistema entero que se podía leer.",
+          ca: "Es va trencar el portàtil de casa. En lloc de llençar-lo, el vaig obrir i li vaig canviar el disc. Així vaig descobrir que darrere de la pantalla hi havia un sistema sencer que es podia llegir.",
+          en: "The family laptop broke. Instead of throwing it out, I opened it up and swapped the drive. That's how I found a whole system behind the screen that I could read.",
         },
       },
       {
@@ -621,9 +623,9 @@ export const DATA = {
         },
         place: { es: "Primer Linux", ca: "Primer Linux", en: "First Linux" },
         body: {
-          es: "El motor fue jugar. Instalé Mandriva en aquel portátil y me peleé con paquetes, repositorios y la consola.",
-          ca: "El motor va ser jugar. Vaig instal·lar Mandriva en aquell portàtil i em vaig barallar amb paquets, repositoris i la consola.",
-          en: "Gaming was the driver. I installed Mandriva on that laptop and fought with packages, repositories and the terminal.",
+          es: "El motor fue jugar. En aquel portátil me peleé con paquetes, repositorios y la consola.",
+          ca: "El motor va ser jugar. En aquell portàtil em vaig barallar amb paquets, repositoris i la consola.",
+          en: "Gaming was the driver. On that laptop I fought with packages, repositories and the terminal.",
         },
       },
       {
@@ -657,15 +659,15 @@ export const DATA = {
       {
         year: "2019",
         title: {
-          es: "Helpdesk presencial en un centro de vacunación.",
-          ca: "Helpdesk presencial en un centre de vacunació.",
-          en: "On-site helpdesk at a vaccination centre.",
+          es: "Empiezo a programar por mi cuenta en las guardias de helpdesk.",
+          ca: "Començo a programar pel meu compte a les guàrdies de helpdesk.",
+          en: "I start teaching myself to code on helpdesk shifts.",
         },
-        place: { es: "Primer empleo formal", ca: "Primera feina formal", en: "First formal job" },
+        place: { es: "Centro de vacunación, primer empleo formal", ca: "Centre de vacunació, primera feina formal", en: "Vaccination centre, first formal job" },
         body: {
-          es: "Soporte técnico presencial: tickets, diagnóstico y escalado de incidencias. En los ratos libres de las guardias empiezo a aprender a programar y preparo las pruebas de acceso a un grado superior.",
-          ca: "Suport tècnic presencial: tiquets, diagnòstic i escalat d'incidències. En les estones lliures de les guàrdies començo a aprendre a programar i preparo les proves d'accés a un grau superior.",
-          en: "On-site tech support: tickets, diagnosis and escalation. In the quiet hours on shift I start teaching myself to code and prepare the entrance exams for a higher vocational course.",
+          es: "Soporte técnico presencial: tickets, diagnóstico y escalado de incidencias. En los ratos libres también preparo las pruebas de acceso a un grado superior.",
+          ca: "Suport tècnic presencial: tiquets, diagnòstic i escalat d'incidències. A les estones lliures també preparo les proves d'accés a un grau superior.",
+          en: "On-site tech support: tickets, diagnosis and escalation. In the quiet hours I also prepare for the entrance exams to a higher vocational course.",
         },
       },
       {
@@ -677,9 +679,9 @@ export const DATA = {
         },
         place: { es: "Desarrollo de Aplicaciones Web", ca: "Desenvolupament d'Aplicacions Web", en: "Web Application Development" },
         body: {
-          es: "Java (POO), MySQL, HTML, CSS, JavaScript, Angular, React, PHP y Laravel. De aprender solo en las guardias a aprender con estructura y compañeros.",
-          ca: "Java (POO), MySQL, HTML, CSS, JavaScript, Angular, React, PHP i Laravel. D'aprendre sol a les guàrdies a aprendre amb estructura i companys.",
-          en: "Java (OOP), MySQL, HTML, CSS, JavaScript, Angular, React, PHP and Laravel. From learning alone on shift to learning with structure and classmates.",
+          es: "De aprender solo en las guardias a aprender con estructura y compañeros: Java (POO), MySQL, HTML, CSS, JavaScript, Angular, React, PHP y Laravel.",
+          ca: "D'aprendre sol a les guàrdies a aprendre amb estructura i companys: Java (POO), MySQL, HTML, CSS, JavaScript, Angular, React, PHP i Laravel.",
+          en: "From learning alone on shift to learning with structure and classmates: Java (OOP), MySQL, HTML, CSS, JavaScript, Angular, React, PHP and Laravel.",
         },
       },
       {
@@ -702,16 +704,17 @@ export const DATA = {
       },
       {
         year: "2025",
+        page: "vmv",
         title: {
-          es: "Programador web principal en VMV Cosmetic Group.",
-          ca: "Programador web principal a VMV Cosmetic Group.",
-          en: "Lead web developer at VMV Cosmetic Group.",
+          es: "Me incorporo a VMV Cosmetic Group como programador web principal.",
+          ca: "M'incorporo a VMV Cosmetic Group com a programador web principal.",
+          en: "I join VMV Cosmetic Group as lead web developer.",
         },
         place: { es: "Barcelona, 2025-2026", ca: "Barcelona, 2025-2026", en: "Barcelona, 2025-2026" },
         body: {
-          es: "Entré como programador web principal. En pocos meses escribía microservicios en Go, integraba el AS/400 desde Java y montaba el primer WAF interno.",
-          ca: "Hi vaig entrar com a programador web principal. En pocs mesos escrivia microserveis en Go, integrava l'AS/400 des de Java i muntava el primer WAF intern.",
-          en: "I joined as lead web developer. Within months I was writing Go microservices, integrating the AS/400 from Java and building the first internal WAF.",
+          es: "En pocos meses ya escribía microservicios en Go, integraba el AS/400 desde Java y montaba el primer WAF interno.",
+          ca: "En pocs mesos ja escrivia microserveis en Go, integrava l'AS/400 des de Java i muntava el primer WAF intern.",
+          en: "Within months I was already writing Go microservices, integrating the AS/400 from Java and building the first internal WAF.",
         },
       },
       {
@@ -735,7 +738,17 @@ export const DATA = {
       src: "/photos/alejandro-cabrera.jpg",
       width: 1200,
       height: 1500,
-      alt: { es: "Retrato de Alejandro Cabrera", ca: "Retrat de l'Alejandro Cabrera", en: "Portrait of Alejandro Cabrera" } as Localized,
+      alt: {
+        es: "Alejandro Cabrera, de medio lado, con americana oscura y camisa clara, sonríe a cámara",
+        ca: "L'Alejandro Cabrera, girat de costat, amb americana fosca i camisa clara, somriu a la càmera",
+        en: "Alejandro Cabrera, turned side-on in a dark jacket and light shirt, smiles at the camera",
+      } as Localized,
+      /** Under the photo in the home section; also the caption in the Person JSON-LD. */
+      caption: {
+        es: "Alejandro Cabrera, desarrollador web y backend en Granollers",
+        ca: "Alejandro Cabrera, desenvolupador web i backend a Granollers",
+        en: "Alejandro Cabrera, web and backend developer in Granollers",
+      } as Localized,
     },
     peer2stream: {
       id: "peer2stream",

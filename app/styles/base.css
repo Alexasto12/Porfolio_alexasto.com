@@ -398,8 +398,9 @@ img { max-width: 100%; }
 /* ───────── Portrait ─────────
    Already in ink and paper (scripts/portrait.mjs); the soft fill shows
    while it loads. */
-.portrait { margin: 0; background: var(--line-soft); }
-.portrait img { display: block; width: 100%; height: auto; }
+.portrait { margin: 0; }
+.portrait img { display: block; width: 100%; height: auto; background: var(--line-soft); }
+.portrait__caption { margin-top: var(--space-2); font-size: 15px; line-height: 1.45; color: var(--fg-2); text-wrap: balance; }
 
 /* ───────── Terminal (Neibr API example) ───────── */
 .terminal {
