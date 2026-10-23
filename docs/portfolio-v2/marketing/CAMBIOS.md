@@ -1,6 +1,6 @@
 # Textos antes y después (capa de marketing)
 
-Cada texto visible que cambió el 22 de octubre de 2026 (y, al final, los de Sobre mí del 23), con su ruta en `lib/content.ts` o `lib/pages.ts` y las técnicas de `../MARKETING.md` que aplica. Primero el castellano de antes y de después; debajo, el catalán y el inglés nuevos. Los textos que no aparecen aquí no cambian. Incluye los arreglos de la revisión final.
+Cada texto visible que cambió el 22 de octubre de 2026 (y, al final, los de Sobre mí y las respuestas de digitaldesany.com del 23), con su ruta en `lib/content.ts` o `lib/pages.ts` y las técnicas de `../MARKETING.md` que aplica. Primero el castellano de antes y de después; debajo, el catalán y el inglés nuevos. Los textos que no aparecen aquí no cambian. Incluye los arreglos de la revisión final.
 
 Antes (izquierda) y después (derecha), en castellano:
 
@@ -544,3 +544,237 @@ Qué cambia y por qué:
 - **EN:** Everything I looked after at VMV
 
 Reutiliza `DATA.experience.vmv.more` y lleva a `/proyectos/vmv-cosmetic-group` (`/ca/projectes/vmv-cosmetic-group`, `/en/projects/vmv-cosmetic-group`). Solo en la página Sobre mí; en la portada los hitos no llevan texto.
+
+## Respuestas desde digitaldesany.com (23 de octubre)
+
+Alejandro dice que casi todas las preguntas abiertas se contestan con digitaldesany.com. Se leyeron sus 70 páginas, se contestaron 24 preguntas con cita y URL (un verificador por grupo) y se aplicó lo que el estudio publica, sin precios ni forma de pago. Después, cuatro revisores (hechos, reglas e idiomas, marketing, y código y accesibilidad) y un verificador por revisor: se confirmaron 37 de 45 hallazgos y se arreglaron todos. Antes (izquierda, la web publicada) y después (derecha), en castellano:
+
+| Contacto, 1440 px |
+|---|
+| <img src="respuestas-contacto-1440.jpg" width="720" alt="Contacto a 1440 px, antes y después: el después añade los tres pasos de qué pasa después del primer mensaje"> |
+
+| Las cuatro partes, `/desarrollo-web`, 1440 px | Cómo va un proyecto (nuevo), 1440 px |
+|---|---|
+| <img src="respuestas-web-1440.jpg" width="440" alt="Las cuatro partes a 1440 px, antes y después: el después explica cada parte"> | <img src="respuestas-proyecto-1440.jpg" width="440" alt="Sección nueva Cómo va un proyecto a 1440 px"> |
+
+| Servicios, 1440 px |
+|---|
+| <img src="respuestas-servicios-1440.jpg" width="720" alt="Servicios a 1440 px, antes y después"> |
+
+Además de los textos de abajo:
+
+- La tarjeta de Paula Krebel enlaza a paulakrebel.com.
+- Las cuatro partes de `/desarrollo-web` pasan de una fila de enlaces a una lista con lo que incluye cada una. Su título es el enlace a su página en digitaldesany.com, y los lectores de pantalla oyen el dominio.
+- JSON-LD: el estudio lleva teléfono, `contactPoint` (horario, castellano y catalán) y su perfil de Google en `sameAs`. El nodo de Alejandro añade a su `sameAs` el `@id` con el que lo nombra digitaldesany.com. El premio en el JSON-LD tiene como sujeto el proyecto: "Neibr, uno de los tres proyectos ganadores".
+
+30 textos cambiados o nuevos.
+
+### `DATA.hero.proof[3].text` (T8, T9)
+
+- **Antes:** Neibr fue uno de los proyectos ganadores de los Santander X Spain Awards 2026 (UVic)
+- **Después:** Neibr fue uno de los tres ganadores de los Santander X Spain Awards 2026 (UVic)
+- **CA:** Neibr va ser un dels tres guanyadors dels Santander X Spain Awards 2026 (UVic)
+- **EN:** Neibr was one of the three winners of the Santander X Spain Awards 2026 (UVic)
+
+### `DATA.work.cases[1].description` (T8, T11)
+
+- **Antes:** Portfolio de storyboard y concept art, con un CMS hecho sobre un sistema de bloques propio.
+- **Después:** Portfolio de storyboard y concept art que Lara actualiza sola, sin tocar código, con un CMS hecho sobre un sistema de bloques propio.
+- **CA:** Portfolio de storyboard i concept art que la Lara actualitza sola, sense tocar codi, amb un CMS fet sobre un sistema de blocs propi.
+- **EN:** Storyboard and concept art portfolio that Lara updates herself, without touching code, with a CMS built on its own block system.
+
+### `DATA.work.cases[2].description` (T8, T11)
+
+- **Antes:** Portfolio trilingüe de ilustración infantil y juvenil, con diseño de marca y un sistema de diseño.
+- **Después:** Portfolio de ilustración infantil y juvenil en catalán, castellano e inglés, con diseño de marca y un sistema de diseño.
+- **CA:** Portfolio d'il·lustració infantil i juvenil en català, castellà i anglès, amb disseny de marca i un sistema de disseny.
+- **EN:** Children's and young adult illustration portfolio in Catalan, Spanish and English, with brand design and a design system.
+
+### `DATA.work.cases[2].shot.alt` (T8, T11)
+
+- **Antes:** Portada de la web de Paula Krebel, portfolio de ilustración
+- **Después:** Portada de paulakrebel.com, el portfolio de Paula Krebel
+- **CA:** Portada de paulakrebel.com, el portfolio de la Paula Krebel
+- **EN:** Home page of paulakrebel.com, Paula Krebel's portfolio
+
+### `DATA.services.ownership` (T5)
+
+- **Antes:** El código y el diseño son tuyos cuando el proyecto está pagado, con documentación técnica completa.
+- **Después:** El código y el diseño son tuyos cuando el proyecto está pagado, con documentación técnica completa. Si un día sigues con otra agencia o con alguien de tu equipo, no empiezas de cero.
+- **CA:** El codi i el disseny són teus quan el projecte està pagat, amb documentació tècnica completa. Si un dia continues amb una altra agència o amb algú del teu equip, no comences de zero.
+- **EN:** The code and the design are yours once the project is paid for, with full technical documentation. If you ever switch to another agency or to someone on your own team, you don't start from scratch.
+
+### `DATA.services.items[1].text` (T3, T4)
+
+- **Antes:** Reels de demostración, LinkedIn, YouTube y emails a la base de clientes, como en el caso de Hidrotech Bordalló.
+- **Después:** Grabamos, editamos, publicamos y respondemos en las redes de tu negocio, y cada tres meses te contamos qué ha pasado.
+- **CA:** Gravem, editem, publiquem i responem a les xarxes del teu negoci, i cada tres mesos t'expliquem què ha passat.
+- **EN:** We film, edit, post and reply on your business's social media, and every three months we tell you how it went.
+
+### `DATA.services.items[2].text` (T3, T4)
+
+- **Antes:** Las tareas que repites a mano, las automatizamos con IA o sin ella, según el caso. Un ejemplo de mi etapa en VMV Cosmetic Group: los avisos de WhatsApp Business para las delegaciones.
+- **Después:** Las tareas que repites a mano, las automatizamos con IA o sin ella, según el caso. Un ejemplo del estudio: el alta de clientes de un negocio de finanzas. Cada cliente rellena sus datos una vez y la documentación sale hecha.
+- **CA:** Les tasques que repeteixes a mà, les automatitzem amb IA o sense, segons el cas. Un exemple de l'estudi: l'alta de clients d'un negoci de finances. Cada client omple les seves dades un cop i la documentació surt feta.
+- **EN:** We automate the tasks you repeat by hand, with or without AI, depending on the job. One example from the studio: client sign-up at a finance business. Each client fills in their details once and the paperwork comes out ready.
+
+### `DATA.services.cta.line` (T6)
+
+- **Antes:** Cuéntanos qué necesitas y para cuándo.
+- **Después:** Cuéntanos qué necesitas y para cuándo. Te decimos por dónde empezar, y si no nos necesitas, también.
+- **CA:** Explica'ns què necessites i per a quan. Et diem per on començar, i si no ens necessites, també.
+- **EN:** Tell us what you need and by when. We'll tell you where to start, and if you don't need us, we'll say so.
+
+### `DATA.experience.neibr.award` (T8, T9)
+
+- **Antes:** Fue uno de los proyectos ganadores de los Santander X Spain Awards 2026 (UVic).
+- **Después:** Fue uno de los tres ganadores de los Santander X Spain Awards 2026 (UVic).
+- **CA:** Va ser un dels tres guanyadors dels Santander X Spain Awards 2026 (UVic).
+- **EN:** It was one of the three winners of the Santander X Spain Awards 2026 (UVic).
+
+### `DATA.about.entries[8].body` (T10, T14)
+
+- **Antes:** Un estudio web para pymes de toda Cataluña: webs a medida, redes sociales, automatizaciones y software a medida.
+- **Después:** Dirijo la tecnología del estudio y monté toda su infraestructura, de los servidores a los despliegues. Oriol dirige la primera reunión y prepara las propuestas.
+- **CA:** Dirigeixo la tecnologia de l'estudi i vaig muntar tota la seva infraestructura, dels servidors als desplegaments. L'Oriol dirigeix la primera reunió i prepara les propostes.
+- **EN:** I lead the studio's technology and set up all of its infrastructure, from the servers to the deployments. Oriol leads the first meeting and prepares the proposals.
+
+### `DATA.contact.nextLabel` (T6, T10)
+
+- **Antes:** (no existía)
+- **Después:** Qué pasa después
+- **CA:** Què passa després
+- **EN:** What happens next
+
+### `DATA.contact.next[0].title` (T6, T10)
+
+- **Antes:** (no existía)
+- **Después:** Uno de los dos lee tu mensaje
+- **CA:** Un dels dos llegeix el teu missatge
+- **EN:** One of us reads your message
+
+### `DATA.contact.next[0].text` (T6, T10)
+
+- **Antes:** (no existía)
+- **Después:** Te respondemos en un plazo de 24 a 72 horas. Horario: de lunes a viernes, de 09:00 a 20:00 (hora peninsular).
+- **CA:** Et responem en un termini de 24 a 72 hores. Horari: de dilluns a divendres, de 09:00 a 20:00 (hora peninsular).
+- **EN:** We reply within 24 to 72 hours. Hours: Monday to Friday, 09:00 to 20:00 (Spain time).
+
+### `DATA.contact.next[1].title` (T6, T10)
+
+- **Antes:** (no existía)
+- **Después:** Una reunión para entender el caso
+- **CA:** Una reunió per entendre el cas
+- **EN:** A meeting to understand your case
+
+### `DATA.contact.next[1].text` (T6, T10)
+
+- **Antes:** (no existía)
+- **Después:** Hablamos de tu negocio, de lo que quieres conseguir y de lo que hoy te cuesta hacer a mano.
+- **CA:** Parlem del teu negoci, del que vols aconseguir i del que avui et costa fer a mà.
+- **EN:** We talk about your business, what you want to achieve and what you find hard to do by hand today.
+
+### `DATA.contact.next[2].title` (T6, T10)
+
+- **Antes:** (no existía)
+- **Después:** Una propuesta por escrito
+- **CA:** Una proposta per escrit
+- **EN:** A written proposal
+
+### `DATA.contact.next[2].text` (T6, T10)
+
+- **Antes:** (no existía)
+- **Después:** Te enviamos la propuesta con el presupuesto desglosado.
+- **CA:** T'enviem la proposta amb el pressupost desglossat.
+- **EN:** We send you the proposal with an itemised quote.
+
+### `DATA.contact.desanyProfile.label` (T6, T10)
+
+- **Antes:** (no existía)
+- **Después:** Mi perfil en Digital DesAny
+- **CA:** El meu perfil a Digital DesAny
+- **EN:** My profile at Digital DesAny
+
+### `PAGES.web.sections.project` (T6, T8)
+
+- **Antes:** (no existía)
+- **Después:** Cómo va un proyecto
+- **CA:** Com va un projecte
+- **EN:** How a project works
+
+### `PAGES.web.parts[0].text` (T3, T4)
+
+- **Antes:** (no existía)
+- **Después:** Tu marca y las pantallas de tu web, diseñadas como un conjunto para que se entiendan a la primera. Quedan montadas en Figma, listas para pasar a código.
+- **CA:** La teva marca i les pantalles del teu web, dissenyades com un conjunt perquè s'entenguin a la primera. Queden muntades a Figma, a punt per passar a codi.
+- **EN:** Your brand and your website's screens, designed as one set so they make sense at first glance. They are built in Figma, ready to become code.
+
+### `PAGES.web.parts[1].text` (T3, T4)
+
+- **Antes:** (no existía)
+- **Después:** El diseño pasa a código, con integraciones entre los programas que usas y auditorías de lo que ya tienes.
+- **CA:** El disseny passa a codi, amb integracions entre els programes que fas servir i auditories del que ja tens.
+- **EN:** The design becomes code, with integrations between the programs you use and audits of what you already have.
+
+### `PAGES.web.parts[2].text` (T3, T4)
+
+- **Antes:** (no existía)
+- **Después:** Hacemos inventario de lo que hoy se hace a mano y lo pasamos a digital o lo automatizamos, empezando por lo que más horas recupera. También entra el trabajo para que te encuentren en Google (SEO) y para medir las visitas con el permiso de cada visitante (analítica).
+- **CA:** Fem inventari del que avui es fa a mà i ho passem a digital o ho automatitzem, començant pel que recupera més hores. També hi entra la feina perquè et trobin a Google (SEO) i per mesurar les visites amb el permís de cada visitant (analítica).
+- **EN:** We list what is still done by hand and move it to digital or automate it, starting with what saves the most hours. This part also covers the work to get you found on Google (SEO) and to measure visits with each visitor's consent (analytics).
+
+### `PAGES.web.parts[3].text` (T3, T4)
+
+- **Antes:** (no existía)
+- **Después:** Publicamos la web y la vigilamos desde el primer día, con copias de seguridad probadas, avisos si algo falla y los certificados y dominios en orden.
+- **CA:** Publiquem el web i el vigilem des del primer dia, amb còpies de seguretat provades, avisos si alguna cosa falla i els certificats i dominis en ordre.
+- **EN:** We publish the website and monitor it from day one, with tested backups, alerts when something fails, and certificates and domains kept in order.
+
+### `PAGES.web.partsNote` (T3, T4)
+
+- **Antes:** Cada parte tiene su página en digitaldesany.com.
+- **Después:** Puedes contratar solo una: un rediseño de marca, una integración, una auditoría de procesos o el despliegue de algo que ya tienes. También damos soporte a webs que no hicimos nosotros. Cada parte tiene su página en digitaldesany.com.
+- **CA:** Pots contractar-ne només una: un redisseny de marca, una integració, una auditoria de processos o el desplegament d'alguna cosa que ja tens. També donem suport a webs que no hem fet nosaltres. Cada part té la seva pàgina a digitaldesany.com.
+- **EN:** You can hire just one: a brand redesign, an integration, a process audit, or deploying something you already have. We also support websites we didn't build. Each part has its own page at digitaldesany.com.
+
+### `PAGES.web.project[0].title` (T6, T8)
+
+- **Antes:** (no existía)
+- **Después:** Por fases
+- **CA:** Per fases
+- **EN:** In phases
+
+### `PAGES.web.project[0].text` (T6, T8)
+
+- **Antes:** (no existía)
+- **Después:** Trabajamos por fases y validas cada una antes de pasar a la siguiente. En el presupuesto, cada parte va por separado.
+- **CA:** Treballem per fases i en valides cadascuna abans de passar a la següent. Al pressupost, cada part va per separat.
+- **EN:** We work in phases, and you approve each one before we move on to the next. In the quote, each part is listed separately.
+
+### `PAGES.web.project[1].title` (T6, T8)
+
+- **Antes:** (no existía)
+- **Después:** Plazos orientativos
+- **CA:** Terminis orientatius
+- **EN:** Indicative timelines
+
+### `PAGES.web.project[1].text` (T6, T8)
+
+- **Antes:** (no existía)
+- **Después:** Una web sencilla de una sola página (landing) suele llevar un mes. Una web corporativa mediana con algunas integraciones, entre dos y tres meses. Los proyectos más grandes los estimamos después de ver los datos. Los plazos dan por hecho que tus contenidos y tus respuestas llegan a tiempo.
+- **CA:** Un web senzill d'una sola pàgina (landing) sol trigar un mes. Un web corporatiu mitjà amb algunes integracions, entre dos i tres mesos. Els projectes més grans els estimem després de veure les dades. Els terminis donen per fet que els teus continguts i les teves respostes arriben a temps.
+- **EN:** A simple one-page website (landing page) usually takes a month. A mid-sized company website with a few integrations, two to three months. We estimate bigger projects once we have seen the data. These timelines assume your content and feedback arrive on time.
+
+### `PAGES.web.project[2].title` (T6, T8)
+
+- **Antes:** (no existía)
+- **Después:** Después de la entrega
+- **CA:** Després del lliurament
+- **EN:** After delivery
+
+### `PAGES.web.project[2].text` (T6, T8)
+
+- **Antes:** (no existía)
+- **Después:** El primer mes corregimos los errores sin coste y formamos a quien llevará la web. Después, el mantenimiento va por bolsas de horas, solo si hace falta. De esas horas sale también la gestión del hosting y del dominio.
+- **CA:** El primer mes corregim els errors sense cost i formem qui portarà el web. Després, el manteniment va per bosses d'hores, només si cal. D'aquestes hores també surt la gestió de l'allotjament i del domini.
+- **EN:** In the first month we fix bugs at no cost and train whoever will run the website. After that, maintenance comes in blocks of hours, only when you need it. Hosting and domain management also come out of those hours.

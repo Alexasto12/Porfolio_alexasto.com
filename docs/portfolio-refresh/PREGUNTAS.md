@@ -80,6 +80,8 @@ Antes de marcar el PR como listo pasé una revisión con seis revisores independ
 
 ## Resumen de lo pendiente
 
+> **23/10/2026:** el 4 (premio) y el 9 (idiomas de Paula Krebel) se resuelven con digitaldesany.com: "uno de los tres ganadores" y "catalán, castellano e inglés". Ver `docs/portfolio-v2/PREGUNTAS.md`.
+
 1. Capturas reales: `npm run capture` con red y commit de `public/shots/` y `lib/shots.json` (Fase 3).
 2. Enlaces: `npm run links` con red (Fase 6).
 3. URLs de digitaldesany.com: página de servicios, fichas en catalán, ficha de Hidrotech Bordalló y web de Paula Krebel (Fase 2).

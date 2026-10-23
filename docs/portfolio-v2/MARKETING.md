@@ -3,13 +3,15 @@
 > **Estado (22 de octubre de 2026).** Aplicada a los textos de la web: 55 textos cambiados, añadidos o quitados, uno por uno en [`marketing/CAMBIOS.md`](marketing/CAMBIOS.md). Cada propuesta pasó por un verificador que rechazaba todo lo que añadiera un hecho, rompiera los tres idiomas o no fuera claramente mejor: de 57 propuestas se aplicaron 54 (algunas corregidas) y se descartaron 3 (las descripciones de tres capacidades de VMV, donde el término exacto sirve mejor a quien evalúa). Decisiones tomadas al aplicarla:
 >
 > - **"Web" en catalán va en masculino** ("el web", "dos webs", "webs publicats"), como dice Optimot para "lloc web" y como escribe digitaldesany.com/ca.
-> - **No se publica** "Si un día cambias de proveedor, te los llevas", ningún plan de pasos tras el primer mensaje ni tiempos de respuesta: faltan los datos (ver "Datos que faltan" y `PREGUNTAS.md`).
+> - **No se publicaba** "Si un día cambias de proveedor, te los llevas", ningún plan de pasos tras el primer mensaje ni tiempos de respuesta, porque faltaban los datos. Desde el 23 de octubre se publican con las palabras de digitaldesany.com (ver abajo y `DECISIONES.md`).
 > - **El mensaje de WhatsApp que se rellena solo no cambia**, porque lo recibe el estudio. Debajo de los botones hay una línea que dice lo que hace el botón.
 > - **La propiedad del código sale dos veces en la portada** (frase del inicio y Servicios), con las mismas palabras, y no entra en la descripción de `Person` del JSON-LD.
 >
 > Comprobado con `check`, `seo` (392 de 392), `a11y` (0 fallos en las 21 páginas), `motion` (72 de 72), `links` y Lighthouse en las tres portadas (móvil de 97 a 99, escritorio 100).
 >
 > **23 de octubre: Sobre mí.** La misma capa en la sección Sobre mí de la portada y en `/sobre-mi`: 18 cambios (15 textos, un pie de foto, un enlace a la página de VMV desde el hito de 2025 y fuera "Dónde encontrarme", que repetía Contacto). Cada hecho sale una vez por página y el giro de la historia (empezar a programar en las guardias de helpdesk) pasa a los títulos, que es lo que enseña la portada. Detalle al final de [`marketing/CAMBIOS.md`](marketing/CAMBIOS.md). Mismas comprobaciones, mismo resultado.
+>
+> **23 de octubre: respuestas desde digitaldesany.com.** Alejandro dice que casi todos los "Datos que faltan" están en la web del estudio. Con ellos, Contacto cuenta qué pasa después del primer mensaje (T6, T10), Servicios dice que puedes seguir con otro equipo sin empezar de cero (T5) y usa un caso de automatización del estudio (T4), y `/desarrollo-web` explica las cuatro partes, los plazos y el soporte después de la entrega. Los precios y la forma de pago se quedan en digitaldesany.com. Qué queda abierto, en la sección 7 y en `PREGUNTAS.md`.
 >
 > Lo que sigue es la guía tal como salió de la investigación; sus ejemplos de antes y después pueden diferir un poco de lo publicado.
 
@@ -518,7 +520,7 @@ Las técnicas van por orden de impacto. Cada ejemplo parte de un texto real de h
 |---|---|
 | Urgencia o escasez ("plazas limitadas", "solo este mes", cuentas atrás) | No hay ningún plazo real que citar. La urgencia falsa resta credibilidad y es práctica desleal (Ley 3/1991, art. 23.4; barrido de la Comisión Europea de 2023). La única urgencia es la del cliente: "para cuándo" |
 | Testimonios, reseñas, estrellas o contadores ("+20 clientes", "clientes satisfechos") | No existen. Se piden de verdad, con nombre y permiso, y hasta entonces se enlaza lo comprobable |
-| Precios, "desde X €", "presupuesto gratis", "sin compromiso", "sin permanencia", "respuesta en 24 o 48 h", "garantía", "precio cerrado", "el dominio a tu nombre" | Son condiciones comerciales que `DECISIONES.md` no publica. El "Respondo en menos de 48h" se quitó a propósito (`docs/portfolio-refresh/PREGUNTAS.md`, Fase 2) |
+| Precios, "desde X €", "presupuesto gratis", "sin compromiso", "sin permanencia", "garantía", "precio cerrado", "el dominio a tu nombre" | Las cifras en euros y la forma de pago se quedan en digitaldesany.com. De las demás condiciones, solo las que publica el estudio, sin ampliarlas ni quitarles sus condiciones (`DECISIONES.md`, 23/10/2026): el plazo de respuesta, los plazos orientativos y la corrección de errores del primer mes. "Garantía" como palabra no se usa: se dice lo que se hace |
 | Superlativos y autoetiquetas ("experto", "los mejores", "líderes", "referente", "rápido", "seguro", "robusto", "escalable", "de calidad", "profesionales", "apasionado", "autodidacta") | Lo prohíbe `CLAUDE.md`; un hecho hace ese trabajo mejor |
 | Inflar hechos ("premiado", "cientos de rosas", "+5.000 visitas", "decenas de webs", "15 años de experiencia", "integré" en lugar de "colaboro") | Cambia el hecho publicado o lo deduce sin que nadie lo haya dicho |
 | Agitar el problema (PAS completo, "pierdes clientes cada día", "¿Miedo a que te estafen?") y el antes y después de un cliente | Pide afirmaciones sobre las pérdidas del lector o la situación previa del cliente que no podemos sostener. Solo Roses tiene resultado, y no tiene "antes" |
@@ -535,9 +537,7 @@ Las técnicas van por orden de impacto. Cada ejemplo parte de un texto real de h
 
 ### Aplazado hasta tener datos
 
-- **Plan de tres pasos en Contacto (StoryBrand).** No sabemos qué pasa después del primer mensaje: llamada, visita o presupuesto. Plantilla preparada para cuando se sepa:
-  - ES: "1. Nos escribes por WhatsApp o por correo: qué necesitas y para cuándo. 2. [paso confirmado por Alejandro]. 3. [entrega o siguiente paso confirmado]."
-  - Con el plan publicado, la propiedad del código no se añade como tercer paso en la portada: ya sale dos veces.
+- **Plan de tres pasos en Contacto (StoryBrand).** Publicado el 23/10/2026 con los tres pasos de digitaldesany.com/es/contacto ("Qué pasa después"). Sigue sin saberse si la reunión es una llamada, una videollamada o una visita. La propiedad del código no se añade como paso: ya sale dos veces en la portada.
 - **Pregunta de problema y solución en Servicios** ("¿Tu web solo la puede tocar quien la hizo?"). La propiedad del código saldría tres veces en la portada. Se puede usar en `/desarrollo-web` si se quita de otro sitio.
 - **"No hacemos..."** (decir qué no hace el estudio). Solo con las palabras de Alejandro.
 - **"Ens pots escriure en català o en castellà"** y sus equivalentes. Es un compromiso de servicio y hay que confirmarlo.
@@ -595,10 +595,12 @@ Cada texto reescrito tiene que pasar todo esto:
 
 ## 7. Datos que faltan (preguntar a Alejandro; no inventar)
 
+> **23 de octubre.** Resueltos con digitaldesany.com: qué pasa después del primer mensaje (sin el formato de la reunión), el horario y el tiempo de respuesta, quién lee los mensajes, "te los llevas" (con las palabras del estudio), qué incluyen las partes, un caso de automatización del estudio (sin nombre) y el nombre del premio. Decididos: los precios no se publican y el mensaje de WhatsApp no cambia (es el mismo que usa el estudio). Siguen abiertos el formato de la reunión, el inglés, el dominio y el hosting, "mi parte" en cada caso, los resultados, los testimonios, la voz del cliente, quién lleva las redes, qué no hace el estudio y la lección de Neibr.
+
 | Dato | Dónde iría | Mientras tanto |
 |---|---|---|
 | Qué pasa después del primer mensaje: llamada, visita, presupuesto escrito, si la primera reunión es gratis | Plan de tres pasos en Contacto; franja de Servicios | Texto de Contacto sin plan (T10) |
-| Tiempo de respuesta u horario (digitaldesany.com publica "de lunes a viernes, de 09:00 a 20:00") | Línea junto a los botones | Nada |
+| Tiempo de respuesta u horario (digitaldesany.com publica "de lunes a viernes, de 09:00 a 20:00") | Paso 01 de "Qué pasa después" en Contacto (resuelto el 23/10/2026) | Nada |
 | Quién lee el WhatsApp y info@ (Alejandro, Oriol o los dos) | Texto de Contacto; si el botón del hero es "Cuéntame" o "Cuéntanos" | "Los proyectos los llevamos Oriol Tamborero y yo", sin decir quién contesta |
 | Si el estudio atiende en catalán y en castellano (y en inglés) | Línea en Contacto ("Ens pots escriure en català o en castellà") | Nada |
 | Si dominio y hosting quedan a nombre del cliente; si hay cuotas o permanencia | Propiedad del código en Servicios | Solo código y diseño |

@@ -18,6 +18,31 @@
   line-height: 1.55;
 }
 .contact .cbtns { margin-top: var(--space-7); }
+/* What happens after the first message: three numbered steps. */
+.contact__next {
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+}
+.contact__steps {
+  margin-top: var(--space-4);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5) var(--gap);
+}
+.contact__step { display: grid; align-content: start; gap: var(--space-1); }
+.contact__num { font-size: 14px; }
+.contact__step-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.contact__step-text { font-size: 16px; line-height: 1.5; text-wrap: pretty; }
+@media (max-width: 860px) {
+  .contact__steps { grid-template-columns: minmax(0, 1fr); }
+}
 .contact__personal {
   margin-top: var(--space-8);
   padding-top: var(--space-5);
