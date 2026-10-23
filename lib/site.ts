@@ -62,9 +62,9 @@ export const SAME_AS = CONTACT.profiles.map((p) => p.href);
 const DESANY_ID = "https://www.digitaldesany.com#organization";
 
 const AWARD: Localized = {
-  es: "Santander X Spain Awards 2026 (UVic), uno de los proyectos ganadores, con Neibr",
-  ca: "Santander X Spain Awards 2026 (UVic), un dels projectes guanyadors, amb Neibr",
-  en: "Santander X Spain Awards 2026 (UVic), one of the winning projects, with Neibr",
+  es: "Santander X Spain Awards 2026 (UVic), uno de los tres ganadores, con Neibr",
+  ca: "Santander X Spain Awards 2026 (UVic), un dels tres guanyadors, amb Neibr",
+  en: "Santander X Spain Awards 2026 (UVic), one of the three winners, with Neibr",
 };
 
 export const VIEWPORT: Viewport = {
@@ -200,16 +200,31 @@ export function jsonLd(locale: Locale, page: PageKey = "home") {
       address,
       knowsAbout: KNOWS_ABOUT,
       knowsLanguage: ["es", "ca", "en"],
-      sameAs: SAME_AS,
+      // digitaldesany.com names me with its own @id; sameAs ties the two nodes together.
+      sameAs: [...SAME_AS, `${DESANY}#alejandro`],
     },
     {
       "@type": "Organization",
       "@id": DESANY_ID,
       name: "Digital DesAny",
-      // The same url and founder @id that digitaldesany.com publishes, so the two graphs merge cleanly.
+      // The same @id, url and Oriol @id that digitaldesany.com publishes, so the two graphs merge cleanly.
       url: `${DESANY}/es`,
       email: CONTACT.workEmail,
-      sameAs: [CONTACT.desanyLinkedIn],
+      telephone: `+${CONTACT.whatsappNumber}`,
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        email: CONTACT.workEmail,
+        telephone: `+${CONTACT.whatsappNumber}`,
+        availableLanguage: ["es", "ca"],
+        hoursAvailable: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "09:00",
+          closes: "20:00",
+        },
+      },
+      sameAs: [CONTACT.desanyLinkedIn, CONTACT.desanyGoogle],
       founder: [{ "@id": personId }, { "@type": "Person", "@id": `${DESANY}#oriol`, name: "Oriol Tamborero" }],
       address,
       areaServed: { "@type": "AdministrativeArea", name: CATALONIA[locale], sameAs: wiki("Catalonia") },

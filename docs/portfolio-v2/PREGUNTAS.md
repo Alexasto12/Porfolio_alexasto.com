@@ -272,3 +272,46 @@ Alejandro recuerda que la revisión de marketing también tocaba Sobre mí. Se a
 
 - **Opcional:** el texto de 2026 ("Un estudio web para pymes de toda Cataluña: webs a medida, redes sociales, automatizaciones y software a medida") repite casi entera la entradilla de `/sobre-mi`. Se podría dejar en lo que la entradilla no dice (las redes sociales) o en algo nuevo del estudio. No se toca sin un dato nuevo.
 
+## Respuestas desde digitaldesany.com (23 de octubre)
+
+Alejandro: "La gran mayoría de preguntas se pueden contestar mirando en digitaldesany.com". Se leyeron sus 70 páginas (castellano y catalán, legales incluidas) y se contestaron 24 preguntas con cita y URL. Un verificador por grupo intentó tumbar cada respuesta. Los hechos que se usan están en `docs/portfolio-refresh/DECISIONES.md` ("Lo que publica digitaldesany.com") y los textos cambiados, en `marketing/CAMBIOS.md`.
+
+### Contestadas y aplicadas
+
+- **Qué pasa después del primer mensaje:** Contacto tiene ahora tres pasos, los mismos que publica el estudio. Respuesta en 24 a 72 horas (lo leemos Oriol o yo y contesta uno de los dos), una reunión para entender el caso y una propuesta por escrito con el presupuesto desglosado.
+- **Horario:** de lunes a viernes, de 09:00 a 20:00, en la línea bajo los botones y en el `contactPoint` del JSON-LD.
+- **"Si cambias de proveedor, te los llevas":** el estudio lo dice con otras palabras. Servicios añade "Si un día sigues con otra agencia o con alguien de tu equipo, no empiezas de cero."
+- **Qué incluye cada parte de una web:** `/desarrollo-web` explica las cuatro, con ejemplos de contratar solo una.
+- **Plazos y soporte después de la entrega:** sección nueva "Cómo va un proyecto" en `/desarrollo-web`, sin precios.
+- **Caso de automatización del estudio:** el alta de clientes de un negocio de finanzas sustituye al ejemplo de VMV en Servicios (MARKETING.md lo pedía). El de VMV sigue en Experiencia.
+- **Redes:** la tarjeta dice qué incluye el servicio antes del ejemplo de Hidrotech.
+- **Paula Krebel:** su web es paulakrebel.com y está en catalán, castellano e inglés. La tarjeta lo dice y enlaza a la web.
+- **Premio de Neibr:** "uno de los tres ganadores", como su ficha.
+- **Sobre mí, hito de 2026:** ya no repite la entradilla. Dice qué hace cada uno en el estudio.
+- **Enlace desde digitaldesany.com:** la página Estudio ya enlaza de forma visible a dev.alexasto.com. Contacto enlaza ahora a esa página ("Mi perfil en Digital DesAny"), y el JSON-LD une los dos nodos de Alejandro.
+
+### Lo que no se copia
+
+- **Precios y forma de pago** (bolsas de horas, packs de redes, 40/40/20, validez de 30 días): se quedan en digitaldesany.com.
+- **Startups y "remoto para el resto de España":** el estudio lo dice, pero el portfolio sigue con "pymes de toda Cataluña", que es su posicionamiento. Cambiarlo es decisión de Alejandro.
+
+### Sigue pendiente de Alejandro
+
+La web del estudio no lo dice:
+
+1. **Si la primera reunión es una llamada, una videollamada o una visita**, y si es gratis.
+2. **Si el estudio atiende en inglés.** El JSON-LD del estudio declara castellano y catalán, y `/en` manda al WhatsApp con un mensaje en inglés.
+3. **A nombre de quién quedan el dominio y el hosting.**
+4. **Qué parte hiciste tú en cada caso** (no hay reparto por caso; el estudio dice que cada proyecto pasa por los dos).
+5. **Testimonios y reseñas:** no hay ninguno en la web. El estudio tiene perfil de empresa en Google (está en su `sameAs`).
+6. **Resultados medibles** de Lara's Oak, Paula Krebel, Hidrotech y GOK Thermal.
+7. **Si se puede nombrar a David Forcada Finances** (el caso de automatización) y a Àlex Soler Boix (en "Han confiado en nosotros").
+8. **Quién lleva las redes de los clientes.**
+9. **Qué aprendiste al cerrar Neibr.**
+10. **Siguen abiertos** el dominio final y Search Console, que no dependen de la web.
+
+### Para corregir en digitaldesany.com (fuera de este repositorio)
+
+- **La ficha de Neibr lo presenta como activo** ("Neibr es...", "Inicia un Piloto", "Ver el sitio en vivo"). El portfolio dice que se cerró en 2026 antes de lanzar, como `DECISIONES.md`, y enlaza a esa ficha.
+- **Más de veinte dominios** en la ficha de Alejandro: el portfolio publica 32 (21 con web activa). No se contradicen, pero la cifra exacta es más concreta.
+

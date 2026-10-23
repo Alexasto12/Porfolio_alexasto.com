@@ -6,7 +6,7 @@ import { SubPage, PageHead, PageSection, ProjectItem } from "./PageParts";
 import { CaseCard } from "../CaseCard";
 import { BrowserFrame } from "../BrowserFrame";
 import { Portrait } from "../Portrait";
-import { ExtLink, LinkRow } from "../ui/Links";
+import { ExtLink } from "../ui/Links";
 import { VmvCapabilities, VmvFigures } from "../VmvBlocks";
 import { NeibrFigure, StressBand } from "../NeibrBlocks";
 import { ProcessList } from "../sections/Process";
@@ -305,7 +305,26 @@ function WebPage({ locale }: { locale: Locale }) {
       </PageSection>
       <PageSection id="partes" title={t(p.sections.parts)}>
         <p className="copy page-sec__intro">{t(p.partsNote)}</p>
-        <LinkRow links={p.parts} locale={locale} className="links--big" />
+        <ul className="caps">
+          {p.parts.map((part) => (
+            <li key={part.href.es} className="caps__item">
+              <h3 className="caps__title">
+                <ExtLink href={pick(part.href, locale)}>{t(part.label)}</ExtLink>
+              </h3>
+              <p className="caps__text">{t(part.text)}</p>
+            </li>
+          ))}
+        </ul>
+      </PageSection>
+      <PageSection id="proyecto" title={t(p.sections.project)}>
+        <ul className="caps caps--3">
+          {p.project.map((b) => (
+            <li key={b.title.es} className="caps__item">
+              <h3 className="caps__title">{t(b.title)}</h3>
+              <p className="caps__text">{t(b.text)}</p>
+            </li>
+          ))}
+        </ul>
       </PageSection>
     </SubPage>
   );

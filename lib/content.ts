@@ -67,6 +67,8 @@ export const CONTACT = {
     { label: "WordPress.org", href: "https://profiles.wordpress.org/alexasto12/" },
   ],
   desanyLinkedIn: "https://www.linkedin.com/company/digital-desany/",
+  /** The studio's Google Business Profile, as digitaldesany.com lists it in its sameAs. */
+  desanyGoogle: "https://www.google.com/search?kgmid=/g/11ntkt2txp",
 };
 
 export const DATA = {
@@ -147,9 +149,9 @@ export const DATA = {
       {
         value: { es: "Premio", ca: "Premi", en: "Award" },
         text: {
-          es: "Neibr fue uno de los proyectos ganadores de los Santander X Spain Awards 2026 (UVic)",
-          ca: "Neibr va ser un dels projectes guanyadors dels Santander X Spain Awards 2026 (UVic)",
-          en: "Neibr was one of the winning projects of the Santander X Spain Awards 2026 (UVic)",
+          es: "Neibr fue uno de los tres ganadores de los Santander X Spain Awards 2026 (UVic)",
+          ca: "Neibr va ser un dels tres guanyadors dels Santander X Spain Awards 2026 (UVic)",
+          en: "Neibr was one of the three winners of the Santander X Spain Awards 2026 (UVic)",
         },
         href: "neibr",
       },
@@ -199,9 +201,9 @@ export const DATA = {
         id: "larasoak",
         name: "Lara's Oak",
         description: {
-          es: "Portfolio de storyboard y concept art, con un CMS hecho sobre un sistema de bloques propio.",
-          ca: "Portfolio de storyboard i concept art, amb un CMS fet sobre un sistema de blocs propi.",
-          en: "Storyboard and concept art portfolio, with a CMS built on its own block system.",
+          es: "Portfolio de storyboard y concept art, con un CMS hecho sobre un sistema de bloques propio. Lara lo actualiza sola, sin tocar código.",
+          ca: "Portfolio de storyboard i concept art, amb un CMS fet sobre un sistema de blocs propi. La Lara l'actualitza sola, sense tocar codi.",
+          en: "Storyboard and concept art portfolio, with a CMS built on its own block system. Lara updates it herself, without touching code.",
         },
         links: [
           { label: CASE_LINK, href: desanyCase("lara-oak") },
@@ -219,16 +221,19 @@ export const DATA = {
         id: "paulakrebel",
         name: "Paula Krebel",
         description: {
-          es: "Portfolio trilingüe de ilustración infantil y juvenil, con diseño de marca y un sistema de diseño.",
-          ca: "Portfolio trilingüe d'il·lustració infantil i juvenil, amb disseny de marca i un sistema de disseny.",
-          en: "Trilingual portfolio of children's and young adult illustration, with brand design and a design system.",
+          es: "Portfolio de ilustración infantil y juvenil en catalán, castellano e inglés, con diseño de marca y un sistema de diseño.",
+          ca: "Portfolio d'il·lustració infantil i juvenil en català, castellà i anglès, amb disseny de marca i un sistema de disseny.",
+          en: "Children's and young adult illustration portfolio in Catalan, Spanish and English, with brand design and a design system.",
         },
-        links: [{ label: CASE_LINK, href: desanyCase("paula-krebel") }],
+        links: [
+          { label: CASE_LINK, href: desanyCase("paula-krebel") },
+          { label: "paulakrebel.com", href: "https://paulakrebel.com" },
+        ],
         shot: {
           alt: {
-            es: "Portada de la web de Paula Krebel, portfolio de ilustración",
-            ca: "Portada del web de Paula Krebel, portfolio d'il·lustració",
-            en: "Home page of Paula Krebel's illustration portfolio",
+            es: "Portada de paulakrebel.com, el portfolio de Paula Krebel",
+            ca: "Portada de paulakrebel.com, el portfolio de la Paula Krebel",
+            en: "Home page of paulakrebel.com, Paula Krebel's portfolio",
           },
         },
       },
@@ -261,9 +266,9 @@ export const DATA = {
       en: "Websites, social media, automations and custom software",
     } as Localized,
     ownership: {
-      es: "El código y el diseño son tuyos cuando el proyecto está pagado, con documentación técnica completa.",
-      ca: "El codi i el disseny són teus quan el projecte està pagat, amb documentació tècnica completa.",
-      en: "The code and the design are yours once the project is paid for, with full technical documentation.",
+      es: "El código y el diseño son tuyos cuando el proyecto está pagado, con documentación técnica completa. Si un día sigues con otra agencia o con alguien de tu equipo, no empiezas de cero.",
+      ca: "El codi i el disseny són teus quan el projecte està pagat, amb documentació tècnica completa. Si un dia continues amb una altra agència o amb algú del teu equip, no comences de zero.",
+      en: "The code and the design are yours once the project is paid for, with full technical documentation. If you ever move on to another agency or someone on your team, you don't start from scratch.",
     } as Localized,
     examplesLabel: { es: "Ejemplos", ca: "Exemples", en: "Examples" } as Localized,
     items: [
@@ -291,9 +296,9 @@ export const DATA = {
       {
         title: { es: "Gestión de redes sociales", ca: "Gestió de xarxes socials", en: "Social media management" },
         text: {
-          es: "Reels de demostración, LinkedIn, YouTube y emails a la base de clientes, como en el caso de Hidrotech Bordalló.",
-          ca: "Reels de demostració, LinkedIn, YouTube i correus a la base de clients, com en el cas d'Hidrotech Bordalló.",
-          en: "Demo reels, LinkedIn, YouTube and emails to the customer base, as in our work for Hidrotech Bordalló.",
+          es: "Grabamos, editamos, publicamos y respondemos en las redes de tu negocio, y cada tres meses te contamos qué ha pasado. Para Hidrotech Bordalló: reels de demostración, LinkedIn, YouTube y emails a su base de clientes.",
+          ca: "Gravem, editem, publiquem i responem a les xarxes del teu negoci, i cada tres mesos t'expliquem què ha passat. Per a Hidrotech Bordalló: reels de demostració, LinkedIn, YouTube i correus a la seva base de clients.",
+          en: "We film, edit, post and reply on your business's social media, and every three months we tell you how it went. For Hidrotech Bordalló: demo reels, LinkedIn, YouTube and emails to its customer base.",
         },
         examples: [{ label: "Hidrotech Bordalló", id: "hidrotech" }],
         more: desany("/servicios/gestion-rrss", "/serveis/gestio-xarxes-socials"),
@@ -301,9 +306,9 @@ export const DATA = {
       {
         title: { es: "Automatizaciones", ca: "Automatitzacions", en: "Automations" },
         text: {
-          es: "Las tareas que repites a mano, las automatizamos con IA o sin ella, según el caso. Un ejemplo de mi etapa en VMV Cosmetic Group: los avisos de WhatsApp Business para las delegaciones.",
-          ca: "Les tasques que repeteixes a mà, les automatitzem amb IA o sense, segons el cas. Un exemple de la meva etapa a VMV Cosmetic Group: els avisos de WhatsApp Business per a les delegacions.",
-          en: "We automate the tasks you repeat by hand, with or without AI, depending on the job. One example from my time at VMV Cosmetic Group: WhatsApp Business notifications for the regional offices.",
+          es: "Las tareas que repites a mano, las automatizamos con IA o sin ella, según el caso. Y si no compensa, te lo decimos. Un ejemplo del estudio: el alta de clientes de un negocio de finanzas, donde el cliente rellena sus datos una vez y la documentación sale hecha.",
+          ca: "Les tasques que repeteixes a mà, les automatitzem amb IA o sense, segons el cas. I si no compensa, t'ho diem. Un exemple de l'estudi: l'alta de clients d'un negoci de finances, on el client omple les seves dades un cop i la documentació surt feta.",
+          en: "We automate the tasks you repeat by hand, with or without AI, depending on the job. And if it isn't worth it, we tell you. One example from the studio: client sign-up at a finance business, where each client fills in their details once and the paperwork comes out ready.",
         },
         more: desany("/servicios/automatizaciones", "/serveis/automatitzacions"),
       },
@@ -332,9 +337,9 @@ export const DATA = {
     } as Record<"web" | "backend", Localized>,
     cta: {
       line: {
-        es: "Cuéntanos qué necesitas y para cuándo.",
-        ca: "Explica'ns què necessites i per a quan.",
-        en: "Tell us what you need and by when.",
+        es: "Cuéntanos qué necesitas y para cuándo. Te decimos por dónde empezar, y si no nos necesitas, también.",
+        ca: "Explica'ns què necessites i per a quan. Et diem per on començar, i si no ens necessites, també.",
+        en: "Tell us what you need and by when. We tell you where to start, and if you don't need us, we say so.",
       } as Localized,
     },
   },
@@ -482,9 +487,9 @@ export const DATA = {
         en: "Multi-tenant API keys, idempotent writes, HMAC-signed webhooks and an immutable audit ledger.",
       } as Localized,
       award: {
-        es: "Fue uno de los proyectos ganadores de los Santander X Spain Awards 2026 (UVic).",
-        ca: "Va ser un dels projectes guanyadors dels Santander X Spain Awards 2026 (UVic).",
-        en: "It was one of the winning projects of the Santander X Spain Awards 2026 (UVic).",
+        es: "Fue uno de los tres ganadores de los Santander X Spain Awards 2026 (UVic).",
+        ca: "Va ser un dels tres guanyadors dels Santander X Spain Awards 2026 (UVic).",
+        en: "It was one of the three winners of the Santander X Spain Awards 2026 (UVic).",
       } as Localized,
       closureLabel: { es: "Por qué cerramos Neibr", ca: "Per què vam tancar Neibr", en: "Why we shut Neibr down" } as Localized,
       closure: {
@@ -726,9 +731,9 @@ export const DATA = {
         },
         place: { es: "Granollers", ca: "Granollers", en: "Granollers" },
         body: {
-          es: "Un estudio web para pymes de toda Cataluña: webs a medida, redes sociales, automatizaciones y software a medida.",
-          ca: "Un estudi web per a pimes de tot Catalunya: webs a mida, xarxes socials, automatitzacions i programari a mida.",
-          en: "A web studio for small and medium businesses across Catalonia: custom websites, social media, automations and custom software.",
+          es: "Dirijo la tecnología del estudio y monté toda su infraestructura, de los servidores a los despliegues. Oriol dirige la primera reunión y prepara las propuestas.",
+          ca: "Dirigeixo la tecnologia de l'estudi i vaig muntar tota la seva infraestructura, dels servidors als desplegaments. L'Oriol dirigeix la primera reunió i prepara les propostes.",
+          en: "I lead the studio's technology and set up all of its infrastructure, from the servers to the deployments. Oriol leads the first meeting and prepares the proposals.",
         },
       },
     ] as TimelineEntry[],
@@ -845,10 +850,38 @@ export const DATA = {
     whatsapp: { es: "Escribir por WhatsApp", ca: "Escriure per WhatsApp", en: "Message on WhatsApp" } as Localized,
     /** Under the two buttons: what the WhatsApp one does (whatsappText). */
     whatsappNote: {
-      es: "WhatsApp se abre con el mensaje ya escrito.",
-      ca: "WhatsApp s'obre amb el missatge ja escrit.",
-      en: "WhatsApp opens with the message already written.",
+      es: "WhatsApp se abre con el mensaje ya escrito. Horario: de lunes a viernes, de 09:00 a 20:00.",
+      ca: "WhatsApp s'obre amb el missatge ja escrit. Horari: de dilluns a divendres, de 09:00 a 20:00.",
+      en: "WhatsApp opens with the message already written. Hours: Monday to Friday, 09:00 to 20:00.",
     } as Localized,
+    /** What happens after the first message: the three steps digitaldesany.com publishes on its contact page. */
+    nextLabel: { es: "Qué pasa después", ca: "Què passa després", en: "What happens next" } as Localized,
+    next: [
+      {
+        title: { es: "Te respondemos en 24 a 72 horas", ca: "Et responem en 24 a 72 hores", en: "We reply within 24 to 72 hours" },
+        text: {
+          es: "Tu mensaje lo leemos Oriol o yo, y te responde directamente uno de los dos.",
+          ca: "El teu missatge el llegim l'Oriol o jo, i et respon directament un dels dos.",
+          en: "Oriol or I read your message, and one of us replies to you directly.",
+        },
+      },
+      {
+        title: { es: "Una reunión para entender el caso", ca: "Una reunió per entendre el cas", en: "A meeting to understand your case" },
+        text: {
+          es: "Hablamos de tu negocio, de lo que quieres conseguir y de lo que hoy te cuesta hacer a mano.",
+          ca: "Parlem del teu negoci, del que vols aconseguir i del que avui et costa fer a mà.",
+          en: "We talk about your business, what you want to achieve and what takes you effort to do by hand today.",
+        },
+      },
+      {
+        title: { es: "Una propuesta por escrito", ca: "Una proposta per escrit", en: "A written proposal" },
+        text: {
+          es: "Te enviamos la propuesta con el presupuesto desglosado.",
+          ca: "T'enviem la proposta amb el pressupost desglossat.",
+          en: "We send you the proposal with an itemised quote.",
+        },
+      },
+    ] as { title: Localized; text: Localized }[],
     email: { es: "Escribir por correo", ca: "Escriure per correu", en: "Send an email" } as Localized,
     /** Prefilled message and subject; {host} is the site's domain. */
     whatsappText: {
@@ -869,6 +902,11 @@ export const DATA = {
     } as Localized,
     profilesLabel: { es: "Perfiles", ca: "Perfils", en: "Profiles" } as Localized,
     desanyLinkedIn: { es: "Digital DesAny en LinkedIn", ca: "Digital DesAny a LinkedIn", en: "Digital DesAny on LinkedIn" } as Localized,
+    /** The studio's team page, which links back here. Not a sameAs: the page is about both founders. */
+    desanyProfile: {
+      label: { es: "Mi perfil en Digital DesAny", ca: "El meu perfil a Digital DesAny", en: "My profile at Digital DesAny" },
+      href: desany("/estudio", "/estudi"),
+    } as Link,
   },
 
   footer: {

@@ -235,7 +235,8 @@ export const PAGES = {
       nextjs: { es: "Next.js", ca: "Next.js", en: "Next.js" },
       wordpress: { es: "WordPress", ca: "WordPress", en: "WordPress" },
       parts: { es: "Las cuatro partes", ca: "Les quatre parts", en: "The four parts" },
-    } as Record<"cases" | "nextjs" | "wordpress" | "parts", Localized>,
+      project: { es: "Cómo va un proyecto", ca: "Com va un projecte", en: "How a project goes" },
+    } as Record<"cases" | "nextjs" | "wordpress" | "parts" | "project", Localized>,
     nextjs: {
       es: "Lara's Oak y GOK Thermal están hechas con Next.js, igual que la plataforma de firma de documentos de VMV Cosmetic Group y Peer2Stream, mi trabajo de fin de grado.",
       ca: "Lara's Oak i GOK Thermal estan fets amb Next.js, igual que la plataforma de signatura de documents de VMV Cosmetic Group i Peer2Stream, el meu treball de final de grau.",
@@ -246,17 +247,77 @@ export const PAGES = {
       ca: "A VMV Cosmetic Group portava 32 dominis (21 d'ells amb web actiu), 12 plugins interns de WordPress i una botiga interna de plugins. A WordPress.org tinc publicat el plugin Simply Bootstrap Carousel.",
       en: "At VMV Cosmetic Group I looked after 32 domains (21 of them with a live site), 12 internal WordPress plugins and an in-house plugin store. On WordPress.org I've published the Simply Bootstrap Carousel plugin.",
     } as Localized,
+    /** What each part covers, in the words of its page on digitaldesany.com. */
     parts: [
-      { label: { es: "Diseño", ca: "Disseny", en: "Design" }, href: desany("/servicios/diseno", "/serveis/disseny") },
-      { label: { es: "Desarrollo", ca: "Desenvolupament", en: "Development" }, href: desany("/servicios/desarrollo", "/serveis/desenvolupament") },
-      { label: { es: "Digitalización", ca: "Digitalització", en: "Digitalisation" }, href: desany("/servicios/digitalizacion", "/serveis/digitalitzacio") },
-      { label: { es: "Despliegue", ca: "Desplegament", en: "Deployment" }, href: desany("/servicios/despliegue", "/serveis/desplegament") },
-    ] as { label: Localized; href: Localized }[],
+      {
+        label: { es: "Diseño", ca: "Disseny", en: "Design" },
+        href: desany("/servicios/diseno", "/serveis/disseny"),
+        text: {
+          es: "La marca y la interfaz como un sistema, con los componentes montados en Figma y listos para pasar a código.",
+          ca: "La marca i la interfície com un sistema, amb els components muntats a Figma i a punt per passar a codi.",
+          en: "The brand and the interface as one system, with the components built in Figma and ready to become code.",
+        },
+      },
+      {
+        label: { es: "Desarrollo", ca: "Desenvolupament", en: "Development" },
+        href: desany("/servicios/desarrollo", "/serveis/desenvolupament"),
+        text: {
+          es: "El diseño pasa a código, con integraciones entre los programas que ya usas y auditorías de lo que ya tienes.",
+          ca: "El disseny passa a codi, amb integracions entre els programes que ja fas servir i auditories del que ja tens.",
+          en: "The design becomes code, with integrations between the programs you already use and audits of what you already have.",
+        },
+      },
+      {
+        label: { es: "Digitalización", ca: "Digitalització", en: "Digitalisation" },
+        href: desany("/servicios/digitalizacion", "/serveis/digitalitzacio"),
+        text: {
+          es: "Hacemos inventario de lo que hoy se hace a mano y lo pasamos a digital o lo automatizamos, empezando por lo que más horas recupera. También entran el SEO y la analítica, con consentimiento.",
+          ca: "Fem inventari del que avui es fa a mà i ho passem a digital o ho automatitzem, començant pel que recupera més hores. També hi entren el SEO i l'analítica, amb consentiment.",
+          en: "We list what is still done by hand and move it to digital or automate it, starting with what saves the most hours. SEO and analytics, with consent, are part of it too.",
+        },
+      },
+      {
+        label: { es: "Despliegue", ca: "Desplegament", en: "Deployment" },
+        href: desany("/servicios/despliegue", "/serveis/desplegament"),
+        text: {
+          es: "Publicamos la web y la vigilamos desde el primer día, con copias de seguridad probadas, avisos si algo falla y los certificados y dominios en orden.",
+          ca: "Publiquem el web i el vigilem des del primer dia, amb còpies de seguretat provades, avisos si alguna cosa falla i els certificats i dominis en ordre.",
+          en: "We publish the website and monitor it from day one, with tested backups, alerts when something fails, and certificates and domains kept in order.",
+        },
+      },
+    ] as { label: Localized; href: Localized; text: Localized }[],
     partsNote: {
-      es: "Cada parte tiene su página en digitaldesany.com.",
-      ca: "Cada part té la seva pàgina a digitaldesany.com.",
-      en: "Each part has its own page at digitaldesany.com.",
+      es: "Puedes contratar solo una: un rediseño de marca, una integración, una auditoría de procesos o el despliegue de algo que ya tienes. Cada parte tiene su página en digitaldesany.com.",
+      ca: "Pots contractar-ne només una: un redisseny de marca, una integració, una auditoria de processos o el desplegament d'alguna cosa que ja tens. Cada part té la seva pàgina a digitaldesany.com.",
+      en: "You can hire just one: a brand redesign, an integration, a process audit, or deploying something you already have. Each part has its own page at digitaldesany.com.",
     } as Localized,
+    /** How a website project runs at Digital DesAny, from its "Cómo trabajamos" page. No prices. */
+    project: [
+      {
+        title: { es: "Cómo empezamos", ca: "Com comencem", en: "How we start" },
+        text: {
+          es: "Una reunión para entender el caso y, después, una propuesta por escrito con el presupuesto desglosado por partes. Trabajamos por fases y validas cada una antes de pasar a la siguiente.",
+          ca: "Una reunió per entendre el cas i, després, una proposta per escrit amb el pressupost desglossat per parts. Treballem per fases i en valides cadascuna abans de passar a la següent.",
+          en: "A meeting to understand your case, then a written proposal with the quote broken down by part. We work in phases, and you approve each one before we move on to the next.",
+        },
+      },
+      {
+        title: { es: "Plazos", ca: "Terminis", en: "Timelines" },
+        text: {
+          es: "Una web de una sola página (landing) suele llevar un mes. Una web corporativa mediana con algunas integraciones, entre dos y tres meses. Los proyectos más grandes se estiman después de ver los datos.",
+          ca: "Un web d'una sola pàgina (landing) sol trigar un mes. Un web corporatiu mitjà amb algunes integracions, entre dos i tres mesos. Els projectes més grans s'estimen després de veure les dades.",
+          en: "A one-page website (landing page) usually takes a month. A mid-sized company website with a few integrations, two to three months. Bigger projects are estimated once we have seen the data.",
+        },
+      },
+      {
+        title: { es: "Después de la entrega", ca: "Després del lliurament", en: "After delivery" },
+        text: {
+          es: "El primer mes corregimos los errores sin coste y formamos a quien llevará la web. Después, el mantenimiento va por bolsas de horas, solo si hace falta. También damos soporte a webs que no hicimos nosotros.",
+          ca: "El primer mes corregim els errors sense cost i formem qui portarà el web. Després, el manteniment va per bosses d'hores, només si cal. També donem suport a webs que no hem fet nosaltres.",
+          en: "In the first month we fix bugs at no cost and train whoever will run the website. After that, maintenance is through blocks of hours, only when needed. We also support websites we didn't build.",
+        },
+      },
+    ] as { title: Localized; text: Localized }[],
   },
 };
 

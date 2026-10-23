@@ -43,6 +43,22 @@ Este archivo manda sobre cualquier otro. Lo marcado como **(por defecto)** es un
   - **Roses de Sant Jordi** (`/es/casos-exito/rosesstjordi`): rosa digital con dedicatoria para Sant Jordi, en catalán y castellano. Más de 500 rosas enviadas, cerca de 5.000 visitas reales (lo publica su página de caso; Alejandro lo confirma el 22/10/2026) y tendencia en Reddit Catalunya. Web: https://rosesstjordi.com (la misma web responde también en rosesstjordi.es y rosesstjordi.cat).
   - **Hidrotech Bordalló:** redes sociales para una empresa de maquinaria de limpieza industrial (reels de demostración, LinkedIn, YouTube y emails a su base de clientes). Sin web propia que capturar.
 
+### Lo que publica digitaldesany.com (23/10/2026)
+
+Alejandro, el 23/10/2026: "La gran mayoría de preguntas se pueden contestar mirando en digitaldesany.com". Desde entonces, lo que publica el estudio vale como respuesta, también lo que antes se guardaba por ser una condición comercial. Las cifras en euros y la forma de pago no se copian (ver "Lo que no se publica nunca"). Lo que se usa, con la página de donde sale:
+
+- **Contacto** (`/es/contacto`): horario de lunes a viernes, de 09:00 a 20:00. Respuesta en un plazo de 24 a 72 horas. El mensaje lo leen Alejandro u Oriol y responde directamente uno de los dos. Teléfono: el mismo número del WhatsApp.
+- **Cómo arranca un proyecto web** (`/es/como-trabajamos`): una reunión para entender el caso, una propuesta por escrito con el presupuesto desglosado por partes y trabajo por fases que el cliente valida antes de pasar a la siguiente.
+- **Plazos orientativos** (`/es/como-trabajamos`): una landing sencilla suele llevar un mes; una web corporativa mediana con algunas integraciones, de dos a tres meses. Los proyectos más grandes se estiman después de ver los datos.
+- **Después de la entrega** (`/es/como-trabajamos`, `/es/precios`): se entregan el código, el diseño y la documentación técnica completa. El primer mes, corrección de errores sin coste y formación al equipo que llevará la web. Después, bolsas de horas solo si hace falta, también para webs que no hizo el estudio.
+- **Propiedad** (portada de digitaldesany.com): se puede seguir con otra agencia o con un profesional interno sin empezar de cero.
+- **Qué incluye cada parte de una web** (páginas de Diseño, Desarrollo, Digitalización y Despliegue): diseño de marca e interfaz como sistema en Figma; desarrollo, integraciones y auditorías; inventario de lo que se hace a mano para digitalizarlo o automatizarlo, SEO y analítica con consentimiento; publicación y vigilancia, copias de seguridad probadas, avisos y certificados y dominios en orden.
+- **Redes sociales** (`/es/servicios/gestion-rrss`): grabar, editar, publicar y responder, con un informe cada tres meses.
+- **Un caso de automatización del estudio** (`/es/servicios/automatizaciones`): el alta de clientes de David Forcada Finances, donde el cliente rellena sus datos una vez y la documentación sale hecha. En el portfolio va sin el nombre ("un negocio de finanzas") hasta que Alejandro diga que se puede nombrar.
+- **Papeles** (`/es/estudio`): Alejandro dirige la tecnología del estudio y montó toda su infraestructura, de los servidores a los despliegues. Oriol dirige la primera reunión, elabora la propuesta y hace el seguimiento.
+- **Casos:** la web de Paula Krebel es https://paulakrebel.com y está en catalán, castellano e inglés. Lara actualiza su portfolio sola, sin tocar código.
+- **Premio de Neibr** (ficha de Neibr): uno de los tres ganadores de los Santander X Spain Awards 2026 (UVic).
+
 ### Encargos freelance (aparte de DesAny)
 
 - **GOK Thermal:** web de un instalador de climatización de Granollers, hecha como encargo freelance propio. No aparece como caso de Digital DesAny. Web: https://gokthermal.com
@@ -71,7 +87,7 @@ Este archivo manda sobre cualquier otro. Lo marcado como **(por defecto)** es un
 - Asignación: prefiltro por bounding box en SQL y luego distancia exacta con Haversine.
 - Seguridad e integridad: API keys multi-tenant, escrituras idempotentes, webhooks firmados con HMAC y un ledger de auditoría inmutable.
 - Stress test: unos 2,9 millones de peticiones en 50 minutos (~968 req/s), p95 por debajo de 100 ms y 0 errores 5xx.
-- Premio: uno de los proyectos ganadores de los Santander X Spain Awards 2026 (UVic). Confirma el nombre exacto antes de lanzar.
+- Premio: uno de los tres ganadores de los Santander X Spain Awards 2026 (UVic), como dice su ficha en digitaldesany.com (23/10/2026).
 
 ### Formación y otros
 
@@ -99,4 +115,4 @@ Este archivo manda sobre cualquier otro. Lo marcado como **(por defecto)** es un
 
 - El funcionamiento interno de las defensas, los backups o el ERP de VMV, ni nombres internos, proveedores o incidentes.
 - Detalles de negocio de Neibr más allá de la frase de cierre.
-- Precios de clientes o condiciones comerciales.
+- Precios (las cifras en euros) y forma de pago: se quedan en digitaldesany.com. Tampoco ninguna condición comercial que el estudio no publique.

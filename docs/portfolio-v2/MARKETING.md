@@ -11,6 +11,8 @@
 >
 > **23 de octubre: Sobre mí.** La misma capa en la sección Sobre mí de la portada y en `/sobre-mi`: 18 cambios (15 textos, un pie de foto, un enlace a la página de VMV desde el hito de 2025 y fuera "Dónde encontrarme", que repetía Contacto). Cada hecho sale una vez por página y el giro de la historia (empezar a programar en las guardias de helpdesk) pasa a los títulos, que es lo que enseña la portada. Detalle al final de [`marketing/CAMBIOS.md`](marketing/CAMBIOS.md). Mismas comprobaciones, mismo resultado.
 >
+> **23 de octubre: respuestas desde digitaldesany.com.** Alejandro dice que casi todos los "Datos que faltan" están en la web del estudio. Con ellos, Contacto cuenta qué pasa después del primer mensaje (T6, T10), Servicios dice que puedes seguir con otro equipo sin empezar de cero (T5) y usa un caso de automatización del estudio (T4), y `/desarrollo-web` explica las cuatro partes, los plazos y el soporte después de la entrega. Los precios y la forma de pago se quedan en digitaldesany.com. Qué queda abierto, en la sección 7 y en `PREGUNTAS.md`.
+>
 > Lo que sigue es la guía tal como salió de la investigación; sus ejemplos de antes y después pueden diferir un poco de lo publicado.
 
 Esta guía sirve para reescribir los textos de la web (`lib/content.ts` y `lib/pages.ts`) con una capa de marketing, contando lo mismo pero mejor. Sale de cuatro investigaciones: conversión, confianza, redacción de interfaz (UX writing) y portfolios de estudios y desarrolladores. Contrasté los resultados con `CLAUDE.md`, `docs/portfolio-refresh/DECISIONES.md`, `docs/portfolio-v2/RONDA2.md`, los dos `PREGUNTAS.md` y la web servida en local, en los tres idiomas, a 1440 y a 375 px (build del 22 de octubre de 2026).
@@ -594,6 +596,8 @@ Cada texto reescrito tiene que pasar todo esto:
 ---
 
 ## 7. Datos que faltan (preguntar a Alejandro; no inventar)
+
+> **23 de octubre.** Resueltos con digitaldesany.com: qué pasa después del primer mensaje (sin el formato de la reunión), el horario y el tiempo de respuesta, quién lee los mensajes, "te los llevas" (con las palabras del estudio), qué incluyen las partes, un caso de automatización del estudio (sin nombre) y el nombre del premio. Decididos: los precios no se publican y el mensaje de WhatsApp no cambia (es el mismo que usa el estudio). Siguen abiertos el formato de la reunión, el inglés, el dominio y el hosting, "mi parte" en cada caso, los resultados, los testimonios, la voz del cliente, quién lleva las redes, qué no hace el estudio y la lección de Neibr.
 
 | Dato | Dónde iría | Mientras tanto |
 |---|---|---|
