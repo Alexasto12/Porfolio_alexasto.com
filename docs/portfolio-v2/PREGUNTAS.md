@@ -278,13 +278,13 @@ Alejandro: "La gran mayoría de preguntas se pueden contestar mirando en digital
 
 ### Contestadas y aplicadas
 
-- **Qué pasa después del primer mensaje:** Contacto tiene ahora tres pasos, los mismos que publica el estudio. Respuesta en 24 a 72 horas (lo leemos Oriol o yo y contesta uno de los dos), una reunión para entender el caso y una propuesta por escrito con el presupuesto desglosado.
-- **Horario:** de lunes a viernes, de 09:00 a 20:00, en la línea bajo los botones y en el `contactPoint` del JSON-LD.
+- **Qué pasa después del primer mensaje:** Contacto tiene ahora tres pasos, los mismos que publica el estudio. Uno de los dos lee tu mensaje y te respondemos en un plazo de 24 a 72 horas, una reunión para entender el caso y una propuesta por escrito con el presupuesto desglosado.
+- **Horario:** de lunes a viernes, de 09:00 a 20:00 (hora peninsular), en el paso 01 de Contacto y en el `contactPoint` del JSON-LD.
 - **"Si cambias de proveedor, te los llevas":** el estudio lo dice con otras palabras. Servicios añade "Si un día sigues con otra agencia o con alguien de tu equipo, no empiezas de cero."
 - **Qué incluye cada parte de una web:** `/desarrollo-web` explica las cuatro, con ejemplos de contratar solo una.
-- **Plazos y soporte después de la entrega:** sección nueva "Cómo va un proyecto" en `/desarrollo-web`, sin precios.
+- **Plazos y soporte después de la entrega:** sección nueva "Cómo va un proyecto" en `/desarrollo-web`, sin precios. Los plazos llevan su "orientativos" y la condición del estudio (que los contenidos y tus respuestas lleguen a tiempo), y las bolsas de horas, que de ellas sale la gestión del hosting y del dominio.
 - **Caso de automatización del estudio:** el alta de clientes de un negocio de finanzas sustituye al ejemplo de VMV en Servicios (MARKETING.md lo pedía). El de VMV sigue en Experiencia.
-- **Redes:** la tarjeta dice qué incluye el servicio antes del ejemplo de Hidrotech.
+- **Redes:** la tarjeta dice qué incluye el servicio. El detalle de Hidrotech queda en su tarjeta de Trabajos, que la de Servicios enlaza.
 - **Paula Krebel:** su web es paulakrebel.com y está en catalán, castellano e inglés. La tarjeta lo dice y enlaza a la web.
 - **Premio de Neibr:** "uno de los tres ganadores", como su ficha.
 - **Sobre mí, hito de 2026:** ya no repite la entradilla. Dice qué hace cada uno en el estudio.
@@ -315,3 +315,19 @@ La web del estudio no lo dice:
 - **La ficha de Neibr lo presenta como activo** ("Neibr es...", "Inicia un Piloto", "Ver el sitio en vivo"). El portfolio dice que se cerró en 2026 antes de lanzar, como `DECISIONES.md`, y enlaza a esa ficha.
 - **Más de veinte dominios** en la ficha de Alejandro: el portfolio publica 32 (21 con web activa). No se contradicen, pero la cifra exacta es más concreta.
 
+
+### Revisión (cuatro revisores y un verificador por revisor)
+
+Hechos frente a digitaldesany.com, reglas e idiomas, marketing, y código y accesibilidad. De 45 hallazgos (varios repetidos entre revisores) se confirmaron 37 y se arreglaron todos:
+
+- **Plazos:** vuelven el "orientativos", el "sencilla" y la condición del estudio.
+- **Repeticiones:** en `/desarrollo-web` la reunión y la propuesta salían dos veces (en "Cómo va un proyecto" y en Contacto). El primer bloque pasa a "Por fases". La tarjeta de redes ya no repite la de Hidrotech, y Servicios ya no dice dos veces "te lo decimos".
+- **Contacto:** el horario pasa al paso 01, junto al plazo de respuesta, con la zona horaria. La línea bajo los botones vuelve a decir solo lo que hace WhatsApp.
+- **Premio en el JSON-LD:** el nodo de Alejandro decía "uno de los tres ganadores". Ahora el sujeto es el proyecto, como en la fuente.
+- **Jerga:** Diseño y Digitalización explican primero con palabras llanas (SEO, analítica con el permiso de cada visitante).
+- **Lara's Oak:** primero lo que gana la clienta (lo actualiza sola) y después el método.
+- **Enlaces:** "Mi perfil en Digital DesAny" lleva a la ficha de Alejandro. Las cuatro partes dicen a lectores de pantalla que van a digitaldesany.com.
+- **Maquetación:** los títulos de las partes en el mismo peso que el resto; "Cómo va un proyecto" en tres columnas desde 861 px; fuera una clase CSS sin uso.
+- **Guía:** `MARKETING.md` deja de prohibir lo que ahora se publica (plazo de respuesta, plazos, primer mes).
+
+Descartados 8, entre ellos: nombrar el estudio en el título de la sección (el contexto ya lo deja claro), un aviso de idioma en `/en` (sigue como pregunta abierta) y tres retoques de maquetación de Contacto sin efecto para el lector.

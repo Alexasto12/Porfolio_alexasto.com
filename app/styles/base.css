@@ -302,7 +302,6 @@ img { max-width: 100%; }
   flex-wrap: wrap;
   gap: var(--space-2) var(--space-5);
 }
-.links--big { font-size: 1.15rem; gap: var(--space-3) var(--space-6); }
 
 /* A link to another part of this site: a little heavier, no arrow. */
 .more-link {

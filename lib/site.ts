@@ -62,9 +62,9 @@ export const SAME_AS = CONTACT.profiles.map((p) => p.href);
 const DESANY_ID = "https://www.digitaldesany.com#organization";
 
 const AWARD: Localized = {
-  es: "Santander X Spain Awards 2026 (UVic), uno de los tres ganadores, con Neibr",
-  ca: "Santander X Spain Awards 2026 (UVic), un dels tres guanyadors, amb Neibr",
-  en: "Santander X Spain Awards 2026 (UVic), one of the three winners, with Neibr",
+  es: "Santander X Spain Awards 2026 (UVic): Neibr, uno de los tres proyectos ganadores",
+  ca: "Santander X Spain Awards 2026 (UVic): Neibr, un dels tres projectes guanyadors",
+  en: "Santander X Spain Awards 2026 (UVic): Neibr, one of the three winning projects",
 };
 
 export const VIEWPORT: Viewport = {

@@ -73,8 +73,8 @@
 .caps__text { font-size: 15px; line-height: 1.5; color: var(--fg-2); }
 .caps__item .link-ext { margin-top: var(--space-1); font-size: 15px; }
 /* A title that is itself the link (the four parts of a website). */
-.caps__title .link-ext { margin-top: 0; font-size: inherit; }
-@media (min-width: 1101px) {
+.caps__title .link-ext { margin-top: 0; font-size: inherit; font-weight: inherit; }
+@media (min-width: 861px) {
   .caps--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 

@@ -235,7 +235,7 @@ export const PAGES = {
       nextjs: { es: "Next.js", ca: "Next.js", en: "Next.js" },
       wordpress: { es: "WordPress", ca: "WordPress", en: "WordPress" },
       parts: { es: "Las cuatro partes", ca: "Les quatre parts", en: "The four parts" },
-      project: { es: "Cómo va un proyecto", ca: "Com va un projecte", en: "How a project goes" },
+      project: { es: "Cómo va un proyecto", ca: "Com va un projecte", en: "How a project works" },
     } as Record<"cases" | "nextjs" | "wordpress" | "parts" | "project", Localized>,
     nextjs: {
       es: "Lara's Oak y GOK Thermal están hechas con Next.js, igual que la plataforma de firma de documentos de VMV Cosmetic Group y Peer2Stream, mi trabajo de fin de grado.",
@@ -253,27 +253,27 @@ export const PAGES = {
         label: { es: "Diseño", ca: "Disseny", en: "Design" },
         href: desany("/servicios/diseno", "/serveis/disseny"),
         text: {
-          es: "La marca y la interfaz como un sistema, con los componentes montados en Figma y listos para pasar a código.",
-          ca: "La marca i la interfície com un sistema, amb els components muntats a Figma i a punt per passar a codi.",
-          en: "The brand and the interface as one system, with the components built in Figma and ready to become code.",
+          es: "Tu marca y las pantallas de tu web, diseñadas como un conjunto para que se entiendan a la primera. Quedan montadas en Figma, listas para pasar a código.",
+          ca: "La teva marca i les pantalles del teu web, dissenyades com un conjunt perquè s'entenguin a la primera. Queden muntades a Figma, a punt per passar a codi.",
+          en: "Your brand and your website's screens, designed as one set so they make sense at first glance. They are built in Figma, ready to become code.",
         },
       },
       {
         label: { es: "Desarrollo", ca: "Desenvolupament", en: "Development" },
         href: desany("/servicios/desarrollo", "/serveis/desenvolupament"),
         text: {
-          es: "El diseño pasa a código, con integraciones entre los programas que ya usas y auditorías de lo que ya tienes.",
-          ca: "El disseny passa a codi, amb integracions entre els programes que ja fas servir i auditories del que ja tens.",
-          en: "The design becomes code, with integrations between the programs you already use and audits of what you already have.",
+          es: "El diseño pasa a código, con integraciones entre los programas que usas y auditorías de lo que ya tienes.",
+          ca: "El disseny passa a codi, amb integracions entre els programes que fas servir i auditories del que ja tens.",
+          en: "The design becomes code, with integrations between the programs you use and audits of what you already have.",
         },
       },
       {
         label: { es: "Digitalización", ca: "Digitalització", en: "Digitalisation" },
         href: desany("/servicios/digitalizacion", "/serveis/digitalitzacio"),
         text: {
-          es: "Hacemos inventario de lo que hoy se hace a mano y lo pasamos a digital o lo automatizamos, empezando por lo que más horas recupera. También entran el SEO y la analítica, con consentimiento.",
-          ca: "Fem inventari del que avui es fa a mà i ho passem a digital o ho automatitzem, començant pel que recupera més hores. També hi entren el SEO i l'analítica, amb consentiment.",
-          en: "We list what is still done by hand and move it to digital or automate it, starting with what saves the most hours. SEO and analytics, with consent, are part of it too.",
+          es: "Hacemos inventario de lo que hoy se hace a mano y lo pasamos a digital o lo automatizamos, empezando por lo que más horas recupera. También entra el trabajo para que te encuentren en Google (SEO) y para medir las visitas con el permiso de cada visitante (analítica).",
+          ca: "Fem inventari del que avui es fa a mà i ho passem a digital o ho automatitzem, començant pel que recupera més hores. També hi entra la feina perquè et trobin a Google (SEO) i per mesurar les visites amb el permís de cada visitant (analítica).",
+          en: "We list what is still done by hand and move it to digital or automate it, starting with what saves the most hours. This part also covers the work to get you found on Google (SEO) and to measure visits with each visitor's consent (analytics).",
         },
       },
       {
@@ -287,34 +287,34 @@ export const PAGES = {
       },
     ] as { label: Localized; href: Localized; text: Localized }[],
     partsNote: {
-      es: "Puedes contratar solo una: un rediseño de marca, una integración, una auditoría de procesos o el despliegue de algo que ya tienes. Cada parte tiene su página en digitaldesany.com.",
-      ca: "Pots contractar-ne només una: un redisseny de marca, una integració, una auditoria de processos o el desplegament d'alguna cosa que ja tens. Cada part té la seva pàgina a digitaldesany.com.",
-      en: "You can hire just one: a brand redesign, an integration, a process audit, or deploying something you already have. Each part has its own page at digitaldesany.com.",
+      es: "Puedes contratar solo una: un rediseño de marca, una integración, una auditoría de procesos o el despliegue de algo que ya tienes. También damos soporte a webs que no hicimos nosotros. Cada parte tiene su página en digitaldesany.com.",
+      ca: "Pots contractar-ne només una: un redisseny de marca, una integració, una auditoria de processos o el desplegament d'alguna cosa que ja tens. També donem suport a webs que no hem fet nosaltres. Cada part té la seva pàgina a digitaldesany.com.",
+      en: "You can hire just one: a brand redesign, an integration, a process audit, or deploying something you already have. We also support websites we didn't build. Each part has its own page at digitaldesany.com.",
     } as Localized,
     /** How a website project runs at Digital DesAny, from its "Cómo trabajamos" page. No prices. */
     project: [
       {
-        title: { es: "Cómo empezamos", ca: "Com comencem", en: "How we start" },
+        title: { es: "Por fases", ca: "Per fases", en: "In phases" },
         text: {
-          es: "Una reunión para entender el caso y, después, una propuesta por escrito con el presupuesto desglosado por partes. Trabajamos por fases y validas cada una antes de pasar a la siguiente.",
-          ca: "Una reunió per entendre el cas i, després, una proposta per escrit amb el pressupost desglossat per parts. Treballem per fases i en valides cadascuna abans de passar a la següent.",
-          en: "A meeting to understand your case, then a written proposal with the quote broken down by part. We work in phases, and you approve each one before we move on to the next.",
+          es: "Trabajamos por fases y validas cada una antes de pasar a la siguiente. En el presupuesto, cada parte va por separado.",
+          ca: "Treballem per fases i en valides cadascuna abans de passar a la següent. Al pressupost, cada part va per separat.",
+          en: "We work in phases, and you approve each one before we move on to the next. In the quote, each part is listed separately.",
         },
       },
       {
-        title: { es: "Plazos", ca: "Terminis", en: "Timelines" },
+        title: { es: "Plazos orientativos", ca: "Terminis orientatius", en: "Indicative timelines" },
         text: {
-          es: "Una web de una sola página (landing) suele llevar un mes. Una web corporativa mediana con algunas integraciones, entre dos y tres meses. Los proyectos más grandes se estiman después de ver los datos.",
-          ca: "Un web d'una sola pàgina (landing) sol trigar un mes. Un web corporatiu mitjà amb algunes integracions, entre dos i tres mesos. Els projectes més grans s'estimen després de veure les dades.",
-          en: "A one-page website (landing page) usually takes a month. A mid-sized company website with a few integrations, two to three months. Bigger projects are estimated once we have seen the data.",
+          es: "Una web sencilla de una sola página (landing) suele llevar un mes. Una web corporativa mediana con algunas integraciones, entre dos y tres meses. Los proyectos más grandes los estimamos después de ver los datos. Los plazos dan por hecho que tus contenidos y tus respuestas llegan a tiempo.",
+          ca: "Un web senzill d'una sola pàgina (landing) sol trigar un mes. Un web corporatiu mitjà amb algunes integracions, entre dos i tres mesos. Els projectes més grans els estimem després de veure les dades. Els terminis donen per fet que els teus continguts i les teves respostes arriben a temps.",
+          en: "A simple one-page website (landing page) usually takes a month. A mid-sized company website with a few integrations, two to three months. We estimate bigger projects once we have seen the data. These timelines assume your content and feedback arrive on time.",
         },
       },
       {
         title: { es: "Después de la entrega", ca: "Després del lliurament", en: "After delivery" },
         text: {
-          es: "El primer mes corregimos los errores sin coste y formamos a quien llevará la web. Después, el mantenimiento va por bolsas de horas, solo si hace falta. También damos soporte a webs que no hicimos nosotros.",
-          ca: "El primer mes corregim els errors sense cost i formem qui portarà el web. Després, el manteniment va per bosses d'hores, només si cal. També donem suport a webs que no hem fet nosaltres.",
-          en: "In the first month we fix bugs at no cost and train whoever will run the website. After that, maintenance is through blocks of hours, only when needed. We also support websites we didn't build.",
+          es: "El primer mes corregimos los errores sin coste y formamos a quien llevará la web. Después, el mantenimiento va por bolsas de horas, solo si hace falta. De esas horas sale también la gestión del hosting y del dominio.",
+          ca: "El primer mes corregim els errors sense cost i formem qui portarà el web. Després, el manteniment va per bosses d'hores, només si cal. D'aquestes hores també surt la gestió de l'allotjament i del domini.",
+          en: "In the first month we fix bugs at no cost and train whoever will run the website. After that, maintenance comes in blocks of hours, only when you need it. Hosting and domain management also come out of those hours.",
         },
       },
     ] as { title: Localized; text: Localized }[],

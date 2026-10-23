@@ -3,7 +3,7 @@
 > **Estado (22 de octubre de 2026).** Aplicada a los textos de la web: 55 textos cambiados, añadidos o quitados, uno por uno en [`marketing/CAMBIOS.md`](marketing/CAMBIOS.md). Cada propuesta pasó por un verificador que rechazaba todo lo que añadiera un hecho, rompiera los tres idiomas o no fuera claramente mejor: de 57 propuestas se aplicaron 54 (algunas corregidas) y se descartaron 3 (las descripciones de tres capacidades de VMV, donde el término exacto sirve mejor a quien evalúa). Decisiones tomadas al aplicarla:
 >
 > - **"Web" en catalán va en masculino** ("el web", "dos webs", "webs publicats"), como dice Optimot para "lloc web" y como escribe digitaldesany.com/ca.
-> - **No se publica** "Si un día cambias de proveedor, te los llevas", ningún plan de pasos tras el primer mensaje ni tiempos de respuesta: faltan los datos (ver "Datos que faltan" y `PREGUNTAS.md`).
+> - **No se publicaba** "Si un día cambias de proveedor, te los llevas", ningún plan de pasos tras el primer mensaje ni tiempos de respuesta, porque faltaban los datos. Desde el 23 de octubre se publican con las palabras de digitaldesany.com (ver abajo y `DECISIONES.md`).
 > - **El mensaje de WhatsApp que se rellena solo no cambia**, porque lo recibe el estudio. Debajo de los botones hay una línea que dice lo que hace el botón.
 > - **La propiedad del código sale dos veces en la portada** (frase del inicio y Servicios), con las mismas palabras, y no entra en la descripción de `Person` del JSON-LD.
 >
@@ -520,7 +520,7 @@ Las técnicas van por orden de impacto. Cada ejemplo parte de un texto real de h
 |---|---|
 | Urgencia o escasez ("plazas limitadas", "solo este mes", cuentas atrás) | No hay ningún plazo real que citar. La urgencia falsa resta credibilidad y es práctica desleal (Ley 3/1991, art. 23.4; barrido de la Comisión Europea de 2023). La única urgencia es la del cliente: "para cuándo" |
 | Testimonios, reseñas, estrellas o contadores ("+20 clientes", "clientes satisfechos") | No existen. Se piden de verdad, con nombre y permiso, y hasta entonces se enlaza lo comprobable |
-| Precios, "desde X €", "presupuesto gratis", "sin compromiso", "sin permanencia", "respuesta en 24 o 48 h", "garantía", "precio cerrado", "el dominio a tu nombre" | Son condiciones comerciales que `DECISIONES.md` no publica. El "Respondo en menos de 48h" se quitó a propósito (`docs/portfolio-refresh/PREGUNTAS.md`, Fase 2) |
+| Precios, "desde X €", "presupuesto gratis", "sin compromiso", "sin permanencia", "garantía", "precio cerrado", "el dominio a tu nombre" | Las cifras en euros y la forma de pago se quedan en digitaldesany.com. De las demás condiciones, solo las que publica el estudio, sin ampliarlas ni quitarles sus condiciones (`DECISIONES.md`, 23/10/2026): el plazo de respuesta, los plazos orientativos y la corrección de errores del primer mes. "Garantía" como palabra no se usa: se dice lo que se hace |
 | Superlativos y autoetiquetas ("experto", "los mejores", "líderes", "referente", "rápido", "seguro", "robusto", "escalable", "de calidad", "profesionales", "apasionado", "autodidacta") | Lo prohíbe `CLAUDE.md`; un hecho hace ese trabajo mejor |
 | Inflar hechos ("premiado", "cientos de rosas", "+5.000 visitas", "decenas de webs", "15 años de experiencia", "integré" en lugar de "colaboro") | Cambia el hecho publicado o lo deduce sin que nadie lo haya dicho |
 | Agitar el problema (PAS completo, "pierdes clientes cada día", "¿Miedo a que te estafen?") y el antes y después de un cliente | Pide afirmaciones sobre las pérdidas del lector o la situación previa del cliente que no podemos sostener. Solo Roses tiene resultado, y no tiene "antes" |
@@ -537,9 +537,7 @@ Las técnicas van por orden de impacto. Cada ejemplo parte de un texto real de h
 
 ### Aplazado hasta tener datos
 
-- **Plan de tres pasos en Contacto (StoryBrand).** No sabemos qué pasa después del primer mensaje: llamada, visita o presupuesto. Plantilla preparada para cuando se sepa:
-  - ES: "1. Nos escribes por WhatsApp o por correo: qué necesitas y para cuándo. 2. [paso confirmado por Alejandro]. 3. [entrega o siguiente paso confirmado]."
-  - Con el plan publicado, la propiedad del código no se añade como tercer paso en la portada: ya sale dos veces.
+- **Plan de tres pasos en Contacto (StoryBrand).** Publicado el 23/10/2026 con los tres pasos de digitaldesany.com/es/contacto ("Qué pasa después"). Sigue sin saberse si la reunión es una llamada, una videollamada o una visita. La propiedad del código no se añade como paso: ya sale dos veces en la portada.
 - **Pregunta de problema y solución en Servicios** ("¿Tu web solo la puede tocar quien la hizo?"). La propiedad del código saldría tres veces en la portada. Se puede usar en `/desarrollo-web` si se quita de otro sitio.
 - **"No hacemos..."** (decir qué no hace el estudio). Solo con las palabras de Alejandro.
 - **"Ens pots escriure en català o en castellà"** y sus equivalentes. Es un compromiso de servicio y hay que confirmarlo.
@@ -602,7 +600,7 @@ Cada texto reescrito tiene que pasar todo esto:
 | Dato | Dónde iría | Mientras tanto |
 |---|---|---|
 | Qué pasa después del primer mensaje: llamada, visita, presupuesto escrito, si la primera reunión es gratis | Plan de tres pasos en Contacto; franja de Servicios | Texto de Contacto sin plan (T10) |
-| Tiempo de respuesta u horario (digitaldesany.com publica "de lunes a viernes, de 09:00 a 20:00") | Línea junto a los botones | Nada |
+| Tiempo de respuesta u horario (digitaldesany.com publica "de lunes a viernes, de 09:00 a 20:00") | Paso 01 de "Qué pasa después" en Contacto (resuelto el 23/10/2026) | Nada |
 | Quién lee el WhatsApp y info@ (Alejandro, Oriol o los dos) | Texto de Contacto; si el botón del hero es "Cuéntame" o "Cuéntanos" | "Los proyectos los llevamos Oriol Tamborero y yo", sin decir quién contesta |
 | Si el estudio atiende en catalán y en castellano (y en inglés) | Línea en Contacto ("Ens pots escriure en català o en castellà") | Nada |
 | Si dominio y hosting quedan a nombre del cliente; si hay cuotas o permanencia | Propiedad del código en Servicios | Solo código y diseño |

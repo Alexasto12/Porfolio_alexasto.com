@@ -201,9 +201,9 @@ export const DATA = {
         id: "larasoak",
         name: "Lara's Oak",
         description: {
-          es: "Portfolio de storyboard y concept art, con un CMS hecho sobre un sistema de bloques propio. Lara lo actualiza sola, sin tocar código.",
-          ca: "Portfolio de storyboard i concept art, amb un CMS fet sobre un sistema de blocs propi. La Lara l'actualitza sola, sense tocar codi.",
-          en: "Storyboard and concept art portfolio, with a CMS built on its own block system. Lara updates it herself, without touching code.",
+          es: "Portfolio de storyboard y concept art que Lara actualiza sola, sin tocar código, con un CMS hecho sobre un sistema de bloques propio.",
+          ca: "Portfolio de storyboard i concept art que la Lara actualitza sola, sense tocar codi, amb un CMS fet sobre un sistema de blocs propi.",
+          en: "Storyboard and concept art portfolio that Lara updates herself, without touching code, with a CMS built on its own block system.",
         },
         links: [
           { label: CASE_LINK, href: desanyCase("lara-oak") },
@@ -268,7 +268,7 @@ export const DATA = {
     ownership: {
       es: "El código y el diseño son tuyos cuando el proyecto está pagado, con documentación técnica completa. Si un día sigues con otra agencia o con alguien de tu equipo, no empiezas de cero.",
       ca: "El codi i el disseny són teus quan el projecte està pagat, amb documentació tècnica completa. Si un dia continues amb una altra agència o amb algú del teu equip, no comences de zero.",
-      en: "The code and the design are yours once the project is paid for, with full technical documentation. If you ever move on to another agency or someone on your team, you don't start from scratch.",
+      en: "The code and the design are yours once the project is paid for, with full technical documentation. If you ever switch to another agency or to someone on your own team, you don't start from scratch.",
     } as Localized,
     examplesLabel: { es: "Ejemplos", ca: "Exemples", en: "Examples" } as Localized,
     items: [
@@ -296,9 +296,9 @@ export const DATA = {
       {
         title: { es: "Gestión de redes sociales", ca: "Gestió de xarxes socials", en: "Social media management" },
         text: {
-          es: "Grabamos, editamos, publicamos y respondemos en las redes de tu negocio, y cada tres meses te contamos qué ha pasado. Para Hidrotech Bordalló: reels de demostración, LinkedIn, YouTube y emails a su base de clientes.",
-          ca: "Gravem, editem, publiquem i responem a les xarxes del teu negoci, i cada tres mesos t'expliquem què ha passat. Per a Hidrotech Bordalló: reels de demostració, LinkedIn, YouTube i correus a la seva base de clients.",
-          en: "We film, edit, post and reply on your business's social media, and every three months we tell you how it went. For Hidrotech Bordalló: demo reels, LinkedIn, YouTube and emails to its customer base.",
+          es: "Grabamos, editamos, publicamos y respondemos en las redes de tu negocio, y cada tres meses te contamos qué ha pasado.",
+          ca: "Gravem, editem, publiquem i responem a les xarxes del teu negoci, i cada tres mesos t'expliquem què ha passat.",
+          en: "We film, edit, post and reply on your business's social media, and every three months we tell you how it went.",
         },
         examples: [{ label: "Hidrotech Bordalló", id: "hidrotech" }],
         more: desany("/servicios/gestion-rrss", "/serveis/gestio-xarxes-socials"),
@@ -306,9 +306,9 @@ export const DATA = {
       {
         title: { es: "Automatizaciones", ca: "Automatitzacions", en: "Automations" },
         text: {
-          es: "Las tareas que repites a mano, las automatizamos con IA o sin ella, según el caso. Y si no compensa, te lo decimos. Un ejemplo del estudio: el alta de clientes de un negocio de finanzas, donde el cliente rellena sus datos una vez y la documentación sale hecha.",
-          ca: "Les tasques que repeteixes a mà, les automatitzem amb IA o sense, segons el cas. I si no compensa, t'ho diem. Un exemple de l'estudi: l'alta de clients d'un negoci de finances, on el client omple les seves dades un cop i la documentació surt feta.",
-          en: "We automate the tasks you repeat by hand, with or without AI, depending on the job. And if it isn't worth it, we tell you. One example from the studio: client sign-up at a finance business, where each client fills in their details once and the paperwork comes out ready.",
+          es: "Las tareas que repites a mano, las automatizamos con IA o sin ella, según el caso. Un ejemplo del estudio: el alta de clientes de un negocio de finanzas. Cada cliente rellena sus datos una vez y la documentación sale hecha.",
+          ca: "Les tasques que repeteixes a mà, les automatitzem amb IA o sense, segons el cas. Un exemple de l'estudi: l'alta de clients d'un negoci de finances. Cada client omple les seves dades un cop i la documentació surt feta.",
+          en: "We automate the tasks you repeat by hand, with or without AI, depending on the job. One example from the studio: client sign-up at a finance business. Each client fills in their details once and the paperwork comes out ready.",
         },
         more: desany("/servicios/automatizaciones", "/serveis/automatitzacions"),
       },
@@ -339,7 +339,7 @@ export const DATA = {
       line: {
         es: "Cuéntanos qué necesitas y para cuándo. Te decimos por dónde empezar, y si no nos necesitas, también.",
         ca: "Explica'ns què necessites i per a quan. Et diem per on començar, i si no ens necessites, també.",
-        en: "Tell us what you need and by when. We tell you where to start, and if you don't need us, we say so.",
+        en: "Tell us what you need and by when. We'll tell you where to start, and if you don't need us, we'll say so.",
       } as Localized,
     },
   },
@@ -850,19 +850,19 @@ export const DATA = {
     whatsapp: { es: "Escribir por WhatsApp", ca: "Escriure per WhatsApp", en: "Message on WhatsApp" } as Localized,
     /** Under the two buttons: what the WhatsApp one does (whatsappText). */
     whatsappNote: {
-      es: "WhatsApp se abre con el mensaje ya escrito. Horario: de lunes a viernes, de 09:00 a 20:00.",
-      ca: "WhatsApp s'obre amb el missatge ja escrit. Horari: de dilluns a divendres, de 09:00 a 20:00.",
-      en: "WhatsApp opens with the message already written. Hours: Monday to Friday, 09:00 to 20:00.",
+      es: "WhatsApp se abre con el mensaje ya escrito.",
+      ca: "WhatsApp s'obre amb el missatge ja escrit.",
+      en: "WhatsApp opens with the message already written.",
     } as Localized,
     /** What happens after the first message: the three steps digitaldesany.com publishes on its contact page. */
     nextLabel: { es: "Qué pasa después", ca: "Què passa després", en: "What happens next" } as Localized,
     next: [
       {
-        title: { es: "Te respondemos en 24 a 72 horas", ca: "Et responem en 24 a 72 hores", en: "We reply within 24 to 72 hours" },
+        title: { es: "Uno de los dos lee tu mensaje", ca: "Un dels dos llegeix el teu missatge", en: "One of us reads your message" },
         text: {
-          es: "Tu mensaje lo leemos Oriol o yo, y te responde directamente uno de los dos.",
-          ca: "El teu missatge el llegim l'Oriol o jo, i et respon directament un dels dos.",
-          en: "Oriol or I read your message, and one of us replies to you directly.",
+          es: "Te respondemos en un plazo de 24 a 72 horas. Horario: de lunes a viernes, de 09:00 a 20:00 (hora peninsular).",
+          ca: "Et responem en un termini de 24 a 72 hores. Horari: de dilluns a divendres, de 09:00 a 20:00 (hora peninsular).",
+          en: "We reply within 24 to 72 hours. Hours: Monday to Friday, 09:00 to 20:00 (Spain time).",
         },
       },
       {
@@ -870,7 +870,7 @@ export const DATA = {
         text: {
           es: "Hablamos de tu negocio, de lo que quieres conseguir y de lo que hoy te cuesta hacer a mano.",
           ca: "Parlem del teu negoci, del que vols aconseguir i del que avui et costa fer a mà.",
-          en: "We talk about your business, what you want to achieve and what takes you effort to do by hand today.",
+          en: "We talk about your business, what you want to achieve and what you find hard to do by hand today.",
         },
       },
       {
@@ -905,7 +905,7 @@ export const DATA = {
     /** The studio's team page, which links back here. Not a sameAs: the page is about both founders. */
     desanyProfile: {
       label: { es: "Mi perfil en Digital DesAny", ca: "El meu perfil a Digital DesAny", en: "My profile at Digital DesAny" },
-      href: desany("/estudio", "/estudi"),
+      href: desany("/estudio#persona-alejandro", "/estudi#persona-alejandro"),
     } as Link,
   },
 

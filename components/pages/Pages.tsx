@@ -309,7 +309,10 @@ function WebPage({ locale }: { locale: Locale }) {
           {p.parts.map((part) => (
             <li key={part.href.es} className="caps__item">
               <h3 className="caps__title">
-                <ExtLink href={pick(part.href, locale)}>{t(part.label)}</ExtLink>
+                <ExtLink href={pick(part.href, locale)}>
+                  {t(part.label)}
+                  <span className="sr-only"> (digitaldesany.com)</span>
+                </ExtLink>
               </h3>
               <p className="caps__text">{t(part.text)}</p>
             </li>
